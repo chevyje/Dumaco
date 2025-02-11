@@ -1,7 +1,7 @@
 import mysql from "mysql2/promise";
 import config from "./config.js"
 
-const db = mysql.createConnection({
+const db = await mysql.createConnection({
     host: config.DB_HOST,
     user: config.DB_USER,
     password: config.DB_PASSWORD,
