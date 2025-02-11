@@ -1,0 +1,20 @@
+{
+  "name": "2024-open-ict-rons-δυµαχω",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://HU-HBO-ICT@dev.azure.com/HU-HBO-ICT/2024-Open-ICT-RONS-%CE%94%CF%85%C2%B5%CE%B1%CF%87%CF%89/_git/2024-Open-ICT-RONS-%CE%94%CF%85%C2%B5%CE%B1%CF%87%CF%89"
+  },
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0"
+  }
+}
