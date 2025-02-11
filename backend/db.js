@@ -1,4 +1,4 @@
-import mysql from "mysql2";
+import mysql from "mysql2/promise";
 import config from "./config.js"
 
 const db = mysql.createConnection({
@@ -16,36 +16,22 @@ db.connect((err) => {
     console.log("Verbonden met de database!");
 });
 
-/**
- * Queries the database
- * @param {string} query sqlite query
- * @param {any[]} params sequentially replace '?' in query with value
- * @returns {Promise<Database.SqliteError|any[]>}
- */
-export async function db_query(query, params) {
-    return new Promise((resolve, reject) => {
-        try {
-            if (params === undefined) params = [];
-            resolve(db.prepare(query).all(...params));
-        } catch(e) {
-            reject(e);
-        }
-    });
+// Functie om SELECT queries uit te voeren
+export async function db_query(query, params = []) {
+    try {
+        const [rows] = await db.execute(query, params);
+        return rows;
+    } catch (error) {
+        throw error;
+    }
 }
 
-/**
- * Runs a query on the database. Does not return data
- * @param {string} query sqlite query
- * @param {any[]} params sequentially replace '?' in query with value
- * @returns {Promise<Database.SqliteError|null>}
- */
-export async function db_execute(query, params) {
-    return new Promise((resolve, reject) => {
-        try {
-            if (params === undefined) params = [];
-            resolve(db.prepare(query).run(...params));
-        } catch (e) {
-            reject(e);
-        }
-    });
+// Functie om INSERT, UPDATE, DELETE queries uit te voeren
+export async function db_execute(query, params = []) {
+    try {
+        const [result] = await db.execute(query, params);
+        return result;
+    } catch (error) {
+        throw error;
+    }
 }

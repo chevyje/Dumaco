@@ -1,13 +1,11 @@
 import express from "express";
-import { fileURLToPath } from 'url';
-import path from "path";
 import config from "./config.js";
 
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(import.meta.url); // voor database later
 
 app.use(express.json());
+
+// TODO: database integreren
 
 app.use((req, res, next) => {
     console.log("Request: " + req.url);
