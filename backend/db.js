@@ -8,11 +8,8 @@ const db = await mysql.createConnection({
     database: config.DB_NAME,
 });
 
-db.connect((err) => {
-    if (err) {
-        console.error("Error tijdens verbinden met database: " +err.message);
-        return;
-    }
+db.connect(function (err) {
+    if (err) throw err; 
     console.log("Verbonden met de database!");
 });
 
