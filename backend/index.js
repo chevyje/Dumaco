@@ -1,6 +1,7 @@
 import express from "express";
 import config from "./config.js";
 import APIRouter from "./api/index.js";
+import { initDatebase} from "./db.js";
 
 
 const app = express();
@@ -13,6 +14,8 @@ app.use((req, res, next) => {
     console.log("Request: " + req.url);
     next();
 });
+
+await initDatebase(); 
 
 app.use("/api", APIRouter);
 

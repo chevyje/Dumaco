@@ -1,5 +1,7 @@
 import mysql from "mysql2/promise";
 import config from "./config.js"
+import path from "path";
+import fs from "fs";
 
 const db = await mysql.createConnection({
     host: config.DB_HOST,
@@ -9,6 +11,18 @@ const db = await mysql.createConnection({
 });
 
 console.log("Verbonden met de database!");
+
+// Functie die zorgt dat alle tabellen zijn aangemaakt voor de db
+export async function initDatebase() {
+    try {
+        const sqlPath = path.join(process.cwd(), "sql", "db_inits.sql");
+        const sql = fs.readFileSync(sqlPath, "utf8");
+        await db.query(sql);
+        console.log("Database initialized succesfully");
+    } catch (error) {
+        console.error("Error initializing database: ", error);
+    }
+}
 
 // Functie om SELECT queries uit te voeren
 export async function db_query(query, params = []) {
@@ -29,3 +43,5 @@ export async function db_execute(query, params = []) {
         throw error;
     }
 }
+
+export { db };
