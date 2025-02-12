@@ -8,10 +8,7 @@ const db = await mysql.createConnection({
     database: config.DB_NAME,
 });
 
-db.connect(function (err) {
-    if (err) throw err; 
-    console.log("Verbonden met de database!");
-});
+console.log("Verbonden met de database!");
 
 // Functie om SELECT queries uit te voeren
 export async function db_query(query, params = []) {

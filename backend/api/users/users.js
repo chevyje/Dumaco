@@ -8,4 +8,5 @@ router.get('/getUsers', (req, res) => {
     console.log(db_query("SELECT * FROM users"))
   });
 
+
 export default router;
