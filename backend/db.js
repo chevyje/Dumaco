@@ -15,8 +15,12 @@ console.log("Verbonden met de database!");
 
 export async function initDB() {
 
-    const dbInitSqlFile = fs.readFileSync(path.join(import.meta.dirname, "/sql/db_init.sql"), { encoding: "utf-8" });
-    db.execute(dbInitSqlFile, []);
+    const dbInitSqlFile = fs.readFileSync(path.join(import.meta.dirname, "/sql/db_init.sql"), { encoding: "utf-8" }).split(";");
+    for (let query of dbInitSqlFile) {
+        if (query.trim()) {
+            await db.execute(query, []);
+        }
+    }
 }
 
 // Functie om SELECT queries uit te voeren
