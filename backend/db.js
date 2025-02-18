@@ -3,12 +3,6 @@ import config from "./config.js"
 import path from "path";
 import fs from "fs";
 
-console.log("host: " + config.DB_HOST);
-console.log("port: " + config.PORT);
-console.log("username: " + config.DB_USER);
-console.log("password: " + config.DB_PASSWORD);
-console.log("database: " + config.DB_NAME);
-
 const db = await mysql.createConnection({
     host: config.DB_HOST,
     user: config.DB_USER,
@@ -19,16 +13,10 @@ const db = await mysql.createConnection({
 
 console.log("Verbonden met de database!");
 
-// Functie die zorgt dat alle tabellen zijn aangemaakt voor de db
-export async function initDatebase() {
-    try {
-        const sqlPath = path.join(process.cwd(), "sql", "db_inits.sql");
-        const sql = fs.readFileSync(sqlPath, "utf8");
-        await db.query(sql);
-        console.log("Database initialized succesfully");
-    } catch (error) {
-        console.error("Error initializing database: ", error);
-    }
+export async function initDB() {
+
+    const dbInitSqlFile = fs.readFileSync(path.join(import.meta.dirname, "/sql/db_init.sql"), { encoding: "utf-8" });
+    db.execute(dbInitSqlFile, []);
 }
 
 // Functie om SELECT queries uit te voeren
