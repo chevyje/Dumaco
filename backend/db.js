@@ -3,11 +3,18 @@ import config from "./config.js"
 import path from "path";
 import fs from "fs";
 
+console.log("host: " + config.DB_HOST);
+console.log("port: " + config.PORT);
+console.log("username: " + config.DB_USER);
+console.log("password: " + config.DB_PASSWORD);
+console.log("database: " + config.DB_NAME);
+
 const db = await mysql.createConnection({
     host: config.DB_HOST,
     user: config.DB_USER,
     password: config.DB_PASSWORD,
     database: config.DB_NAME,
+    port : config.DB_PORT,
 });
 
 console.log("Verbonden met de database!");

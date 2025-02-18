@@ -19,6 +19,6 @@ await initDatebase();
 
 app.use("/api", APIRouter);
 
-app.listen(config.PORT, () => {
-    console.log(`Server started on http://localhost:${config.PORT}`);
+app.listen(config.WEBSITE_PORT, () => {
+    console.log(`Server started on http://localhost:${config.WEBSITE_PORT}`);
 });
