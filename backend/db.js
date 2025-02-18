@@ -1,20 +1,35 @@
 import mysql from "mysql2/promise";
 import config from "./config.js"
+import path from "path";
+import fs from "fs";
+
+console.log("host: " + config.DB_HOST);
+console.log("port: " + config.PORT);
+console.log("username: " + config.DB_USER);
+console.log("password: " + config.DB_PASSWORD);
+console.log("database: " + config.DB_NAME);
 
 const db = await mysql.createConnection({
     host: config.DB_HOST,
     user: config.DB_USER,
     password: config.DB_PASSWORD,
     database: config.DB_NAME,
+    port : config.DB_PORT,
 });
 
-db.connect((err) => {
-    if (err) {
-        console.error("Error tijdens verbinden met database: " +err.message);
-        return;
+console.log("Verbonden met de database!");
+
+// Functie die zorgt dat alle tabellen zijn aangemaakt voor de db
+export async function initDatebase() {
+    try {
+        const sqlPath = path.join(process.cwd(), "sql", "db_inits.sql");
+        const sql = fs.readFileSync(sqlPath, "utf8");
+        await db.query(sql);
+        console.log("Database initialized succesfully");
+    } catch (error) {
+        console.error("Error initializing database: ", error);
     }
-    console.log("Verbonden met de database!");
-});
+}
 
 // Functie om SELECT queries uit te voeren
 export async function db_query(query, params = []) {
@@ -35,3 +50,5 @@ export async function db_execute(query, params = []) {
         throw error;
     }
 }
+
+export { db };
