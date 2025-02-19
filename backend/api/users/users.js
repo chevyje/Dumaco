@@ -4,7 +4,7 @@ import { db_query } from "../../db.js";
 
 const UsersRouter = express.Router();
 
-UsersRouter.get('/getUsers', async (req, res) => {
+UsersRouter.get('/getAllUsers', async (req, res) => {
     const users = await db_query("SELECT * FROM users");
     res.json(users);
   });
