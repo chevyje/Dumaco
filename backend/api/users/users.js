@@ -25,8 +25,6 @@ UsersRouter.post('/checkCredentials', async (req, res) => {
           res.status(200).json({message: "Succesfull Login"});
         } else {
           res.status(401).json({message: "Incorrect password"});
-          console.log(req.body.password)
-          console.log(users[0].password)
         }
       });
 });
