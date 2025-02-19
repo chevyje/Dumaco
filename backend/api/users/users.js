@@ -1,21 +1,26 @@
 import express from "express";
 import bcrypt from 'bcryptjs';
 import {db_execute, db_query} from "../../db.js";
+import messages from "../../message.js";
 
 const UsersRouter = express.Router();
 
 UsersRouter.get('/getAllUsers', async (req, res) => {
+  try{
     const users = await db_query("SELECT * FROM Users");
-    res.json(users);
+    res.status(200).json(users);
+  }catch{
+    res.status(500).json(messages.error.server);
+  }
 });
 
 UsersRouter.post('/createUser', async (req, res) => {
 
     const body = req.body;
 
-    if(body.username === undefined || body.username.length <= 3){res.status(400).send("Invalid username or too short");return;}
-    if(body.password === undefined || body.password.length === 0){res.status(400).send("Invalid password");return;}
-    if(body.recoveryMail === undefined  || body.recoveryMail.length === 0){res.status(400).send("Invalid recoveryMail");return;}
+    if(body.username === undefined || body.username.length <= 3){res.status(401).json(messages.invalid("username"));return;}
+    if(body.password === undefined || body.password.length === 0){res.status(401).json(messages.invalid("password"));return;}
+    if(body.recoveryMail === undefined  || body.recoveryMail.length === 0){res.status(401).json(messages.invalid("recovery mail"));return;}
 
     // TODO: check of foreign job entry bestaat bij TeamCodes
 
@@ -24,48 +29,44 @@ UsersRouter.post('/createUser', async (req, res) => {
 
     try {
         await db_execute("INSERT INTO Users (username, password, recoveryMail, job) VALUES (?, ?, ?, ?)", [body.username, hashedPassword, body.recoveryMail, body.job]).then(result => {
-            res.json(result.message);
+            res.json(messages.succes.addedRow);
         });
     } catch (err) {
         console.error(err);
-        res.status(500).send("Server Error, user may already exist");
+        res.status(500).json(messages.error.server);
     }
 
 });
 
 UsersRouter.delete('/deleteUser', async (req, res) => {
-
   const body = req.body;
-
-  if(body.username === undefined || body.username.length <= 3){res.status(400).send("Invalid username");return;}
+  if(body.username === undefined || body.username.length <= 3){res.status(401).json(messages.invalid("username"));return;}
 
   try {
-      await db_execute("DELETE FROM Users WHERE username = ?", [body.username]).then(result => {
-          res.json(result.message);
-      });
+    await db_execute("DELETE FROM Users WHERE username = ?", [body.username])
+    res.status(200).json(messages.succes.deletedRow);
   } catch (err) {
       console.error(err);
-      res.status(500).send("Server Error, user may not exist");
+      res.status(500).json(messages.error.server);
   }
-
 });
 
 UsersRouter.post('/checkCredentials', async (req, res) => {
     const users = await db_query("SELECT password FROM Users WHERE username = ?", [req.body.username]);
 
     if(users.length <= 0){
-      res.status(401).json({message: "Incorrect username"})
+      res.status(401).json(messages.invalid("username"))
       return;
     }
 
     bcrypt.compare(req.body.password, users[0].password, (err, result) => {
         if (err) {
           console.error(err);
-          res.status(500).json({message: "There went something wrong on the server"});
+          res.status(500).json(messages.error.server);
         } else if (result) {
-          res.status(200).json({message: "Succesfull Login"});
+          res.status(200).json(messages.succes.login);
         } else {
-          res.status(401).json({message: "Incorrect password"});
+          res.status(401).json(messages.invalid("password"));
         }
       });
 });

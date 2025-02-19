@@ -8,6 +8,8 @@ messages.error.duplacte = {message: "The row you try to add already exists"}
 // Succes messages
 messages.succes = {};
 messages.succes.addedRow = {message: "Row was added succesfully"};
+messages.succes.deletedRow = {message: "Row was deleted succesfully"};
+messages.succes.login = {messages: "lgoin succesfull"};
 
 // Bad request messages
 messages.badreques = {};
