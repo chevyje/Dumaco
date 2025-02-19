@@ -5,12 +5,12 @@ import { db_query } from "../../db.js";
 const UsersRouter = express.Router();
 
 UsersRouter.get('/getAllUsers', async (req, res) => {
-    const users = await db_query("SELECT * FROM users");
+    const users = await db_query("SELECT * FROM Users");
     res.json(users);
   });
 
 UsersRouter.post('/checkCredentials', async (req, res) => {
-    const users = await db_query("SELECT password FROM users WHERE username = ?", [req.body.username]);
+    const users = await db_query("SELECT password FROM Users WHERE username = ?", [req.body.username]);
 
     if(users.length <= 0){
       res.status(401).json({message: "Incorrect username"})
@@ -27,15 +27,6 @@ UsersRouter.post('/checkCredentials', async (req, res) => {
           res.status(401).json({message: "Incorrect password"});
         }
       });
-});
-
-UsersRouter.post('/getSalt', async (req, res) => {
-  const users = await db_query("SELECT salt FROM users WHERE username = ?", [req.body.username]);
-  if(users.length <= 0){
-    res.status(401).json({message: "Incorrect username"})
-    return;
-  }
-  res.status(200).json(users);
 });
 
 export default UsersRouter;
