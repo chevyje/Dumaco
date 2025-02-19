@@ -1,5 +1,6 @@
 import mysql from "mysql2/promise";
 import config from "./config.js"
+import { fileURLToPath } from 'url';
 import path from "path";
 import fs from "fs";
 
@@ -15,7 +16,8 @@ console.log("Verbonden met de database!");
 
 export async function initDB() {
 
-    const dbInitSqlFile = fs.readFileSync(path.join(import.meta.dirname, "/sql/db_init.sql"), { encoding: "utf-8" }).split(";");
+    const __dirname = path.dirname(fileURLToPath(import.meta.url));
+    const dbInitSqlFile = fs.readFileSync(path.join(__dirname, "/sql/db_init.sql"), { encoding: "utf-8" }).split(";");
     for (let query of dbInitSqlFile) {
         if (query.trim()) {
             await db.execute(query, []);
