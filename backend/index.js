@@ -7,8 +7,6 @@ const app = express();
 
 app.use(express.json());
 
-// TODO: database integreren
-
 app.use((req, res, next) => {
     console.log("Request: " + req.url);
     next();
