@@ -16,8 +16,7 @@ messages.badreques = {};
 
 // Invalid values
 messages.invalid = function(value){
-    const returnMessage = "Invalid " + value;
-    return {message: returnMessage};
+    return {message: "Invalid " + value};
 }
 
 export default messages;
