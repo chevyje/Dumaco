@@ -12,7 +12,7 @@
     <img src="logoDumacoWit.png" class="logoContainer">
 
     <div class="LogInBox">
-        <form  class="LogInBoxContent" id="loginForm" style="font-family: Inter ;" onsubmit="encrypt() && makePost()">
+        <form  class="LogInBoxContent" id="loginForm" style="font-family: Inter ;" onsubmit="return checkCredentials(event)">
             <h1>Log in</h1>
 
             <div>
@@ -33,7 +33,7 @@
         </form>
     </div>
     <script>
-        document.getElementById("loginForm").onsubmit = async function(event) {
+        /* document.getElementById("loginForm").onsubmit = async function(event) {
             event.preventDefault(); // Prevent normal form submision
     
             if (!encrypt()) {
@@ -41,9 +41,9 @@
             }
     
             checkCredentials();
-        };
+        }; */
     
-        function encrypt() {
+        /* function encrypt() {
             var pass = document.getElementById('Password').value;
     
             if (pass === "") {
@@ -61,39 +61,44 @@
             //document.getElementById('Password').value = salt + ":" + hash;
             console.log("Hashed password: " + hash);
             return true;
-        }
+        } */
 
-        function getSalts(username) {
+        /* function getSalts(username) {
             const response = await ('/')
-        }
+        } */
     
         async function checkCredentials() {
+            event.preventDefault();
+
             const inputUsername = document.getElementById("Username").value;
             const inputPassword = document.getElementById("Password").value;
-
-
-    
-            // Send to server for validation (FAKE API CALL for demo)
-            const response = await fetch('212.204.174.76/api/users/checkCredentials', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(
-                    { 
-                        username: inputUsername,
-                         password: inputPassword
-                    })
-            });
-    
-            const result = await response.json();
-    
-            // Handle response
             const messageElement = document.getElementById("message");
-            if (result.success) {
+
+            // Send to server to check credentials
+            const response = await fetch("https://cors-anywhere.herokuapp.com/http://localhost:8080/api/users/checkCredentials", {
+                method: "POST",
+                body: JSON.stringify({
+                    username: inputUsername,
+                    password: inputPassword
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }       
+            });
+            const data = await response.json();
+            
+            if(response.status === 200){
                 messageElement.innerText = "Login successful!";
                 messageElement.style.color = "green";
-            } else {
-                messageElement.innerText = "Invalid username or password.";
-                messageElement.style.color = "red";
+                console.log("Succesfull Login");
+            } else if(response.status === 401 && data.message.includes("username")){
+                messageElement.innerText = "Invalid username";
+                messageElement.style.color = "red"; 
+                console.log("Incorrect username");
+            } else if(response.status === 401 && data.message.includes("password")){
+                messageElement.innerText = "Invalid password";
+                messageElement.style.color = "red"; 
+                console.log("Incorrect password");
             }
         }
     </script>
