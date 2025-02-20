@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login</title>
+    <link rel="stylesheet" href="StyleSheet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="body">
+    <img src="logoDumacoWit.png" class="logoContainer">
+
+    <div class="LogInBox">
+        <form  class="LogInBoxContent" id="loginForm" style="font-family: Inter ;" onsubmit="encrypt() && makePost()">
+            <h1>Log in</h1>
+
+            <div>
+                <label for="Username">Username:</label>
+                <input type="text" id="Username" name="Username" placeholder="Spongebob" required>
+            </div>
+
+            <br>
+
+            <div>
+                <label for="Password">Password:</label>
+                <input type="password" id="Password" name="Password" placeholder="Password123" required>
+            </div>
+
+            <br>
+            <input type="submit" value="Log in">
+            <p id="message"></p>
+        </form>
+    </div>
+    <script>
+        document.getElementById("loginForm").onsubmit = async function(event) {
+            event.preventDefault(); // Prevent normal form submision
+    
+            if (!encrypt()) {
+                return false;
+            }
+    
+            checkCredentials();
+        };
+    
+        function encrypt() {
+            var pass = document.getElementById('Password').value;
+    
+            if (pass === "") {
+                document.getElementById('message').innerText = 'Error: Password is missing';
+                document.getElementById('message').style.color = "red";
+                return false;
+            }
+    
+            // 8 character hash string
+            var salt = CryptoJS.lib.WordArray.random(8).toString(CryptoJS.enc.Hex);
+    
+            var hash = CryptoJS.SHA256(salt + pass).toString(CryptoJS.enc.Hex);
+    
+            // opslaan op de server
+            //document.getElementById('Password').value = salt + ":" + hash;
+            console.log("Hashed password: " + hash);
+            return true;
+        }
+
+        function getSalts(username) {
+            const response = await ('/')
+        }
+    
+        async function checkCredentials() {
+            const inputUsername = document.getElementById("Username").value;
+            const inputPassword = document.getElementById("Password").value;
+
+
+    
+            // Send to server for validation (FAKE API CALL for demo)
+            const response = await fetch('212.204.174.76/api/users/checkCredentials', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(
+                    { 
+                        username: inputUsername,
+                         password: inputPassword
+                    })
+            });
+    
+            const result = await response.json();
+    
+            // Handle response
+            const messageElement = document.getElementById("message");
+            if (result.success) {
+                messageElement.innerText = "Login successful!";
+                messageElement.style.color = "green";
+            } else {
+                messageElement.innerText = "Invalid username or password.";
+                messageElement.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
