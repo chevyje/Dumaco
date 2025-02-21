@@ -1,13 +1,15 @@
 CREATE TABLE IF NOT EXISTS Functions(
+    functionID INTEGER NOT NULL AUTO_INCREMENT,
     functionName VARCHAR(32) NOT NULL,
-    PRIMARY KEY (functionName)
+    PRIMARY KEY (functionID)
 );
 
 CREATE TABLE IF NOT EXISTS Teams (
+    teamID INTEGER NOT NULL AUTO_INCREMENT,
     teamName VARCHAR(32),
     color VARCHAR(16),
     descr VARCHAR(1024),
-    PRIMARY KEY (teamName)
+    PRIMARY KEY (teamID)
 );
 
 CREATE TABLE IF NOT EXISTS Customers (
@@ -29,50 +31,34 @@ CREATE TABLE IF NOT EXISTS MaterialTypes (
 );
 
 CREATE TABLE IF NOT EXISTS EditTypeList (
-    editID INTEGER NOT NULL,
+    editID VARCHAR(32) NOT NULL,
     editName VARCHAR(64),
     editDesc VARCHAR(16),
     position INTEGER,
     PRIMARY KEY (editID)
 );
 
-CREATE TABLE IF NOT EXISTS TeamCodes (
-    code VARCHAR(96) NOT NULL,
-    teamName VARCHAR(64),
-    functionName VARCHAR(32) NOT NULL,
-    PRIMARY KEY (code),
-    FOREIGN KEY (teamName) REFERENCES Teams(teamName),
-    FOREIGN KEY (functionName) REFERENCES Functions(functionName)
-);
-
 CREATE TABLE IF NOT EXISTS Users (
+    userID INTEGER NOT NULL AUTO_INCREMENT,
     username VARCHAR(32) NOT NULL,
     password VARCHAR(64) NOT NULL,
     recoveryMail VARCHAR(128) NOT NULL,
     lastLogin DATETIME DEFAULT CURRENT_TIMESTAMP,
-    job VARCHAR(96) NOT NULL,
-    PRIMARY KEY (username),
-    FOREIGN KEY (job) REFERENCES TeamCodes(code)
+    functionID INTEGER NOT NULL,
+    teamID INTEGER NOT NULL,
+    PRIMARY KEY (userID),
+    FOREIGN KEY (functionID) REFERENCES Functions(functionID),
+    FOREIGN KEY (teamID) REFERENCES Teams(teamID)
 );
 
 CREATE TABLE IF NOT EXISTS OrderForm (
     customerID INTEGER NOT NULL,
     orderID INTEGER NOT NULL AUTO_INCREMENT,
     orderIDcustomer VARCHAR(32),
-    teamName VARCHAR(32) NOT NULL,
+    teamID INTEGER NOT NULL,
     PRIMARY KEY (orderID),
-    FOREIGN KEY (teamName) REFERENCES Teams(teamName),
+    FOREIGN KEY (teamID) REFERENCES Teams(teamID),
     FOREIGN KEY (customerID) REFERENCES Customers(customerID)
-);
-
-CREATE TABLE IF NOT EXISTS UserWorkTimes (
-    username VARCHAR(32),
-    orderID INTEGER,
-    beginDate DATETIME DEFAULT CURRENT_TIMESTAMP,
-    endDate DATETIME,
-    PRIMARY KEY (username),
-    FOREIGN KEY (username) REFERENCES Users(username),
-    FOREIGN KEY (orderID) REFERENCES OrderForm(orderID)
 );
 
 CREATE TABLE IF NOT EXISTS TaskForm (
@@ -89,8 +75,8 @@ CREATE TABLE IF NOT EXISTS TaskForm (
 );
 
 CREATE TABLE IF NOT EXISTS Edit (
-    taskFormID VARCHAR(32),
-    editTypeID INTEGER,
+    taskFormID VARCHAR(64),
+    editTypeID VARCHAR(32),
     comment VARCHAR(1024),
     drawing VARCHAR(32),
     startDate DATETIME,
@@ -98,7 +84,9 @@ CREATE TABLE IF NOT EXISTS Edit (
     plannedStart DATETIME,
     plannedEnd DATETIME,
     editID VARCHAR(32) NOT NULL,
+    userID INTEGER,
     PRIMARY KEY (editID),
     FOREIGN KEY (taskFormID) REFERENCES TaskForm(taskFormID),
-    FOREIGN KEY (editTypeID) REFERENCES MaterialTypes(materialID)
+    FOREIGN KEY (editTypeID) REFERENCES EditTypeList(editID),
+    FOREIGN KEY (userID) REFERENCES Users(userID)
 );
