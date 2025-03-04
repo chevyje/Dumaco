@@ -1,75 +1,126 @@
 import express from "express";
 import bcrypt from 'bcryptjs';
-import {db_execute, db_query} from "../../db.js";
+import {createFunction, db_execute, db_query, getFunctionID} from "../../db.js";
 import messages from "../../message.js";
 
 const UsersRouter = express.Router();
 
-UsersRouter.get('/getAllUsers', async (req, res) => {
-  try{
-    const users = await db_query("SELECT * FROM Users");
-    res.status(200).json(users);
-  }catch{
-    res.status(500).json(messages.error.server);
-  }
+// Get all users
+UsersRouter.get('/', async (req, res) => {
+    try {
+        const users = await db_query("SELECT * FROM Users");
+        res.status(200).json(users);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json(messages.error.server);
+    }
 });
 
-UsersRouter.post('/createUser', async (req, res) => {
+// Get a single user by ID
+UsersRouter.get('/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const users = await db_query("SELECT * FROM Users WHERE id = ?", [id]);
+        if (users.length === 0) {
+            return res.status(404).json(messages.error.notFound);
+        }
+        res.status(200).json(users[0]);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json(messages.error.server);
+    }
+});
 
-    const body = req.body;
+// Create a new user
+UsersRouter.post('/', async (req, res) => {
+    const { username, password, recoveryMail, job } = req.body;
 
-    if(body.username === undefined || body.username.length <= 3){res.status(401).json(messages.invalid("username"));return;}
-    if(body.password === undefined || body.password.length === 0){res.status(401).json(messages.invalid("password"));return;}
-    if(body.recoveryMail === undefined  || body.recoveryMail.length === 0){res.status(401).json(messages.invalid("recovery mail"));return;}
-
-    // TODO: check of foreign job entry bestaat bij TeamCodes
+    if (!username || username.length <= 3) return res.status(400).json(messages.invalid("username"));
+    if (!password || password.length === 0) return res.status(400).json(messages.invalid("password"));
+    if (!recoveryMail || recoveryMail.length === 0) return res.status(400).json(messages.invalid("recovery mail"));
 
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(body.password, salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     try {
-        await db_execute("INSERT INTO Users (username, password, recoveryMail, job) VALUES (?, ?, ?, ?)", [body.username, hashedPassword, body.recoveryMail, body.job]).then(result => {
-            res.json(messages.succes.addedRow);
-        });
+        let functionID = await getFunctionID(job);
+
+        if (functionID === null) {
+            functionID = await createFunction(job);
+        }
+
+        const teamID = -1;
+
+        await db_execute(
+            "INSERT INTO Users (username, password, recoveryMail, functionID, teamID) VALUES (?, ?, ?, ?, ?)",
+            [username, hashedPassword, recoveryMail, functionID, teamID]
+        );
+
+        res.status(201).json(messages.success.addedRow);
     } catch (err) {
         console.error(err);
         res.status(500).json(messages.error.server);
     }
-
 });
 
-UsersRouter.delete('/deleteUser', async (req, res) => {
-  const body = req.body;
-  if(body.username === undefined || body.username.length <= 3){res.status(401).json(messages.invalid("username"));return;}
+// Update user by ID
+UsersRouter.put('/:id', async (req, res) => {
+    const { id } = req.params;
+    const { username, recoveryMail, job } = req.body;
 
-  try {
-    await db_execute("DELETE FROM Users WHERE username = ?", [body.username])
-    res.status(200).json(messages.succes.deletedRow);
-  } catch (err) {
-      console.error(err);
-      res.status(500).json(messages.error.server);
-  }
+    try {
+        const existingUser = await db_query("SELECT * FROM Users WHERE id = ?", [id]);
+        if (existingUser.length === 0) {
+            return res.status(404).json(messages.error.notFound);
+        }
+
+        await db_execute(
+            "UPDATE Users SET username = ?, recoveryMail = ?, job = ? WHERE id = ?",
+            [username, recoveryMail, job, id]
+        );
+
+        res.status(200).json(messages.success.addedRow);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json(messages.error.server);
+    }
 });
 
-UsersRouter.post('/checkCredentials', async (req, res) => {
-    const users = await db_query("SELECT password FROM Users WHERE username = ?", [req.body.username]);
+// Delete user by ID
+UsersRouter.delete('/:id', async (req, res) => {
+    const { id } = req.params;
 
-    if(users.length <= 0){
-      res.status(401).json(messages.invalid("username"))
-      return;
+    try {
+        const result = await db_execute("DELETE FROM Users WHERE id = ?", [id]);
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json(messages.error.notFound);
+        }
+
+        res.status(200).json(messages.success.deletedRow);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json(messages.error.server);
+    }
+});
+
+// User login
+UsersRouter.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    const users = await db_query("SELECT id, password FROM Users WHERE username = ?", [username]);
+
+    if (users.length === 0) {
+        return res.status(401).json(messages.invalid("username"));
     }
 
-    bcrypt.compare(req.body.password, users[0].password, (err, result) => {
-        if (err) {
-          console.error(err);
-          res.status(500).json(messages.error.server);
-        } else if (result) {
-          res.status(200).json(messages.succes.login);
-        } else {
-          res.status(401).json(messages.invalid("password"));
-        }
-      });
+    const isValid = await bcrypt.compare(password, users[0].password);
+
+    if (isValid) {
+        res.status(200).json({ message: messages.success.login, userId: users[0].id });
+    } else {
+        res.status(401).json(messages.invalid("password"));
+    }
 });
 
 export default UsersRouter;
-

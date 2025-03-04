@@ -12,6 +12,10 @@ CREATE TABLE IF NOT EXISTS Teams (
     PRIMARY KEY (teamID)
 );
 
+INSERT INTO Teams (teamID, teamName, color, descr)
+SELECT -1, 'Geen Team', 'gray', 'Standaard team voor gebruikers zonder aangewezen team.'
+WHERE NOT EXISTS (SELECT 1 FROM Teams WHERE teamID = -1);
+
 CREATE TABLE IF NOT EXISTS Customers (
     customerID INTEGER NOT NULL AUTO_INCREMENT,
     customerName VARCHAR(32),

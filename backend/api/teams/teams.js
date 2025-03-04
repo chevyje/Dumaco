@@ -19,7 +19,7 @@ TeamsRouter.post('/createTeam', async (req, res) => {
 
     try{
         await db_execute("INSERT INTO Teams (teamName, color, descr) VALUES (?, ?, ?)", [req.body.teamName, req.body.color, req.body.description]);
-        res.status(200).json(messages.succes.addedRow);
+        res.status(200).json(messages.success.addedRow);
     }catch (err){
         console.error(err);
         res.status(500).json(messages.error.server);

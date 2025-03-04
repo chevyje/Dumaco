@@ -45,4 +45,15 @@ export async function db_execute(query, params = []) {
     }
 }
 
+export async function createFunction(name){
+    const result = await db_execute("INSERT INTO Functions (functionName) VALUES (?)", [name]);
+    return result.insertId;
+}
+
+export async function getFunctionID(name) {
+    const result = await db_query("SELECT functionID FROM Functions WHERE functionName = ?", [name]);
+    if (!Array.isArray(result) || result.length === 0) return null; // result = [ { functionID: 1 } ]
+    return result[0].functionID;
+}
+
 export { db };
