@@ -1,16 +1,12 @@
-import Navbar from "../components/navbar.jsx";
-import Sidebar from "../components/sidebar.jsx";
-import Collapse from "../components/collapse.jsx";
+import Main from "../layouts/Main.jsx";
 
 
 function klantOverzicht() {
     return(
         <>
-            <Navbar/>
-            <Sidebar />
-            <Collapse />
+            <h1>Test</h1>
         </>
     )
 }
 
-export default klantOverzicht()
+export default klantOverzicht;

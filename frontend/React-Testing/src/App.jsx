@@ -1,16 +1,20 @@
-import Navbar from "./components/navbar.jsx";
-import Main from "./main.jsx";
-import Sidebar from "./components/sidebar.jsx";
+import Main from "./layouts/Main.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import KlantOverzicht from "./pages/klantOverzicht.jsx";
+import GebruikersEdit from "./pages/gebruikersEdit.jsx";
 
 
-function App() {
+const App = () => {
     return (
-        <>
-            <Navbar />
-            <Sidebar />
-            <Main />
-        </>
-        )
-}
+        <Router>
+            <Main>
+                <Routes>
+                    <Route path="/klantoverzicht" element={<KlantOverzicht />} />
+                    <Route path="/gebruikersedit" element={<GebruikersEdit />} />
+                </Routes>
+            </Main>
+        </Router>
+    );
+};
 
 export default App;

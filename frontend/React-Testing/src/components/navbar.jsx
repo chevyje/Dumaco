@@ -2,10 +2,10 @@ import Logo from '../assets/logo.png';
 import Profile from '../assets/profiel.png';
 import '../styling/navbar.css'
 
-function navbar() {
+const Navbar = () => {
     return (
-        <div id="navbar">
-            <img id="logo" src={Logo} alt="Logo"/>
+        <div className="navbar">
+            <img className="logo" src={Logo} alt="Bedrijfslogo"/>
             <div className="team">
                 <div className="teamSymbol">
                     <h2>B</h2>
@@ -14,9 +14,9 @@ function navbar() {
             </div>
 
             <h1>Lely Industries #32500030</h1>
-            <img id="profiel" src={Profile} alt="Profiel"/>
+            <img className="profile" src={Profile} alt="Profielafbeelding"/>
         </div>
     );
-}
+};
 
-export default navbar;
+export default Navbar;
