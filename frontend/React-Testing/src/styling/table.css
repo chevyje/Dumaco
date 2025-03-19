@@ -1,0 +1,29 @@
+table{
+    position: fixed;
+    top: 13vh;
+    left: 16vw;
+    width: 80%;
+    border-collapse: collapse;
+    z-index: 1;
+}
+
+th {
+    background-color: #0D20E7;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    text-align: left;
+    height: 3vh;
+ }
+
+tr:nth-child(even) {
+  background-color: #E1ECFF;
+}  
+
+tr:nth-child(odd) {
+    background-color: #A8C3FF;
+}
+
+th, td {
+    padding-left: 1vw;
+}

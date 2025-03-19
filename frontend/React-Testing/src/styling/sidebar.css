@@ -1,0 +1,41 @@
+#sidebar{
+    position: fixed;
+    top: 13vh;
+    left: 0;
+    width: 12vw;
+    border-radius: 0 5px 5px 0;
+    overflow: hidden;
+}
+
+#sidebar .button{
+    background-color: #A8C3FF;
+}
+
+#sidebar a {
+    padding: 8px 8px 8px 8px;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+    text-align: center;
+    border-bottom: 1px solid black;
+    background: linear-gradient(to left, #E1ECFF 50%, #A8C3FF 50%) right;
+    background-size: 200%;
+}
+
+#sidebar a:hover {
+    background-position: left;
+}
+
+#sidebar .selected {
+    background: none;
+    background-color: #0D20E7;
+    color: white;
+    font-weight: bold;
+}
+
+#sidebar .bottem{
+    border: none;
+}
