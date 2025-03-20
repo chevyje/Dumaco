@@ -24,6 +24,16 @@ tr:nth-child(odd) {
     background-color: #A8C3FF;
 }
 
+tr {
+    color: black;
+}
+
+
 th, td {
     padding-left: 1vw;
+}
+
+td {
+    text-align: inherit;
+    padding: 0.5vh 1vw;
 }
