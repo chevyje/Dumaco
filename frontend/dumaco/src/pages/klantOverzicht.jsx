@@ -1,12 +1,17 @@
-import Main from "../layouts/Main.jsx";
+import Collapse from "../components/collapse/collapseParent.jsx";
+import "../styling/klantOverzicht.css"
 
 
 function klantOverzicht() {
     return(
         <>
-            <h1>Test</h1>
+            <div className="CollapsTable">
+                <Collapse />
+                <Collapse />
+                <Collapse />
+            </div>
         </>
-    )
+    );
 }
 
 export default klantOverzicht;

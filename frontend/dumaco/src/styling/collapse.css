@@ -1,0 +1,47 @@
+.collapse{
+    margin-bottom: 2vh  ;
+    width: 1450px;
+    overflow: auto;
+}
+
+.Collapsible {
+    width: 100%;
+    max-width: 1450px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    margin: auto;
+}
+
+.Collapsible__trigger {
+    width: 100%;
+    max-width: 1450px;
+    display: block;
+    background-color: #D9D9D9;
+    color: black;
+    padding: 12px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease-in-out;
+}
+
+.Collapsible__trigger:before,
+.Collapsible__trigger:after {
+    width: 100%;
+    max-width: 1450px;
+    display: block;
+    content: "";
+}
+
+.Collapsible__trigger:hover {
+    background-color: #B9B9B9;
+}
+
+.Collapsible__contentInner {
+    padding: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+}
