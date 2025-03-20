@@ -1,12 +1,45 @@
-import Sidebar from "../components/sidebar.jsx";
+import { useState, useEffect } from "react";
+import Table from "../components/table.jsx";
 
+function GebruikersEdit() {
+    const [state, setState] = useState({
+        columns: [],
+        columnsToHide: ["id"],
+        results: [
+            { id: 0, name: "Tobias", age: "18" },
+            { id: 1, name: "Henk", age: "38" },
+            { id: 2, name: "Tasdasdasdasd", age: "300" }
+        ]
+    });
 
-function gebruikersEdit() {
-    return(
+    // Define column alignments
+    const columnAlignments = {
+        name: "right",
+        age: "left"
+    };
+
+    useEffect(() => {
+        if (state.results.length > 0) {
+            setState((prevState) => ({
+                ...prevState,
+                columns: Object.keys(state.results[0])
+            }));
+        }
+    }, [state.results]);
+
+    return (
         <>
-            <h1>Klant Overzicht Test 2</h1>
+            <Table
+                columns={state.columns}
+                columnsToHide={state.columnsToHide}
+                data={state.results}
+                primaryColor="#0D20E7"
+                secondaryColor="#E1ECFF"
+                tertiareColor="#A8C3FF"
+                columnAlignments={columnAlignments}
+            />
         </>
-    )
+    );
 }
 
-export default gebruikersEdit;
+export default GebruikersEdit;

@@ -1,65 +1,46 @@
 import '../styling/table.css'
 
-function Table() {
+function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, tertiareColor, columnAlignments }) {
     return (
-        <table>
+        <table style={{ position: "fixed", top: "13vh", left: "16vw", width: "80%", borderCollapse: "collapse", zIndex: 1 }}>
+            <thead>
             <tr>
-                <th>Startdatum</th>
-                <th>Status</th>
-                <th>Werknemer</th>
-                <th>Leverdatum</th>
-                <th>Klant</th>
-                <th>Ordernummer</th>
-                <th>
-                    <button className="editbtn">add</button>
-                </th>
+                {columns
+                    .filter((col) => !columnsToHide.includes(col))
+                    .map((col) => (
+                        <th key={col} style={{ backgroundColor: primaryColor, color: "white", fontWeight: "bold", fontSize: "large", textAlign: "left", height: "3vh", paddingLeft: "1vw" }}>
+                            {overrideColumnName(col)}
+                        </th>
+                    ))}
             </tr>
-            <tr>
-                <td>27-01-2025</td>
-                <td>Lassen</td>
-                <td>H. Botterboy</td>
-                <td>18-03-2025</td>
-                <td>Lely Industries N.V.</td>
-                <td>32500030</td>
-                <td>
-                    <button className="editbtn">edit</button>
-                </td>
-            </tr>
-            <tr>
-                <td>27-01-2025</td>
-                <td>Lassen</td>
-                <td>H. Botterboy</td>
-                <td>18-03-2025</td>
-                <td>Lely Industries N.V.</td>
-                <td>32500030</td>
-                <td>
-                    <button className="editbtn">edit</button>
-                </td>
-            </tr>
-            <tr>
-                <td>27-01-2025</td>
-                <td>Lassen</td>
-                <td>H. Botterboy</td>
-                <td>18-03-2025</td>
-                <td>Lely Industries N.V.</td>
-                <td>32500030</td>
-                <td>
-                    <button className="editbtn">edit</button>
-                </td>
-            </tr>
-            <tr>
-                <td>27-01-2025</td>
-                <td>Lassen</td>
-                <td>H. Botterboy</td>
-                <td>18-03-2025</td>
-                <td>Lely Industries N.V.</td>
-                <td>32500030</td>
-                <td>
-                    <button className="editbtn">edit</button>
-                </td>
-            </tr>
+            </thead>
+            <tbody>
+            {data.map((row, index) => (
+                <tr key={row.id} style={{ backgroundColor: index % 2 === 0 ? secondaryColor : tertiareColor, color: "black" }}>
+                    {columns
+                        .filter((col) => !columnsToHide.includes(col))
+                        .map((col) => (
+                            <td
+                                key={`${col}-${row.id}`}
+                                style={{
+                                    textAlign: columnAlignments[col] || "left",
+                                    padding: columnAlignments[col] === "left" ? "0.5vh 1vw 0.5vh 0.5vw" : "0.5vh 0.5vw 0.5vh 1vw"
+                                }}
+                            >
+                                {row[col] || "-"}
+                            </td>
+                        ))}
+                </tr>
+            ))}
+            </tbody>
         </table>
-    )
+    );
+}
+
+
+function overrideColumnName(colName) {
+    const mapping = { name: "Naam", age: "Leeftijd" };
+    return mapping[colName] || colName;
 }
 
 export default Table;
