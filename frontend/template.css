@@ -79,14 +79,14 @@
     border-bottom: 1px solid black;
     background: linear-gradient(to left, #E1ECFF 50%, #A8C3FF 50%) right;
     background-size: 200%;
-  }
-  #sidebar a:hover {
-    background-position: left;
+}
+
+#sidebar a:hover {
+   background-position: left;
 }
 
 #sidebar .selected {
-    background: none;
-    background-color: #0D20E7;
+    background: #0D20E7 none;
     color: white;
     font-weight: bold;
 }

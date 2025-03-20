@@ -2,7 +2,7 @@ import '../styling/sidebar.css'
 
 function sidebar() {
     return (
-        <div id="sidebar">
+        <div className="sidebar">
             <div className="button">
                 <a href="#">Team overzicht</a>
             </div>
@@ -10,10 +10,10 @@ function sidebar() {
                 <a href="#">Statistieken</a>
             </div>
             <div className="button">
-                <a href="#">Order Bonnen</a>
+                <a className="noborder" href="#">Order Bonnen</a>
             </div>
-            <div className="button">
-                <a href="#">Klanten</a>
+            <div className="button selected">
+                <a className="selected noborder" href="#">Klanten</a>
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-#sidebar{
+.sidebar{
     position: fixed;
     top: 13vh;
     left: 0;
@@ -7,11 +7,11 @@
     overflow: hidden;
 }
 
-#sidebar .button{
+.sidebar .button{
     background-color: #A8C3FF;
 }
 
-#sidebar a {
+.sidebar a {
     padding: 8px 8px 8px 8px;
     margin-left: 10px;
     text-decoration: none;
@@ -25,17 +25,20 @@
     background-size: 200%;
 }
 
-#sidebar a:hover {
+.sidebar a:hover {
     background-position: left;
 }
 
-#sidebar .selected {
-    background: none;
-    background-color: #0D20E7;
+.sidebar .selected {
+    background: #0D20E7 none;
     color: white;
     font-weight: bold;
 }
 
-#sidebar .bottem{
+.sidebar .noborder {
+    border-bottom: none;
+}
+
+.sidebar .bottem{
     border: none;
 }

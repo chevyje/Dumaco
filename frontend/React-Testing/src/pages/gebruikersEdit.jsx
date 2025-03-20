@@ -5,7 +5,6 @@ function gebruikersEdit() {
     return(
         <>
             <h1>Klant Overzicht Test 2</h1>
-            <Sidebar />
         </>
     )
 }
