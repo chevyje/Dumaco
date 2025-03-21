@@ -8,7 +8,18 @@ function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, ter
                 {columns
                     .filter((col) => !columnsToHide.includes(col))
                     .map((col) => (
-                        <th key={col} style={{ backgroundColor: primaryColor, color: "white", fontWeight: "bold", fontSize: "large", textAlign: "left", height: "3vh", paddingLeft: "1vw" }}>
+                        <th
+                            key={col}
+                            style={{
+                                backgroundColor: primaryColor,
+                                color: "white",
+                                fontWeight: "bold",
+                                fontSize: "large",
+                                height: "3vh",
+                                paddingLeft: "1vw",
+                                textAlign: columnAlignments[col] || "left"
+                            }}
+                        >
                             {overrideColumnName(col)}
                         </th>
                     ))}

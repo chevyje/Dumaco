@@ -12,10 +12,9 @@ function GebruikersEdit() {
         ]
     });
 
-    // Define column alignments
     const columnAlignments = {
-        name: "right",
-        age: "left"
+        name: "left",
+        age: "right"
     };
 
     useEffect(() => {
