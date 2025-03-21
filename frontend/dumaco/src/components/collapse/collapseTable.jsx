@@ -1,31 +1,32 @@
 import "../../styling/collapseTable.css"
 
-function Table() {
+function Table({ jsonData }) {
+    if (!jsonData || jsonData.length === 0) {
+        return <p>No data available</p>;
+    }
+
+    let headers = Object.keys(jsonData[0]);
+
     return (
         <table>
+            <thead>
             <tr>
-                <th width="15%">Ordernummer</th>
-                <th width="25%">Status</th>
-                <th width="20%">Startdatum</th>
-                <th width="25%">Leverdatum</th>
-                <th width="25%">Gemaakt door</th>
+                {headers.map((header, index) => (
+                    <th key={index}>{header}</th>
+                ))}
             </tr>
-            <tr>
-                <td>32500030</td>
-                <td>Lassen</td>
-                <td>30-01-2025</td>
-                <td>18-02-2025</td>
-                <td>Frits van den Hogen</td>
-            </tr>
-            <tr>
-                <td>32500031</td>
-                <td>Lasersnijden Plaat</td>
-                <td>18-02-2025</td>
-                <td>07-03-2025</td>
-                <td>Jurre Blankers</td>
-            </tr>
+            </thead>
+            <tbody>
+            {jsonData.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                    {headers.map((header, colIndex) => (
+                        <td key={colIndex}>{row[header]}</td>
+                    ))}
+                </tr>
+            ))}
+            </tbody>
         </table>
-    )
+    );
 }
 
 export default Table;
