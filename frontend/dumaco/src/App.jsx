@@ -1,7 +1,7 @@
 import Main from "./layouts/Main.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import KlantOverzicht from "./pages/klantOverzicht.jsx";
-import GebruikersEdit from "./pages/gebruikersEdit.jsx";
+import GebruikersBeheer from "./pages/gebruikersBeheer.jsx";
 
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
             <Main>
                 <Routes>
                     <Route path="/klantoverzicht" element={<KlantOverzicht />} />
-                    <Route path="/gebruikersedit" element={<GebruikersEdit />} />
+                    <Route path="/gebruikersbeheer" element={<GebruikersBeheer />} />
                 </Routes>
             </Main>
         </Router>
