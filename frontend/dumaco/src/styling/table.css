@@ -6,6 +6,11 @@ table {
     margin-bottom: 2.5%;
 }
 
+th, td {
+    padding: 0.2vh 0.2vw; /* Consistente padding voor header en cellen */
+    text-align: left;
+}
+
 th {
     background-color: #0D20E7;
     color: white;
@@ -15,6 +20,7 @@ th {
     white-space: nowrap;
     padding: 0.2vh 0.2vw;
     text-align: left;
+    width: 90%;
 }
 
 tr:nth-child(even) {
@@ -27,10 +33,6 @@ tr:nth-child(odd) {
 
 tr {
     color: black;
-}
-
-th, td {
-    white-space: nowrap;
 }
 
 td {
@@ -48,25 +50,80 @@ td {
     font-weight: bold;
     font-size: large;
     text-align: left;
-    padding-left: 1vw;
     margin-bottom: 0.1vh;
     border-bottom: 1px solid #0D20E7;
     width: 90%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    padding-left: 0.5vw;
+    box-sizing: border-box;
 }
 
 .table-header {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     color: white;
     font-weight: bold;
     font-size: large;
     height: 2vh;
     white-space: nowrap;
+    padding-left: 0.5vw;
     left: 0;
 }
 
+table:first-child th:first-child {
+    border-top-left-radius: 10px;
+    background-color: white;
+}
+
+table:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.table-title + table th:first-child {
+    border-top-left-radius: 0;
+}
+
+.table-title + table th:last-child {
+    border-top-right-radius: 0;
+}
+
 .table-row {
+    padding-left: 0.5vw;
+    padding-top: 0.25vh;
+    padding-bottom: 0.25vh;
     height: 2vh;
     white-space: nowrap;
-    padding: 0.2vh 0.2vw;
+}
+
+.edit-icon-cells {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25vw;
+    padding-right: 0.5vw;
+    margin-left: -5%;
+}
+
+.edit-user-icon {
+    cursor: pointer;
+    color: blue;
+    transition: color 0.2s ease-in-out;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.edit-icon {
+    cursor: pointer;
+    color: red;
+    transition: color 0.2s ease-in-out;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.edit-icon-cell {
+    text-align: right;
+    padding-right: 0.5vw;
+    width: 100%;
 }

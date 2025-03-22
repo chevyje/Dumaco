@@ -2,7 +2,7 @@ import '../styling/table.css';
 
 function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, tertiareColor, title }) {
     const visibleColumnsAmount = columns.filter((col) => !columnsToHide.includes(col));
-    const spotsAvailable = 6;
+    const spotsAvailable = 5;
     const diff = spotsAvailable - visibleColumnsAmount.length;
 
     return (
@@ -53,6 +53,12 @@ function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, ter
                         {Array.from({ length: diff }).map((_, index) => (
                             <td key={`empty-row-${index}`} style={{ backgroundColor: 'transparent' }}></td>
                         ))}
+
+                        <td className="edit-icon-cells">
+                            <img src="/icons/editUser.svg" alt="edit-user" className="edit-user-icon" />
+                            <img src="/icons/pencil.svg" alt="edit" className="edit-icon" />
+                        </td>
+
                     </tr>
                 ))}
                 </tbody>
