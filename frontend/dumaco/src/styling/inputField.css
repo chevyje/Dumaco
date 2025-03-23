@@ -2,27 +2,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: lightgray;
-    padding: 0 10vw;
+    width: 100%;
+    padding-bottom: 2.5rem;
+    margin-left: 9rem;
 }
 
 .form-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 1200px;
+}
+
+.inputField-item {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
 }
 
 input[type="text"] {
-    padding: 10px;
+    padding: 0.5rem;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%;
     background-color: white;
     color: black;
+    width: 100%;
+}
+
+input:disabled {
+    background-color: lightgray;
 }
 
 label {
@@ -30,15 +40,4 @@ label {
     font-size: 1.2rem;
     color: black;
     margin-bottom: 5px;
-    display: block;
-}
-
-label::selection {
-    background-color: lightgray;
-}
-
-.locked {
-    color: black;
-    font-weight: bold;
-    background-color: #6a6a6a;
 }
