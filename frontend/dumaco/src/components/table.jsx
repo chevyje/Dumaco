@@ -1,6 +1,6 @@
 import '../styling/table.css';
 
-function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, tertiareColor, title }) {
+function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, tertiareColor, title, columnAlignments, showUserEdit, showPencil }) {
     const visibleColumnsAmount = columns.filter((col) => !columnsToHide.includes(col));
     const spotsAvailable = 5;
     const diff = spotsAvailable - visibleColumnsAmount.length;
@@ -8,11 +8,7 @@ function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, ter
     return (
         <div>
             {title && (
-                <div className="table-title"
-                    style={{
-                        backgroundColor: primaryColor
-                    }}
-                >
+                <div className="table-title" style={{ backgroundColor: primaryColor }}>
                     {title}
                 </div>
             )}
@@ -20,19 +16,18 @@ function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, ter
             <table>
                 <thead>
                 <tr>
-                    {
-                        visibleColumnsAmount.map((col) => (
-                            <th className="table-header"
-                                key={col}
-                                style={{
-                                    backgroundColor: primaryColor
-                                }}
-                            >
-                                {overrideColumnName(col)}
-                            </th>
-                        ))
-                    }
-
+                    {visibleColumnsAmount.map((col) => (
+                        <th
+                            className="table-header"
+                            key={col}
+                            style={{
+                                backgroundColor: primaryColor,
+                                textAlign: columnAlignments?.[col] || "left"
+                            }}
+                        >
+                            {overrideColumnName(col)}
+                        </th>
+                    ))}
                     {Array.from({ length: diff }).map((_, index) => (
                         <th key={`empty-${index}`}></th>
                     ))}
@@ -45,20 +40,18 @@ function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, ter
                             <td
                                 key={`${col}-${row.id}`}
                                 className="table-row"
+                                style={{ textAlign: columnAlignments?.[col] || "left" }}
                             >
                                 {row[col] || "-"}
                             </td>
                         ))}
-
                         {Array.from({ length: diff }).map((_, index) => (
                             <td key={`empty-row-${index}`} style={{ backgroundColor: 'transparent' }}></td>
                         ))}
-
                         <td className="edit-icon-cells">
-                            <img src="/icons/editUser.svg" alt="edit-user" className="edit-user-icon" />
-                            <img src="/icons/pencil.svg" alt="edit" className="edit-icon" />
+                            {showUserEdit ? <img src="/icons/editUser.svg" alt="edit-user" className="edit-user-icon" /> : null}
+                            {showPencil ? <img src="/icons/pencil.svg" alt="edit" className="edit-icon" /> : null}
                         </td>
-
                     </tr>
                 ))}
                 </tbody>
