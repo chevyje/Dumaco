@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import '../styling/paginator.css'
 
 export default function Paginator({ totalPages = 50 }) {
