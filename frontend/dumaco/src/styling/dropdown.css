@@ -1,5 +1,7 @@
 .dropdown {
-    position: relative;
+    position: fixed;
+    top: 38vh;
+    left: 0.5vw;
     display: block;
     width: 200px; 
   }
