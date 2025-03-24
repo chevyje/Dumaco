@@ -1,13 +1,78 @@
 import Dropdown from "../components/dropdown";
 import Paginator from "../components/paginator";
+import Table from "../components/table";
+import { useState, useEffect } from "react";
 
 function orderbonnenFabriek() {
-    return(
+    const [state, setState] = useState({
+        columns: [],
+        columnsToHide: ["id"],
+        results: [
+            { id: 0, name: "Tobias", lastLogin: "18" },
+            { id: 1, name: "Henk", lastLogin: "38" },
+            { id: 2, name: "Tasdasdasdasd", lastLogin: "300"}
+        ]
+    });
+
+    const columnAlignments = {
+        name: "left",
+        lastLogin: "left"
+    };
+
+    useEffect(() => {
+        if (state.results.length > 0) {
+            setState((prevState) => ({
+                ...prevState,
+                columns: Object.keys(state.results[0])
+            }));
+        }
+    }, [state.results]);
+
+    return (
         <>
-            <Dropdown></Dropdown>
-            <Paginator></Paginator>
+            <div className="table-container">
+                <Table
+                    columns={state.columns}
+                    columnsToHide={state.columnsToHide}
+                    data={state.results}
+                    primaryColor="#0D20E7"
+                    secondaryColor="#E1ECFF"
+                    tertiareColor="#A8C3FF"
+                    columnAlignments={columnAlignments}
+                    title="test"
+                />
+                <Table
+                    columns={state.columns}
+                    columnsToHide={state.columnsToHide}
+                    data={state.results}
+                    primaryColor="#0D20E7"
+                    secondaryColor="#E1ECFF"
+                    tertiareColor="#A8C3FF"
+                    columnAlignments={columnAlignments}
+                />
+                <Table
+                    columns={state.columns}
+                    columnsToHide={state.columnsToHide}
+                    data={state.results}
+                    primaryColor="#0D20E7"
+                    secondaryColor="#E1ECFF"
+                    tertiareColor="#A8C3FF"
+                    columnAlignments={columnAlignments}
+                />
+                <Table
+                    columns={state.columns}
+                    columnsToHide={state.columnsToHide}
+                    data={state.results}
+                    primaryColor="#0D20E7"
+                    secondaryColor="#E1ECFF"
+                    tertiareColor="#A8C3FF"
+                    columnAlignments={columnAlignments}
+                />
+            </div>
+            <Dropdown />
+            <Paginator />
         </>
-    )
+    );
 }
 
 export default orderbonnenFabriek;
