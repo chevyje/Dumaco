@@ -38,6 +38,8 @@ function GebruikersBeheer() {
                     tertiareColor="#A8C3FF"
                     columnAlignments={columnAlignments}
                     title="test"
+                    showPencil={true}
+                    showUserEdit={true}
                 />
                 <Table
                     columns={state.columns}
@@ -47,6 +49,8 @@ function GebruikersBeheer() {
                     secondaryColor="#E1ECFF"
                     tertiareColor="#A8C3FF"
                     columnAlignments={columnAlignments}
+                    showPencil={true}
+                    showUserEdit={true}
                 />
                 <Table
                     columns={state.columns}
@@ -56,6 +60,8 @@ function GebruikersBeheer() {
                     secondaryColor="#E1ECFF"
                     tertiareColor="#A8C3FF"
                     columnAlignments={columnAlignments}
+                    showPencil={true}
+                    showUserEdit={true}
                 />
                 <Table
                     columns={state.columns}
@@ -65,6 +71,8 @@ function GebruikersBeheer() {
                     secondaryColor="#E1ECFF"
                     tertiareColor="#A8C3FF"
                     columnAlignments={columnAlignments}
+                    showPencil={true}
+                    showUserEdit={true}
                 />
             </div>
         </>
