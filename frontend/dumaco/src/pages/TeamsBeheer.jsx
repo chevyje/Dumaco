@@ -5,36 +5,18 @@ import { useState, useEffect } from "react";
 
 
 const TeamsBeheer = () => {
-
-    const [color1, setColor1] = useState()
-
-    function handelColor1Change(event){
-        setColor1(event.target.value)
-    }
-    const [color2, setColor2] = useState()
-
-    function handelColor2Change(event){
-        setColor2(event.target.value)
-    }
-
-    const [color3, setColor3] = useState()
-
-    function handelColor3Change(event){
-        setColor3(event.target.value)
-    }
-
-
     
     const [state, setState] = useState({
             columns: [],
             columnsToHide: ["id"],
             results: [
-                { id: 0, Team: "Blauw", Beschrijving: "Hier zitten alle coole kikkers", Kleur: ""},
-                { id: 1, Team: "Geel", Beschrijving: "Hier zitten alle flikkers", Kleur: "y"},
-                { id: 2, Team: "Oranje", Beschrijving: "Dit zijn de echte kaas vreters", Kleur: ""},
-                { id: 3, Team: "Groen", Beschrijving: "Echte boom knuffelaars", Kleur: ""}
+                { id: 0, Team: "Blauw", Beschrijving: "Hier zitten alle coole kikkers", Kleur:"Blauw"},
+                { id: 1, Team: "Geel", Beschrijving: "Hier zitten alle flikkers", Kleur:"Geel"},
+                { id: 2, Team: "Oranje", Beschrijving: "Dit zijn de echte kaas vreters", Kleur:"Oranje"},
+                { id: 3, Team: "Groen", Beschrijving: "Echte boom knuffelaars", Kleur:"Groen"}
 
             ]
+            //, Kleur:{Kleur1: "#E1ECFF", Kleur2: "#A8C3FF", Kleur3: "#0D20E7"}
         });
     
         const columnAlignments = {
@@ -64,6 +46,8 @@ const TeamsBeheer = () => {
                     secondaryColor="#E1ECFF"
                     tertiareColor="#A8C3FF"
                     columnAlignments={columnAlignments}
+                    showUserEdit={false}
+                    showPencil={true}
                 /> 
             </div>
         </>
