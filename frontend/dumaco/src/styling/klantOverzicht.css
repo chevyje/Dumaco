@@ -1,0 +1,38 @@
+body {
+    overflow-x: auto;
+    overflow-y: auto;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.CollapsTable{
+    position: fixed;
+    top: 13vh;
+    left: 17.5vw;
+}
+
+.KlantInfo {
+    margin-top: 0;
+    padding: 10px;
+}
+
+.KlantInfo h3 {
+    margin-bottom: 0;
+}
+
+.KlantInfo .info {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.KlantInfo .info p {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.KlantInfo .info svg{
+    margin-right: 5px;
+    margin-top: 2px;
+}

@@ -1,10 +1,10 @@
-import Main from "../layouts/Main.jsx";
+import Navbar from "../components/navbar.jsx";
 
 
 function klantOverzicht() {
     return(
         <>
-            <h1>Test</h1>
+            <Navbar title={"Klanten"} route={"Klanten"} />
         </>
     )
 }
