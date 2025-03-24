@@ -1,6 +1,6 @@
 import Main from "../layouts/Main.jsx";
 import InputField from "../components/inputField.jsx";
-
+import '../styling/gebruikersBeheerEdit.css'
 
 const GebruikersBeheerEdit = () => {
     return (
