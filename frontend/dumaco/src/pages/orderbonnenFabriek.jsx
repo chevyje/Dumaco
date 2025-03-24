@@ -62,6 +62,7 @@ function orderbonnenFabriek() {
                     secondaryColor="#E1ECFF"
                     tertiareColor="#A8C3FF"
                     columnAlignments={columnAlignments}
+                    showUserEdit={false}
                 />
             </div>
             <Dropdown />
