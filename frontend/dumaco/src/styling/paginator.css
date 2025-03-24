@@ -1,0 +1,81 @@
+/* Container for the paginator */
+.paginator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #cce7ff;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  
+  /* Button styling */
+  .paginator button {
+    padding: 8px;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Disabled button styling */
+  .paginator button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Left and right arrows styling */
+  .paginator .chevron {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  /* Active page button */
+  .paginator .active-page {
+    padding: 6px 16px;
+    background-color: #87cefa;
+    color: #000;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  
+  /* Other page buttons */
+  .paginator .page-button {
+    padding: 6px 16px;
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #87cefa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .paginator .page-button:hover {
+    background-color: #87cefa;
+    color: #fff;
+  }
+  
+  /* Ellipsis (three dots) */
+  .paginator .ellipsis {
+    padding: 6px 12px;
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #87cefa;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: default;
+    text-align: center;
+  }
+  
+  .paginator .ellipsis:hover {
+    background-color: #87cefa;
+    color: #fff;
+  }
+  
+  /* Right arrow button */
+  .paginator .chevron-right {
+    font-size: 20px;
+    color: #333;
+  }
+  
