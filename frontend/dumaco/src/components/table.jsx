@@ -1,56 +1,74 @@
-import '../styling/table.css'
+import '../styling/table.css';
 
-function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, tertiareColor, columnAlignments }) {
+function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, tertiareColor, title }) {
+    const visibleColumnsAmount = columns.filter((col) => !columnsToHide.includes(col));
+    const spotsAvailable = 5;
+    const diff = spotsAvailable - visibleColumnsAmount.length;
+
     return (
-        <table style={{ position: "fixed", top: "13vh", left: "16vw", width: "80%", borderCollapse: "collapse", zIndex: 1 }}>
-            <thead>
-            <tr>
-                {columns
-                    .filter((col) => !columnsToHide.includes(col))
-                    .map((col) => (
-                        <th
-                            key={col}
-                            style={{
-                                backgroundColor: primaryColor,
-                                color: "white",
-                                fontWeight: "bold",
-                                fontSize: "large",
-                                height: "3vh",
-                                paddingLeft: "1vw",
-                                textAlign: columnAlignments[col] || "left"
-                            }}
-                        >
-                            {overrideColumnName(col)}
-                        </th>
+        <div>
+            {title && (
+                <div className="table-title"
+                    style={{
+                        backgroundColor: primaryColor
+                    }}
+                >
+                    {title}
+                </div>
+            )}
+
+            <table>
+                <thead>
+                <tr>
+                    {
+                        visibleColumnsAmount.map((col) => (
+                            <th className="table-header"
+                                key={col}
+                                style={{
+                                    backgroundColor: primaryColor
+                                }}
+                            >
+                                {overrideColumnName(col)}
+                            </th>
+                        ))
+                    }
+
+                    {Array.from({ length: diff }).map((_, index) => (
+                        <th key={`empty-${index}`}></th>
                     ))}
-            </tr>
-            </thead>
-            <tbody>
-            {data.map((row, index) => (
-                <tr key={row.id} style={{ backgroundColor: index % 2 === 0 ? secondaryColor : tertiareColor, color: "black" }}>
-                    {columns
-                        .filter((col) => !columnsToHide.includes(col))
-                        .map((col) => (
+                </tr>
+                </thead>
+                <tbody>
+                {data.map((row, index) => (
+                    <tr key={row.id} style={{ backgroundColor: index % 2 === 0 ? secondaryColor : tertiareColor, color: "black" }}>
+                        {visibleColumnsAmount.map((col) => (
                             <td
                                 key={`${col}-${row.id}`}
-                                style={{
-                                    textAlign: columnAlignments[col] || "left",
-                                    padding: columnAlignments[col] === "left" ? "0.5vh 1vw 0.5vh 0.5vw" : "0.5vh 0.5vw 0.5vh 1vw"
-                                }}
+                                className="table-row"
                             >
                                 {row[col] || "-"}
                             </td>
                         ))}
-                </tr>
-            ))}
-            </tbody>
-        </table>
+
+                        {Array.from({ length: diff }).map((_, index) => (
+                            <td key={`empty-row-${index}`} style={{ backgroundColor: 'transparent' }}></td>
+                        ))}
+
+                        <td className="edit-icon-cells">
+                            <img src="/icons/editUser.svg" alt="edit-user" className="edit-user-icon" />
+                            <img src="/icons/pencil.svg" alt="edit" className="edit-icon" />
+                        </td>
+
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        </div>
     );
 }
 
-
 function overrideColumnName(colName) {
-    const mapping = { name: "Naam", age: "Leeftijd" };
+    const mapping = { name: "Naam", age: "Leeftijd", lastLogin: "Laatste login" };
     return mapping[colName] || colName;
 }
 
