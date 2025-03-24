@@ -1,4 +1,4 @@
-import Collapse from "../components/collapse/collapseParent.jsx";
+import Table from "../components/collapse/collapseTable.jsx";
 import Navbar from "../components/navbar.jsx";
 import "../styling/klantOverzicht.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,9 +22,9 @@ function klantOverzicht() {
         <>
             <Navbar title={"Lely Industries NV"} route={"Klanten / Lely Industries NV"} />
             <div className="CollapsTable">
-                <Collapse jsonData={LopendeOrders} title={"Lopende Orders"} openByDefault={true} />
-                <Collapse jsonData={ToekomstigeOrders} title={"Toekomstige Orders"} openByDefault={true} />
-                <Collapse jsonData={OudeOrders} title={"Oude Orders"} openByDefault={true} Legenda={true}/>
+                <Table jsonData={LopendeOrders} title={"Lopende Orders"} openByDefault={true} />
+                <Table jsonData={ToekomstigeOrders} title={"Toekomstige Orders"} openByDefault={true} />
+                <Table jsonData={OudeOrders} title={"Oude Orders"} openByDefault={true} Legenda={true}/>
             </div>
             <div className="KlantInfo">
                 <div>
