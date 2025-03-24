@@ -1,8 +1,6 @@
 import Table from "../components/collapse/collapseTable.jsx";
 import Navbar from "../components/navbar.jsx";
-import "../styling/klantOverzicht.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot, faUser, faTruck, faPhone } from "@fortawesome/free-solid-svg-icons";
+import "../styling/klantOverzicht.css";
 
 function klantOverzicht() {
     const LopendeOrders = [
@@ -31,20 +29,20 @@ function klantOverzicht() {
                     <h3>Lely Industries NV</h3>
                 </div>
                 <div className="info">
-                    <FontAwesomeIcon icon={faLocationDot} />
+
                     <p>Cornelis van der Lelylaan 1 <br />
                         3127PB Maassluis</p>
                 </div>
                 <div className="info">
-                    <FontAwesomeIcon icon={faUser} />
+
                     <p>Jian Jiao</p>
                 </div>
                 <div className="info">
-                    <FontAwesomeIcon icon={faPhone} />
+
                     <p>010-5996333</p>
                 </div>
                 <div className="info">
-                    <FontAwesomeIcon icon={faTruck} />
+
                     <p>Door 4.22</p>
                 </div>
            </div>
