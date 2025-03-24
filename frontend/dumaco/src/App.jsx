@@ -4,7 +4,7 @@ import KlantOverzicht from "./pages/klantOverzicht.jsx";
 import KlantenOverzicht from "./pages/klantenOverzicht.jsx";
 import GebruikersBeheer from "./pages/gebruikersBeheer.jsx";
 import GebruikersBeheerEdit from "./pages/gebruikersBeheerEdit.jsx";
-
+import OrderbonnenFabriek from "./pages/orderbonnenFabriek.jsx";
 
 const App = () => {
     return (
@@ -15,6 +15,7 @@ const App = () => {
                     <Route path="/klantenoverzicht" element={<KlantenOverzicht />} />
                     <Route path="/gebruikersbeheer" element={<GebruikersBeheer />} />
                     <Route path="/gebruikersbeheeredit" element={<GebruikersBeheerEdit/>} />
+                    <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
                 </Routes>
             </Main>
         </Router>
