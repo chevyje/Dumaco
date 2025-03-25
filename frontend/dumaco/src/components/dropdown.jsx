@@ -1,7 +1,7 @@
-import '../styling/dropdown.css'
+import '../styling/dropdown.css';
 import React, { useState } from 'react';
 
-const Dropdown = () => {
+const Dropdown = ({ title = "Dropdown", options }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -11,12 +11,17 @@ const Dropdown = () => {
   return (
     <div className="dropdown">
       <button onClick={toggleDropdown} className="dropdown-button">
-        dropdown
+        {title}
       </button>
       {isOpen && (
         <ul className="menu">
-          <li className="menu-item">menu 1</li>
-          <li className="menu-item">menu 2</li>
+          {options && options.length > 0 ? (
+            options.map((option, index) => (
+              <li key={index} className="menu-item">{option}</li>
+            ))
+          ) : (
+            <li className="menu-item">Geen opties beschikbaar</li>
+          )}
         </ul>
       )}
     </div>
@@ -24,4 +29,3 @@ const Dropdown = () => {
 };
 
 export default Dropdown;
-
