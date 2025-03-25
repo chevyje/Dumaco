@@ -3,12 +3,12 @@ import Paginator from "../components/paginator";
 import Table from "../components/table";
 import { useState, useEffect } from "react";
 
-function orderbonnenFabriek() {
+function OrderbonnenFabriek() {
     const [state, setState] = useState({
         columns: [],
         columnsToHide: ["id"],
         results: [
-            { id: 0, startdatum: "27-01-2025", bewerking: "Lassen", werknemer: "H. Botterboy", leverdatum: "18-03-2025", klant: "Lely Industry NV", ordernummer: "32500030" },
+            { startdatum: "27-01-2025", bewerking: "Lassen", werknemer: "H. Botterboy", leverdatum: "18-03-2025", klant: "Lely Industry NV", ordernummer: "32500030" },
             { id: 1, name: "Henk", lastLogin: "38" },
             { id: 2, name: "Tasdasdasdasd", lastLogin: "300"},
             { id: 3, name: "Tobias", lastLogin: "18" },
@@ -65,10 +65,10 @@ function orderbonnenFabriek() {
                     showUserEdit={false}
                 />
             </div>
-            <Dropdown />
+            <Dropdown title="Mijn aangepaste dropdown" options={state.columns} />
             <Paginator />
         </>
     );
 }
 
-export default orderbonnenFabriek;
+export default OrderbonnenFabriek;

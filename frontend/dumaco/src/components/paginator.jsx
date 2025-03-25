@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import '../styling/paginator.css'
+
 
 export default function Paginator({ totalPages = 50 }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,7 +19,7 @@ export default function Paginator({ totalPages = 50 }) {
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        <ChevronLeft />
+      <img src="../../icons/chevron-left.svg" alt="chevron left" />
       </button>
 
       {/* First Page Always Visible */}
@@ -69,7 +69,7 @@ export default function Paginator({ totalPages = 50 }) {
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        <ChevronRight />
+        <img src="../../icons/chevron-rigth.svg" alt="chevron right" />
       </button>
     </div>
   );
