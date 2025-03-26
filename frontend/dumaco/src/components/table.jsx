@@ -51,7 +51,7 @@ function Table({ jsonData, title, showUserEdit, showPencil, editPageFunction }) 
                                         src="/icons/pencil.svg"
                                         alt="edit"
                                         className="edit-icon"
-                                        onClick={() => editPageFunction(navigate)} // ✅ Aangeroepen met navigate
+                                        onClick={() => editPageFunction(navigate)}
                                     />
                                 )}
                             </td>
