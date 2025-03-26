@@ -29,20 +29,20 @@ function klantOverzicht() {
                     <h3>Lely Industries NV</h3>
                 </div>
                 <div className="info">
-                    <img src="../../public/icons/location.svg" alt="location"></img>
+
                     <p>Cornelis van der Lelylaan 1 <br />
                         3127PB Maassluis</p>
                 </div>
                 <div className="info">
-                    <img src="../../public/icons/user.svg" alt="user"></img>
+
                     <p>Jian Jiao</p>
                 </div>
                 <div className="info">
-                    <img src="../../public/icons/phone.svg" alt="phone"></img>
+
                     <p>010-5996333</p>
                 </div>
                 <div className="info">
-                    <img src="../../public/icons/truck.svg" alt="truck"></img>
+
                     <p>Door 4.22</p>
                 </div>
            </div>
