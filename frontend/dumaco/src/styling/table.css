@@ -1,4 +1,4 @@
-.colorTable table {
+table {
     width: 90%;
     border-collapse: collapse;
     z-index: 1;
@@ -6,12 +6,12 @@
     margin-bottom: 2.5%;
 }
 
-.colorTable th, td {
-    padding: 0.2vh 0.2vw;
+th, td {
+    padding: 0.2vh 0.2vw; /* Consistente padding voor header en cellen */
     text-align: left;
 }
 
-.colorTable th {
+th {
     background-color: #0D20E7;
     color: white;
     font-weight: bold;
@@ -23,19 +23,19 @@
     width: 90%;
 }
 
-.colorTable tr:nth-child(even) {
+tr:nth-child(even) {
     background-color: #E1ECFF;
 }
 
-.colorTable tr:nth-child(odd) {
+tr:nth-child(odd) {
     background-color: #A8C3FF;
 }
 
-.colorTable tr {
+tr {
     color: black;
 }
 
-.colorTable td {
+td {
     text-align: left;
 }
 
@@ -52,12 +52,48 @@
     text-align: left;
     margin-bottom: 0.1vh;
     border-bottom: 1px solid #0D20E7;
-    background-color: #0D20E7;
     width: 90%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding-left: 0.5vw;
     box-sizing: border-box;
+}
+
+.table-header {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    height: 2vh;
+    white-space: nowrap;
+    padding-left: 0.5vw;
+    left: 0;
+}
+
+table:first-child th:first-child {
+    border-top-left-radius: 10px;
+    background-color: white;
+}
+
+table:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.table-title + table th:first-child {
+    border-top-left-radius: 0;
+}
+
+.table-title + table th:last-child {
+    border-top-right-radius: 0;
+}
+
+.table-row {
+    padding-left: 0.5vw;
+    padding-top: 0.25vh;
+    padding-bottom: 0.25vh;
+    height: 2vh;
+    white-space: nowrap;
 }
 
 .edit-icon-cells {
