@@ -8,6 +8,7 @@ import TeamsBeheer from "./pages/TeamsBeheer.jsx";
 import OrderbonnenFabriek from "./pages/orderbonnenFabriek.jsx";
 import Instellingen from "./pages/instellingen.jsx";
 import OrderbonnenKantoor from "./pages/orderbonnenKantoor.jsx";
+import OrderbonKantoor from "./pages/orderbonKantoor.jsx";
 
 
 
@@ -24,6 +25,7 @@ const App = () => {
                     <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
                     <Route path="/instellingen" element={<Instellingen />} />
                     <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
+                    <Route path="/orderbonkantoor" element={<OrderbonKantoor />} />
 
                 </Routes>
             </Main>
