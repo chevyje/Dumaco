@@ -7,6 +7,7 @@ import GebruikersBeheerEdit from "./pages/gebruikersBeheerEdit.jsx";
 import TeamsBeheer from "./pages/TeamsBeheer.jsx";
 import OrderbonnenFabriek from "./pages/orderbonnenFabriek.jsx";
 import Instellingen from "./pages/instellingen.jsx";
+import OrderbonnenKantoor from "./pages/orderbonnenKantoor.jsx";
 
 
 
@@ -22,6 +23,7 @@ const App = () => {
                     <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
                     <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
                     <Route path="/instellingen" element={<Instellingen />} />
+                    <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
 
                 </Routes>
             </Main>
