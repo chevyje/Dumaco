@@ -2,7 +2,6 @@ import Main from "../layouts/Main.jsx";
 import InputField from "../components/inputField.jsx";
 import '../styling/gebruikersBeheerEdit.css'
 import Button from "../components/button.jsx";
-import Dropdown from "../components/dropdown.jsx";
 import {useNavigate} from "react-router-dom";
 
 const GebruikersBeheerEdit = () => {
