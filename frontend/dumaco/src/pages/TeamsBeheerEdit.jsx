@@ -2,8 +2,7 @@ import '../styling/teamsBeheerEdit.css'
 import Button from "../components/button.jsx";
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react"
-
-
+import Navbar from "../components/navbar.jsx";
 
 
 function TeamsBeheerEdit(){
@@ -38,34 +37,36 @@ function TeamsBeheerEdit(){
     }
 
     return(
-        <div className="team-beheer-container">
-        <p>Team naam</p>
-        <input type="text" className="team-beheer-text" value={Naam} onChange={handelNaamChange}></input>
-        <p>Primare Kleur</p>
-        <input type="color" className="team-beheer-color" value={PrimareKleur} onChange={handelPrimareKleurChange}></input>
-        <p>Secundaire Kleur</p>
-        <input type="color" className="team-beheer-color" value={SecundaireKleur} onChange={handelSecundaireKleurChange}></input>
-        <p>Tertiare Kleur</p>
-        <input type="color" className="team-beheer-color" value={TertiareKleur} onChange={handelTertiareKleurChange}></input>
-        <p>Beschrijving</p>
-        <textarea className="team-beheer-textArea" value={Beschrijving} onChange={handelBeschrijvingChange}></textarea>
-        <br/>
-            <div className="team-beheer-buttons">
-                <Button
-                    title={"Opslaan"}
-                    triggerFunction={null}
-                    color={'#2eb822'}
-                    icon={"save"}
-                />
-                <Button
-                    title={"Annuleren"}
-                    triggerFunction={() => cancelEdit(navigate)}
-                    color={'#757575'}
-                    icon={"ban"}
-                />
+        <>
+            <Navbar title={"Team Beheer"} route={"Team Beheer"} />
+            <div className="team-beheer-container">
+                <p>Team naam</p>
+                <input type="text" className="team-beheer-text" value={Naam} onChange={handelNaamChange}></input>
+                <p>Primare Kleur</p>
+                <input type="color" className="team-beheer-color" value={PrimareKleur} onChange={handelPrimareKleurChange}></input>
+                <p>Secundaire Kleur</p>
+                <input type="color" className="team-beheer-color" value={SecundaireKleur} onChange={handelSecundaireKleurChange}></input>
+                <p>Tertiare Kleur</p>
+                <input type="color" className="team-beheer-color" value={TertiareKleur} onChange={handelTertiareKleurChange}></input>
+                <p>Beschrijving</p>
+                <textarea className="team-beheer-textArea" value={Beschrijving} onChange={handelBeschrijvingChange}></textarea>
+                <br/>
+                    <div className="team-beheer-buttons">
+                        <Button
+                            title={"Opslaan"}
+                            triggerFunction={null}
+                            color={'#2eb822'}
+                            icon={"save"}
+                        />
+                        <Button
+                            title={"Annuleren"}
+                            triggerFunction={() => cancelEdit(navigate)}
+                            color={'#757575'}
+                            icon={"ban"}
+                        />
+                    </div>
             </div>
-
-        </div>
+        </>
 
     )
     function cancelEdit(navigate){
