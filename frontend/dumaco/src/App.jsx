@@ -6,8 +6,10 @@ import GebruikersBeheer from "./pages/gebruikersBeheer.jsx";
 import GebruikersBeheerEdit from "./pages/gebruikersBeheerEdit.jsx";
 import TeamsBeheer from "./pages/TeamsBeheer.jsx";
 import OrderbonnenFabriek from "./pages/orderbonnenFabriek.jsx";
+import TeamsBeheerEdit from "./pages/TeamsBeheerEdit.jsx";
 import Instellingen from "./pages/instellingen.jsx";
 import OrderbonnenKantoor from "./pages/orderbonnenKantoor.jsx";
+
 
 
 
@@ -22,6 +24,8 @@ const App = () => {
                     <Route path="/gebruikersbeheeredit" element={<GebruikersBeheerEdit/>} />
                     <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
                     <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
+                    <Route path="/TeamsBeheerEdit" element={<TeamsBeheerEdit/>} />
+                    
                     <Route path="/instellingen" element={<Instellingen />} />
                     <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
 

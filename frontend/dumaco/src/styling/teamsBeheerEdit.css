@@ -1,0 +1,69 @@
+.team-beheer-container{
+    font-size: 1.5em;
+    margin: 0;
+    margin-top: 5%;
+    margin-left: 25%;
+    line-height: 1em;
+  }
+  
+  .team-beheer-text{
+    height: 20px;
+    width: 200px;
+    font-family: Arial, sans-serif;
+    font-size: large;
+    border-radius: 5px;
+    border: 3px solid hsl(0, 0%, 80%);
+    color: hsl(0, 0%, 50%);
+  }
+  
+  .team-beheer-color{
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    border: 3px solid hsl(0, 0%, 80%);
+    display: inline-block;
+  }
+  
+  .team-beheer-textArea{
+    height: 50px;
+    width: 1000px;
+    font-family: Arial, sans-serif;
+    font-size: large;
+    border-radius: 5px;
+    border: 3px solid hsl(0, 0%, 80%);
+    color: hsl(0, 0%, 50%);
+  }  
+  .team-beheer-opslaan{
+    height: 40px;
+    width: 150px;
+    margin-right: 20px;
+    color: white;
+    background-color: #2EB822;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9em;
+    text-align: center;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center; 
+  }
+  
+  .team-beheer-annuleren{
+    height: 40px;
+    width: 150px;
+    margin-right: 20px;
+    color: white;
+    background-color: #757575;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9em;
+    text-align: center;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center; 
+  }
+  .team-beheer-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
