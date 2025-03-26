@@ -17,7 +17,7 @@ const App = () => {
             <Main>
                 <Routes>
                     <Route path="/klantoverzicht" element={<KlantOverzicht />} />
-                    <Route paht="/klantenoverzicht" element={<KlantenOverzicht />} />
+                    <Route path="/klantenoverzicht" element={<KlantenOverzicht />} />
                     <Route path="/gebruikersbeheer" element={<GebruikersBeheer />} />
                     <Route path="/gebruikersbeheeredit" element={<GebruikersBeheerEdit/>} />
                     <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
