@@ -37,7 +37,7 @@ function GebruikersBeheer() {
                     secondaryColor="#E1ECFF"
                     tertiareColor="#A8C3FF"
                     columnAlignments={columnAlignments}
-                    title="test"
+                    title="Ontkoppelde gebruikers"
                     showPencil={true}
                     showUserEdit={true}
                 />
@@ -51,6 +51,7 @@ function GebruikersBeheer() {
                     columnAlignments={columnAlignments}
                     showPencil={true}
                     showUserEdit={true}
+                    title={"Team Blauw"}
                 />
                 <Table
                     columns={state.columns}
@@ -62,6 +63,7 @@ function GebruikersBeheer() {
                     columnAlignments={columnAlignments}
                     showPencil={true}
                     showUserEdit={true}
+                    title={"Team Blauw"}
                 />
                 <Table
                     columns={state.columns}
@@ -73,6 +75,7 @@ function GebruikersBeheer() {
                     columnAlignments={columnAlignments}
                     showPencil={true}
                     showUserEdit={true}
+                    title={"Team Blauw"}
                 />
             </div>
         </>

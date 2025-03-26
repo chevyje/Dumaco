@@ -1,9 +1,12 @@
 import '../styling/table.css';
+import { useNavigate } from 'react-router-dom';
 
 function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, tertiareColor, title, columnAlignments, showUserEdit, showPencil }) {
     const visibleColumnsAmount = columns.filter((col) => !columnsToHide.includes(col));
     const spotsAvailable = 5;
     const diff = spotsAvailable - visibleColumnsAmount.length;
+
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -50,7 +53,7 @@ function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, ter
                         ))}
                         <td className="edit-icon-cells">
                             {showUserEdit ? <img src="/icons/editUser.svg" alt="edit-user" className="edit-user-icon" /> : null}
-                            {showPencil ? <img src="/icons/pencil.svg" alt="edit" className="edit-icon" /> : null}
+                            {showPencil ? <img src="/icons/pencil.svg" alt="edit" className="edit-icon" onClick={() => redirectToEdit(navigate)} /> : null}
                         </td>
                     </tr>
                 ))}
@@ -63,6 +66,10 @@ function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, ter
 function overrideColumnName(colName) {
     const mapping = { name: "Naam", age: "Leeftijd", lastLogin: "Laatste login" };
     return mapping[colName] || colName;
+}
+
+function redirectToEdit(navigate) {
+    navigate("/gebruikersbeheeredit");
 }
 
 export default Table;

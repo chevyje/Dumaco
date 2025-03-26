@@ -22,6 +22,7 @@ const App = () => {
                     <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
                     <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
                     <Route path="/instellingen" element={<Instellingen />} />
+
                 </Routes>
             </Main>
         </Router>
