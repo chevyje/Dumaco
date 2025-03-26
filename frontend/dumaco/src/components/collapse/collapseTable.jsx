@@ -26,24 +26,26 @@ function Table({ jsonData, title, openByDefault, legenda }) {
                     </div>
                 </div>
             }
-            <table>
-                <thead>
-                <tr>
-                    {headers.map((header, index) => (
-                        <th key={index}>{header}</th>
-                    ))}
-                </tr>
-                </thead>
-                <tbody>
-                {jsonData.map((row, rowIndex) => (
-                    <tr key={rowIndex}>
-                        {headers.map((header, colIndex) => (
-                            <td key={colIndex}>{row[header]}</td>
+            <div className="grayTable">
+                <table>
+                    <thead>
+                    <tr>
+                        {headers.map((header, index) => (
+                            <th key={index}>{header}</th>
                         ))}
                     </tr>
-                ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {jsonData.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                            {headers.map((header, colIndex) => (
+                                <td key={colIndex}>{row[header]}</td>
+                            ))}
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
         </CollapseParent>
     );
 }
