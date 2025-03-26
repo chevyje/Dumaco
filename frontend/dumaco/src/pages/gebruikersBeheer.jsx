@@ -3,13 +3,13 @@ import Table from "../components/table.jsx";
 import { useNavigate } from "react-router-dom";
 
 function GebruikersBeheer() {
-    const navigate = useNavigate(); // Zorg ervoor dat navigate correct gedeclareerd is
+    const navigate = useNavigate();
 
     const [state, setState] = useState({
         results: [
-            { name: "Tobias", lastLogin: "18" },
-            { name: "Henk", lastLogin: "38" },
-            { name: "Tasdasdasdasd", lastLogin: "300" },
+            { Naam: "Tobias", 'Laatste Login': "18" },
+            { Naam: "Henk", 'Laatste Login': "38" },
+            { Naam: "Tasdasdasdasd", 'Laatste Login': "300" },
         ]
     });
 
@@ -22,7 +22,21 @@ function GebruikersBeheer() {
             <div className="table-container">
                 <Table
                     jsonData={state.results}
-                    title={"test"}
+                    title={"Ontkoppelde gebruikers"}
+                    showUserEdit={true}
+                    showPencil={true}
+                    editPageFunction={showUserEdit}
+                />
+                <Table
+                    jsonData={state.results}
+                    title={"Team Blauw"}
+                    showUserEdit={true}
+                    showPencil={true}
+                    editPageFunction={showUserEdit}
+                />
+                <Table
+                    jsonData={state.results}
+                    title={"Team Blauw"}
                     showUserEdit={true}
                     showPencil={true}
                     editPageFunction={showUserEdit}
