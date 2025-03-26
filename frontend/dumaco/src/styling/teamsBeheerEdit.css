@@ -1,7 +1,7 @@
 .team-beheer-container{
     font-size: 1.5em;
     margin: 0;
-    margin-top: 5%;
+    margin-top: 7%;
     margin-left: 25%;
     line-height: 1em;
   }
@@ -33,10 +33,9 @@
     border: 3px solid hsl(0, 0%, 80%);
     color: hsl(0, 0%, 50%);
   }  
-  .team-beheer-opslaan{
+  .btn{
     height: 40px;
     width: 150px;
-    margin-right: 20px;
     color: white;
     background-color: #2EB822;
     border: none;
@@ -51,7 +50,6 @@
   .team-beheer-annuleren{
     height: 40px;
     width: 150px;
-    margin-right: 20px;
     color: white;
     background-color: #757575;
     border: none;
@@ -65,5 +63,7 @@
   .team-beheer-buttons {
     display: flex;
     gap: 10px;
-    margin-top: 10px;
+    margin-right: 50%;
+    margin-top: -12%;
+    margin-left: 5px;
 }
