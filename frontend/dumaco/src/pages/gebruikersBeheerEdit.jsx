@@ -3,8 +3,10 @@ import InputField from "../components/inputField.jsx";
 import '../styling/gebruikersBeheerEdit.css'
 import Button from "../components/button.jsx";
 import Dropdown from "../components/dropdown.jsx";
+import {useNavigate} from "react-router-dom";
 
 const GebruikersBeheerEdit = () => {
+    const navigate = useNavigate();
     return (
         <>
             <Main />
@@ -57,7 +59,7 @@ const GebruikersBeheerEdit = () => {
                 />
                 <Button
                     title={"Annuleren"}
-                    triggerFunction={cancelEdit}
+                    triggerFunction={() => cancelEdit(navigate)}
                     color={'#757575'}
                     icon={"ban"}
                 />
@@ -80,8 +82,8 @@ function saveUser(){
     console.log("saveUser() function called.");
 }
 
-function cancelEdit(){
-    console.log("cancelEdit() function called.");
+function cancelEdit(navigate){
+    navigate("/gebruikersbeheer");
 }
 
 export default GebruikersBeheerEdit;
