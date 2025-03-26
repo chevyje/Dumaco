@@ -7,7 +7,6 @@ const Main = ({ children }) => {
     return (
         <>
             <div>
-                <Navbar />
                 <Sidebar />
             </div>
             <div className="content">{children}</div>

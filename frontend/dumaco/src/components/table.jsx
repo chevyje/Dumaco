@@ -1,14 +1,15 @@
 import '../styling/table.css';
 
-function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, tertiareColor, title, columnAlignments, showUserEdit, showPencil }) {
-    const visibleColumnsAmount = columns.filter((col) => !columnsToHide.includes(col));
-    const spotsAvailable = 5;
-    const diff = spotsAvailable - visibleColumnsAmount.length;
+function Table({ jsonData, title }) {
+    if (!jsonData || jsonData.length === 0) {
+        return <p>No data available</p>;
+    }
 
+    let headers = Object.keys(jsonData[0]);
     return (
-        <div>
+        <div className="colorTable">
             {title && (
-                <div className="table-title" style={{ backgroundColor: primaryColor }}>
+                <div className="table-title">
                     {title}
                 </div>
             )}
@@ -16,53 +17,23 @@ function Table({ columns, columnsToHide, data, primaryColor, secondaryColor, ter
             <table>
                 <thead>
                 <tr>
-                    {visibleColumnsAmount.map((col) => (
-                        <th
-                            className="table-header"
-                            key={col}
-                            style={{
-                                backgroundColor: primaryColor,
-                                textAlign: columnAlignments?.[col] || "left"
-                            }}
-                        >
-                            {overrideColumnName(col)}
-                        </th>
-                    ))}
-                    {Array.from({ length: diff }).map((_, index) => (
-                        <th key={`empty-${index}`}></th>
+                    {headers.map((header, index) => (
+                        <th key={index}>{header}</th>
                     ))}
                 </tr>
                 </thead>
                 <tbody>
-                {data.map((row, index) => (
-                    <tr key={row.id} style={{ backgroundColor: index % 2 === 0 ? secondaryColor : tertiareColor, color: "black" }}>
-                        {visibleColumnsAmount.map((col) => (
-                            <td
-                                key={`${col}-${row.id}`}
-                                className="table-row"
-                                style={{ textAlign: columnAlignments?.[col] || "left" }}
-                            >
-                                {row[col] || "-"}
-                            </td>
+                {jsonData.map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                        {headers.map((header, colIndex) => (
+                            <td key={colIndex}>{row[header]}</td>
                         ))}
-                        {Array.from({ length: diff }).map((_, index) => (
-                            <td key={`empty-row-${index}`} style={{ backgroundColor: 'transparent' }}></td>
-                        ))}
-                        <td className="edit-icon-cells">
-                            {showUserEdit ? <img src="/icons/editUser.svg" alt="edit-user" className="edit-user-icon" /> : null}
-                            {showPencil ? <img src="/icons/pencil.svg" alt="edit" className="edit-icon" /> : null}
-                        </td>
                     </tr>
                 ))}
                 </tbody>
             </table>
         </div>
     );
-}
-
-function overrideColumnName(colName) {
-    const mapping = { name: "Naam", age: "Leeftijd", lastLogin: "Laatste login" };
-    return mapping[colName] || colName;
 }
 
 export default Table;
