@@ -1,6 +1,7 @@
 import Navbar from "../components/navbar.jsx";
 import Table from "../components/table.jsx";
 import Paginator from "../components/paginator.jsx";
+import Sidebar from "../components/sidebar.jsx";
 import "../styling/klantenOverzicht.css";
 
 function orderbonnenKantoor() {
@@ -32,6 +33,7 @@ function orderbonnenKantoor() {
     return(
         <>
             <Navbar title={"Orderbonnen"} route={"Orderbonnen"} />
+            <Sidebar Orderbonnen={"selected"} />
             <div className="table">
                 <Table jsonData={data} />
             </div>

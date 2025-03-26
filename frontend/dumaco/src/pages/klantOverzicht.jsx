@@ -1,6 +1,8 @@
 import Table from "../components/collapse/collapseTable.jsx";
 import Navbar from "../components/navbar.jsx";
 import "../styling/klantOverzicht.css";
+import SideBar from "../components/sidebar.jsx";
+import Sidebar from "../components/sidebar.jsx";
 
 function klantOverzicht() {
     const LopendeOrders = [
@@ -19,6 +21,7 @@ function klantOverzicht() {
     return(
         <>
             <Navbar title={"Lely Industries NV"} route={"Klanten / Lely Industries NV"} />
+            <Sidebar Klanten={"selected"} />
             <div className="CollapsTable">
                 <Table jsonData={LopendeOrders} title={"Lopende Orders"} openByDefault={true} />
                 <Table jsonData={ToekomstigeOrders} title={"Toekomstige Orders"} openByDefault={true} />
