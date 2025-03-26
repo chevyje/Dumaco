@@ -7,7 +7,7 @@
     overflow: hidden;
 }
 
-.sidebar .button{
+.sidebar div{
     background-color: #A8C3FF;
 }
 
@@ -34,11 +34,15 @@
     color: white;
     font-weight: bold;
 }
-
-.sidebar .noborder {
-    border-bottom: none;
+.sidebar .selected a{
+    background: #0D20E7 none;
+    color: white;
+    font-weight: bold;
 }
 
-.sidebar .bottem{
-    border: none;
+.noborder a{
+    border: none !important;
+}
+.noborder{
+    border-bottom: none !important;
 }

@@ -1,6 +1,8 @@
 import Table from "../components/collapse/collapseTable.jsx";
 import Navbar from "../components/navbar.jsx";
 import "../styling/klantOverzicht.css";
+import SideBar from "../components/sidebar.jsx";
+import Sidebar from "../components/sidebar.jsx";
 
 function klantOverzicht() {
     const LopendeOrders = [
@@ -19,6 +21,7 @@ function klantOverzicht() {
     return(
         <>
             <Navbar title={"Lely Industries NV"} route={"Klanten / Lely Industries NV"} />
+            <Sidebar Klanten={"selected"} />
             <div className="CollapsTable">
                 <Table jsonData={LopendeOrders} title={"Lopende Orders"} openByDefault={true} />
                 <Table jsonData={ToekomstigeOrders} title={"Toekomstige Orders"} openByDefault={true} />
@@ -29,20 +32,20 @@ function klantOverzicht() {
                     <h3>Lely Industries NV</h3>
                 </div>
                 <div className="info">
-
+                    <img src="../../public/icons/location.svg" alt=""></img>
                     <p>Cornelis van der Lelylaan 1 <br />
                         3127PB Maassluis</p>
                 </div>
                 <div className="info">
-
+                    <img src="../../public/icons/user.svg" alt=""></img>
                     <p>Jian Jiao</p>
                 </div>
                 <div className="info">
-
+                    <img src="../../public/icons/phone.svg" alt=""></img>
                     <p>010-5996333</p>
                 </div>
                 <div className="info">
-
+                    <img src="../../public/icons/truck.svg" alt=""></img>
                     <p>Door 4.22</p>
                 </div>
            </div>

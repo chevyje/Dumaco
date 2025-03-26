@@ -1,19 +1,19 @@
 import '../styling/sidebar.css'
 
-function sidebar() {
+function sidebar({ Overzicht, Statistieken, Orderbonnen, Klanten}) {
     return (
         <div className="sidebar">
-            <div className="button">
+            <div className={Overzicht}>
                 <a href="#">Team overzicht</a>
             </div>
-            <div className="button">
+            <div className={Statistieken}>
                 <a href="#">Statistieken</a>
             </div>
-            <div className="button">
-                <a className="noborder" href="#">Order Bonnen</a>
+            <div className={Orderbonnen}>
+                <a href="#">Order Bonnen</a>
             </div>
-            <div className="button selected">
-                <a className="selected noborder" href="#">Klanten</a>
+            <div className={Klanten}>
+                <a className="noborder" href="#">Klanten</a>
             </div>
         </div>
     )

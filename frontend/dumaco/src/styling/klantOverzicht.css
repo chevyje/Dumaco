@@ -1,14 +1,8 @@
-body {
-    overflow-x: auto;
-    overflow-y: auto;
-    min-height: 100vh;
-    margin: 0;
-}
-
 .CollapsTable{
     position: fixed;
     top: 13vh;
     left: 17.5vw;
+    height: 100%;
 }
 
 .KlantInfo {
