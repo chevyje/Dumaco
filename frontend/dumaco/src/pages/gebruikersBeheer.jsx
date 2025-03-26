@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Table from "../components/table.jsx";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/navbar.jsx";
 
 function GebruikersBeheer() {
     const navigate = useNavigate();
@@ -19,6 +20,7 @@ function GebruikersBeheer() {
 
     return (
         <>
+            <Navbar title={"Gebruikers beheer"} route={"Management / Gebruikers"}/>
             <div className="table-container">
                 <Table
                     jsonData={state.results}
