@@ -3,12 +3,14 @@ import InputField from "../components/inputField.jsx";
 import '../styling/gebruikersBeheerEdit.css'
 import Button from "../components/button.jsx";
 import {useNavigate} from "react-router-dom";
+import Navbar from "../components/navbar.jsx";
 
 const GebruikersBeheerEdit = () => {
     const navigate = useNavigate();
     return (
         <>
             <Main />
+            <Navbar title={"Gebruikers beheer"} route={"Management / Gebruikers / Tobias Beumer"}/>
             <div className={"username-container"}>
                 <p className={"username-text"}>Tobias Beumer</p>
             </div>
