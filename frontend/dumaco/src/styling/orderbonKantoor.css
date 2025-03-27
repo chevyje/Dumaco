@@ -1,0 +1,12 @@
+.CollapsTable{
+    position: fixed;
+    top: 13vh;
+    left: 17.5vw;
+    height: 100%;
+}
+
+.customButton{
+    position: fixed;
+    top: 25vh;
+    left: 2vw;
+}
