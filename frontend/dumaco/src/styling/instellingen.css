@@ -12,9 +12,7 @@
 }
 
 .inputField-container {
-    margin-top: -12.5%;
-    padding-bottom: 5vh;
-    padding-left: 25%;
+
 }
 
 .column {
@@ -39,10 +37,12 @@
 }
 
 .reset-password {
-    padding-left: 25%;
     color: black;
     text-decoration: underline;
     cursor: pointer;
+    position: fixed;
+    left: 18%;
+    top: 56%;
 }
 
 .btns-container {

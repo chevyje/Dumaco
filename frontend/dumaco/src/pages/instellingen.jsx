@@ -4,12 +4,14 @@ import "../styling/instellingen.css";
 import Button from "../components/button.jsx";
 import {useNavigate} from "react-router-dom";
 import InputField from "../components/inputField.jsx";
+import Navbar from "../components/navbar.jsx";
 
 const Instellingen = () => {
     const navigate = useNavigate();
     return (
         <>
             <Main />
+            <Navbar title={"Gebruikers beheer"} route={"Hans Botterboy / Instellingen"}/>
             <div className={"username-container"}>
                 <p className={"username-text"}>Hans Botterboy</p>
             </div>
@@ -40,7 +42,7 @@ const Instellingen = () => {
                         />
                     </div>
                     <div className="column">
-
+                        <p>teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeste</p>
                     </div>
                 </div>
             </div>
