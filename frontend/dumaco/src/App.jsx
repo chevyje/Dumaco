@@ -10,6 +10,7 @@ import TeamsBeheerEdit from "./pages/TeamsBeheerEdit.jsx";
 import Instellingen from "./pages/instellingen.jsx";
 import OrderbonnenKantoor from "./pages/orderbonnenKantoor.jsx";
 import OrderbonKantoor from "./pages/orderbonKantoor.jsx";
+import InlogPagina from "./pages/InlogPagina.jsx";
 
 
 
@@ -17,22 +18,19 @@ import OrderbonKantoor from "./pages/orderbonKantoor.jsx";
 const App = () => {
     return (
         <Router>
-            <Main>
-                <Routes>
-                    <Route path="/klantoverzicht" element={<KlantOverzicht />} />
-                    <Route path="/klantenoverzicht" element={<KlantenOverzicht />} />
-                    <Route path="/gebruikersbeheer" element={<GebruikersBeheer />} />
-                    <Route path="/gebruikersbeheeredit" element={<GebruikersBeheerEdit/>} />
-                    <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
-                    <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
-                    <Route path="/TeamsBeheerEdit" element={<TeamsBeheerEdit/>} />
-                    
-                    <Route path="/instellingen" element={<Instellingen />} />
-                    <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
-                    <Route path="/orderbonkantoor" element={<OrderbonKantoor />} />
-
-                </Routes>
-            </Main>
+            <Routes>
+                <Route path="/klantoverzicht" element={<KlantOverzicht />} />
+                <Route path="/klantenoverzicht" element={<KlantenOverzicht />} />
+                <Route path="/gebruikersbeheer" element={<GebruikersBeheer />} />
+                <Route path="/gebruikersbeheeredit" element={<GebruikersBeheerEdit/>} />
+                <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
+                <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
+                <Route path="/TeamsBeheerEdit" element={<TeamsBeheerEdit/>} />
+                <Route path="/login" element={<InlogPagina />} />
+                <Route path="/instellingen" element={<Instellingen />} />
+                <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
+                <Route path="/orderbonkantoor" element={<OrderbonKantoor />} />
+            </Routes>
         </Router>
     );
 };
