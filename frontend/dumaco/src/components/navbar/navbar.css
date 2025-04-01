@@ -1,20 +1,32 @@
-.navbar{
+.navbar, .subnavbar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    background-color: #D9D9D9;
-    display: flex;
-    height: 9vh;
     align-items: center;
-    box-shadow: 1px 1px 3px 3px #ADADAD;
+    display: flex;
+    width: 100vw;
+}
+
+.navbar{
+    background-color: #DADADA;
+    height: 9vh;
+}
+
+.subnavbar {
+    margin-top: 9vh;
+    justify-content: space-between;
+    background-color: #FF0000;
+    height: 4vh;
 }
 
 .navbar h1{
+    position: absolute;
     color: black;
     width: 60vw;
     text-align: center;
     font-size: 50px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .logo{
@@ -56,11 +68,36 @@
     float:right
 }
 
-h5{
-    position: fixed;
-    top: 6.5vh;
-    left: 1vw;
+.subnavbar h5{
     font-weight: normal;
-    font-size: 18px;
-    color: #3E3E3E;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-left: 8px;
+    color: white;
+}
+
+.subnavbar-button {
+    color: white;
+    font-weight: lighter;
+}
+
+.subnavbar-button:hover {
+    color: #450000;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.subnavbar-button.active {
+    font-weight: bold;
+}
+
+.subnavbar-button:last-child.active {
+    border-right: none;
 }
