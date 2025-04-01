@@ -1,13 +1,24 @@
-.btn-container {
-    width: 100%;
-    height: 5vh;
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 1em;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+button:hover {
+    border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+    outline: 2px auto -webkit-focus-ring-color;
 }
 
 .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 4vh;
+    height: auto;
     width: auto;
     padding: 0.35rem 1.75rem;
     text-align: center;
@@ -17,13 +28,4 @@
 .btn-icon {
     width: 20px;
     height: auto;
-}
-
-
-.button-container {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 15vh;
-    margin-left: -0.5vw;
 }

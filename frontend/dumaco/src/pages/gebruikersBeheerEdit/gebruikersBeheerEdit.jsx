@@ -47,11 +47,11 @@ const GebruikersBeheerEdit = () => {
                             fieldId={"lastLogin"}
                             isLocked={true}
                         />
-                        {<a className={"reset-password"}>Reset wachtwoord</a>}
+                            {<a className={"reset-password"}>Reset wachtwoord</a>}
                     </div>
                 </div>
             </div>
-            <div className={"btns-container"}>
+            <div className={"buttons-container"}>
                 <Button
                     title={"Opslaan"}
                     triggerFunction={saveUser}
