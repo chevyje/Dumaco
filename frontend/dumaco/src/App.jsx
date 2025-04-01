@@ -1,4 +1,3 @@
-import Main from "./layouts/Main.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import KlantOverzicht from "./pages/klantOverzicht/klantOverzicht.jsx";
 import KlantenOverzicht from "./pages/klantenOverzicht/klantenOverzicht.jsx";
@@ -11,9 +10,6 @@ import Instellingen from "./pages/instellingen/instellingen.jsx";
 import OrderbonnenKantoor from "./pages/orderbonnenKantoor/orderbonnenKantoor.jsx";
 import OrderbonKantoor from "./pages/orderbonKantoor/orderbonKantoor.jsx";
 import InlogPagina from "./pages/InlogPagina/InlogPagina.jsx";
-
-
-
 
 const App = () => {
     return (

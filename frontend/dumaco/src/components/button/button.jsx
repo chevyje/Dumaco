@@ -2,7 +2,9 @@ import "./button.css";
 
 function Button({title, triggerFunction, color, icon}) {
 
-    const Icon = "../..//" + icon + ".svg";
+    const Icon = "../../../icons/" + icon + ".svg";
+
+    console.log(Icon);
 
     return (
         <div className={"button-container"}>
