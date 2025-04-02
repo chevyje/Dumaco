@@ -1,5 +1,6 @@
 import "./inlogPagina.css"
 
+
 function InlogPagina() {
     const CheckCredentials = () => {
         console.log("Trying to login");
@@ -7,20 +8,27 @@ function InlogPagina() {
 
     return(
         <>
-            <div className={"inlog-body"}>
-                <div className="inlog-container">
-                    <h1>Login</h1>
-                    <div className="Input">
-                        <img src="../../../public/icons/user.svg" alt="" />
-                        <input type="text" />
-                    </div>
-                    <div className="Input">
-                        <img src="../../../public/icons/lock.svg" alt="" />
-                        <input type="password" />
-                    </div>
-                    <button onClick={CheckCredentials}> Log in</button>
+            {/* <img src="./frontend/Assets/DumacoLogoWit.png"/> */}
+            <form className="login-box">
+                <div>
+                    <label>
+                        <img src="../../../icons/user.svg" alt="" />
+                        Username:
+                        <br/>
+                        <input type="text" className="login-input" required></input>
+                    </label>
                 </div>
-            </div>
+                <div>
+                    <label>
+                        <img src="../../../icons/lock.svg" alt="" />
+                        Password:
+                        <br/>
+                        <input type="password" className="login-input" required></input>
+                    </label>
+                </div>
+                <br/>
+                <button className="confirm-button" onClick={CheckCredentials}> Log in</button>
+            </form>
         </>
 
     );
