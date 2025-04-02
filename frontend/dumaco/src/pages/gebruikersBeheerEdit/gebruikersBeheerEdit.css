@@ -18,9 +18,6 @@
     background: #E1ECFF;
     width: 55vw;
     height: 15vh;
-    justify-content: center;
-    align-items: center;
-    margin-left: 45%;
 }
 
 .username-text {
@@ -29,12 +26,19 @@
     font-weight: bold;
 }
 
+.reset-password-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
 .reset-password {
-    margin-left: 27vw;
-    margin-top: 6vh;
     color: black;
     text-decoration: underline;
     cursor: pointer;
+    text-align: center;
+    width: 100%;
 }
 
 .btns-container {
@@ -50,9 +54,18 @@
 }
 
 .buttons-container {
-    margin-left: 45%;
     display: flex;
     justify-content: flex-start;
     width: 100%;
     gap: 8px;
 }
+
+.items-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+}
+

@@ -32,7 +32,6 @@ function klantenOverzicht() {
     return(
         <>
             <Navbar title={"Klanten"} route={"Klanten"} />
-            <Sidebar Klanten={"selected"} />
             <div className="table">
                 <Table jsonData={data} />
             </div>

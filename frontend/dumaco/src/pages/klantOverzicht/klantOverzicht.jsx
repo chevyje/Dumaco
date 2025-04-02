@@ -21,7 +21,6 @@ function klantOverzicht() {
     return(
         <>
             <Navbar title={"Lely Industries NV"} route={"Klanten / Lely Industries NV"} />
-            <Sidebar Klanten={"selected"} />
             <div className="CollapsTable">
                 <Table jsonData={LopendeOrders} title={"Lopende Orders"} openByDefault={true} />
                 <Table jsonData={ToekomstigeOrders} title={"Toekomstige Orders"} openByDefault={true} />

@@ -47,7 +47,9 @@ const GebruikersBeheerEdit = () => {
                             fieldId={"lastLogin"}
                             isLocked={true}
                         />
+                        <div className={"reset-password-container"}>
                             {<a className={"reset-password"}>Reset wachtwoord</a>}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,6 +75,7 @@ const GebruikersBeheerEdit = () => {
                     icon={"trash"}
                 />
             </div>
+
         </>
     );
 };

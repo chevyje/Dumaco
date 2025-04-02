@@ -11,11 +11,11 @@ function InlogPagina() {
                 <div className="inlog-container">
                     <h1>Login</h1>
                     <div className="Input">
-                        <img src="../../../public/icons/user.svg" alt="" />
+                        <img src="../../../icons/user.svg" alt="" />
                         <input type="text" />
                     </div>
                     <div className="Input">
-                        <img src="../../../public/icons/lock.svg" alt="" />
+                        <img src="../../../icons/lock.svg" alt="" />
                         <input type="password" />
                     </div>
                     <button onClick={CheckCredentials}> Log in</button>

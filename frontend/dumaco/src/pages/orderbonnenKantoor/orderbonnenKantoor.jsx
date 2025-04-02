@@ -33,7 +33,6 @@ function orderbonnenKantoor() {
     return(
         <>
             <Navbar title={"Orderbonnen"} route={"Orderbonnen"} />
-            <Sidebar Orderbonnen={"selected"} />
             <div className="table">
                 <Table jsonData={data} />
             </div>

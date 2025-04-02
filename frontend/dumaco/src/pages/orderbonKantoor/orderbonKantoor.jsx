@@ -42,7 +42,6 @@ function klantOverzicht() {
     return(
         <>
             <Navbar title={"Lely Industries #32500030"} route={"Orderbonnen / Lely Industries NV / #32500030"} />
-            <Sidebar Orderbonnen={"selected"} />
             <div className="CollapsTable">
                 <Table jsonData={Bewerking} title={"Bewerking"} openByDefault={true} />
                 <Table jsonData={Inkoop} title={"Inkoop"} openByDefault={true} />

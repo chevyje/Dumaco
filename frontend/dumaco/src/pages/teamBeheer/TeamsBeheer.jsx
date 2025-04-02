@@ -1,8 +1,6 @@
-import Main from "../../layouts/Main.jsx";
 import Table from "../../components/table/table.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/button/button.jsx";
 import './teamsBeheer.css'
 import Navbar from "../../components/navbar/navbar.jsx";
 
