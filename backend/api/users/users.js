@@ -1,4 +1,4 @@
-import express from "express";
+ import express from "express";
 import bcrypt from 'bcryptjs';
 import {createFunction, db_execute, db_query, getFunctionID} from "../../db.js";
 import messages from "../../message.js";
@@ -36,8 +36,9 @@ UsersRouter.post('/', async (req, res) => {
     const { username, password, recoveryMail, job } = req.body;
 
     if (!username || username.length <= 3) return res.status(400).json(messages.invalid("username"));
-    if (!password || password.length === 0) return res.status(400).json(messages.invalid("password"));
-    if (!recoveryMail || recoveryMail.length === 0) return res.status(400).json(messages.invalid("recovery mail"));
+    if (!password || password.length <= 3) return res.status(400).json(messages.invalid("password"));
+    if (!recoveryMail || recoveryMail.length <= 3) return res.status(400).json(messages.invalid("recovery mail"));
+    if (!job || job.length <= 3) return res.status(400).json(messages.invalid("job"));
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -52,8 +53,7 @@ UsersRouter.post('/', async (req, res) => {
         const teamID = -1;
 
         await db_execute(
-            "INSERT INTO Users (username, password, recoveryMail, functionID, teamID) VALUES (?, ?, ?, ?, ?)",
-            [username, hashedPassword, recoveryMail, functionID, teamID]
+            "INSERT INTO Users (username, password, recoveryMail, functionID, teamID) VALUES (?, ?, ?, ?, ?)",[username, hashedPassword, recoveryMail, functionID, teamID]
         );
 
         res.status(201).json(messages.success.addedRow);
@@ -108,7 +108,7 @@ UsersRouter.delete('/:id', async (req, res) => {
 UsersRouter.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
-    const users = await db_query("SELECT id, password FROM Users WHERE username = ?", [username]);
+    const users = await db_query("SELECT userID, password FROM Users WHERE username = ?", [username]);
 
     if (users.length === 0) {
         return res.status(401).json(messages.invalid("username"));

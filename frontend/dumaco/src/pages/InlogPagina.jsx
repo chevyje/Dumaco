@@ -1,8 +1,17 @@
 import "../styling/inlogPagina.css"
 
 function InlogPagina() {
-    const CheckCredentials = () => {
-        console.log("Trying to login");
+    const CheckCredentials = async () => {
+        await fetch("http://localhost:8080/api/users/checkCredentials", {
+            method: "POST",
+            body: JSON.stringify({
+                username: inputUsername,
+                password: inputPassword
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        });
     };
 
     return(
