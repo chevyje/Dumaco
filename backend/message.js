@@ -5,6 +5,8 @@ messages.error = {};
 messages.error.server = {message: "There went something wrong with the server, please try again or reach out to someone"};
 messages.error.duplicate = {message: "The row you try to add already exists"};
 messages.error.notFound = {message: "Not found"};
+messages.error.noAccount = {message: "This username doesn't have an account"};
+messages.error.wrongPassword = {message: "Wrong password"};
 
 // Success messages
 messages.success = {};
