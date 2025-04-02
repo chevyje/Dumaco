@@ -1,4 +1,4 @@
-import "../../styling/collapseTable.css"
+import "./collapseTable.css"
 import CollapseParent from "./collapseParent.jsx";
 
 function Table({ jsonData, title, openByDefault, legenda }) {

@@ -1,5 +1,5 @@
 import Collapsible from 'react-collapsible';
-import "../../styling/collapse.css";
+import "./collapse.css";
 import Table from "./collapseTable.jsx"
 
 function CollapseParent( {title, openByDefault, children}) {
