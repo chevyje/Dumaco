@@ -1,7 +1,11 @@
+import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import style from "./inlogPagina.module.css"
 
 
+
 function InlogPagina() {
+    const navigate = useNavigate();
     const CheckCredentials = async (e) => {
         e.preventDefault();
         const username = e.target.username.value;
@@ -21,32 +25,31 @@ function InlogPagina() {
         });
         const data = await passwordResponse.json();
         console.log(data);
+        navigate("/");
     };
 
     return(
         <>
-            <body className={style.loginBody}>
-                {/* <img src="./frontend/Assets/DumacoLogoWit.png"/> */}
-                <form className={style.loginBox} onSubmit={CheckCredentials}>
-                    <div>
-                        <label>
-                            <img src="/icons/user.svg" alt="" />
-                            Username:
-                            <br/>
-                            <input type="text" className={style.loginInput} name="username"></input>
-                        </label>
+            <body className={style.inlogBody}>
+            <div className={style.inlogContainer}>
+                <h2 className={style.title}>Inloggen</h2>
+                <form className={style.form} onSubmit={CheckCredentials}>
+                    <div className={style.inputContainer}>
+                        <img className={style.image} src="/icons/user.svg" alt="" />
+                        <input className={style.input} name="username" placeholder="Gebruikersnaam"></input>
                     </div>
-                    <div>
-                        <label>
-                            <img src="/icons/lock.svg" alt="" />
-                            Password:
-                            <br/>
-                            <input type="password" className={style.loginInput} name="password"></input>
-                        </label>
+                    <div className={style.inputContainer}>
+                        <img className={style.image} src="/icons/lock.svg" alt="" />
+                        <input type="password" className={style.input} name="password" placeholder="Wachtwoord"></input>
                     </div>
-                    <br/>
-                    <button className={style.confirmButton}> Log in</button>
+                    <div className={style.forgotPassword}>
+                        <NavLink to="/" className={style.link}>wachtwoord vergeten?</NavLink>
+                    </div>
+                    <div className={style.buttonContainer}>
+                        <button className={style.confirmButton}>Inloggen</button>
+                    </div>
                 </form>
+            </div>
             </body>
         </>
 
