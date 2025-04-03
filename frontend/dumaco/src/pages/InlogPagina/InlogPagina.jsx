@@ -1,4 +1,4 @@
-import "./inlogPagina.css"
+import style from "./inlogPagina.module.css"
 
 
 function InlogPagina() {
@@ -25,27 +25,29 @@ function InlogPagina() {
 
     return(
         <>
-            {/* <img src="./frontend/Assets/DumacoLogoWit.png"/> */}
-            <form className="login-box" onSubmit={CheckCredentials}>
-                <div>
-                    <label>
-                        <img src="/icons/user.svg" alt="" />
-                        Username:
-                        <br/>
-                        <input type="text" className="login-input" name="username"></input>
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <img src="/icons/lock.svg" alt="" />
-                        Password:
-                        <br/>
-                        <input type="password" className="login-input" name="password"></input>
-                    </label>
-                </div>
-                <br/>
-                <button className="confirm-button"> Log in</button>
-            </form>
+            <body className={style.loginBody}>
+                {/* <img src="./frontend/Assets/DumacoLogoWit.png"/> */}
+                <form className={style.loginBox} onSubmit={CheckCredentials}>
+                    <div>
+                        <label>
+                            <img src="/icons/user.svg" alt="" />
+                            Username:
+                            <br/>
+                            <input type="text" className={style.loginInput} name="username"></input>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <img src="/icons/lock.svg" alt="" />
+                            Password:
+                            <br/>
+                            <input type="password" className={style.loginInput} name="password"></input>
+                        </label>
+                    </div>
+                    <br/>
+                    <button className={style.confirmButton}> Log in</button>
+                </form>
+            </body>
         </>
 
     );
