@@ -1,37 +1,37 @@
 import Logo from '../../assets/logo.png';
 import Profile from '../../assets/profiel.png';
-import './navbar.css';
+import Style from  './navbar.module.css';
 import { NavLink } from 'react-router-dom';
 
 function Navbar({ title, route }) {
     return (
         <>
-            <div className="navbar">
-                <img className="logo" src={Logo} alt="Bedrijfslogo" />
-                <div className="team">
-                    <div className="teamSymbol">
+            <div className={Style.navbar}>
+                <img className={Style.logo} src={Logo} alt="Bedrijfslogo" />
+                <div className={Style.team}>
+                    <div className={Style.teamSymbol}>
                         <h2>B</h2>
                     </div>
                     <h4>Blauw</h4>
                 </div>
 
                 <h1>{title}</h1>
-                <img className="profile" src={Profile} alt="Profielafbeelding" />
+                <img className={Style.profile} src={Profile} alt="Profielafbeelding" />
             </div>
-            <div className="subnavbar">
+            <div className={Style.subnavbar}>
                 <h5>{route}</h5>
-                <div className="nav-links">
-                    <NavLink to="/" className="subnavbar-button" activeClassName="active">
+                <div className={Style.nav-links}>
+                    <NavLink to="/" className={Style.subnavbar-button} activeClassName={Style.active}>
                         Home
                     </NavLink>
-                    <NavLink to="/klantenoverzicht" className="subnavbar-button" activeClassName="active">
+                    <NavLink to="/klantenoverzicht" className={Style.subnavbar-button} activeClassName={Style.active}>
                         Klanten
                     </NavLink>
-                    <NavLink to="/orderbonnenkantoor" className="subnavbar-button" activeClassName="active">
+                    <NavLink to="/orderbonnenkantoor" className={Style.subnavbar-button} activeClassName={Style.active}>
                         Orderbonnen
                     </NavLink>
-                    <NavLink to="/statistieken" className="subnavbar-button" activeClassName="active">
-                        Statistieken
+                    <NavLink to="/gebruikersbeheer" className={Style.subnavbar-button} activeClassName={Style.active}>
+                        Gebruikers
                     </NavLink>
                 </div>
             </div>

@@ -1,8 +1,8 @@
-import './sidebar.css'
+import Style from  './sidebar.module.css'
 
 function sidebar({ Overzicht, Statistieken, Orderbonnen, Klanten}) {
     return (
-        <div className="sidebar">
+        <div className={Style.sidebar}>
             <div className={Overzicht}>
                 <a href="#">Team overzicht</a>
             </div>

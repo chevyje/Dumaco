@@ -1,42 +1,16 @@
-.loginBody {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.inlog-body {
     background-image: url(../../assets/background.png);
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -1;
-    justify-content: center;
 }
 
-
-.loginBox {
-    background-color: hsl(0, 0%, 100%);
+.inlog-container {
+    background-color: white;
     width: 100%;
     height: 100%;
-    padding: 10px;
-    padding-top: 100px;
-    padding-right: 50px;
-    padding-left: 10px;
-    margin: 0;
-    margin-left: 10%;
-    margin-top: 15%;
-    border-radius: 10px;
-    box-shadow: 2.5px 5px 4px 5px hsl(0, 0%, 15%);}
-
-.confirmButton{
-    margin-top: 25px;
-    margin-left: 30%;
-    background-color: red;
-    width: 150px;
-    height: 30px;
-    margin-bottom: 20px;
+    padding: 10%;
 }
 
-.loginInput{
-    height: 20px;
-    width: 150px;
+body {
+    justify-content: center;
 }

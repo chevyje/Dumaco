@@ -2,7 +2,7 @@ import Table from "../../components/collapse/collapseTable.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
 import CustomButton from "../../components/button/button.jsx";
 import Sidebar from "../../components/sidebar/sidebar.jsx";
-import "./orderbonKantoor.css";
+import Style from "./orderbonKantoor.module.css";
 
 function klantOverzicht() {
     const Bewerking = [
@@ -42,13 +42,12 @@ function klantOverzicht() {
     return(
         <>
             <Navbar title={"Lely Industries #32500030"} route={"Orderbonnen / Lely Industries NV / #32500030"} />
-            <Sidebar Orderbonnen={"selected"} />
-            <div className="CollapsTable">
+            <div className={Style.CollapsTable}>
                 <Table jsonData={Bewerking} title={"Bewerking"} openByDefault={true} />
                 <Table jsonData={Inkoop} title={"Inkoop"} openByDefault={true} />
                 <Table jsonData={UitbesteedWerk} title={"Uitbesteed Werk"} openByDefault={true} />
             </div>
-            <div className="customButton">
+            <div className={Style.customButton}>
                 <CustomButton title={"Bewerken"} triggerFunction={null} icon={"pencil"} color={"#D9D9D9"} />
             </div>
         </>

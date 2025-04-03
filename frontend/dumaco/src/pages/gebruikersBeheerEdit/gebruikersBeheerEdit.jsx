@@ -1,6 +1,6 @@
 import Main from "../../layouts/Main.jsx";
 import InputField from "../../components/inputField/inputField.jsx";
-import './gebruikersBeheerEdit.css'
+import Style from './gebruikersBeheerEdit.module.css'
 import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
 import Navbar from "../../components/navbar/navbar.jsx";
@@ -11,12 +11,12 @@ const GebruikersBeheerEdit = () => {
         <>
             <Main />
             <Navbar title={"Gebruikers beheer"} route={"Management / Gebruikers / Tobias Beumer"}/>
-            <div className={"username-container"}>
-                <p className={"username-text"}>Tobias Beumer</p>
+            <div className={Style.username-container}>
+                <p className={Style.username-text}>Tobias Beumer</p>
             </div>
-            <div className="inputField-container">
-                <div className="form-container">
-                    <div className="column">
+            <div className={Style.inputField-container}>
+                <div className={Style.form-container}>
+                    <div className={Style.column}>
                         <InputField
                             title={"Naam"}
                             placeholder={"..."}
@@ -39,7 +39,7 @@ const GebruikersBeheerEdit = () => {
                             isLocked={false}
                         />
                     </div>
-                    <div className="column">
+                    <div className={Style.column}>
                         <InputField
                             title={"Laatste login"}
                             placeholder={""}
@@ -47,11 +47,13 @@ const GebruikersBeheerEdit = () => {
                             fieldId={"lastLogin"}
                             isLocked={true}
                         />
-                            {<a className={"reset-password"}>Reset wachtwoord</a>}
+                        <div className={Style.reset-password-container}>
+                            {<a className={Style.reset-password}>Reset wachtwoord</a>}
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className={"buttons-container"}>
+            <div className={Style.buttons-container}>
                 <Button
                     title={"Opslaan"}
                     triggerFunction={saveUser}
@@ -65,7 +67,7 @@ const GebruikersBeheerEdit = () => {
                     icon={"ban"}
                 />
             </div>
-            <div className={"delete-btn"}>
+            <div className={Style.delete-btn}>
                 <Button
                     title={""}
                     triggerFunction={null}
@@ -73,6 +75,7 @@ const GebruikersBeheerEdit = () => {
                     icon={"trash"}
                 />
             </div>
+
         </>
     );
 };

@@ -1,16 +1,14 @@
-import Main from "../../layouts/Main.jsx";
 import Table from "../../components/table/table.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/button/button.jsx";
-import './teamsBeheer.css'
+import Style from './teamsBeheer.module.css'
 import Navbar from "../../components/navbar/navbar.jsx";
 
 
 const ColoredBox = ({ colors }) => (
-    <div className="colored-box-container">
+    <div className={Style.colored-box-container}>
         {colors.map((color, index) => (
-            <div key={index} className="colored-box" style={{ backgroundColor: color }}></div>
+            <div key={index} className={Style.colored-box} style={{ backgroundColor: color }}></div>
         ))}
     </div>
 );
@@ -50,7 +48,7 @@ const TeamsBeheer = () => {
     return (
         <>
             <Navbar title={"Team Beheer"} route={"Team Beheer"} />
-            <div className="table-container">
+            <div className={Style.table-container}>
                 <Table
                     jsonData={state.results}
                     showUserEdit={false}

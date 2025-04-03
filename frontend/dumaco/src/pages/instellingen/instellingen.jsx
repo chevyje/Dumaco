@@ -1,6 +1,6 @@
 import Main from "../../layouts/Main.jsx";
 import React from "react";
-import "./instellingen.css";
+import Style from "./instellingen.module.css";
 import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
 import InputField from "../../components/inputField/inputField.jsx";
@@ -12,12 +12,12 @@ const Instellingen = () => {
         <>
             <Main />
             <Navbar title={"Gebruikers beheer"} route={"Hans Botterboy / Instellingen"}/>
-            <div className={"username-container"}>
-                <p className={"username-text"}>Hans Botterboy</p>
+            <div className={Style.username-container}>
+                <p className={Style.username-text}>Hans Botterboy</p>
             </div>
-            <div className="inputField-container">
-                <div className="form-container">
-                    <div className="column">
+            <div className={Style.inputField-container}>
+                <div className={Style.form-container}>
+                    <div className={Style.column}>
                         <InputField
                             title={"Naam"}
                             placeholder={"..."}
@@ -32,7 +32,7 @@ const Instellingen = () => {
                             fieldId={"recoverymail"}
                             isLocked={false}
                         />
-                        {<a className={"reset-password"}>Reset wachtwoord</a>}
+                        {<a className={Style.reset-password}>Reset wachtwoord</a>}
                         <InputField
                             title={"Functie"}
                             placeholder={"functie titel"}
@@ -41,12 +41,12 @@ const Instellingen = () => {
                             isLocked={false}
                         />
                     </div>
-                    <div className="column">
+                    <div className={Style.column}>
                         <p>teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeste</p>
                     </div>
                 </div>
             </div>
-            <div className={"btns-container"}>
+            <div className={Style.btns-container}>
                 <Button
                     title={"Opslaan"}
                     triggerFunction={saveUser}
@@ -60,7 +60,7 @@ const Instellingen = () => {
                     icon={"ban"}
                 />
             </div>
-            <div className={"delete-btn"}>
+            <div className={Style.delete-btn}>
                 <Button
                     title={""}
                     triggerFunction={null}

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import './table.css';
+import Style from  './table.module.css';
 
 function Table({ jsonData, title, showUserEdit, showPencil, editPageFunction }) {
     const navigate = useNavigate();
@@ -17,8 +17,8 @@ function Table({ jsonData, title, showUserEdit, showPencil, editPageFunction }) 
     let emptyHeaders = Array.from({ length: Math.max(spotsAvailable - headers.length, 0) });
 
     return (
-        <div className="colorTable">
-            {title && <div className="table-title">{title}</div>}
+        <div className={Style.colorTable}>
+            {title && <div className={Style.table-title}>{title}</div>}
 
             <table>
                 <thead>
@@ -42,15 +42,15 @@ function Table({ jsonData, title, showUserEdit, showPencil, editPageFunction }) 
                             <td key={`empty-cell-${index}`}></td>
                         ))}
                         {(showUserEdit || showPencil) && (
-                            <td className="edit-icon-cells">
+                            <td className={Style.edit-icon-cells}>
                                 {showUserEdit && (
-                                    <img src="/icons/editUser.svg" alt="edit-user" className="edit-user-icon" />
+                                    <img src="/icons/editUser.svg" alt="edit-user" className={Style.edit-user-icon} />
                                 )}
                                 {showPencil && editPageFunction && (
                                     <img
                                         src="/icons/pencil.svg"
                                         alt="edit"
-                                        className="edit-icon"
+                                        className={Style.edit-icon}
                                         onClick={() => editPageFunction(navigate)}
                                     />
                                 )}

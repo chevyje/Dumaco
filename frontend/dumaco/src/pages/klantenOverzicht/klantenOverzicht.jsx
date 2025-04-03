@@ -1,6 +1,6 @@
 import Navbar from "../../components/navbar/navbar.jsx";
 import Table from "../../components/table/table.jsx";
-import "./klantenOverzicht.css";
+import Style from "./klantenOverzicht.module.css";
 import Sidebar from "../../components/sidebar/sidebar.jsx";
 import Paginator from "../../components/paginator/paginator.jsx";
 
@@ -32,8 +32,7 @@ function klantenOverzicht() {
     return(
         <>
             <Navbar title={"Klanten"} route={"Klanten"} />
-            <Sidebar Klanten={"selected"} />
-            <div className="table">
+            <div className={Style.table}>
                 <Table jsonData={data} />
             </div>
             <Paginator />

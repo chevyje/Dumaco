@@ -1,20 +1,14 @@
 body {
     margin: 0;
     display: flex;
-    min-width: 100vw;
     place-items: center;
     padding-top: 18vh;
 }
 
 :root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-
     color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
     background-color: white;
-    overflow-x: hidden;
 }
 
 a {

@@ -1,4 +1,4 @@
-import './teamsBeheerEdit.css'
+import Style from './teamsBeheerEdit.module.css'
 import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react"
@@ -39,19 +39,19 @@ function TeamsBeheerEdit(){
     return(
         <>
             <Navbar title={"Team Beheer"} route={"Team Beheer"} />
-            <div className="team-beheer-container">
+            <div className={Style.team-beheer-container}>
                 <p>Team naam</p>
-                <input type="text" className="team-beheer-text" value={Naam} onChange={handelNaamChange}></input>
+                <input type="text" className={Style.team-beheer-text} value={Naam} onChange={handelNaamChange}></input>
                 <p>Primare Kleur</p>
-                <input type="color" className="team-beheer-color" value={PrimareKleur} onChange={handelPrimareKleurChange}></input>
+                <input type="color" className={Style.team-beheer-color} value={PrimareKleur} onChange={handelPrimareKleurChange}></input>
                 <p>Secundaire Kleur</p>
-                <input type="color" className="team-beheer-color" value={SecundaireKleur} onChange={handelSecundaireKleurChange}></input>
+                <input type="color" className={Style.team-beheer-color} value={SecundaireKleur} onChange={handelSecundaireKleurChange}></input>
                 <p>Tertiare Kleur</p>
-                <input type="color" className="team-beheer-color" value={TertiareKleur} onChange={handelTertiareKleurChange}></input>
+                <input type="color" className={Style.team-beheer-color} value={TertiareKleur} onChange={handelTertiareKleurChange}></input>
                 <p>Beschrijving</p>
-                <textarea className="team-beheer-textArea" value={Beschrijving} onChange={handelBeschrijvingChange}></textarea>
+                <textarea className={Style.team-beheer-textArea} value={Beschrijving} onChange={handelBeschrijvingChange}></textarea>
                 <br/>
-                    <div className="team-beheer-buttons">
+                    <div className={Style.team-beheer-buttons}>
                         <Button
                             title={"Opslaan"}
                             triggerFunction={null}

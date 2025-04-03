@@ -1,4 +1,4 @@
-import "./collapseTable.css"
+import Style from  "./collapseTable.module.css"
 import CollapseParent from "./collapseParent.jsx";
 
 function Table({ jsonData, title, openByDefault, legenda }) {
@@ -11,22 +11,22 @@ function Table({ jsonData, title, openByDefault, legenda }) {
     return (
         <CollapseParent title={title} openByDefault={openByDefault}>
             {legenda &&
-                <div className="legenda">
-                    <div className="vroeg">
+                <div className={Style.legenda}>
+                    <div className={Style.vroeg}>
                         <div style={{ backgroundColor: "green"}}></div>
                         <p>Te vroeg</p>
                     </div>
-                    <div className="tijd">
+                    <div className={Style.tijd}>
                         <div style={{ backgroundColor: "purple"}}></div>
                         <p>Op tijd</p>
                     </div>
-                    <div className="laat">
+                    <div className={Style.laat}>
                         <div style={{ backgroundColor: "red"}}></div>
                         <p>Te laat</p>
                     </div>
                 </div>
             }
-            <div className="grayTable">
+            <div className={Style.grayTable}>
                 <table>
                     <thead>
                     <tr>

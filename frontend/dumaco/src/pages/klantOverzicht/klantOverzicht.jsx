@@ -1,6 +1,6 @@
 import Table from "../../components/collapse/collapseTable.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
-import "./klantOverzicht.css";
+import Style from "./klantOverzicht.module.css";
 import SideBar from "../../components/sidebar/sidebar.jsx";
 import Sidebar from "../../components/sidebar/sidebar.jsx";
 
@@ -21,30 +21,29 @@ function klantOverzicht() {
     return(
         <>
             <Navbar title={"Lely Industries NV"} route={"Klanten / Lely Industries NV"} />
-            <Sidebar Klanten={"selected"} />
-            <div className="CollapsTable">
+            <div className={Style.CollapsTable}>
                 <Table jsonData={LopendeOrders} title={"Lopende Orders"} openByDefault={true} />
                 <Table jsonData={ToekomstigeOrders} title={"Toekomstige Orders"} openByDefault={true} />
                 <Table jsonData={OudeOrders} title={"Oude Orders"} openByDefault={true} Legenda={true}/>
             </div>
-            <div className="KlantInfo">
+            <div className={Style.KlantInfo}>
                 <div>
                     <h3>Lely Industries NV</h3>
                 </div>
-                <div className="info">
+                <div className={Style.info}>
                     <img src="../../../public/icons/location.svg" alt=""></img>
                     <p>Cornelis van der Lelylaan 1 <br />
                         3127PB Maassluis</p>
                 </div>
-                <div className="info">
+                <div className={Style.info}>
                     <img src="../../../public/icons/user.svg" alt=""></img>
                     <p>Jian Jiao</p>
                 </div>
-                <div className="info">
+                <div className={Style.info}>
                     <img src="../../../public/icons/phone.svg" alt=""></img>
                     <p>010-5996333</p>
                 </div>
-                <div className="info">
+                <div className={Style.info}>
                     <img src="../../../public/icons/truck.svg" alt=""></img>
                     <p>Door 4.22</p>
                 </div>
