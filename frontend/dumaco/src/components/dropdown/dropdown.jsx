@@ -1,4 +1,4 @@
-import './dropdown.css';
+import Style from  './dropdown.module.css';
 import React, { useState } from 'react';
 
 const Dropdown = ({ title = "Dropdown", options }) => {
@@ -9,18 +9,18 @@ const Dropdown = ({ title = "Dropdown", options }) => {
   };
 
   return (
-    <div className="dropdown">
-      <button onClick={toggleDropdown} className="dropdown-button">
+    <div className={Style.dropdown}>
+      <button onClick={toggleDropdown} className={Style.dropdown-button}>
         {title}
       </button>
       {isOpen && (
-        <ul className="menu">
+        <ul className={Style.menu}>
           {options && options.length > 0 ? (
             options.map((option, index) => (
-              <li key={index} className="menu-item">{option}</li>
+              <li key={index} className={Style.menu-item}>{option}</li>
             ))
           ) : (
-            <li className="menu-item">Geen opties beschikbaar</li>
+            <li className={Style.menu-item}>Geen opties beschikbaar</li>
           )}
         </ul>
       )}

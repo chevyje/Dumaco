@@ -2,7 +2,7 @@ import Navbar from "../../components/navbar/navbar.jsx";
 import Table from "../../components/table/table.jsx";
 import Paginator from "../../components/paginator/paginator.jsx";
 import Sidebar from "../../components/sidebar/sidebar.jsx";
-import "../klantenOverzicht/klantenOverzicht.css";
+import Style from "../klantenOverzicht/klantenOverzicht.module.css";
 
 function orderbonnenKantoor() {
     const data = [
@@ -33,7 +33,7 @@ function orderbonnenKantoor() {
     return(
         <>
             <Navbar title={"Orderbonnen"} route={"Orderbonnen"} />
-            <div className="table">
+            <div className={Style.table}>
                 <Table jsonData={data} />
             </div>
             <Paginator />

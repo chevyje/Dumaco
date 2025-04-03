@@ -1,4 +1,4 @@
-import "./inlogPagina.css"
+import Style from "./inlogPagina.module.css"
 
 function InlogPagina() {
     const CheckCredentials = () => {
@@ -7,14 +7,14 @@ function InlogPagina() {
 
     return(
         <>
-            <div className={"inlog-body"}>
-                <div className="inlog-container">
+            <div className={Style.inlog-body}>
+                <div className={Style.inlog-container}>
                     <h1>Login</h1>
-                    <div className="Input">
+                    <div className={Style.Input}>
                         <img src="../../../icons/user.svg" alt="" />
                         <input type="text" />
                     </div>
-                    <div className="Input">
+                    <div className={Style.Input}>
                         <img src="../../../icons/lock.svg" alt="" />
                         <input type="password" />
                     </div>
