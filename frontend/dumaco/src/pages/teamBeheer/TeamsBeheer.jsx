@@ -1,7 +1,7 @@
 import Table from "../../components/table/table.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Style from './teamsBeheer.module.css'
+import Style from './TeamsBeheer.module.css'
 import Navbar from "../../components/navbar/navbar.jsx";
 
 
@@ -48,8 +48,8 @@ const TeamsBeheer = () => {
     return (
         <>
             <Navbar title={"Team Beheer"} route={"Team Beheer"} />
-            <div className={Style.table-container}>
-                <Table
+            <div className={Style["table-container"]}>
+            <Table
                     jsonData={state.results}
                     showUserEdit={false}
                     showPencil={true}
