@@ -7,7 +7,7 @@ function Button({title, triggerFunction, color, icon}) {
     console.log(Icon);
 
     return (
-        <div className={style.buttonContainer}>
+        <div className={Style.buttonContainer}>
             <button
                 type="button"
                 className="btn"
