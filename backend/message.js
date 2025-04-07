@@ -6,7 +6,7 @@ messages.error.server = {message: "There went something wrong with the server, p
 messages.error.duplicate = {message: "The row you try to add already exists"};
 messages.error.notFound = {message: "Not found"};
 messages.error.noAccount = {message: "This username doesn't have an account"};
-messages.error.wrongPassword = {message: "Wrong password"};
+messages.error.incorrectPassword = {message: "Incorrect password"};
 
 // Success messages
 messages.success = {};

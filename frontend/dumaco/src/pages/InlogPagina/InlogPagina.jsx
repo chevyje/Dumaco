@@ -1,18 +1,38 @@
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 import style from "./inlogPagina.module.css"
-
-
 
 function InlogPagina() {
     const navigate = useNavigate();
-    const CheckCredentials = async (e) => {
+    const [text, setText] = useState("");
+
+    const Login = async (e) => {
         e.preventDefault();
         const username = e.target.username.value;
         const password = e.target.password.value;
-        console.log("Trying to login");
-        console.log(username);
-        console.log(JSON.stringify({username: username, password: password}))
+
+        // Checking for empty values
+        if(username === "" && password === ""){
+            e.target.username.parentElement.style.borderColor = "red";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText("Username and Password are required");
+            return;
+        }
+        if(username === ""){
+            e.target.username.parentElement.style.borderColor = "red";
+            e.target.password.parentElement.style.borderColor = "#d9d9d9";
+            setText("Username is required");
+            return;
+        }
+        if(password === ""){
+            e.target.username.parentElement.style.borderColor = "#d9d9d9";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText("Password is required");
+            return;
+        }
+
+        // Request to the server
         const passwordResponse = await fetch("http://localhost:8080/api/users/login", {
             method: "POST",
             body: JSON.stringify({
@@ -23,17 +43,43 @@ function InlogPagina() {
                 "Content-type": "application/json; charset=UTF-8"
             }
         });
+
+        // Response Handling
         const data = await passwordResponse.json();
-        console.log(data);
-        navigate("/");
+        const status = passwordResponse.status;
+        // Success Response
+        if(status === 200) {
+            navigate("/JuisteLogin");
+        }
+        // Unauthorized Response
+        else if(status === 401 && data.message.includes("username")) {
+            e.target.username.parentElement.style.borderColor = "red";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText(data.message);
+        }
+        else if(status === 401 && data.message.includes("password")) {
+            e.target.username.parentElement.style.borderColor = "#d9d9d9";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText(data.message);
+        }
+        // Invalid data response
+        else if(status === 400 && data.message.includes("username")) {
+            e.target.username.parentElement.style.borderColor = "red";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText(data.message);
+        }
+        else if(status === 400 && data.message.includes("password")) {
+            e.target.username.parentElement.style.borderColor = "#d9d9d9";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText(data.message);
+        }
     };
 
     return(
-        <>
-            <body className={style.inlogBody}>
+        <div className={style.inlogBody}>
             <div className={style.inlogContainer}>
                 <h2 className={style.title}>Inloggen</h2>
-                <form className={style.form} onSubmit={CheckCredentials}>
+                <form className={style.form} onSubmit={Login}>
                     <div className={style.inputContainer}>
                         <img className={style.image} src="/icons/user.svg" alt="" />
                         <input className={style.input} name="username" placeholder="Gebruikersnaam"></input>
@@ -48,11 +94,12 @@ function InlogPagina() {
                     <div className={style.buttonContainer}>
                         <button className={style.confirmButton}>Inloggen</button>
                     </div>
+                    <div className={style.errorMessageContainer}>
+                        <p className={style.errorMessage}>{text}</p>
+                    </div>
                 </form>
             </div>
-            </body>
-        </>
-
+        </div>
     );
 }
 
