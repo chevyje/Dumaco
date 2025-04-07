@@ -11,6 +11,7 @@
     width: 30%;
     height: 35%;
     border-radius: 20px;
+    padding: 5px;
 }
 
 .title{
@@ -49,7 +50,7 @@
 
 .forgotPassword{
     width: 85%;
-    margin: 0 auto auto auto;
+    margin: 5px auto auto auto;
 }
 
 .link{
