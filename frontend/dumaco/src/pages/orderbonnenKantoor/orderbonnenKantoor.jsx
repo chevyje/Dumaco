@@ -1,7 +1,6 @@
 import Navbar from "../../components/navbar/navbar.jsx";
 import Table from "../../components/table/table.jsx";
 import Paginator from "../../components/paginator/paginator.jsx";
-import Sidebar from "../../components/sidebar/sidebar.jsx";
 import Style from "../klantenOverzicht/klantenOverzicht.module.css";
 
 function orderbonnenKantoor() {
@@ -36,7 +35,7 @@ function orderbonnenKantoor() {
             <div className={Style.table}>
                 <Table jsonData={data} />
             </div>
-            <Paginator />
+            {/* <Paginator /> */}
         </>
     )
 }

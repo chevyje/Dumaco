@@ -48,7 +48,7 @@ const TeamsBeheer = () => {
     return (
         <>
             <Navbar title={"Team Beheer"} route={"Team Beheer"} />
-            <div className={StyletableContainer}>
+            <div className={Style.tableContainer}>
             <Table
                     jsonData={state.results}
                     showUserEdit={false}
