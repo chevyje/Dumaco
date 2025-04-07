@@ -1,9 +1,9 @@
-.coler-box-container{
+.colerBoxContainer{
     height: 20px;
     width: 60px;
   }
   
-  .colored-box{
+  .coloredBox{
     height: 20px;
     width: 20px;
     background-color: green;

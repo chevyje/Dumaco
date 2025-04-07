@@ -16,16 +16,38 @@ const App = () => {
         <Router>
             <Routes>
                 <Route path="/klantoverzicht" element={<KlantOverzicht />} />
+                {/* css problemen */}
+
                 <Route path="/klantenoverzicht" element={<KlantenOverzicht />} />
+                {/* styling error en paginator werkt niet goed */}
+
                 <Route path="/gebruikersbeheer" element={<GebruikersBeheer />} />
+                {/* styling error */}
+
                 <Route path="/gebruikersbeheeredit" element={<GebruikersBeheerEdit/>} />
+                {/* witte pagina */}
+
                 <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
+                {/* witte pagina */}
+
                 <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
+                {/* witte pagina */}
+
                 <Route path="/TeamsBeheerEdit" element={<TeamsBeheerEdit/>} />
+                {/* witte pagina */}
+
                 <Route path="/login" element={<InlogPagina />} />
+                {/* styling error */}
+
                 <Route path="/instellingen" element={<Instellingen />} />
+                {/* witte pagina */}
+
                 <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
+                {/* witte pagina */}
+
                 <Route path="/orderbonkantoor" element={<OrderbonKantoor />} />
+                {/* witte pagina */}
+
             </Routes>
         </Router>
     );

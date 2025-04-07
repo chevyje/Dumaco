@@ -20,17 +20,17 @@ function Navbar({ title, route }) {
             </div>
             <div className={Style.subnavbar}>
                 <h5>{route}</h5>
-                <div className={Style.nav-links}>
-                    <NavLink to="/" className={Style.subnavbar-button} activeClassName={Style.active}>
+                <div className={Style.navLinks}>
+                    <NavLink to="/" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Home
                     </NavLink>
-                    <NavLink to="/klantenoverzicht" className={Style.subnavbar-button} activeClassName={Style.active}>
+                    <NavLink to="/klantenoverzicht" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Klanten
                     </NavLink>
-                    <NavLink to="/orderbonnenkantoor" className={Style.subnavbar-button} activeClassName={Style.active}>
+                    <NavLink to="/orderbonnenkantoor" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Orderbonnen
                     </NavLink>
-                    <NavLink to="/gebruikersbeheer" className={Style.subnavbar-button} activeClassName={Style.active}>
+                    <NavLink to="/gebruikersbeheer" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Gebruikers
                     </NavLink>
                 </div>

@@ -6,9 +6,9 @@ import Navbar from "../../components/navbar/navbar.jsx";
 
 
 const ColoredBox = ({ colors }) => (
-    <div className={Style.colored-box-container}>
+    <div className={Style.coloredBoxContainer}>
         {colors.map((color, index) => (
-            <div key={index} className={Style.colored-box} style={{ backgroundColor: color }}></div>
+            <div key={index} className={Style.coloredBox} style={{ backgroundColor: color }}></div>
         ))}
     </div>
 );
@@ -48,7 +48,7 @@ const TeamsBeheer = () => {
     return (
         <>
             <Navbar title={"Team Beheer"} route={"Team Beheer"} />
-            <div className={Style["table-container"]}>
+            <div className={StyletableContainer}>
             <Table
                     jsonData={state.results}
                     showUserEdit={false}

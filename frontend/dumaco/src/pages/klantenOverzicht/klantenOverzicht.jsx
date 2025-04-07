@@ -35,7 +35,7 @@ function klantenOverzicht() {
             <div className={Style.table}>
                 <Table jsonData={data} />
             </div>
-            <Paginator />
+            {/* <Paginator /> */}
         </>
     )
 }

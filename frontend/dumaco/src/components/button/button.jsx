@@ -7,14 +7,14 @@ function Button({title, triggerFunction, color, icon}) {
     console.log(Icon);
 
     return (
-        <div className={style.button-container}>
+        <div className={style.buttonContainer}>
             <button
                 type="button"
                 className="btn"
                 onClick={triggerFunction}
                 style={{ backgroundColor: color }}
             >
-                {icon && <img className={Style.btn-icon} src={Icon} alt={"button"}></img>}
+                {icon && <img className={Style.btnIcon} src={Icon} alt={"button"}></img>}
                 {title}
             </button>
         </div>

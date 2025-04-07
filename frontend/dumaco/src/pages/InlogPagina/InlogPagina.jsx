@@ -7,8 +7,8 @@ function InlogPagina() {
 
     return(
         <>
-            <div className={Style.inlog-body}>
-                <div className={Style.inlog-container}>
+            <div className={Style.inlogBody}>
+                <div className={Style.inlogContainer}>
                     <h1>Login</h1>
                     <div className={Style.Input}>
                         <img src="../../../icons/user.svg" alt="" />

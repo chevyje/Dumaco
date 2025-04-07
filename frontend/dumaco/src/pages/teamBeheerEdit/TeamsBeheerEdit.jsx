@@ -36,22 +36,25 @@ function TeamsBeheerEdit(){
         setBeschrijving(event.target.value)
     }
 
-    return(
+    function cancelEdit(navigate){
+        navigate("/teamsbeheer");
+        
+    }    return(
         <>
             <Navbar title={"Team Beheer"} route={"Team Beheer"} />
-            <div className={Style.team-beheer-container}>
+            <div className={Style.teamBeheerContainer}>
                 <p>Team naam</p>
-                <input type="text" className={Style.team-beheer-text} value={Naam} onChange={handelNaamChange}></input>
+                <input type="text" className={Style.teamBeheerText} value={Naam} onChange={handelNaamChange}></input>
                 <p>Primare Kleur</p>
-                <input type="color" className={Style.team-beheer-color} value={PrimareKleur} onChange={handelPrimareKleurChange}></input>
+                <input type="color" className={Style.teamBeheerColor} value={PrimareKleur} onChange={handelPrimareKleurChange}></input>
                 <p>Secundaire Kleur</p>
-                <input type="color" className={Style.team-beheer-color} value={SecundaireKleur} onChange={handelSecundaireKleurChange}></input>
+                <input type="color" className={Style.teamBeheerColor} value={SecundaireKleur} onChange={handelSecundaireKleurChange}></input>
                 <p>Tertiare Kleur</p>
-                <input type="color" className={Style.team-beheer-color} value={TertiareKleur} onChange={handelTertiareKleurChange}></input>
+                <input type="color" className={Style.teamBeheerColor} value={TertiareKleur} onChange={handelTertiareKleurChange}></input>
                 <p>Beschrijving</p>
-                <textarea className={Style.team-beheer-textArea} value={Beschrijving} onChange={handelBeschrijvingChange}></textarea>
+                <textarea className={Style.teamBeheerTextArea} value={Beschrijving} onChange={handelBeschrijvingChange}></textarea>
                 <br/>
-                    <div className={Style.team-beheer-buttons}>
+                    <div className={Style.teamBeheerButtons}>
                         <Button
                             title={"Opslaan"}
                             triggerFunction={null}
@@ -68,11 +71,7 @@ function TeamsBeheerEdit(){
             </div>
         </>
 
-    )
-    function cancelEdit(navigate){
-        navigate("/teamsbeheer");
-    }
-    
+    )   
 }
 
 export default TeamsBeheerEdit

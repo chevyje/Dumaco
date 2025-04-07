@@ -11,11 +11,11 @@ const GebruikersBeheerEdit = () => {
         <>
             <Main />
             <Navbar title={"Gebruikers beheer"} route={"Management / Gebruikers / Tobias Beumer"}/>
-            <div className={Style.username-container}>
-                <p className={Style.username-text}>Tobias Beumer</p>
+            <div className={Style.usernameContainer}>
+                <p className={Style.usernameText}>Tobias Beumer</p>
             </div>
-            <div className={Style.inputField-container}>
-                <div className={Style.form-container}>
+            <div className={Style.inputFieldContainer}>
+                <div className={Style.formContainer}>
                     <div className={Style.column}>
                         <InputField
                             title={"Naam"}
@@ -47,13 +47,13 @@ const GebruikersBeheerEdit = () => {
                             fieldId={"lastLogin"}
                             isLocked={true}
                         />
-                        <div className={Style.reset-password-container}>
-                            {<a className={Style.reset-password}>Reset wachtwoord</a>}
+                        <div className={Style.resetPasswordContainer}>
+                            {<a className={Style.resetPassword}>Reset wachtwoord</a>}
                         </div>
                     </div>
                 </div>
             </div>
-            <div className={Style.buttons-container}>
+            <div className={Style.buttonsContainer}>
                 <Button
                     title={"Opslaan"}
                     triggerFunction={saveUser}
@@ -67,7 +67,7 @@ const GebruikersBeheerEdit = () => {
                     icon={"ban"}
                 />
             </div>
-            <div className={Style.delete-btn}>
+            <div className={Style.deleteBtn}>
                 <Button
                     title={""}
                     triggerFunction={null}

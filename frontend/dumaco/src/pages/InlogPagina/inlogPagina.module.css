@@ -1,10 +1,10 @@
-.inlog-body {
+.inlogBody {
     background-image: url(../../assets/background.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.inlog-container {
+.inlogContainer {
     background-color: white;
     width: 100%;
     height: 100%;

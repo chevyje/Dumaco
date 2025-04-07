@@ -36,7 +36,7 @@
   }
   
   /* Active page button */
-  .paginator .active-page {
+  .paginator .activePage {
     padding: 6px 16px;
     background-color: #87cefa;
     color: #000;
@@ -45,7 +45,7 @@
   }
   
   /* Other page buttons */
-  .paginator .page-button {
+  .paginator .pageButton {
     padding: 6px 16px;
     background-color: transparent;
     color: #333;
@@ -55,7 +55,7 @@
     transition: background-color 0.2s ease;
   }
   
-  .paginator .page-button:hover {
+  .paginator .pageButton:hover {
     background-color: #87cefa;
     color: #fff;
   }
@@ -78,7 +78,7 @@
   }
   
   /* Right arrow button */
-  .paginator .chevron-right {
+  .paginator .chevronRight {
     font-size: 20px;
     color: #333;
   }

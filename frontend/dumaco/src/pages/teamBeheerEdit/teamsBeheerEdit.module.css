@@ -1,4 +1,4 @@
-.team-beheer-container{
+.teamBeheerContainer{
     font-size: 1.5em;
     margin: 0;
     margin-left: 25%;
@@ -6,7 +6,7 @@
     line-height: 1em;
   }
   
-  .team-beheer-text{
+  .teamBeheerText{
     height: 20px;
     width: 200px;
     font-family: Arial, sans-serif;
@@ -16,7 +16,7 @@
     color: hsl(0, 0%, 50%);
   }
   
-  .team-beheer-color{
+  .teamBeheerColor{
     height: 40px;
     width: 40px;
     border-radius: 5px;
@@ -24,7 +24,7 @@
     display: inline-block;
   }
   
-  .team-beheer-textArea{
+  .teamBeheerTextArea{
     height: 50px;
     width: 1000px;
     font-family: Arial, sans-serif;
@@ -47,7 +47,7 @@
     justify-content: center; 
   }
   
-  .team-beheer-annuleren{
+  .teamBeheerAnnuleren{
     height: 40px;
     width: 150px;
     color: white;
@@ -60,7 +60,7 @@
     align-items: center;  
     justify-content: center; 
   }
-  .team-beheer-buttons {
+  .teamBeheerButtons {
     display: flex;
     gap: 10px;
     margin-right: 50%;
