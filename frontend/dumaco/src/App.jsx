@@ -28,7 +28,7 @@ const App = () => {
                 {/* witte pagina */}
 
                 <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
-                {/* witte pagina */}
+                {/* css error */}
 
                 <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
                 {/* witte pagina */}

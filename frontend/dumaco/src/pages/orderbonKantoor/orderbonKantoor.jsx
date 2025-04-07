@@ -1,7 +1,6 @@
 import Table from "../../components/collapse/collapseTable.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
 import CustomButton from "../../components/button/button.jsx";
-import Sidebar from "../../components/sidebar/sidebar.jsx";
 import Style from "./orderbonKantoor.module.css";
 
 function klantOverzicht() {
