@@ -7,10 +7,10 @@ function Button({title, triggerFunction, color, icon}) {
     console.log(Icon);
 
     return (
-        <div className={Style.buttonContainer}>
+        <div>
             <button
                 type="button"
-                className="btn"
+                className={Style.btn}
                 onClick={triggerFunction}
                 style={{ backgroundColor: color }}
             >
