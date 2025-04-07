@@ -10,17 +10,17 @@ const Dropdown = ({ title = "Dropdown", options }) => {
 
   return (
     <div className={Style.dropdown}>
-      <button onClick={toggleDropdown} className={Style.dropdown-button}>
+      <button onClick={toggleDropdown} className={Style.dropdownButton}>
         {title}
       </button>
       {isOpen && (
         <ul className={Style.menu}>
           {options && options.length > 0 ? (
             options.map((option, index) => (
-              <li key={index} className={Style.menu-item}>{option}</li>
+              <li key={index} className={Style.menuItem}>{option}</li>
             ))
           ) : (
-            <li className={Style.menu-item}>Geen opties beschikbaar</li>
+            <li className={Style.menuItem}>Geen opties beschikbaar</li>
           )}
         </ul>
       )}

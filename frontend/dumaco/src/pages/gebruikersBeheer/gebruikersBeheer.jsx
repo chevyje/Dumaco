@@ -21,7 +21,7 @@ function GebruikersBeheer() {
     return (
         <>
             <Navbar title={"Gebruikers beheer"} route={"Management / Gebruikers"}/>
-            <div className="table-container">
+            <div className="tableContainer">
                 <Table
                     jsonData={state.results}
                     title={"Ontkoppelde gebruikers"}

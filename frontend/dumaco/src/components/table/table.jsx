@@ -18,7 +18,7 @@ function Table({ jsonData, title, showUserEdit, showPencil, editPageFunction }) 
 
     return (
         <div className={Style.colorTable}>
-            {title && <div className={Style.table-title}>{title}</div>}
+            {title && <div className={Style.tableTitle}>{title}</div>}
 
             <table>
                 <thead>
@@ -42,15 +42,15 @@ function Table({ jsonData, title, showUserEdit, showPencil, editPageFunction }) 
                             <td key={`empty-cell-${index}`}></td>
                         ))}
                         {(showUserEdit || showPencil) && (
-                            <td className={Style.edit-icon-cells}>
+                            <td className={Style.editIconCells}>
                                 {showUserEdit && (
-                                    <img src="/icons/editUser.svg" alt="edit-user" className={Style.edit-user-icon} />
+                                    <img src="/icons/editUser.svg" alt="edit-user" className={Style.editUserIcon} />
                                 )}
                                 {showPencil && editPageFunction && (
                                     <img
                                         src="/icons/pencil.svg"
                                         alt="edit"
-                                        className={Style.edit-icon}
+                                        className={Style.editIcon}
                                         onClick={() => editPageFunction(navigate)}
                                     />
                                 )}

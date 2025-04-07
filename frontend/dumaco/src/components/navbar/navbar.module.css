@@ -76,16 +76,16 @@
     color: white;
 }
 
-.subnavbar-button {
+.subnavbarButton {
     color: white;
     font-weight: lighter;
 }
 
-.subnavbar-button:hover {
+.subnavbarButton:hover {
     color: #450000;
 }
 
-.nav-links {
+.navLinks {
     display: flex;
     justify-content: center;
     gap: 50px;
@@ -94,10 +94,10 @@
     transform: translateX(-50%);
 }
 
-.subnavbar-button.active {
+.subnavbarButton.active {
     font-weight: bold;
 }
 
-.subnavbar-button:last-child.active {
+.subnavbarButton:last-child.active {
     border-right: none;
 }

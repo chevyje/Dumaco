@@ -1,17 +1,17 @@
-.instellingen-title {
+.instellingenTitle {
     color: black;
 }
 
-.instellingen-text {
+.instellingenText {
     color: black;
 }
 
-.form-container {
+.formContainer {
     display: flex;
     flex-wrap: wrap;
 }
 
-.inputField-container {
+.inputFieldContainer {
 
 }
 
@@ -19,7 +19,7 @@
     padding-right: 5vw;
 }
 
-.username-container {
+.usernameContainer {
     display: flex;
     background: #E1ECFF;
     width: 55vw;
@@ -29,13 +29,13 @@
     margin-bottom: 20%;
 }
 
-.username-text {
+.usernameText {
     font-size: 2.5rem;
     color: black;
     font-weight: bold;
 }
 
-.reset-password {
+.resetPassword {
     color: black;
     text-decoration: underline;
     cursor: pointer;
@@ -44,14 +44,14 @@
     top: 56%;
 }
 
-.btns-container {
+.btnsContainer {
     display: flex;
     margin-top: -20vh;
     margin-left: 46.5%;
     margin-right: 150px;
 }
 
-.delete-btn {
+.deleteBtn {
     position: fixed;
     bottom: 1vh;
     right: 1vw;

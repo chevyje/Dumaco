@@ -36,15 +36,15 @@ function klantOverzicht() {
                         3127PB Maassluis</p>
                 </div>
                 <div className={Style.info}>
-                    <img src="../../../public/icons/user.svg" alt=""></img>
+                    <img src="../../../icons/user.svg" alt=""></img>
                     <p>Jian Jiao</p>
                 </div>
                 <div className={Style.info}>
-                    <img src="../../../public/icons/phone.svg" alt=""></img>
+                    <img src="../../../icons/phone.svg" alt=""></img>
                     <p>010-5996333</p>
                 </div>
                 <div className={Style.info}>
-                    <img src="../../../public/icons/truck.svg" alt=""></img>
+                    <img src="../../../icons/truck.svg" alt=""></img>
                     <p>Door 4.22</p>
                 </div>
            </div>

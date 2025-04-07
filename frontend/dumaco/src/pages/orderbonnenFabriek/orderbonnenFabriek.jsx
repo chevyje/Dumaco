@@ -53,7 +53,7 @@ function OrderbonnenFabriek() {
 
     return (
         <>
-            <div className="table-container">
+            <div className="tableContainer">
                 <Table
                     columns={state.columns}
                     columnsToHide={state.columnsToHide}

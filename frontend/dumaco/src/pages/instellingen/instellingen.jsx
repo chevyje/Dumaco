@@ -12,11 +12,11 @@ const Instellingen = () => {
         <>
             <Main />
             <Navbar title={"Gebruikers beheer"} route={"Hans Botterboy / Instellingen"}/>
-            <div className={Style.username-container}>
-                <p className={Style.username-text}>Hans Botterboy</p>
+            <div className={Style.usernameContainer}>
+                <p className={Style.usernameText}>Hans Botterboy</p>
             </div>
-            <div className={Style.inputField-container}>
-                <div className={Style.form-container}>
+            <div className={Style.inputFieldContainer}>
+                <div className={Style.formContainer}>
                     <div className={Style.column}>
                         <InputField
                             title={"Naam"}
@@ -32,7 +32,7 @@ const Instellingen = () => {
                             fieldId={"recoverymail"}
                             isLocked={false}
                         />
-                        {<a className={Style.reset-password}>Reset wachtwoord</a>}
+                        {<a className={Style.resetPassword}>Reset wachtwoord</a>}
                         <InputField
                             title={"Functie"}
                             placeholder={"functie titel"}
@@ -46,7 +46,7 @@ const Instellingen = () => {
                     </div>
                 </div>
             </div>
-            <div className={Style.btns-container}>
+            <div className={Style.btnsContainer}>
                 <Button
                     title={"Opslaan"}
                     triggerFunction={saveUser}
@@ -60,7 +60,7 @@ const Instellingen = () => {
                     icon={"ban"}
                 />
             </div>
-            <div className={Style.delete-btn}>
+            <div className={Style.deleteBtn}>
                 <Button
                     title={""}
                     triggerFunction={null}

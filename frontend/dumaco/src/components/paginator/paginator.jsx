@@ -24,7 +24,7 @@ export default function Paginator({ totalPages = 50 }) {
 
       {/* First Page Always Visible */}
       <button
-        className={`{Style.page-button} ${currentPage === 1 ? Style.active-page : ""}`}
+        className={`{Style.pageButton} ${currentPage === 1 ? Style.active-page : ""}`}
         onClick={() => goToPage(1)}
       >
         1
@@ -35,19 +35,19 @@ export default function Paginator({ totalPages = 50 }) {
 
       {/* Show Page Before Current (If it's not Page 1 or 2) */}
       {currentPage > 2 && (
-        <button className={Style.page-button} onClick={() => goToPage(currentPage - 1)}>
+        <button className={Style.pageButton} onClick={() => goToPage(currentPage - 1)}>
           {currentPage - 1}
         </button>
       )}
 
       {/* Current Page */}
       {currentPage !== 1 && currentPage !== totalPages && (
-        <button className={Style.active-page}>{currentPage}</button>
+        <button className={Style.activePage}>{currentPage}</button>
       )}
 
       {/* Show Page After Current (If it's not the last page) */}
       {currentPage < totalPages - 1 && (
-        <button className={Style.page-button} onClick={() => goToPage(currentPage + 1)}>
+        <button className={Style.pageButton} onClick={() => goToPage(currentPage + 1)}>
           {currentPage + 1}
         </button>
       )}
@@ -57,7 +57,7 @@ export default function Paginator({ totalPages = 50 }) {
 
       {/* Last Page Always Visible */}
       <button
-        className={`{Style.page-button} ${currentPage === totalPages ? Style.active-page : ""}`}
+        className={`{Style.page-button} ${currentPage === totalPages ? Style.activePage : ""}`}
         onClick={() => goToPage(totalPages)}
       >
         {totalPages}
@@ -65,7 +65,7 @@ export default function Paginator({ totalPages = 50 }) {
 
       {/* Right Arrow */}
       <button
-        className={Style.chevron-right}
+        className={Style.chevronRight}
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage === totalPages}
       >

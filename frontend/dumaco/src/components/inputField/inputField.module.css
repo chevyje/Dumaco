@@ -1,11 +1,11 @@
-.inputField-container {
+.inputFieldContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
 
-.form-container {
+.formContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -13,7 +13,7 @@
     width: 100%;
 }
 
-.inputField-item {
+.inputFieldItem {
     display: flex;
     flex-direction: column;
     width: 15vw;
