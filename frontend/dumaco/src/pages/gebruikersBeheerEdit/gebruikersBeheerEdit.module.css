@@ -4,9 +4,8 @@
 }
 
 .inputFieldContainer {
-    margin-top: -12.5%;
-    padding-bottom: 5vh;
-    padding-left: 25%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .column {
@@ -14,6 +13,8 @@
 }
 
 .usernameContainer {
+    align-items: center;
+    justify-content: center;
     display: flex;
     background: #E1ECFF;
     width: 55vw;
@@ -67,5 +68,13 @@
     justify-content: center;
     width: 100%;
     margin: auto;
+}
+
+input {
+    margin-bottom: 1rem;
+}
+
+label {
+    margin-bottom: 0.25rem;
 }
 
