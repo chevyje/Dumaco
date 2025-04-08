@@ -5,7 +5,6 @@ import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
 import Navbar from "../../components/navbar/navbar.jsx";
 import Dropdown2 from "../../components/dropdown2/dropdown2.jsx";
-import Dropdown from "../../components/dropdown/dropdown.jsx";
 
 const GebruikersBeheerEdit = () => {
     const navigate = useNavigate();
@@ -36,14 +35,14 @@ const GebruikersBeheerEdit = () => {
                             isLocked={false}
                         />
                         <InputField
-                            title={"Recovery mail"}
-                            placeholder={"example@domain.com"}
+                            title={"Herstel email"}
+                            placeholder={"voorbeeld@domein.com"}
                             defaultText={""}
                             fieldId={"recoverymail"}
                             isLocked={false}
                         />
                         <InputField
-                            title={"Function"}
+                            title={"Functie"}
                             placeholder={"functie titel"}
                             defaultText={"Lasser"}
                             fieldId={"function"}
@@ -55,15 +54,17 @@ const GebruikersBeheerEdit = () => {
                             options={options}
                             title={"Team"}
                         />
-                        <InputField
-                            title={"Laatste login"}
-                            placeholder={""}
-                            defaultText={"10-03-2025 12:18"}
-                            fieldId={"lastLogin"}
-                            isLocked={true}
-                        />
+                        <div className={Style.lastLogin}>
+                            <InputField
+                                title={"Laatste login"}
+                                placeholder={""}
+                                defaultText={"10-03-2025 12:18"}
+                                fieldId={"lastLogin"}
+                                isLocked={true}
+                            />
+                        </div>
                         <div className={Style.resetPasswordContainer}>
-                            {<a className={Style.resetPassword}>Reset wachtwoord</a>}
+                            {<a className={Style.resetPassword}>Herstel wachtwoord</a>}
                         </div>
                     </div>
                 </div>
