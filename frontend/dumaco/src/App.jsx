@@ -31,7 +31,7 @@ const App = () => {
                 {/* css error */}
 
                 <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
-                {/* witte pagina */}
+                {/* css error */}
 
                 <Route path="/TeamsBeheerEdit" element={<TeamsBeheerEdit/>} />
                 {/* witte pagina */}
@@ -43,10 +43,10 @@ const App = () => {
                 {/* witte pagina */}
 
                 <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
-                {/* witte pagina */}
+                {/* css error */}
 
                 <Route path="/orderbonkantoor" element={<OrderbonKantoor />} />
-                {/* witte pagina */}
+                {/* css error */}
 
             </Routes>
         </Router>
