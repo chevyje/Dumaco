@@ -77,12 +77,19 @@
 }
 
 .subnavbarButton {
+    text-align: center;
+    align-items: center;
+    padding: 0 0.5rem;
     color: white;
-    font-weight: lighter;
+    font-weight: normal;
+    transition: 100ms ease-in-out;
 }
 
-.subnavbarButton:hover {
-    color: #450000;
+.subnavbarButton:hover,
+.subnavbarButton.active {
+    font-weight: bold;
+    color: white;
+    transform: scale(1.025);
 }
 
 .navLinks {
@@ -92,10 +99,6 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-}
-
-.subnavbarButton.active {
-    font-weight: bold;
 }
 
 .subnavbarButton:last-child.active {
