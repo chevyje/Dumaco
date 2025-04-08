@@ -5,6 +5,7 @@ import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
 import Navbar from "../../components/navbar/navbar.jsx";
 import Dropdown2 from "../../dropdown2/dropdown2.jsx";
+import Dropdown from "../../components/dropdown/dropdown.jsx";
 
 const GebruikersBeheerEdit = () => {
     const navigate = useNavigate();
@@ -50,6 +51,10 @@ const GebruikersBeheerEdit = () => {
                         />
                     </div>
                     <div className={Style.column}>
+                        <Dropdown2
+                            options={options}
+                            title={"Team"}
+                        />
                         <InputField
                             title={"Laatste login"}
                             placeholder={""}
@@ -83,9 +88,6 @@ const GebruikersBeheerEdit = () => {
                     triggerFunction={null}
                     color={'#710000'}
                     icon={"trash"}
-                />
-                <Dropdown2
-                    options={options}
                 />
             </div>
 

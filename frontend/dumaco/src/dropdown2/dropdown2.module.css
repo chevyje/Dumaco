@@ -16,3 +16,8 @@
     transition: 150ms ease-in-out;
     border-color: black;
 }
+
+.dropdownLabel {
+    display: block;
+    margin-bottom: 0.25rem;
+}
