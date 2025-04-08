@@ -1,0 +1,18 @@
+.dropdownSelect {
+    color: black;
+    background-color: white;
+    padding: 0.5rem 2.5rem 0.5rem 2rem;
+    border-radius: 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("../../public/icons/chevron-down.svg");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+}
+
+.dropdownSelect::selection, .dropdownSelect:hover {
+    transition: 150ms ease-in-out;
+    border-color: black;
+}

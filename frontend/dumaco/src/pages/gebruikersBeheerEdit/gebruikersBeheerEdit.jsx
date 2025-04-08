@@ -4,9 +4,19 @@ import Style from './gebruikersBeheerEdit.module.css'
 import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
 import Navbar from "../../components/navbar/navbar.jsx";
+import Dropdown2 from "../../dropdown2/dropdown2.jsx";
 
 const GebruikersBeheerEdit = () => {
     const navigate = useNavigate();
+
+    const options = [
+        { value: 'blauw', label: 'Blauw' },
+        { value: 'rood', label: 'Rood' },
+        { value: 'oranje', label: 'Oranje' },
+        { value: 'geel', label: 'Geel' }
+    ];
+
+
     return (
         <>
             <Main />
@@ -73,6 +83,9 @@ const GebruikersBeheerEdit = () => {
                     triggerFunction={null}
                     color={'#710000'}
                     icon={"trash"}
+                />
+                <Dropdown2
+                    options={options}
                 />
             </div>
 
