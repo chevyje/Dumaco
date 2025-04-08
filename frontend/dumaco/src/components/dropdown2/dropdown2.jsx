@@ -1,4 +1,4 @@
-import Style from  './dropdown2.module.css';
+import Style from './dropdown2.module.css';
 
 function Dropdown2({ title, options }) {
     return (

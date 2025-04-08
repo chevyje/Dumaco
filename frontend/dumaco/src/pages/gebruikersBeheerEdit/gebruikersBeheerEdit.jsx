@@ -4,7 +4,7 @@ import Style from './gebruikersBeheerEdit.module.css'
 import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
 import Navbar from "../../components/navbar/navbar.jsx";
-import Dropdown2 from "../../dropdown2/dropdown2.jsx";
+import Dropdown2 from "../../components/dropdown2/dropdown2.jsx";
 import Dropdown from "../../components/dropdown/dropdown.jsx";
 
 const GebruikersBeheerEdit = () => {

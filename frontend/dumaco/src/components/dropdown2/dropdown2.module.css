@@ -6,7 +6,7 @@
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url("../../public/icons/chevron-down.svg");
+    background-image: url("../../../public/icons/chevron-down.svg");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 1rem;
