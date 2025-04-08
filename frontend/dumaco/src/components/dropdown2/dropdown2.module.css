@@ -11,7 +11,7 @@
     border: 1px solid #8f8f8f;
     border-radius: 4px;
     color: black;
-    position: relative; /* belangrijk voor absolute positioning van chevron */
+    position: relative;
 }
 
 .selectedOption:hover, .selectedOption::selection {
