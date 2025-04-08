@@ -2,6 +2,7 @@ import { useState } from "react";
 import Table from "../../components/table/table.jsx";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/navbar.jsx";
+import Styles from "./gebruikersBeheer.module.css";
 
 function GebruikersBeheer() {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ function GebruikersBeheer() {
     return (
         <>
             <Navbar title={"Gebruikers beheer"} route={"Management / Gebruikers"}/>
-            <div className="tableContainer">
+            <div className={Styles.tableContainer}>
                 <Table
                     jsonData={state.results}
                     title={"Ontkoppelde gebruikers"}
