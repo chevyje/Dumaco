@@ -1,23 +1,55 @@
-.dropdownSelect {
+.dropdownContainer {
+    position: relative;
+    cursor: pointer;
+}
+
+.selectedOption {
+    display: flex;
+    padding: 8px 12px;
+    background-color: rgba(241, 241, 241, 0.81);
+    border: 1px solid #8f8f8f;
+    border-radius: 4px;
     color: black;
+}
+
+.selectedOption:hover, .selectedOption::selection {
+    border: 1px solid #171717;
+}
+
+.dropdownOptions {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     background-color: white;
-    padding: 0.5rem 2.5rem 0.5rem 2rem;
-    border-radius: 8px;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("../../../public/icons/chevron-down.svg");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    background-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
 }
 
-.dropdownSelect::selection, .dropdownSelect:hover {
-    transition: 150ms ease-in-out;
-    border-color: black;
-}
-
-.dropdownLabel {
+.dropdownContainer:hover .dropdownOptions {
     display: block;
-    margin-bottom: 0.25rem;
 }
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+}
+
+.option:hover {
+    background-color: #f0f0f0;
+}
+
+.icon {
+    height: 20px;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+}
+

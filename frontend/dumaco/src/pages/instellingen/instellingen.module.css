@@ -1,58 +1,68 @@
-.instellingenTitle {
-    color: black;
-}
-
-.instellingenText {
-    color: black;
-}
-
 .formContainer {
     display: flex;
     flex-wrap: wrap;
 }
 
 .inputFieldContainer {
-
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .column {
     padding-right: 5vw;
 }
 
-.usernameContainer {
+.resetPasswordContainer {
     display: flex;
-    background: #E1ECFF;
-    width: 55vw;
-    height: 15vh;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 20%;
+    width: 100%;
 }
 
-.usernameText {
-    font-size: 2.5rem;
-    color: black;
-    font-weight: bold;
-}
 
 .resetPassword {
+    margin-top: 15%;
     color: black;
     text-decoration: underline;
     cursor: pointer;
-    position: fixed;
-    left: 18%;
-    top: 56%;
+    width: 100%;
 }
 
 .btnsContainer {
     display: flex;
-    margin-top: -20vh;
-    margin-left: 46.5%;
-    margin-right: 150px;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 8px;
 }
 
-.deleteBtn {
-    position: fixed;
-    bottom: 1vh;
-    right: 1vw;
+.buttonsContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 8px;
 }
+
+.itemsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+}
+
+.languageDropdown {
+    width: 15rem;
+}
+
+input {
+    margin-bottom: 1rem;
+}
+
+label {
+    margin-bottom: 0.25rem;
+}
+
+select {
+    margin-bottom: 1.2rem;
+}
+

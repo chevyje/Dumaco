@@ -5,16 +5,22 @@ import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
 import InputField from "../../components/inputField/inputField.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
+import Dropdown2 from "../../components/dropdown2/dropdown2.jsx";
 
 const Instellingen = () => {
     const navigate = useNavigate();
+
+    const options = [
+        { value: 'nederlands', label: 'Nederlands', icon: 'nl' },
+        { value: 'engels', label: 'Engels', icon: 'gb' },
+        { value: 'pools', label: 'Pools', icon: 'pl' }
+    ];
+
+
     return (
         <>
             <Main />
-            <Navbar title={"Gebruikers beheer"} route={"Hans Botterboy / Instellingen"}/>
-            <div className={Style.usernameContainer}>
-                <p className={Style.usernameText}>Hans Botterboy</p>
-            </div>
+            <Navbar title={"Instellingen"} route={"Instellingen"}/>
             <div className={Style.inputFieldContainer}>
                 <div className={Style.formContainer}>
                     <div className={Style.column}>
@@ -32,17 +38,15 @@ const Instellingen = () => {
                             fieldId={"recoverymail"}
                             isLocked={false}
                         />
-                        {<a className={Style.resetPassword}>Reset wachtwoord</a>}
-                        <InputField
-                            title={"Functie"}
-                            placeholder={"functie titel"}
-                            defaultText={"Lasser"}
-                            fieldId={"function"}
-                            isLocked={false}
-                        />
+                        {<a className={Style.resetPassword}>Herstel wachtwoord</a>}
                     </div>
                     <div className={Style.column}>
-                        <p>teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeste</p>
+                        <div className={Style.languageDropdown}></div>
+                        <Dropdown2
+                        title={"Taal"}
+                        options={options}
+                        useIcons={true}
+                        ></Dropdown2>
                     </div>
                 </div>
             </div>
@@ -60,14 +64,6 @@ const Instellingen = () => {
                     icon={"ban"}
                 />
             </div>
-            <div className={Style.deleteBtn}>
-                <Button
-                    title={""}
-                    triggerFunction={null}
-                    color={'#710000'}
-                    icon={"trash"}
-                />
-            </div>
         </>
     )
 };
@@ -78,7 +74,11 @@ function saveUser(){
 }
 
 function cancelEdit(navigate){
-    navigate("/Instellingen");
+    if (window.history.length > 1 && window.location.pathname !== '/instellingen') {
+        navigate(-1);
+    } else {
+        navigate('/home');
+    }
 }
 
 export default Instellingen;
