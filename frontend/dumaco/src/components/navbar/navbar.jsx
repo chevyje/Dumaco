@@ -21,7 +21,7 @@ function Navbar({ title, route }) {
             <div className={Style.subnavbar}>
                 <h5>{route}</h5>
                 <div className={Style.navLinks}>
-                    <NavLink to="/" className={Style.subnavbarButton} activeClassName={Style.active}>
+                    <NavLink to="/home" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Home
                     </NavLink>
                     <NavLink to="/klantenoverzicht" className={Style.subnavbarButton} activeClassName={Style.active}>
