@@ -10,6 +10,7 @@ import Instellingen from "./pages/instellingen/instellingen.jsx";
 import OrderbonnenKantoor from "./pages/orderbonnenKantoor/orderbonnenKantoor.jsx";
 import OrderbonKantoor from "./pages/orderbonKantoor/orderbonKantoor.jsx";
 import InlogPagina from "./pages/InlogPagina/InlogPagina.jsx";
+import HomePagina from "./pages/HomePagina/HomePagina.jsx";
 
 const App = () => {
     return (
@@ -47,6 +48,8 @@ const App = () => {
 
                 <Route path="/orderbonkantoor" element={<OrderbonKantoor />} />
                 {/* css error */}
+
+                <Route path="/home" element={<HomePagina />} />
 
             </Routes>
         </Router>
