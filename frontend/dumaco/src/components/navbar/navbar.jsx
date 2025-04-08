@@ -1,9 +1,16 @@
 import Logo from '../../assets/logo.png';
 import Profile from '../../assets/profiel.png';
 import Style from  './navbar.module.css';
-import { NavLink } from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 
 function Navbar({ title, route }) {
+    const navigate = useNavigate();
+
+
+    const handleProfileClick = () => {
+        navigate('/instellingen');
+    }
+
     return (
         <>
             <div className={Style.navbar}>
@@ -16,7 +23,7 @@ function Navbar({ title, route }) {
                 </div>
 
                 <h1>{title}</h1>
-                <img className={Style.profile} src={Profile} alt="Profielafbeelding" />
+                <img className={Style.profile} src={Profile} alt="Profielafbeelding" onClick={handleProfileClick}/>
             </div>
             <div className={Style.subnavbar}>
                 <h5>{route}</h5>
