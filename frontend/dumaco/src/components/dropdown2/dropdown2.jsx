@@ -23,6 +23,7 @@ function Dropdown2({ title, options, useIcons }) {
                         />
                     )}
                     {selected?.label || selectedOption}
+                    <img src={`/icons/chevron-down.svg`} alt={"chevron-down"} className={Style.chevronDown} />
                 </div>
                 <div className={Style.dropdownOptions}>
                     {options.map((option, index) => (

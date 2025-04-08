@@ -5,15 +5,33 @@
 
 .selectedOption {
     display: flex;
+    align-items: center;
     padding: 8px 12px;
     background-color: rgba(241, 241, 241, 0.81);
     border: 1px solid #8f8f8f;
     border-radius: 4px;
     color: black;
+    position: relative; /* belangrijk voor absolute positioning van chevron */
 }
 
 .selectedOption:hover, .selectedOption::selection {
     border: 1px solid #171717;
+}
+
+.dropdownLabel {
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.chevronDown {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    color: #333;
 }
 
 .dropdownOptions {
@@ -40,6 +58,12 @@
     padding: 10px;
     cursor: pointer;
     color: black;
+    border: 1px solid white;
+    border-bottom-color: #ccc;
+}
+
+.option:last-child {
+    border-bottom-color: white;
 }
 
 .option:hover {
