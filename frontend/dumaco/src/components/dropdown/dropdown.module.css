@@ -3,9 +3,9 @@
     top: 38vh;
     left: 0.5vw;
     display: block;
-    width: 200px; 
+    width: 200px;
   }
-  
+
   .dropdownButton {
     width: 100%;
     padding: 15px;
@@ -16,7 +16,7 @@
     cursor: pointer;
     text-align: center;
   }
-  
+
   .menu {
     width: 100%;
     color: black;
@@ -26,7 +26,7 @@
     padding: 0;
     border-top: 2px solid black;
   }
-  
+
   .menuItem {
     padding: 15px;
     text-align: center;
@@ -34,10 +34,9 @@
     cursor: pointer;
     border-top: 2px solid black;
   }
-  
+
   .menuItem:first-child {
-    border-top: none; 
+    border-top: none;
   }
 
-  
-  
+
