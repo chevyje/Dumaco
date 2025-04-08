@@ -66,7 +66,7 @@ function OrderbonnenFabriek() {
                 />
             </div>
             <Dropdown title="Mijn aangepaste dropdown" options={state.columns} />
-            <Paginator />
+            {/* <Paginator /> */}
         </>
     );
 }
