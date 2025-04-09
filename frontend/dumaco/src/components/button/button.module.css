@@ -19,6 +19,7 @@ button:hover {
     text-align: center;
     padding: 0.3rem 0.5rem;
     gap: 8px;
+    color: white;
 }
 
 .btnIcon {
