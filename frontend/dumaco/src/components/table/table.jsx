@@ -1,16 +1,26 @@
 import { useNavigate } from "react-router-dom";
-import Style from  './table.module.css';
+import Style from './table.module.css';
 
-function Table({ jsonData, title, showUserEdit, showPencil, editPageFunction }) {
+function Table({ jsonData, navigationData, title, showUserEdit, showPencil }) {
     const navigate = useNavigate();
 
     if (!jsonData || jsonData.length === 0) {
         return <p>No data available</p>;
     }
 
-    if ((editPageFunction === undefined || editPageFunction === null) && showPencil) {
-        return <p>editPageFunction is onjuist of bestaat niet. Geef een functie mee.</p>;
+    if (!navigationData || navigationData.length === 0) {
+        return <p>Missing navigation data</p>;
     }
+
+    const handleEditClick = (index) => {
+        const routeObj = navigationData[index];
+        const destination = routeObj && routeObj[index];
+        if (destination) {
+            navigate(destination);
+        } else {
+            console.error("Geen navigatie route gevonden voor index", index);
+        }
+    };
 
     let headers = Object.keys(jsonData[0]);
     const spotsAvailable = 5;
@@ -29,12 +39,12 @@ function Table({ jsonData, title, showUserEdit, showPencil, editPageFunction }) 
                     {emptyHeaders.map((_, index) => (
                         <th key={`empty-header-${index}`}></th>
                     ))}
-                    {(showUserEdit || showPencil)}
+                    {(showUserEdit || showPencil) && <th></th>}
                 </tr>
                 </thead>
                 <tbody>
                 {jsonData.map((row, rowIndex) => (
-                    <tr key={rowIndex}>
+                    <tr key={rowIndex} onClick={() => handleEditClick(rowIndex)}>
                         {headers.map((header, colIndex) => (
                             <td key={colIndex}>{row[header]}</td>
                         ))}
@@ -46,12 +56,12 @@ function Table({ jsonData, title, showUserEdit, showPencil, editPageFunction }) 
                                 {showUserEdit && (
                                     <img src="/icons/editUser.svg" alt="edit-user" className={Style.editUserIcon} />
                                 )}
-                                {showPencil && editPageFunction && (
+                                {showPencil && (
                                     <img
                                         src="/icons/pencil.svg"
                                         alt="edit"
                                         className={Style.editIcon}
-                                        onClick={() => editPageFunction(navigate)}
+                                        onClick={() => handleEditClick(rowIndex)}
                                     />
                                 )}
                             </td>
@@ -65,3 +75,4 @@ function Table({ jsonData, title, showUserEdit, showPencil, editPageFunction }) 
 }
 
 export default Table;
+

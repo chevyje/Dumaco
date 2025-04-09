@@ -1,8 +1,6 @@
 import Table from "../../components/collapse/collapseTable.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
 import Style from "./klantOverzicht.module.css";
-import SideBar from "../../components/sidebar/sidebar.jsx";
-import Sidebar from "../../components/sidebar/sidebar.jsx";
 
 function klantOverzicht() {
     const LopendeOrders = [
@@ -47,7 +45,7 @@ function klantOverzicht() {
                     <img src="../../../icons/truck.svg" alt=""></img>
                     <p>Door 4.22</p>
                 </div>
-           </div>
+            </div>
         </>
     );
 }

@@ -29,11 +29,38 @@ function klantenOverzicht() {
         {"Klant naam": "Roxal Nederland BV", "Mail": "RoxalNederlandBV@gmail.com", "Nummer": "0612345678", "Laatste Order": "32500038"},
         {"Klant naam": "Metalco de Leye", "Mail": "MetalcodeLeye@gmail.com", "Nummer": "0612345678", "Laatste Order": "32500039"}
     ]
+
+    const navigationData = [
+        { 0: '/klantoverzicht' },
+        { 1: '/klantoverzicht' },
+        { 2: '/klantoverzicht' },
+        { 3: '/klantoverzicht' },
+        { 4: '/klantoverzicht' },
+        { 5: '/klantoverzicht' },
+        { 6: '/klantoverzicht' },
+        { 7: '/klantoverzicht' },
+        { 8: '/klantoverzicht' },
+        { 9: '/klantoverzicht' },
+        { 10: '/klantoverzicht' },
+        { 11: '/klantoverzicht' },
+        { 12: '/klantoverzicht' },
+        { 13: '/klantoverzicht' },
+        { 14: '/klantoverzicht' },
+        { 15: '/klantoverzicht' },
+        { 16: '/klantoverzicht' },
+        { 17: '/klantoverzicht' },
+        { 18: '/klantoverzicht' },
+        { 19: '/klantoverzicht' },
+        { 20: '/klantoverzicht' },
+        { 21: '/klantoverzicht' }
+
+    ]
+
     return(
         <>
             <Navbar title={"Klanten"} route={"Klanten"} />
             <div className={Style.table}>
-                <Table jsonData={data} />
+                <Table jsonData={data} navigationData={navigationData} />
             </div>
             {/* <Paginator /> */}
         </>

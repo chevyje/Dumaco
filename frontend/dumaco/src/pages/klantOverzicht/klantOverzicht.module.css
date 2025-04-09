@@ -1,11 +1,10 @@
 .CollapsTable{
-    position: fixed;
-    top: 13vh;
-    left: 17.5vw;
+    top: 5vh;
     height: 100%;
 }
 
 .KlantInfo {
+    color: black;
     margin-top: 0;
     padding: 10px;
 }
