@@ -42,6 +42,7 @@
 
 .colorTable tr:hover {
     text-decoration: underline;
+    color: black;
 }
 
 .colorTable td {
