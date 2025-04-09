@@ -1,4 +1,5 @@
 import Dropdown from "../../components/dropdown/dropdown.jsx";
+import Paginator2 from "../../components/paginator/paginator.jsx";
 import Paginator from "../../components/paginator/paginator.jsx";
 import Table from "../../components/table/table.jsx";
 import { useState, useEffect } from "react";
@@ -66,7 +67,7 @@ function OrderbonnenFabriek() {
                 />
             </div>
             <Dropdown title="Mijn aangepaste dropdown" options={state.columns} />
-            {/* <Paginator /> */}
+            <Paginator />
         </>
     );
 }

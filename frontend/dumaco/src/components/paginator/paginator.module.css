@@ -1,85 +1,47 @@
-
+/* Paginator Styles */
 .paginator {
-    position: fixed;
-    bottom: 5vh;
-    left: 40vw;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 8px;
-    background-color: #cce7ff;
-    padding: 8px;
-    border-radius: 8px;
-  }
-  
-  /* Button styling */
-  .paginator button {
-    padding: 8px;
+    gap: 6px;
+    padding: 12px;
+    background-color: transparent;
+    user-select: none;
+}
+
+.paginator button,
+.paginator .ellipsis {
+    width: 36px; /* Ensures all buttons have the same width */
+    height: 36px; /* Ensures all buttons have the same height */
     font-size: 16px;
+    color: blue;
     background-color: transparent;
-    border: none;
+    border: 1px solid blue;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    border-radius: 8px;
+    font-weight: normal;
     transition: background-color 0.2s ease;
-  }
-  
-  /* Disabled button styling */
-  .paginator button:disabled {
-    opacity: 0.5;
+    box-sizing: border-box; /* Ensures padding and borders are included in width/height calculation */
+}
+
+.paginator button:disabled {
+    opacity: 0.4;
     cursor: not-allowed;
-  }
-  
-  /* Left and right arrows styling */
-  .paginator .chevron {
-    font-size: 20px;
-    color: #333;
-  }
-  
-  /* Active page button */
-  .paginator .activePage {
-    padding: 6px 16px;
-    background-color: #87cefa;
-    color: #000;
+}
+
+.paginator .activePage {
     font-weight: bold;
-    border-radius: 8px;
-  }
-  
-  /* Other page buttons */
-  .paginator .pageButton {
-    padding: 6px 16px;
-    background-color: transparent;
-    color: #333;
-    border: 1px solid #87cefa;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .paginator .pageButton:hover {
-    background-color: #87cefa;
-    color: #fff;
-  }
-  
-  /* Ellipsis (three dots) */
-  .paginator .ellipsis {
-    padding: 6px 12px;
-    background-color: transparent;
-    color: #333;
-    border: 1px solid #87cefa;
-    border-radius: 8px;
-    font-size: 18px;
+    color: rgb(0, 0, 0); /* Ensure text is visible against the black background */
+    border: 1px solid black; /* Border color to match the background */
+    width: 36px; /* Ensures the active page has the same width */
+    height: 36px; /* Ensures the active page has the same height */
+    box-sizing: border-box; /* Same as above, ensures the border is included */
+}
+
+.paginator .ellipsis {
+    pointer-events: none;
     cursor: default;
-    text-align: center;
-  }
-  
-  .paginator .ellipsis:hover {
-    background-color: #87cefa;
-    color: #fff;
-  }
-  
-  /* Right arrow button */
-  .paginator .chevronRight {
-    font-size: 20px;
-    color: #333;
-  }
-  
+}
