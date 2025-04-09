@@ -37,7 +37,7 @@ const App = () => {
                 <Route path="/TeamsBeheerEdit" element={<TeamsBeheerEdit/>} />
                 {/* witte pagina */}
 
-                <Route path="/login" element={<InlogPagina />} />
+                <Route path="/" element={<InlogPagina />} />
                 {/* styling error */}
 
                 <Route path="/instellingen" element={<Instellingen />} />
