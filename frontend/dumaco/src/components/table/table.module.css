@@ -23,6 +23,11 @@
     width: 90%;
 }
 
+.colorTable tr {
+    cursor: pointer;
+    border: 1px transparent solid;
+}
+
 .colorTable tr:nth-child(even) {
     background-color: #E1ECFF;
 }
@@ -32,7 +37,11 @@
 }
 
 .colorTable tr {
-    color: black;
+    color: #3b3b3b;
+}
+
+.colorTable tr:hover {
+    text-decoration: underline;
 }
 
 .colorTable td {
@@ -65,13 +74,10 @@
 }
 
 .editIconCells {
-    position: absolute;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     gap: 0.25vw;
-    padding-right: 0.5vw;
-    margin-left: -4%;
 }
 
 .editUserIcon {
@@ -87,11 +93,9 @@
     color: red;
     transition: color 0.2s ease-in-out;
     font-size: 1.2rem;
-    vertical-align: middle;
 }
 
 .editIconCell {
     text-align: right;
-    padding-right: 0.5vw;
     width: 100%;
 }

@@ -9,7 +9,7 @@ function Table({ jsonData, title, openByDefault, legenda }) {
     let headers = Object.keys(jsonData[0]);
 
     return (
-        <CollapseParent title={title} openByDefault={openByDefault}>
+        <CollapseParent trigger={title} openByDefault={openByDefault}>
             {legenda &&
                 <div className={Style.legenda}>
                     <div className={Style.vroeg}>
@@ -26,6 +26,9 @@ function Table({ jsonData, title, openByDefault, legenda }) {
                     </div>
                 </div>
             }
+            <div>
+                <span>{title}</span>
+            </div>
             <div className={Style.grayTable}>
                 <table>
                     <thead>
