@@ -1,15 +1,15 @@
 import Style from "./card.module.css"
    
 
-    function Card({ children }) {
+    function Card({H1Stats, pStats, PSoort, children }) {
         return(
             <div className={Style.cardContainer}>
                 <div className={`${Style.cardContentContainer} ${Style.cardTopRow}`}>
-                    <h1 className={Style.cardH1}>12</h1>
-                    <p className={Style.cardPStats}>7% t.o.v. week</p>
+                    <h1 className={Style.cardH1}>{H1Stats}</h1>
+                    <p className={Style.cardPStats}>{pStats}</p>
                 </div>
                 <div className={Style.cardContentContainer}>
-                    <p className={Style.cardPSoort}>Openstaande orders</p>
+                    <p className={Style.cardPSoort}>{PSoort}</p>
                 </div>
                 <div className={Style.cardContentContainer}>
                     {children}
