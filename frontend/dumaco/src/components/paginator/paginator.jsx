@@ -1,79 +1,113 @@
 import { useState } from "react";
-import Style from  './paginator.module.css'
+import Style from "./paginator.module.css";  // Ensure your CSS is set up
 
-
-export default function Paginator({ totalPages = 50 }) {
+export default function Paginator2({ totalPages = 50 }) {
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Function to go to the selected page
   const goToPage = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
   };
 
-  return (
-    <div className={Style.paginator}>
-      {/* Left Arrow */}
-      <button
-        className={Style.chevron}
-        onClick={() => goToPage(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-      <img src="../../icons/chevron-left.svg" alt="chevron left" />
-      </button>
+  // Function to render the page numbers with ellipses handling
+  const renderPageNumbers = () => {
+    const pages = [];
 
-      {/* First Page Always Visible */}
+    // Always show the first page
+    pages.push(
       <button
-        className={`{Style.pageButton} ${currentPage === 1 ? Style.active-page : ""}`}
+        key={1}
+        className={`${Style.pageButton} ${currentPage === 1 ? Style.activePage : ""}`}
         onClick={() => goToPage(1)}
       >
         1
       </button>
+    );
 
-      {/* Ellipsis if needed */}
-      {currentPage > 4 && <span className={Style.ellipsis}>...</span>}
+    // Show ellipsis after the first page if the current page is greater than 4
+    if (currentPage > 4) {
+      pages.push(<span key="ellipsisStart" className={Style.ellipsis}>...</span>);
+    }
 
-      {/* Show Page Before Current (If it's not Page 1 or 2) */}
-      {currentPage > 2 && (
-        <button className={Style.pageButton} onClick={() => goToPage(currentPage - 1)}>
-          {currentPage - 1}
+    // Show pages around the current page (e.g., current - 1, current, current + 1)
+    if (currentPage <= 4) {
+      // If current page is within first 4 pages, show next 5 pages (2 to 5)
+      for (let i = 2; i <= 5 && i <= totalPages; i++) {
+        pages.push(
+          <button
+            key={i}
+            className={`${Style.pageButton} ${currentPage === i ? Style.activePage : ""}`}
+            onClick={() => goToPage(i)}
+          >
+            {i}
+          </button>
+        );
+      }
+    } else if (currentPage >= totalPages - 3) {
+      // If the current page is near the last pages (e.g., page 47 onwards)
+      if (currentPage < totalPages - 4) {
+        pages.push(<span key="ellipsisStart" className={Style.ellipsis}>...</span>);
+      }
+      for (let i = totalPages - 4; i <= totalPages; i++) {
+        pages.push(
+          <button
+            key={i}
+            className={`${Style.pageButton} ${currentPage === i ? Style.activePage : ""}`}
+            onClick={() => goToPage(i)}
+          >
+            {i}
+          </button>
+        );
+      }
+    } else {
+      // For pages between 5 and (totalPages - 4), show pages around the current page
+      for (let i = currentPage - 1; i <= currentPage + 1 && i <= totalPages - 1; i++) {
+        if (i > 1 && i < totalPages) { // Don't show first and last pages multiple times
+          pages.push(
+            <button
+              key={i}
+              className={`${Style.pageButton} ${currentPage === i ? Style.activePage : ""}`}
+              onClick={() => goToPage(i)}
+            >
+              {i}
+            </button>
+          );
+        }
+      }
+    }
+
+    // Show ellipsis before the last page if the currentPage is less than (totalPages - 3)
+    if (currentPage < totalPages - 3) {
+      pages.push(<span key="ellipsisEnd" className={Style.ellipsis}>...</span>);
+    }
+
+    // Always show the last page, but only if it hasn't been added already
+    if (!pages.some(page => page.key === `${totalPages}`)) {
+      pages.push(
+        <button
+          key={totalPages}
+          className={`${Style.pageButton} ${currentPage === totalPages ? Style.activePage : ""}`}
+          onClick={() => goToPage(totalPages)}
+        >
+          {totalPages}
         </button>
-      )}
+      );
+    }
 
-      {/* Current Page */}
-      {currentPage !== 1 && currentPage !== totalPages && (
-        <button className={Style.activePage}>{currentPage}</button>
-      )}
+    return pages;
+  };
 
-      {/* Show Page After Current (If it's not the last page) */}
-      {currentPage < totalPages - 1 && (
-        <button className={Style.pageButton} onClick={() => goToPage(currentPage + 1)}>
-          {currentPage + 1}
-        </button>
-      )}
-
-      {/* Ellipsis if needed before last page */}
-      {currentPage < totalPages - 3 && <span className={Style.ellipsis}>...</span>}
-
-      {/* Last Page Always Visible */}
-      <button
-        className={`{Style.page-button} ${currentPage === totalPages ? Style.activePage : ""}`}
-        onClick={() => goToPage(totalPages)}
-      >
-        {totalPages}
+  return (
+    <div className={Style.paginator}>
+      <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>
+        &lt;
       </button>
-
-      {/* Right Arrow */}
-      <button
-        className={Style.chevronRight}
-        onClick={() => goToPage(currentPage + 1)}
-        disabled={currentPage === totalPages}
-      >
-        <img src="../../icons/chevron-rigth.svg" alt="chevron right" />
+      {renderPageNumbers()}
+      <button onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages}>
+        &gt;
       </button>
     </div>
   );
 }
-
-
-
