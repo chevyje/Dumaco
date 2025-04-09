@@ -21,77 +21,76 @@ const GebruikersBeheerEdit = () => {
         <>
             <Main />
             <Navbar title={"Gebruikers beheer"} route={"Management / Gebruikers / Tobias Beumer"}/>
-            <div className={Style.usernameContainer}>
-                <p className={Style.usernameText}>Tobias Beumer</p>
-            </div>
-            <div className={Style.inputFieldContainer}>
-                <div className={Style.formContainer}>
-                    <div className={Style.column}>
-                        <InputField
-                            title={"Naam"}
-                            placeholder={"..."}
-                            defaultText={"Tobias Beumer"}
-                            fieldId={"naam"}
-                            isLocked={false}
-                        />
-                        <InputField
-                            title={"Herstel email"}
-                            placeholder={"voorbeeld@domein.com"}
-                            defaultText={""}
-                            fieldId={"recoverymail"}
-                            isLocked={false}
-                        />
-                        <InputField
-                            title={"Functie"}
-                            placeholder={"functie titel"}
-                            defaultText={"Lasser"}
-                            fieldId={"function"}
-                            isLocked={false}
-                        />
-                    </div>
-                    <div className={Style.column}>
-                        <Dropdown2
-                            options={options}
-                            title={"Team"}
-                        />
-                        <div className={Style.lastLogin}>
+                <div className={Style.usernameContainer}>
+                    <p className={Style.usernameText}>Tobias Beumer</p>
+                </div>
+                <div className={Style.inputFieldContainer}>
+                    <div className={Style.formContainer}>
+                        <div className={Style.column}>
                             <InputField
-                                title={"Laatste login"}
-                                placeholder={""}
-                                defaultText={"10-03-2025 12:18"}
-                                fieldId={"lastLogin"}
-                                isLocked={true}
+                                title={"Naam"}
+                                placeholder={"..."}
+                                defaultText={"Tobias Beumer"}
+                                fieldId={"naam"}
+                                isLocked={false}
+                            />
+                            <InputField
+                                title={"Herstel email"}
+                                placeholder={"voorbeeld@domein.com"}
+                                defaultText={""}
+                                fieldId={"recoverymail"}
+                                isLocked={false}
+                            />
+                            <InputField
+                                title={"Functie"}
+                                placeholder={"functie titel"}
+                                defaultText={"Lasser"}
+                                fieldId={"function"}
+                                isLocked={false}
                             />
                         </div>
-                        <div className={Style.resetPasswordContainer}>
-                            {<a className={Style.resetPassword}>Herstel wachtwoord</a>}
+                        <div className={Style.column}>
+                            <Dropdown2
+                                options={options}
+                                title={"Team"}
+                            />
+                            <div className={Style.lastLogin}>
+                                <InputField
+                                    title={"Laatste login"}
+                                    placeholder={""}
+                                    defaultText={"10-03-2025 12:18"}
+                                    fieldId={"lastLogin"}
+                                    isLocked={true}
+                                />
+                            </div>
+                            <div className={Style.resetPasswordContainer}>
+                                {<a className={Style.resetPassword}>Herstel wachtwoord</a>}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className={Style.buttonsContainer}>
-                <Button
-                    title={"Opslaan"}
-                    triggerFunction={saveUser}
-                    color={'#2eb822'}
-                    icon={"save"}
-                />
-                <Button
-                    title={"Annuleren"}
-                    triggerFunction={() => cancelEdit(navigate)}
-                    color={'#757575'}
-                    icon={"ban"}
-                />
-            </div>
-            <div className={Style.deleteBtn}>
-                <Button
-                    title={""}
-                    triggerFunction={null}
-                    color={'#710000'}
-                    icon={"trash"}
-                />
-            </div>
-
+                <div className={Style.buttonsContainer}>
+                    <Button
+                        title={"Opslaan"}
+                        triggerFunction={saveUser}
+                        color={'#2eb822'}
+                        icon={"save"}
+                    />
+                    <Button
+                        title={"Annuleren"}
+                        triggerFunction={() => cancelEdit(navigate)}
+                        color={'#757575'}
+                        icon={"ban"}
+                    />
+                </div>
+                <div className={Style.deleteBtn}>
+                    <Button
+                        title={""}
+                        triggerFunction={null}
+                        color={'#710000'}
+                        icon={"trash"}
+                    />
+                </div>
         </>
     );
 };

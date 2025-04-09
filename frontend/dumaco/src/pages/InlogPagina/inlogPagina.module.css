@@ -7,6 +7,7 @@
     width: 100vw;
     justify-content: center;
     align-items: center;
+    margin-top: -18vh; /* Essentieel belang om de navbar spacing weg te halen */
 }
 
 .inlogContainer {
@@ -27,29 +28,42 @@
 }
 
 .form{
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .inputContainer {
     display: flex;
     background-color: white;
     width: 85%;
-    margin: 20px auto 0 auto;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
     border-radius: 10px;
     border: 2px solid #d9d9d9;
     overflow: hidden;
+    margin: 20px auto 0 auto;
 }
 
 .image{
-    padding: 0 2.5%;
+    margin-left: -5%;
 }
-.input{
+.input {
     width: 80%;
-    height: 6vh;
+    height: 100%;
     border: none;
     font-size: 20px;
-    margin-left: 2.5%;
+    margin-left: 5px;
+    color: black;
     outline: none;
+    background-color: white;
+    margin-top: 15px;
+}
+
+.input::placeholder {
+    text-align: left;
+    vertical-align: center;
 }
 
 .forgotPassword{
@@ -70,6 +84,7 @@
     margin: 4% 0 0 0;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .confirmButton{
