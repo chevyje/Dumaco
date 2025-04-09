@@ -107,7 +107,7 @@ UsersRouter.delete('/:id', async (req, res) => {
 // User login
 UsersRouter.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    if(username.length <= 3 || !username) return res.status(400).json(messages.invalid("username"));
+    if(!username) return res.status(400).json(messages.invalid("username"));
     if(password.length <= 3 || !password) return res.status(400).json(messages.invalid("password"));
 
     const users = await db_query("SELECT userID, password FROM Users WHERE username = ?", [username]);
@@ -121,7 +121,7 @@ UsersRouter.post('/login', async (req, res) => {
     if (isValid) {
         res.status(200).json({ message: messages.success.login, userId: users[0].id });
     } else {
-        res.status(401).json(messages.error.wrongPassword);
+        res.status(401).json(messages.error.incorrectPassword);
     }
 });
 

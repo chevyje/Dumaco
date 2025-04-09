@@ -1,14 +1,38 @@
+import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 import style from "./inlogPagina.module.css"
 
-
 function InlogPagina() {
-    const CheckCredentials = async (e) => {
+    const navigate = useNavigate();
+    const [text, setText] = useState("");
+
+    const Login = async (e) => {
         e.preventDefault();
         const username = e.target.username.value;
         const password = e.target.password.value;
-        console.log("Trying to login");
-        console.log(username);
-        console.log(JSON.stringify({username: username, password: password}))
+
+        // Checking for empty values
+        if(username === "" && password === ""){
+            e.target.username.parentElement.style.borderColor = "red";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText("Username and Password are required");
+            return;
+        }
+        if(username === ""){
+            e.target.username.parentElement.style.borderColor = "red";
+            e.target.password.parentElement.style.borderColor = "#d9d9d9";
+            setText("Username is required");
+            return;
+        }
+        if(password === ""){
+            e.target.username.parentElement.style.borderColor = "#d9d9d9";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText("Password is required");
+            return;
+        }
+
+        // Request to the server
         const passwordResponse = await fetch("http://localhost:8080/api/users/login", {
             method: "POST",
             body: JSON.stringify({
@@ -19,37 +43,63 @@ function InlogPagina() {
                 "Content-type": "application/json; charset=UTF-8"
             }
         });
+
+        // Response Handling
         const data = await passwordResponse.json();
-        console.log(data);
+        const status = passwordResponse.status;
+        // Success Response
+        if(status === 200) {
+            navigate("/JuisteLogin");
+        }
+        // Unauthorized Response
+        else if(status === 401 && data.message.includes("username")) {
+            e.target.username.parentElement.style.borderColor = "red";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText(data.message);
+        }
+        else if(status === 401 && data.message.includes("password")) {
+            e.target.username.parentElement.style.borderColor = "#d9d9d9";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText(data.message);
+        }
+        // Invalid data response
+        else if(status === 400 && data.message.includes("username")) {
+            e.target.username.parentElement.style.borderColor = "red";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText(data.message);
+        }
+        else if(status === 400 && data.message.includes("password")) {
+            e.target.username.parentElement.style.borderColor = "#d9d9d9";
+            e.target.password.parentElement.style.borderColor = "red";
+            setText(data.message);
+        }
     };
 
     return(
-        <>
-            <body className={style.loginBody}>
-                {/* <img src="./frontend/Assets/DumacoLogoWit.png"/> */}
-                <form className={style.loginBox} onSubmit={CheckCredentials}>
-                    <div>
-                        <label>
-                            <img src="/icons/user.svg" alt="" />
-                            Username:
-                            <br/>
-                            <input type="text" className={style.loginInput} name="username"></input>
-                        </label>
+        <div className={style.inlogBody}>
+            <div className={style.inlogContainer}>
+                <h2 className={style.title}>Inloggen</h2>
+                <form className={style.form} onSubmit={Login}>
+                    <div className={style.inputContainer}>
+                        <img className={style.image} src="/icons/user.svg" alt="" />
+                        <input className={style.input} name="username" placeholder="Gebruikersnaam"></input>
                     </div>
-                    <div>
-                        <label>
-                            <img src="/icons/lock.svg" alt="" />
-                            Password:
-                            <br/>
-                            <input type="password" className={style.loginInput} name="password"></input>
-                        </label>
+                    <div className={style.inputContainer}>
+                        <img className={style.image} src="/icons/lock.svg" alt="" />
+                        <input type="password" className={style.input} name="password" placeholder="Wachtwoord"></input>
                     </div>
-                    <br/>
-                    <button className={style.confirmButton}> Log in</button>
+                    <div className={style.forgotPassword}>
+                        <NavLink to="/" className={style.link}>wachtwoord vergeten?</NavLink>
+                    </div>
+                    <div className={style.buttonContainer}>
+                        <button className={style.confirmButton}>Inloggen</button>
+                    </div>
+                    <div className={style.errorMessageContainer}>
+                        <p className={style.errorMessage}>{text}</p>
+                    </div>
                 </form>
-            </body>
-        </>
-
+            </div>
+        </div>
     );
 }
 
