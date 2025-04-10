@@ -49,7 +49,7 @@ function InlogPagina() {
         const status = passwordResponse.status;
         // Success Response
         if(status === 200) {
-            navigate("/JuisteLogin");
+            navigate("/Home");
         }
         // Unauthorized Response
         else if(status === 401 && data.message.includes("username")) {
