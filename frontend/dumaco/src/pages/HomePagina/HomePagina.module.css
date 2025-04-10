@@ -14,14 +14,20 @@
 
 
 .cardsContainer {
+    display: inline-block;
     width: 50%;
     height: 90%;
     margin: 0;
-    border-right: 1px solid black;
+    padding-left: 5%;
+    border-right: 2px solid #d9d9d9;
+}
+
+.headerSubtitle {
+    padding-left: 0.5%;
 }
 
   hr{
-    border-top: 1px solid black;
+    border-top: 2px solid #d9d9d9;
     margin: 0;
   }
 
@@ -32,10 +38,31 @@
     margin-top: 0rem;
     margin-left: 35px;
     margin-bottom: 30px;
-    border: 1px solid red;
+  }
+
+  .tableContainer {
+    width: 47.5vw;
+    position: fixed;
+      right:-4vw;
+      top: 30vh;
+  }
+
+  .actueleHeader {
+      color: black;
+      font-size: 2.5rem;
   }
 
   .headerContainer h1,
   .headerContainer p{
     margin: 0;
+      color: black;
+  }
+
+  body {
+      overflow-x: hidden;
+  }
+
+  .tableHeader {
+      color: black;
+      font-size: 2.5rem;
   }
