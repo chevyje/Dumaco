@@ -14,15 +14,20 @@
 
 .cardH1{
     font-size: 3em;
+    color: black;
 }
 
 .cardPStats{
+    display: flex;
     font-size: 1em;
+    color: black;
+    justify-content: center;
 }
 
 .cardPSoort{
     font-size: 1em;
     margin: 10px;
+    color: black;
 }
 
 .cardOptions{
@@ -41,4 +46,10 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.btnIcon {
+    width: 20px;
+    height: 20px;
+    color: black;
 }

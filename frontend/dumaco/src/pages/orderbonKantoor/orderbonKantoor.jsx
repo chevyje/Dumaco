@@ -41,14 +41,15 @@ function klantOverzicht() {
     return(
         <>
             <Navbar title={"Lely Industries #32500030"} route={"Orderbonnen / Lely Industries NV / #32500030"} />
+            <div className={Style.customButton}>
+                <CustomButton title={"Bewerken"} triggerFunction={null} icon={"white-pencil"} color={"#3d3d3d"} />
+            </div>
             <div className={Style.CollapsTable}>
                 <Table jsonData={Bewerking} title={"Bewerking"} openByDefault={true} />
                 <Table jsonData={Inkoop} title={"Inkoop"} openByDefault={true} />
                 <Table jsonData={UitbesteedWerk} title={"Uitbesteed Werk"} openByDefault={true} />
             </div>
-            <div className={Style.customButton}>
-                <CustomButton title={"Bewerken"} triggerFunction={null} icon={"pencil"} color={"#D9D9D9"} />
-            </div>
+
         </>
     );
 }

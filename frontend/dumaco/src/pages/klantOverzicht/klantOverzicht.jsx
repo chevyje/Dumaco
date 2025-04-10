@@ -29,7 +29,7 @@ function klantOverzicht() {
                     <h3>Lely Industries NV</h3>
                 </div>
                 <div className={Style.info}>
-                    <img src="../../../public/icons/location.svg" alt=""></img>
+                    <img src="../../../icons/location.svg" alt=""></img>
                     <p>Cornelis van der Lelylaan 1 <br />
                         3127PB Maassluis</p>
                 </div>

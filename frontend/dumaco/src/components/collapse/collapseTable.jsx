@@ -26,9 +26,6 @@ function Table({ jsonData, title, openByDefault, legenda }) {
                     </div>
                 </div>
             }
-            <div>
-                <span>{title}</span>
-            </div>
             <div className={Style.grayTable}>
                 <table>
                     <thead>

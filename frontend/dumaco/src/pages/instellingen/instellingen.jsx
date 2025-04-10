@@ -12,8 +12,8 @@ const Instellingen = () => {
 
     const options = [
         { value: 'nederlands', label: 'Nederlands', icon: 'nl' },
-        { value: 'engels', label: 'Engels', icon: 'gb' },
-        { value: 'pools', label: 'Pools', icon: 'pl' }
+        { value: 'engels', label: 'English', icon: 'gb' },
+        { value: 'pools', label: 'Polski', icon: 'pl' }
     ];
 
 
