@@ -24,7 +24,7 @@ function GebruikersBeheer() {
 
     return (
         <>
-            <Navbar title={"Gebruikers beheer"} route={"Management / Gebruikers"}/>
+            <Navbar title={"Gebruikers beheer"} route={"Gebruikers"}/>
             <div className={Styles.tableContainer}>
                 <Table
                     jsonData={rows}
