@@ -15,7 +15,7 @@
 .subnavbar {
     margin-top: 9vh;
     justify-content: space-between;
-    background-color: #FF0000;
+    background-color: #ff3434 ;
     height: 4vh;
 }
 
@@ -80,12 +80,11 @@
 .subnavbarButton {
     text-align: center;
     align-items: center;
-    padding: 0 0.5rem;
+    padding: 0.5rem 2rem;
     color: white;
     font-weight: normal;
     transition: 100ms ease-in-out;
     text-decoration: none;
-
 }
 
 .subnavbarButton:hover,
@@ -98,7 +97,7 @@
 .navLinks {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 10px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
