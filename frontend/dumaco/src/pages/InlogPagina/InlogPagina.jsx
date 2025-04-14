@@ -16,63 +16,71 @@ function InlogPagina() {
         if(username === "" && password === ""){
             e.target.username.parentElement.style.borderColor = "red";
             e.target.password.parentElement.style.borderColor = "red";
-            setText("Username and Password are required");
+            setText("Velden gebruikersnaam en wachtwoord zijn verplicht.");
             return;
         }
         if(username === ""){
             e.target.username.parentElement.style.borderColor = "red";
             e.target.password.parentElement.style.borderColor = "#d9d9d9";
-            setText("Username is required");
+            setText("Gebruikersnaam is verplicht");
             return;
         }
         if(password === ""){
             e.target.username.parentElement.style.borderColor = "#d9d9d9";
             e.target.password.parentElement.style.borderColor = "red";
-            setText("Password is required");
+            setText("Wachtwoord is verplicht");
             return;
         }
 
-        // Request to the server
-        const passwordResponse = await fetch("http://localhost:8080/api/users/login", {
-            method: "POST",
-            body: JSON.stringify({
-                username: username,
-                password: password,
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        });
+        try {
+            // Request to the server
+            const passwordResponse = await fetch("http://localhost:8080/api/users/login", {
+                method: "POST",
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            });
 
-        // Response Handling
-        const data = await passwordResponse.json();
-        const status = passwordResponse.status;
-        // Success Response
-        if(status === 200) {
-            navigate("/Home");
+            // Response Handling
+            const data = await passwordResponse.json();
+            const status = passwordResponse.status;
+
+            // Success Response
+            if(status === 200) {
+                navigate("/Home");
+            }
+
+            // Unauthorized Response
+            else if(status === 401 && data.message.includes("username")) {
+                e.target.username.parentElement.style.borderColor = "red";
+                e.target.password.parentElement.style.borderColor = "red";
+                setText(data.message);
+            }
+            else if(status === 401 && data.message.includes("password")) {
+                e.target.username.parentElement.style.borderColor = "#d9d9d9";
+                e.target.password.parentElement.style.borderColor = "red";
+                setText(data.message);
+            }
+            // Invalid data response
+            else if(status === 400 && data.message.includes("username")) {
+                e.target.username.parentElement.style.borderColor = "red";
+                e.target.password.parentElement.style.borderColor = "red";
+                setText(data.message);
+            }
+            else if(status === 400 && data.message.includes("password")) {
+                e.target.username.parentElement.style.borderColor = "#d9d9d9";
+                e.target.password.parentElement.style.borderColor = "red";
+                setText(data.message);
+            }
+
+        } catch (e) {
+            setText("Er is iets fout gegaan.");
         }
-        // Unauthorized Response
-        else if(status === 401 && data.message.includes("username")) {
-            e.target.username.parentElement.style.borderColor = "red";
-            e.target.password.parentElement.style.borderColor = "red";
-            setText(data.message);
-        }
-        else if(status === 401 && data.message.includes("password")) {
-            e.target.username.parentElement.style.borderColor = "#d9d9d9";
-            e.target.password.parentElement.style.borderColor = "red";
-            setText(data.message);
-        }
-        // Invalid data response
-        else if(status === 400 && data.message.includes("username")) {
-            e.target.username.parentElement.style.borderColor = "red";
-            e.target.password.parentElement.style.borderColor = "red";
-            setText(data.message);
-        }
-        else if(status === 400 && data.message.includes("password")) {
-            e.target.username.parentElement.style.borderColor = "#d9d9d9";
-            e.target.password.parentElement.style.borderColor = "red";
-            setText(data.message);
-        }
+
     };
 
     return(
