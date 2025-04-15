@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS Tasks (
     materialID INTEGER,
     quantity INTEGER,
     PRIMARY KEY (taskFormID),
-    FOREIGN KEY (orderID) REFERENCES OrderForm(orderID),
+    FOREIGN KEY (orderID) REFERENCES Orders(orderID),
     FOREIGN KEY (materialID) REFERENCES MaterialTypes(materialID)
 );
 
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS Edit (
     editID VARCHAR(32) NOT NULL,
     userID INTEGER,
     PRIMARY KEY (editID),
-    FOREIGN KEY (taskFormID) REFERENCES TaskForm(taskFormID),
+    FOREIGN KEY (taskFormID) REFERENCES Tasks(taskFormID),
     FOREIGN KEY (editTypeID) REFERENCES EditTypeList(editID),
     FOREIGN KEY (userID) REFERENCES Users(userID)
 );
