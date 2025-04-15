@@ -1,68 +1,60 @@
 .dashboard {
     width: 100vw;
-    height: 82vh;
+    height: auto;
     padding: 1rem;
     box-sizing: border-box;
+}
+
+.mainContent {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1fr;
+    gap: 2rem;
+    padding: 1rem 2rem;
+}
+
+.cardsContainer {
+    width: 45vw;
+    padding-right: 1rem;
+    border-right: 2px solid #d9d9d9;
 }
 
 .cardGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    justify-content: center;
+    gap: 2rem;
 }
 
+.tableContainer {
+    width: 50vw;
+}
 
-.cardsContainer {
-    display: inline-block;
-    width: 50%;
-    height: 90%;
-    margin: 0;
-    padding-left: 5%;
-    border-right: 2px solid #d9d9d9;
+.headerContainer {
+    width: 100%;
+    margin-left: 35px;
+    margin-bottom: 30px;
 }
 
 .headerSubtitle {
     padding-left: 0.5%;
 }
 
-  hr{
+hr {
     border-top: 2px solid #d9d9d9;
     margin: 0;
-  }
+}
 
-  .headerContainer{
-    width: 90%;
-    gap: 20px;
+.actueleHeader,
+.tableHeader {
+    color: black;
+    font-size: 2.5rem;
+}
+
+.headerContainer h1,
+.headerContainer p {
     margin: 0;
-    margin-top: 0rem;
-    margin-left: 35px;
-    margin-bottom: 30px;
-  }
+    color: black;
+}
 
-  .tableContainer {
-    width: 47.5vw;
-    position: fixed;
-      right:-4vw;
-      top: 30vh;
-  }
-
-  .actueleHeader {
-      color: black;
-      font-size: 2.5rem;
-  }
-
-  .headerContainer h1,
-  .headerContainer p{
-    margin: 0;
-      color: black;
-  }
-
-  body {
-      overflow-x: hidden;
-  }
-
-  .tableHeader {
-      color: black;
-      font-size: 2.5rem;
-  }
+body {
+    overflow-x: hidden;
+}

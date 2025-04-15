@@ -4,9 +4,7 @@ import Dropdown2 from "../../components/dropdown2/dropdown2.jsx";
 import Style from "../../pages/HomePagina/HomePagina.module.css";
 import Table from "../../components/table/table.jsx";
 
-
 function HomePagina() {
-
 
     const options = [
         { value: 'vandaag', label: 'Vandaag' },
@@ -24,11 +22,10 @@ function HomePagina() {
         { 0: '/orderbonkantoor' },
         { 1: '/orderbonkantoor' },
         { 2: '/orderbonkantoor' },
-    ]
+    ];
 
     const userName = {userName: "Hans"};
-
-    const tijdTotWeekend = {tijdTotWeekend: 3}
+    const tijdTotWeekend = {tijdTotWeekend: 3};
 
     return(
         <>
@@ -41,53 +38,33 @@ function HomePagina() {
                 </header>
 
                 <hr />
-                <div className={Style.cardsContainer}>
-                    <h1 className={Style.actueleHeader}>Actuele cijfers</h1>
-                    <div className={Style.cardGrid}>
-                        <div className={Style.card}>
-                            <Card H1Stats={12}
-                                  icon={"arrow-up"}
-                                  pStats="7  t.o.v. week"
-                                  PSoort="Openstaande orders">
+
+                <div className={Style.mainContent}>
+                    <div className={Style.cardsContainer}>
+                        <h1 className={Style.actueleHeader}>Actuele cijfers</h1>
+                        <div className={Style.cardGrid}>
+                            <Card H1Stats={12} icon={"arrow-up"} pStats="7  t.o.v. week" PSoort="Openstaande orders">
                                 <Dropdown2 options={options}/>
                             </Card>
-                        </div>
-                        <div className={Style.card}>
-                            <Card H1Stats={5}
-                                  icon={"arrow-down"}
-                                  pStats="1  t.o.v. week"
-                                  PSoort="Afgewezen orders">
+                            <Card H1Stats={5} icon={"arrow-down"} pStats="1  t.o.v. week" PSoort="Afgewezen orders">
                                 <Dropdown2 options={options}/>
                             </Card>
-                        </div>
-                        <div className={Style.card}>
-                            <Card H1Stats={8}
-                                  icon={"arrow-up"}
-                                  pStats="5  t.o.v. week"
-                                  PSoort="Afgeronde orders">
+                            <Card H1Stats={8} icon={"arrow-up"} pStats="5  t.o.v. week" PSoort="Afgeronde orders">
                                 <Dropdown2 options={options}/>
                             </Card>
-                        </div>
-                        <div className={Style.card}>
                             <Card H1Stats="27 Dagen" PSoort="Gem doorlooptijd">
                                 <Dropdown2 options={options}/>
                             </Card>
                         </div>
                     </div>
-                </div>
-
-                <div className={Style.tableContainer}>
-                    <h1 className={Style.tableHeader}>Te late orders</h1>
-                    <Table
-                        jsonData={rows}
-                        navigationData={rowsPageDestinations}
-                    ></Table>
+                    <div className={Style.tableContainer}>
+                        <h1 className={Style.tableHeader}>Te late orders</h1>
+                        <Table jsonData={rows} navigationData={rowsPageDestinations} />
+                    </div>
                 </div>
             </div>
-
         </>
-    )
-
+    );
 }
 
-export default HomePagina
+export default HomePagina;
