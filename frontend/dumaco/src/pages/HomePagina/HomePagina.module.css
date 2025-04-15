@@ -13,14 +13,19 @@
 }
 
 .cardsContainer {
+    padding-top: 2rem;
+    margin-top: -1.55rem;
+    margin-left: 5rem;
     width: 45vw;
-    padding-right: 1rem;
+    height: 70vh;
     border-right: 2px solid #d9d9d9;
+    justify-content: center;
+    align-items: center;
 }
 
 .cardGrid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 0.4fr);
     gap: 2rem;
 }
 
@@ -31,7 +36,8 @@
 .headerContainer {
     width: 100%;
     margin-left: 35px;
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
+    margin-top: -2rem;
 }
 
 .headerSubtitle {
@@ -39,8 +45,9 @@
 }
 
 hr {
-    border-top: 2px solid #d9d9d9;
-    margin: 0;
+    margin-left: -5vw;
+    width: 105vw;
+    border-top: 1px solid #d9d9d9;
 }
 
 .actueleHeader,
@@ -57,4 +64,5 @@ hr {
 
 body {
     overflow-x: hidden;
+    overflow-y: hidden;
 }

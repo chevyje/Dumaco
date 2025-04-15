@@ -52,7 +52,7 @@ function HomePagina() {
                             <Card H1Stats={8} icon={"arrow-up"} pStats="5  t.o.v. week" PSoort="Afgeronde orders">
                                 <Dropdown2 options={options}/>
                             </Card>
-                            <Card H1Stats="27 Dagen" PSoort="Gem doorlooptijd">
+                            <Card H1Stats="27 dagen" PSoort="Gem. doorlooptijd">
                                 <Dropdown2 options={options}/>
                             </Card>
                         </div>
