@@ -73,10 +73,7 @@ function Table({ jsonData, navigationData, title, showUserEdit, showPencil }) {
                             <div className={Style.headerContent}>
                                 <span>{header}</span>
                                 <img
-                                    src={getSortIcon(header)}
-                                    alt="sort-icon"
-                                    className={Style.sortIcon}
-                                />
+                                    src={getSortIcon(header)} alt="sort-icon" className={Style.sortIcon}/>
                             </div>
                         </th>
                     ))}
@@ -101,11 +98,7 @@ function Table({ jsonData, navigationData, title, showUserEdit, showPencil }) {
                                     <img src="/icons/editUser.svg" alt="edit-user" className={Style.editUserIcon} />
                                 )}
                                 {showPencil && (
-                                    <img
-                                        src="/icons/pencil.svg"
-                                        alt="edit"
-                                        className={Style.editIcon}
-                                        onClick={() => handleEditClick(rowIndex)}
+                                    <img src="/icons/pencil.svg" alt="edit" className={Style.editIcon} onClick={() => handleEditClick(rowIndex)}
                                     />
                                 )}
                             </td>
