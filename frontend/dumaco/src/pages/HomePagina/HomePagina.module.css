@@ -1,68 +1,68 @@
 .dashboard {
     width: 100vw;
-    height: 82vh;
+    height: auto;
     padding: 1rem;
     box-sizing: border-box;
 }
 
-.cardGrid {
+.mainContent {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    justify-content: center;
+    grid-template-columns: 1fr 0.5fr 1fr;
+    gap: 2rem;
+    padding: 1rem 2rem;
 }
 
-
 .cardsContainer {
-    display: inline-block;
-    width: 50%;
-    height: 90%;
-    margin: 0;
-    padding-left: 5%;
+    padding-top: 1.55rem;
+    margin-top: -1.55rem;
+    margin-left: 5rem;
+    width: 45vw;
+    height: 70vh;
     border-right: 2px solid #d9d9d9;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 0.4fr);
+    gap: 2rem;
+}
+
+.tableContainer {
+    width: 50vw;
+}
+
+.headerContainer {
+    width: 100%;
+    margin-left: 35px;
+    margin-bottom: 2rem;
+    margin-top: -2rem;
 }
 
 .headerSubtitle {
     padding-left: 0.5%;
 }
 
-  hr{
-    border-top: 2px solid #d9d9d9;
+hr {
+    margin-left: -5vw;
+    width: 105vw;
+    border-top: 1px solid #d9d9d9;
+}
+
+.actueleHeader,
+.tableHeader {
+    color: black;
+    font-size: 2.5rem;
+}
+
+.headerContainer h1,
+.headerContainer p {
     margin: 0;
-  }
+    color: black;
+}
 
-  .headerContainer{
-    width: 90%;
-    gap: 20px;
-    margin: 0;
-    margin-top: 0rem;
-    margin-left: 35px;
-    margin-bottom: 30px;
-  }
-
-  .tableContainer {
-    width: 47.5vw;
-    position: fixed;
-      right:-4vw;
-      top: 30vh;
-  }
-
-  .actueleHeader {
-      color: black;
-      font-size: 2.5rem;
-  }
-
-  .headerContainer h1,
-  .headerContainer p{
-    margin: 0;
-      color: black;
-  }
-
-  body {
-      overflow-x: hidden;
-  }
-
-  .tableHeader {
-      color: black;
-      font-size: 2.5rem;
-  }
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
