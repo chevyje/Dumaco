@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import {useState} from "react";
 import Style from './table.module.css';
 
 function Table({ jsonData, navigationData, title, showUserEdit, showPencil }) {
     const navigate = useNavigate();
+    const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
 
     if (!jsonData || jsonData.length === 0) {
         return <p>No data available</p>;
@@ -11,6 +13,39 @@ function Table({ jsonData, navigationData, title, showUserEdit, showPencil }) {
     if (!navigationData || navigationData.length === 0) {
         return <p>Missing navigation data</p>;
     }
+
+    const sortedJsonData = sortConfig.key
+        ? [...jsonData].sort((a, b) => {
+            const varA = a[sortConfig.key];
+            const varB = b[sortConfig.key];
+
+            if (varA < varB) return sortConfig.direction === 'asc' ? -1 : 1;
+            if (varA > varB) return sortConfig.direction === 'asc' ? 1 : -1;
+            return 0;
+        }) : jsonData; // die : jsonData aan het einde hiernaast is dus als het geen asc en geen desc is dat ie dan 'reset' en de oude volgorde laat zien
+
+
+    const handleSort = (key) => {
+        if (sortConfig.key === key) {
+            if (sortConfig.direction === 'asc') {
+                setSortConfig({ key, direction: 'desc' });
+            } else if (sortConfig.direction === 'desc') {
+                setSortConfig({ key: null, direction: 'normal' }); // normal is dus de eerste volgorde die je als eerste ziet, soort reset snap je??
+            }
+        } else {
+            setSortConfig({ key, direction: 'asc' });
+        }
+    };
+
+    const getSortIcon = (header) => {
+        if (sortConfig.key === header) {
+            return sortConfig.direction === 'asc'
+                ? "/icons/sort-up.svg"
+                : "/icons/sort-down.svg";
+        }
+        return "/icons/arrow-up-down.svg";
+    };
+
 
     const handleEditClick = (index) => {
         const routeObj = navigationData[index];
@@ -34,7 +69,16 @@ function Table({ jsonData, navigationData, title, showUserEdit, showPencil }) {
                 <thead>
                 <tr>
                     {headers.map((header, index) => (
-                        <th key={index}>{header}</th>
+                        <th key={index} className={Style.header} onClick={() => handleSort(header)}>
+                            <div className={Style.headerContent}>
+                                <span>{header}</span>
+                                <img
+                                    src={getSortIcon(header)}
+                                    alt="sort-icon"
+                                    className={Style.sortIcon}
+                                />
+                            </div>
+                        </th>
                     ))}
                     {emptyHeaders.map((_, index) => (
                         <th key={`empty-header-${index}`}></th>
@@ -43,7 +87,7 @@ function Table({ jsonData, navigationData, title, showUserEdit, showPencil }) {
                 </tr>
                 </thead>
                 <tbody>
-                {jsonData.map((row, rowIndex) => (
+                {sortedJsonData.map((row, rowIndex) => (
                     <tr key={rowIndex} onClick={() => handleEditClick(rowIndex)}>
                         {headers.map((header, colIndex) => (
                             <td key={colIndex}>{row[header]}</td>
