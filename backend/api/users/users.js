@@ -79,7 +79,7 @@ UsersRouter.put('/:id', async (req, res) => {
             [username, recoveryMail, job, id]
         );
 
-        res.status(200).json(messages.success.addedRow);
+        res.status(201).json(messages.success.addedRow);
     } catch (error) {
         console.error(error);
         res.status(500).json(messages.error.server);

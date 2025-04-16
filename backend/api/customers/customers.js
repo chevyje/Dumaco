@@ -32,7 +32,7 @@ CustomerRouter.post('/', async (req, res) => {
     try{
         await db_execute("INSERT INTO customers (customerName, address, dockerNumber, palletTracking, phoneNumber, mailAddress) VALUES (?, ?, ?, ?, ?, ?)",
             [name, address, dockerNumber, palletTracking, phoneNumber, mailAddress]);
-        return res.status(200).json(messages.success.addedRow);
+        return res.status(201).json(messages.success.addedRow);
     }catch(err){
         console.error(err);
         return res.status(500).json(messages.error.server);
