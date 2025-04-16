@@ -2,9 +2,13 @@ import Style from './inkoopPagina.module.css';
 import Navbar from "../../components/navbar/navbar.jsx";
 import Table from "../../components/table/table.jsx";
 import Button from "../../components/button/button.jsx";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 
 function InkoopPagina() {
+
+    const navigate = useNavigate();
+
 
     const rows = [
         {"Artikel": "Plaat 2000 x 1500", "Omschrijving": "Dikte 2cm", "Bestellingen": 17, "Laatst besteld": "4 dagen geleden"},
@@ -19,6 +23,10 @@ function InkoopPagina() {
         { 2: '/inkoopbewerken' },
         { 3: '/inkoopbewerken' }
     ];
+
+    const createArtikel = () => {
+        navigate("/inkoopbewerken")
+    }
 
     return (
         <>
@@ -38,7 +46,7 @@ function InkoopPagina() {
                 <div className={Style.btnRight}>
                     <Button
                         title={"Artikel aanmaken"}
-                        triggerFunction={null}
+                        triggerFunction={ () => createArtikel()}
                         color={'#FFFFFF'}
                         icon={"plus"}
                         textColor={"#000000"}

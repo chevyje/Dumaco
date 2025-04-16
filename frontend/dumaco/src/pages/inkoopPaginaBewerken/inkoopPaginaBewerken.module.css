@@ -1,0 +1,53 @@
+.formContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inputFieldContainer {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.column {
+    padding-right: 5vw;
+}
+
+.btnsContainer {
+    display: flex;
+    margin-top: -20vh;
+    margin-left: 47.5%;
+}
+
+.deleteBtn {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 8px;
+}
+
+.itemsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+}
+
+input {
+    margin-bottom: 1rem;
+}
+
+label {
+    margin-bottom: 0.25rem;
+}
+
+select {
+    margin-bottom: 1.2rem;
+}

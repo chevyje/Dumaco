@@ -12,6 +12,7 @@ import OrderbonnenKantoor from "./pages/orderbonnenKantoor/orderbonnenKantoor.js
 import OrderbonKantoor from "./pages/orderbonKantoor/orderbonKantoor.jsx";
 import InlogPagina from "./pages/InlogPagina/InlogPagina.jsx";
 import HomePagina from "./pages/HomePagina/HomePagina.jsx";
+import InkoopPaginaBewerken from "./pages/inkoopPaginaBewerken/inkoopPaginaBewerken.jsx";
 
 const App = () => {
     return (
@@ -25,6 +26,7 @@ const App = () => {
                 <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
                 <Route path="/TeamsBeheerEdit" element={<TeamsBeheerEdit/>} />
                 <Route path="/inkoop" element={<InkoopPagina/>}/>
+                <Route path="/inkoopbewerken" element={<InkoopPaginaBewerken/>}/>
                 <Route path="/instellingen" element={<Instellingen />} />
                 <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
                 <Route path="/orderbonkantoor" element={<OrderbonKantoor />} />
