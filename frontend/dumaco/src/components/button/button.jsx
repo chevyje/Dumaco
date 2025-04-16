@@ -1,10 +1,8 @@
 import Style from "./button.module.css";
 
-function Button({title, triggerFunction, color, icon}) {
+function Button({title, triggerFunction, color, icon, textColor, borderColor}) {
 
     const Icon = "../../../icons/" + icon + ".svg";
-
-    console.log(Icon);
 
     return (
         <div>
@@ -12,7 +10,11 @@ function Button({title, triggerFunction, color, icon}) {
                 type="button"
                 className={Style.btn}
                 onClick={triggerFunction}
-                style={{ backgroundColor: color }}
+                style={{
+                    backgroundColor: color,
+                    color: textColor ? textColor : "#FFFFFF",
+                    border: `1px solid ${borderColor ? borderColor : "#FFFFFF"}`
+                }}
             >
                 {icon && <img className={Style.btnIcon} src={Icon} alt={"button"}></img>}
                 {title}
