@@ -26,8 +26,8 @@ CustomerRouter.post('/', async (req, res) => {
     if (!phoneNumber || phoneNumber.length <= 3) return res.status(400).json(messages.invalid("phone number"));
     if (!mailAddress || mailAddress.length <= 3) return res.status(400).json(messages.invalid("mail address"));
 
-    const users = await db_query("SELECT * FROM customers WHERE customerName = ?", [name]);
-    if(users.length >= 1) return res.status(400).json(messages.error.duplicate);
+    const customers = await db_query("SELECT * FROM customers WHERE customerName = ?", [name]);
+    if(customers.length >= 1) return res.status(400).json(messages.error.duplicate);
 
     try{
         await db_execute("INSERT INTO customers (customerName, address, dockerNumber, palletTracking, phoneNumber, mailAddress) VALUES (?, ?, ?, ?, ?, ?)",
@@ -37,7 +37,32 @@ CustomerRouter.post('/', async (req, res) => {
         console.error(err);
         return res.status(500).json(messages.error.server);
     }
+});
 
+
+CustomerRouter.post('/GetSpecificCustomer/:id', async (req, res) => {
+    let { id } = req.params;
+
+    if(!id || id.length <= 1) return res.status(400).json(messages.invalid("id"));
+
+    try{
+        const customers = await db_query("SELECT * FROM Customers WHERE customerID = ?", [id]);
+        if(customers <= 0) {
+            return res.status(400).json(messages.invalid("id"));
+        }
+    }catch (err){
+        console.error(err);
+        return res.status(500).json(messages.error.server);
+    }
+
+    try {
+        await db_execute("INSERT INTO customers (customerName, address, dockerNumber, palletTracking, phoneNumber, mailAddress) VALUES (?, ?, ?, ?, ?, ?)",
+            [name, address, dockerNumber, palletTracking, phoneNumber, mailAddress]);
+        return res.status(201).json(messages.success.addedRow);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json(messages.error.server);
+    }
 });
 
 export default CustomerRouter;

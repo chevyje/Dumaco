@@ -58,28 +58,35 @@ CREATE TABLE IF NOT EXISTS Users (
 CREATE TABLE IF NOT EXISTS Orders (
     customerID INTEGER NOT NULL,
     orderID INTEGER NOT NULL AUTO_INCREMENT,
-    orderIDcustomer VARCHAR(32),
+    orderIDCustomer VARCHAR(32),
     teamID INTEGER NOT NULL,
+    createdBy INTEGER NOT NULL,
+    plannedStart DATETIME,
+    plannedDelivery DATETIME,
+    deliveryDate DATETIME,
     PRIMARY KEY (orderID),
     FOREIGN KEY (teamID) REFERENCES Teams(teamID),
-    FOREIGN KEY (customerID) REFERENCES Customers(customerID)
+    FOREIGN KEY (customerID) REFERENCES Customers(customerID),
+    FOREIGN KEY (createdBy) REFERENCES Users(userID)
 );
 
-CREATE TABLE IF NOT EXISTS Tasks (
+CREATE TABLE IF NOT EXISTS Product (
     orderID INTEGER NOT NULL,
-    taskFormID VARCHAR(64) NOT NULL,
-    taskFormNumber INTEGER NOT NULL DEFAULT 1,
+    productID VARCHAR(64) NOT NULL,
+    productNumber INTEGER NOT NULL DEFAULT 1,
     palletNumber INTEGER,
     deliveryDate DATETIME NOT NULL,
     materialID INTEGER,
     quantity INTEGER,
-    PRIMARY KEY (taskFormID),
+    createdBy INTEGER NOT NULL,
+    PRIMARY KEY (productID),
     FOREIGN KEY (orderID) REFERENCES Orders(orderID),
-    FOREIGN KEY (materialID) REFERENCES MaterialTypes(materialID)
+    FOREIGN KEY (materialID) REFERENCES MaterialTypes(materialID),
+    FOREIGN KEY (createdBy) REFERENCES  Users(userID)
 );
 
 CREATE TABLE IF NOT EXISTS Edit (
-    taskFormID VARCHAR(64),
+    productID VARCHAR(64),
     editTypeID VARCHAR(32),
     comment VARCHAR(1024),
     drawing VARCHAR(32),
@@ -90,7 +97,7 @@ CREATE TABLE IF NOT EXISTS Edit (
     editID VARCHAR(32) NOT NULL,
     userID INTEGER,
     PRIMARY KEY (editID),
-    FOREIGN KEY (taskFormID) REFERENCES Tasks(taskFormID),
+    FOREIGN KEY (productID) REFERENCES Product(productID),
     FOREIGN KEY (editTypeID) REFERENCES EditTypeList(editID),
     FOREIGN KEY (userID) REFERENCES Users(userID)
 );
