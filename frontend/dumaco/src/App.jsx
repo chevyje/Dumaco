@@ -11,6 +11,7 @@ import OrderbonnenKantoor from "./pages/orderbonnenKantoor/orderbonnenKantoor.js
 import OrderbonKantoor from "./pages/orderbonKantoor/orderbonKantoor.jsx";
 import InlogPagina from "./pages/InlogPagina/InlogPagina.jsx";
 import HomePagina from "./pages/HomePagina/HomePagina.jsx";
+import ProductAanmaak from "./pages/productAanmaak/productAanmaak.jsx";
 
 const App = () => {
     return (
@@ -50,6 +51,8 @@ const App = () => {
                 {/* css error */}
 
                 <Route path="/home" element={<HomePagina />} />
+
+                <Route path="/productAanmaak" element={<ProductAanmaak />} />
 
             </Routes>
         </Router>
