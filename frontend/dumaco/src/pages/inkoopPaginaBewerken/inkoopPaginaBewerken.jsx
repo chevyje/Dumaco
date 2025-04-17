@@ -1,6 +1,6 @@
 import Navbar from "../../components/navbar/navbar.jsx";
 import React from "react";
-import Style from "../gebruikersBeheerEdit/gebruikersBeheerEdit.module.css";
+import Style from "../inkoopPaginaBewerken/inkoopPaginaBewerken.module.css";
 import InputField from "../../components/inputField/inputField.jsx";
 import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
@@ -36,8 +36,9 @@ function InkoopPaginaBewerken() {
                         />
                     </div>
                     <div className={Style.column}>
-                        <div className={Style.lastLogin}>
-                            <input type="date" className={Style.calendar}/>
+                        <div className={Style.calendar}>
+                            <label htmlFor={"calendar"}>Laatst besteld</label>
+                            <input type="date" id={"calendar"}/>
                         </div>
                     </div>
                 </div>
