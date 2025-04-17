@@ -27,13 +27,10 @@ function InkoopPaginaBewerken() {
                             fieldId={"recoverymail"}
                             isLocked={true}
                         />
-                        <InputField
-                            title={"Functie"}
-                            placeholder={"functie titel"}
-                            defaultText={"Lasser"}
-                            fieldId={"function"}
-                            isLocked={false}
-                        />
+                        <div className={Style.omschrijvingContainer}>
+                            <label htmlFor={"omschrijving"}>Omschrijving</label>
+                            <textarea id={"omschrijving"} className={Style.omschrijving}></textarea>
+                        </div>
                     </div>
                     <div className={Style.column}>
                         <div className={Style.calendar}>
