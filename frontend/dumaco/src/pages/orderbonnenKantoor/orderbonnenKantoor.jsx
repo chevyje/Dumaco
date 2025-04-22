@@ -59,7 +59,8 @@ function orderbonnenKantoor() {
             <Navbar title={"Orderbonnen"} route={"Orderbonnen"} />
             <div className={Style.table}>
                 <Table jsonData={data}
-                navigationData={rowsPageDestinations}/>
+                navigationData={rowsPageDestinations}
+                hideColumns={["Ordernummer"]}/>
             </div>
             {/* <Paginator /> */}
         </>

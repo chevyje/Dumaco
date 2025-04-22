@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import {useState} from "react";
 import Style from './table.module.css';
 
-function Table({ jsonData, navigationData, title, showUserEdit, showPencil }) {
+function Table({ jsonData, navigationData, hideColumns, title, showUserEdit, showPencil }) {
     const navigate = useNavigate();
     const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
 
@@ -58,6 +58,12 @@ function Table({ jsonData, navigationData, title, showUserEdit, showPencil }) {
     };
 
     let headers = Object.keys(jsonData[0]);
+
+    // Hide columns hiden
+    if (hideColumns && hideColumns.length > 0) {
+        headers = headers.filter(header => !hideColumns.includes(header));
+    }
+
     const spotsAvailable = 5;
     let emptyHeaders = Array.from({ length: Math.max(spotsAvailable - headers.length, 0) });
 
