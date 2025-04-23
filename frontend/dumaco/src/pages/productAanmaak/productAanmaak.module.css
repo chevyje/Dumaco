@@ -1,3 +1,9 @@
 .CollapsTable{
     height: 100%;
 }
+
+th {
+    background-color: #E1ECFF !important;
+    height: 45px;
+    padding-left: -45px;
+}

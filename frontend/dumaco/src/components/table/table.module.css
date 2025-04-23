@@ -5,13 +5,6 @@
     margin-bottom: 480px;
 }
 
-th {
-    background-color: #E1ECFF !important;
-    height: 45px;
-    padding-left: -45px;
-}
-
-
 .colorTable th, td {
     padding: 0.2vh 0.2vw;
     text-align: left;
