@@ -44,18 +44,16 @@ function ProductAanmaak() {
         if (newProduct.trim() === "") return;
 
         const newEntry = {
-            "customerID": 1,
-            "orderID": 1,
-            "orderIDCustomer": null,
-            "teamID": -1,
-            "createdBy": 1,
-            "plannedStart": "2025-04-20T00:00:00.000Z",
-            "plannedDelivery": "2025-04-25T00:00:00.000Z",
-            "deliveryDate": null
+            "orderID": "1",
+            "palletNumber": "",
+            "deliveryDate": "2025-04-23",
+            "materialID": "1",
+            "quantity": "15",
+            "createdBy": "1"
         };
 
         try {
-            const response = await fetch("http://localhost:8080/api/products/create", {
+            const response = await fetch("http://localhost:8080/api/product/", {
                 method: "POST",
                 body: JSON.stringify(newEntry),
                 headers: {
