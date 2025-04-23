@@ -1,3 +1,7 @@
 .CollapsTable{
     height: 100%;
 }
+
+.tableTitle {
+    padding-left: 1vw; /* of 2vw, afhankelijk van hoe veel ruimte je wil */
+}

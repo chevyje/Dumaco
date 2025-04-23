@@ -48,6 +48,8 @@ function Table({ jsonData, navigationData, title, showUserEdit, showPencil }) {
 
 
     const handleEditClick = (index) => {
+        if (!navigationData) return;
+    
         const routeObj = navigationData[index];
         const destination = routeObj && routeObj[index];
         if (destination) {
@@ -56,6 +58,7 @@ function Table({ jsonData, navigationData, title, showUserEdit, showPencil }) {
             console.error("Geen navigatie route gevonden voor index", index);
         }
     };
+    
 
     let headers = Object.keys(jsonData[0]);
     const spotsAvailable = 5;

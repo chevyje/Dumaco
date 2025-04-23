@@ -2,9 +2,15 @@
     width: 90%;
     border-collapse: collapse;
     z-index: 1;
-    table-layout: fixed;
-    margin-bottom: 2.5%;
+    margin-bottom: 480px;
 }
+
+th {
+    background-color: #E1ECFF !important;
+    height: 45px;
+    padding-left: -45px;
+}
+
 
 .colorTable th, td {
     padding: 0.2vh 0.2vw;
@@ -118,5 +124,5 @@
 .sortIcon {
     width: 0.9rem;
     height: 0.9rem;
-    color: #D9D9D9;
+    color: #A8C3FF;
 }
