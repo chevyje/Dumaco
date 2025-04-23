@@ -24,6 +24,7 @@ OrderRouter.post('/Filtered', async (req, res) => {
     if (!offset || offset.length <= 0) offset = 0;
     if (!teamID || teamID.length <= 0) teamID = 0;
 
+    // Get team to check if exists else set team to 0 to get all teams
     try{
         const Teams = await db_query("SELECT * FROM teams WHERE teamID = ?", [teamID]);
         if(Teams.length <= 0) teamID = 0;
@@ -31,13 +32,26 @@ OrderRouter.post('/Filtered', async (req, res) => {
         return res.status(500).json(messages.error.server);
     }
 
+    // SQL query to database to get data with team filter or without team filter
     try{
         if(teamID === 0) {
-            const orders = await db_query("SELECT * FROM orders LIMIT ? OFFSET ?", [limit, offset]);
+            const orders = await db_query(
+                `SELECT o.*, u.username, c.customerName
+                FROM orders o
+                JOIN  users u ON o.createdBy = u.userID
+                JOIN customers c ON o.customerID = c.customerID
+                LIMIT ? OFFSET ?`,
+                [limit, offset]);
             return res.status(200).json(orders);
         }
         else{
-            const orders = await db_query("SELECT * FROM Orders WHERE teamID = ? LIMIT ? OFFSET ?", [teamID, limit, offset]);
+            const orders = await db_query(
+                `SELECT o.*, u.username, c.customerName
+                FROM orders o
+                JOIN users u ON o.createdBy = u.userID
+                JOIN customers c ON o.customerID = c.customerID
+                WHERE o.teamID = ? 
+                LIMIT ? OFFSET ?`, [teamID, limit, offset]);
             return res.status(200).json(orders);
         }
     }catch(err){

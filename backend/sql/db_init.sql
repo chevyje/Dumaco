@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS MaterialTypes (
     PRIMARY KEY (materialID)
 );
 
-CREATE TABLE IF NOT EXISTS EditTypeList (
-    editID VARCHAR(32) NOT NULL,
+CREATE TABLE IF NOT EXISTS EditTypes (
+    editID INTEGER NOT NULL AUTO_INCREMENT,
     editName VARCHAR(64),
     editDesc VARCHAR(16),
     position INTEGER,
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS Product (
 
 CREATE TABLE IF NOT EXISTS Edit (
     productID VARCHAR(64),
-    editTypeID VARCHAR(32),
+    editTypeID INTEGER,
     comment VARCHAR(1024),
     drawing VARCHAR(32),
     startDate DATETIME,
@@ -98,6 +98,6 @@ CREATE TABLE IF NOT EXISTS Edit (
     userID INTEGER,
     PRIMARY KEY (editID),
     FOREIGN KEY (productID) REFERENCES Product(productID),
-    FOREIGN KEY (editTypeID) REFERENCES EditTypeList(editID),
+    FOREIGN KEY (editTypeID) REFERENCES EditTypes(editID),
     FOREIGN KEY (userID) REFERENCES Users(userID)
 );
