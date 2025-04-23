@@ -7,52 +7,32 @@ import TeamsBeheer from "./pages/teamBeheer/TeamsBeheer.jsx";
 import OrderbonnenFabriek from "./pages/orderbonnenFabriek/orderbonnenFabriek.jsx";
 import TeamsBeheerEdit from "./pages/teamBeheerEdit/TeamsBeheerEdit.jsx";
 import Instellingen from "./pages/instellingen/instellingen.jsx";
+import InkoopPagina from "./pages/inkoopPagina/inkoopPagina.jsx";
 import OrderbonnenKantoor from "./pages/orderbonnenKantoor/orderbonnenKantoor.jsx";
 import OrderbonKantoor from "./pages/orderbonKantoor/orderbonKantoor.jsx";
 import InlogPagina from "./pages/InlogPagina/InlogPagina.jsx";
 import HomePagina from "./pages/HomePagina/HomePagina.jsx";
-import ProductAanmaak from "./pages/productAanmaak/productAanmaak.jsx";
+import InkoopPaginaBewerken from "./pages/inkoopPaginaBewerken/inkoopPaginaBewerken.jsx";
 
 const App = () => {
     return (
         <Router>
             <Routes>
                 <Route path="/klantoverzicht" element={<KlantOverzicht />} />
-                {/* css problemen */}
-
                 <Route path="/klantenoverzicht" element={<KlantenOverzicht />} />
-                {/* styling error en paginator werkt niet goed */}
-
                 <Route path="/gebruikersbeheer" element={<GebruikersBeheer />} />
-                {/* styling error */}
-
                 <Route path="/gebruikersbeheeredit" element={<GebruikersBeheerEdit/>} />
-                {/* witte pagina */}
-
                 <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
-                {/* css error */}
-
                 <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
-                {/* css error */}
-
                 <Route path="/TeamsBeheerEdit" element={<TeamsBeheerEdit/>} />
-                {/* witte pagina */}
-
-                <Route path="/" element={<InlogPagina />} />
-                {/* styling error */}
-
+                <Route path="/inkoop" element={<InkoopPagina/>}/>
+                <Route path="/inkoopbewerken" element={<InkoopPaginaBewerken/>}/>
                 <Route path="/instellingen" element={<Instellingen />} />
-                {/* witte pagina */}
-
                 <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
-                {/* css error */}
-
                 <Route path="/orderbonkantoor" element={<OrderbonKantoor />} />
-                {/* css error */}
-
                 <Route path="/home" element={<HomePagina />} />
+                <Route path="/" element={<InlogPagina />} />
 
-                <Route path="/productAanmaak" element={<ProductAanmaak />} />
 
             </Routes>
         </Router>

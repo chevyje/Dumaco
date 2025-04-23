@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS MaterialTypes (
     PRIMARY KEY (materialID)
 );
 
-CREATE TABLE IF NOT EXISTS EditTypeList (
-    editID VARCHAR(32) NOT NULL,
+CREATE TABLE IF NOT EXISTS EditTypes (
+    editID INTEGER NOT NULL AUTO_INCREMENT,
     editName VARCHAR(64),
     editDesc VARCHAR(16),
     position INTEGER,
@@ -55,32 +55,39 @@ CREATE TABLE IF NOT EXISTS Users (
     FOREIGN KEY (teamID) REFERENCES Teams(teamID)
 );
 
-CREATE TABLE IF NOT EXISTS OrderForm (
+CREATE TABLE IF NOT EXISTS Orders (
     customerID INTEGER NOT NULL,
     orderID INTEGER NOT NULL AUTO_INCREMENT,
-    orderIDcustomer VARCHAR(32),
+    orderIDCustomer VARCHAR(32),
     teamID INTEGER NOT NULL,
+    createdBy INTEGER NOT NULL,
+    plannedStart DATETIME,
+    plannedDelivery DATETIME,
+    deliveryDate DATETIME,
     PRIMARY KEY (orderID),
     FOREIGN KEY (teamID) REFERENCES Teams(teamID),
-    FOREIGN KEY (customerID) REFERENCES Customers(customerID)
+    FOREIGN KEY (customerID) REFERENCES Customers(customerID),
+    FOREIGN KEY (createdBy) REFERENCES Users(userID)
 );
 
-CREATE TABLE IF NOT EXISTS TaskForm (
+CREATE TABLE IF NOT EXISTS Product (
     orderID INTEGER NOT NULL,
-    taskFormID VARCHAR(64) NOT NULL,
-    taskFormNumber INTEGER NOT NULL DEFAULT 1,
+    productID VARCHAR(64) NOT NULL,
+    productNumber INTEGER NOT NULL DEFAULT 1,
     palletNumber INTEGER,
     deliveryDate DATETIME NOT NULL,
     materialID INTEGER,
     quantity INTEGER,
-    PRIMARY KEY (taskFormID),
-    FOREIGN KEY (orderID) REFERENCES OrderForm(orderID),
-    FOREIGN KEY (materialID) REFERENCES MaterialTypes(materialID)
+    createdBy INTEGER NOT NULL,
+    PRIMARY KEY (productID),
+    FOREIGN KEY (orderID) REFERENCES Orders(orderID),
+    FOREIGN KEY (materialID) REFERENCES MaterialTypes(materialID),
+    FOREIGN KEY (createdBy) REFERENCES  Users(userID)
 );
 
 CREATE TABLE IF NOT EXISTS Edit (
-    taskFormID VARCHAR(64),
-    editTypeID VARCHAR(32),
+    productID VARCHAR(64),
+    editTypeID INTEGER,
     comment VARCHAR(1024),
     drawing VARCHAR(32),
     startDate DATETIME,
@@ -90,7 +97,7 @@ CREATE TABLE IF NOT EXISTS Edit (
     editID VARCHAR(32) NOT NULL,
     userID INTEGER,
     PRIMARY KEY (editID),
-    FOREIGN KEY (taskFormID) REFERENCES TaskForm(taskFormID),
-    FOREIGN KEY (editTypeID) REFERENCES EditTypeList(editID),
+    FOREIGN KEY (productID) REFERENCES Product(productID),
+    FOREIGN KEY (editTypeID) REFERENCES EditTypes(editID),
     FOREIGN KEY (userID) REFERENCES Users(userID)
 );

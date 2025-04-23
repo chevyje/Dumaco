@@ -52,9 +52,8 @@ UsersRouter.post('/', async (req, res) => {
 
         const teamID = -1;
 
-        await db_execute(
-            "INSERT INTO Users (username, password, recoveryMail, functionID, teamID) VALUES (?, ?, ?, ?, ?)",[username, hashedPassword, recoveryMail, functionID, teamID]
-        );
+        await db_execute("INSERT INTO Users (username, password, recoveryMail, functionID, teamID) VALUES (?, ?, ?, ?, ?)",
+            [username, hashedPassword, recoveryMail, functionID, teamID]);
 
         res.status(201).json(messages.success.addedRow);
     } catch (err) {
@@ -79,7 +78,7 @@ UsersRouter.put('/:id', async (req, res) => {
             [username, recoveryMail, job, id]
         );
 
-        res.status(200).json(messages.success.addedRow);
+        res.status(201).json(messages.success.addedRow);
     } catch (error) {
         console.error(error);
         res.status(500).json(messages.error.server);
