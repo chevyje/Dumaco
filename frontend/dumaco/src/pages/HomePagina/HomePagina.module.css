@@ -51,9 +51,15 @@ hr {
 }
 
 .actueleHeader,
-.tableHeader {
+.tableHeaderText {
     color: black;
     font-size: 2.5rem;
+}
+
+.tableHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .headerContainer h1,
@@ -66,3 +72,18 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
 }
+
+.homeBtns {
+    display: flex;
+    flex-direction: row;
+    float: right;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+
+.homeBtn {
+    margin: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+

@@ -3,8 +3,11 @@ import Card from "../../components/Card/card.jsx";
 import Dropdown2 from "../../components/dropdown2/dropdown2.jsx";
 import Style from "../../pages/HomePagina/HomePagina.module.css";
 import Table from "../../components/table/table.jsx";
+import Button from "../../components/button/button.jsx";
+import {useNavigate} from "react-router-dom";
 
 function HomePagina() {
+    const navigate  = useNavigate();
 
     const options = [
         { value: 'vandaag', label: 'Vandaag' },
@@ -27,6 +30,14 @@ function HomePagina() {
     const userName = {userName: "Hans"};
     const tijdTotWeekend = {tijdTotWeekend: 3};
 
+    const redirectCreateOrder = () => {
+        navigate('/orderbonaanmaken');
+    }
+
+    const redirectCreateCustomer = () => {
+        navigate('/klantaanmaken');
+    }
+
     return(
         <>
             <div className={Style.dashboard}>
@@ -35,6 +46,10 @@ function HomePagina() {
                 <header className={Style.headerContainer}>
                     <h1>Goedendag, {userName.userName}</h1>
                     <p className={Style.headerSubtitle}>Nog {tijdTotWeekend.tijdTotWeekend} dagen tot het weekend!</p>
+                    <div className={Style.homeBtns}>
+                        <Button className={Style.homeBtn} title={"Order"} icon={"plus"} triggerFunction={redirectCreateOrder} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
+                        <Button className={Style.homeBtn} title={"Klant"} icon={"plus"} triggerFunction={redirectCreateCustomer} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
+                    </div>
                 </header>
 
                 <hr />
@@ -58,7 +73,9 @@ function HomePagina() {
                         </div>
                     </div>
                     <div className={Style.tableContainer}>
-                        <h1 className={Style.tableHeader}>Te late orders</h1>
+                        <div className={Style.tableHeader}>
+                            <h1 className={Style.tableHeaderText}>Te late orders (vandaag)</h1>
+                        </div>
                         <Table jsonData={rows} navigationData={rowsPageDestinations} />
                     </div>
                 </div>
@@ -66,5 +83,7 @@ function HomePagina() {
         </>
     );
 }
+
+
 
 export default HomePagina;
