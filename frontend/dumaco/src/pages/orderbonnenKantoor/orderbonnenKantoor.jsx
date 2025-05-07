@@ -3,6 +3,7 @@ import Table from "../../components/table/table.jsx";
 import Paginator from "../../components/paginator/paginator.jsx";
 import Style from "../klantenOverzicht/klantenOverzicht.module.css";
 import {useEffect, useState} from "react";
+import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 
 function orderbonnenKantoor() {
     const [tableData, setTableData] = useState([]);
@@ -48,36 +49,42 @@ function orderbonnenKantoor() {
     }
 
     const rowsPageDestinations = [
-        {0: '/orderbonkantoor'},
-        {1: '/orderbonkantoor'},
-        {2: '/orderbonkantoor'},
-        {3: '/orderbonkantoor'},
-        {4: '/orderbonkantoor'},
-        {5: '/orderbonkantoor'},
-        {6: '/orderbonkantoor'},
-        {7: '/orderbonkantoor'},
-        {8: '/orderbonkantoor'},
-        {9: '/orderbonkantoor'},
-        {10: '/orderbonkantoor'},
-        {11: '/orderbonkantoor'},
-        {12: '/orderbonkantoor'},
-        {13: '/orderbonkantoor'},
-        {14: '/orderbonkantoor'},
-        {15: '/orderbonkantoor'},
-        {16: '/orderbonkantoor'},
-        {17: '/orderbonkantoor'},
-        {18: '/orderbonkantoor'},
-        {19: '/orderbonkantoor'},
-        {20: '/orderbonkantoor'},
-        {21: '/orderbonkantoor'},
+        {0: '/orderbonnenkantoor/order'},
+        {1: '/orderbonnenkantoor/order'},
+        {2: '/orderbonnenkantoor/order'},
+        {3: '/orderbonnenkantoor/order'},
+        {4: '/orderbonnenkantoor/order'},
+        {5: '/orderbonnenkantoor/order'},
+        {6: '/orderbonnenkantoor/order'},
+        {7: '/orderbonnenkantoor/order'},
+        {8: '/orderbonnenkantoor/order'},
+        {9: '/orderbonnenkantoor/order'},
+        {10: '/orderbonnenkantoor/order'},
+        {11: '/orderbonnenkantoor/order'},
+        {12: '/orderbonnenkantoor/order'},
+        {13: '/orderbonnenkantoor/order'},
+        {14: '/orderbonnenkantoor/order'},
+        {15: '/orderbonnenkantoor/order'},
+        {16: '/orderbonnenkantoor/order'},
+        {17: '/orderbonnenkantoor/order'},
+        {18: '/orderbonnenkantoor/order'},
+        {19: '/orderbonnenkantoor/order'},
+        {20: '/orderbonnenkantoor/order'},
+        {21: '/orderbonnenkantoor/order'},
     ]
 
     useEffect(() => {
         GetData(10, 0, -1);
     }, []);
+
+    const route = breadRouteGen({
+        "/home": "Home",
+        "/orderbonnenkantoor": "Orderbonnen"
+    });
+
     return (
         <>
-            <Navbar title={"Orderbonnen"} route={"Orderbonnen"}/>
+            <Navbar title={"Orderbonnen"} route={route}/>
             <div className={Style.table}>
                 <Table jsonData={tableData}
                        navigationData={rowsPageDestinations}

@@ -17,6 +17,7 @@
     justify-content: space-between;
     background-color: #ff3434 ;
     height: 4vh;
+    padding-left: 1rem;
 }
 
 .navbar h1{
@@ -95,6 +96,7 @@
 }
 
 .navLinks {
+    padding-left: -1rem;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -105,4 +107,15 @@
 
 .subnavbarButton:last-child.active {
     border-right: none;
+}
+
+.breadcrumbSpan {
+    font-size: 1rem;
+    color: white;
+    user-select: none;
+}
+
+.breadLink {
+    color: white;
+    user-select: none;
 }

@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import InputField from "../../components/inputField/inputField.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
 import Dropdown2 from "../../components/dropdown2/dropdown2.jsx";
+import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 
 const Instellingen = () => {
     const navigate = useNavigate();
@@ -16,11 +17,15 @@ const Instellingen = () => {
         { value: 'pools', label: 'Polski', icon: 'pl' }
     ];
 
+    const route = breadRouteGen({
+        "/home": "Home",
+        "/instellingen": "Instellingen"
+    });
 
     return (
         <>
             <Main />
-            <Navbar title={"Instellingen"} route={"Instellingen"}/>
+            <Navbar title={"Instellingen"} route={route}/>
             <div className={Style.inputFieldContainer}>
                 <div className={Style.formContainer}>
                     <div className={Style.column}>

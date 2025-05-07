@@ -5,6 +5,7 @@ import Style from "../../pages/HomePagina/HomePagina.module.css";
 import Table from "../../components/table/table.jsx";
 import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
+import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 
 function HomePagina() {
     const navigate  = useNavigate();
@@ -22,9 +23,9 @@ function HomePagina() {
     ];
 
     const rowsPageDestinations = [
-        { 0: '/orderbonkantoor' },
-        { 1: '/orderbonkantoor' },
-        { 2: '/orderbonkantoor' },
+        { 0: '/orderbonnenkantoor/order' },
+        { 1: '/orderbonnenkantoor/order' },
+        { 2: '/orderbonnenkantoor/order' },
     ];
 
     const userName = {userName: "Hans"};
@@ -38,10 +39,14 @@ function HomePagina() {
         navigate('/klantaanmaken');
     }
 
+    const route = breadRouteGen({
+        "/home": "Home",
+    });
+
     return(
         <>
             <div className={Style.dashboard}>
-                <Navbar title={"Home"} route={"Home"} />
+                <Navbar title={"Home"} route={route} />
 
                 <header className={Style.headerContainer}>
                     <h1>Goedendag, {userName.userName}</h1>

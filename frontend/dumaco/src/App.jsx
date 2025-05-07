@@ -21,15 +21,15 @@ const App = () => {
                 <Route path="/klantoverzicht" element={<KlantOverzicht />} />
                 <Route path="/klantenoverzicht" element={<KlantenOverzicht />} />
                 <Route path="/gebruikersbeheer" element={<GebruikersBeheer />} />
-                <Route path="/gebruikersbeheeredit" element={<GebruikersBeheerEdit/>} />
+                <Route path="/gebruikersbeheer/edit" element={<GebruikersBeheerEdit/>} />
                 <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
                 <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
                 <Route path="/TeamsBeheerEdit" element={<TeamsBeheerEdit/>} />
                 <Route path="/inkoop" element={<InkoopPagina/>}/>
-                <Route path="/inkoopbewerken" element={<InkoopPaginaBewerken/>}/>
+                <Route path="/inkoop/edit" element={<InkoopPaginaBewerken/>}/>
                 <Route path="/instellingen" element={<Instellingen />} />
                 <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
-                <Route path="/orderbonkantoor" element={<OrderbonKantoor />} />
+                <Route path="/orderbonnenkantoor/order" element={<OrderbonKantoor />} />
                 <Route path="/home" element={<HomePagina />} />
                 <Route path="/" element={<InlogPagina />} />
 

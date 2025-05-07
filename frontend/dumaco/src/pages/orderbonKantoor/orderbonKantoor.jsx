@@ -2,6 +2,7 @@ import Table from "../../components/collapse/collapseTable.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
 import CustomButton from "../../components/button/button.jsx";
 import Style from "./orderbonKantoor.module.css";
+import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 
 function klantOverzicht() {
     const Bewerking = [
@@ -38,9 +39,15 @@ function klantOverzicht() {
         {"Stuklijst": "5-1105-3456-0-J", "Omschrijving": "Beitsen", "Startdatum": "05-02-2025", "Bedrijf": "", "Aantal": 15, "Ontvangen": false}
     ];
 
+    const route = breadRouteGen({
+        "/home": "Home",
+        "/orderbonnenkantoor": "Orderbonnen",
+        "orderbonnenkantoor/order": "Order",
+    });
+
     return(
         <>
-            <Navbar title={"Lely Industries #32500030"} route={"Orderbonnen / Lely Industries NV / #32500030"} />
+            <Navbar title={"Lely Industries #32500030"} route={route} />
             <div className={Style.customButton}>
                 <CustomButton title={"Bewerken"} triggerFunction={null} icon={"white-pencil"} color={"#3d3d3d"} />
             </div>

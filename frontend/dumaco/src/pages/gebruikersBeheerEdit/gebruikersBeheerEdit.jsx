@@ -5,6 +5,7 @@ import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
 import Navbar from "../../components/navbar/navbar.jsx";
 import Dropdown2 from "../../components/dropdown2/dropdown2.jsx";
+import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 
 const GebruikersBeheerEdit = () => {
     const navigate = useNavigate();
@@ -16,11 +17,17 @@ const GebruikersBeheerEdit = () => {
         { value: 'geel', label: 'Geel' }
     ];
 
+    const route = breadRouteGen({
+        "/home": "Home",
+        "/gebruikersbeheer": "Gebruikers beheer",
+        "gebruikersbeheer/edit": "Edit",
+    });
+
 
     return (
         <>
             <Main />
-            <Navbar title={"Gebruikers beheer"} route={"Management / Gebruikers / Tobias Beumer"}/>
+            <Navbar title={"Gebruikers beheer"} route={route}/>
                 <div className={Style.usernameContainer}>
                     <p className={Style.usernameText}>Tobias Beumer</p>
                 </div>
