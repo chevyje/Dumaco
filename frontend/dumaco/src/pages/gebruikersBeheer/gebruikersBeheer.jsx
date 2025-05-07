@@ -2,6 +2,7 @@ import Table from "../../components/table/table.jsx";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/navbar.jsx";
 import Styles from "./gebruikersBeheer.module.css";
+import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 
 function GebruikersBeheer() {
     const navigate = useNavigate();
@@ -13,18 +14,23 @@ function GebruikersBeheer() {
         ];
 
         const rowsPageDestinations = [
-            { 0: '/gebruikersbeheeredit' },
-            { 1: '/gebruikersbeheeredit' },
-            { 2: '/gebruikersbeheeredit' },
+            { 0: '/gebruikersbeheer/edit' },
+            { 1: '/gebruikersbeheer/edit' },
+            { 2: '/gebruikersbeheer/edit' },
         ]
 
     function showUserEdit() {
-        navigate("/gebruikersbeheeredit");
+        navigate("/gebruikersbeheer/edit");
     }
+
+    const route = breadRouteGen({
+        "/home": "Home",
+        "/gebruikersbeheer": "Gebruikers beheer"
+    });
 
     return (
         <>
-            <Navbar title={"Gebruikers beheer"} route={"Gebruikers"}/>
+            <Navbar title={"Gebruikers beheer"} route={route}/>
             <div className={Styles.tableContainer}>
                 <Table
                     jsonData={rows}

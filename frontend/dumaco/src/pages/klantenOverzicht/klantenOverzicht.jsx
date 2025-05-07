@@ -1,9 +1,8 @@
 import Navbar from "../../components/navbar/navbar.jsx";
 import Table from "../../components/table/table.jsx";
 import Style from "./klantenOverzicht.module.css";
-import Sidebar from "../../components/sidebar/sidebar.jsx";
-import Paginator from "../../components/paginator/paginator.jsx";
 import {useEffect, useState} from "react";
+import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 
 function klantenOverzicht() {
     const [tableData, setTableData] = useState([]);
@@ -59,9 +58,15 @@ function klantenOverzicht() {
     useEffect(() => {
         GetData(10, 0, -1);
     }, []);
+
+    const route = breadRouteGen({
+        "/home": "Home",
+        "/klantenoverzicht": "Klanten Overzicht"
+    });
+
     return(
         <>
-            <Navbar title={"Klanten"} route={"Klanten"} />
+            <Navbar title={"Klanten"} route={route} />
             <div className={Style.table}>
                 <Table jsonData={tableData} navigationData={navigationData}
                        hideColumns={["customerID", "address", "palletTracking", "dockerNumber"]}

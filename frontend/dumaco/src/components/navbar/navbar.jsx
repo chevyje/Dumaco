@@ -1,7 +1,8 @@
 import Logo from '../../assets/logo.png';
 import Profile from '../../assets/profiel.png';
 import Style from  './navbar.module.css';
-import {NavLink, useNavigate} from 'react-router-dom';
+import {Link, NavLink, useNavigate} from 'react-router-dom';
+import {Breadcrumbs} from "@mui/material";
 
 function Navbar({ title, route }) {
     const navigate = useNavigate();
@@ -26,7 +27,14 @@ function Navbar({ title, route }) {
                 <img className={Style.profile} src={Profile} alt="Profielafbeelding" onClick={handleProfileClick}/>
             </div>
             <div className={Style.subnavbar}>
-                <h5>{route}</h5>
+                <Breadcrumbs separator="›" aria-label="breadcrumb">
+                    {route.map((crumb, index) =>
+                        crumb.path
+                            ? <Link key={index} to={crumb.path} underline={"hover"} color={"#FFFFFF"} className={Style.breadLink}>{crumb.label}</Link>
+                            : <span key={index} className={Style.breadcrumbSpan}>{crumb.label}</span>
+                    )}
+                </Breadcrumbs>
+
                 <div className={Style.navLinks}>
                     <NavLink to="/home" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Home

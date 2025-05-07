@@ -4,6 +4,7 @@ import Table from "../../components/table/table.jsx";
 import Button from "../../components/button/button.jsx";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 
 function InkoopPagina() {
 
@@ -18,19 +19,25 @@ function InkoopPagina() {
     ];
 
     const rowsPageDestinations = [
-        { 0: '/inkoopbewerken' },
-        { 1: '/inkoopbewerken' },
-        { 2: '/inkoopbewerken' },
-        { 3: '/inkoopbewerken' }
+        { 0: '/inkoop/edit' },
+        { 1: '/inkoop/edit' },
+        { 2: '/inkoop/edit' },
+        { 3: '/inkoop/edit' }
     ];
 
     const createArtikel = () => {
-        navigate("/inkoopbewerken")
+        navigate("/inkoop/edit")
     }
+
+    const route = breadRouteGen({
+        "/home": "Home",
+        "/inkoop": "Inkoop Standaarden",
+        "inkoop/edit": "Edit",
+    });
 
     return (
         <>
-            <Navbar title={"Inkoop standaarden"} route={"Orders / Order aanmaken / Inkoop standaarden"} />
+            <Navbar title={"Inkoop standaarden"} route={route} />
 
             <div className={Style.header}>
                 <div className={Style.btnLeft}>

@@ -4,12 +4,20 @@ import Style from "../inkoopPaginaBewerken/inkoopPaginaBewerken.module.css";
 import InputField from "../../components/inputField/inputField.jsx";
 import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
+import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 
 function InkoopPaginaBewerken() {
     const navigate = useNavigate();
+
+    const route = breadRouteGen({
+        "/home": "Home",
+        "/inkoop": "Inkoop Standaarden",
+        "gebruikersbeheer/edit": "Edit",
+    });
+
     return (
         <>
-            <Navbar title={"Inkoop standaarden"} route={"Orders / Order aanmaken / Inkoop standaarden / Bewerken"} />
+            <Navbar title={"Inkoop standaarden"} route={route} />
             <div className={Style.inputFieldContainer}>
                 <div className={Style.formContainer}>
                     <div className={Style.column}>
