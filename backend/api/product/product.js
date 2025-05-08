@@ -2,6 +2,7 @@ import express from "express";
 import {db_execute, db_query} from "../../db.js";
 import messages from "../../message.js";
 import { dateToISO } from "../../functions.js";
+import OrderRouter from "../orders/orders.js";
 
 const ProductRouter = express.Router();
 
@@ -13,6 +14,49 @@ ProductRouter.get('/', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json(messages.error.server);
+    }
+});
+
+// Get all products with a filter
+ProductRouter.post('/Filtered', async (req, res) => {
+    let { limit, offset, teamID } = req.body;
+    if (!limit || limit.length <= 0) return res.status(400).json(messages.invalid("limit"));
+    if (!offset || offset.length <= 0) offset = 0;
+    if (!teamID || teamID.length <= 0) teamID = 0;
+
+    // Get team to check if exists else set team to 0 to get all teams
+    try{
+        const Teams = await db_query("SELECT * FROM teams WHERE teamID = ?", [teamID]);
+        if(Teams.length <= 0) teamID = 0;
+    }catch(err){
+        return res.status(500).json(messages.error.server);
+    }
+
+    // SQL query to database to get data with team filter or without team filter
+    try{
+        if(teamID === 0) {
+            const orders = await db_query(
+                `SELECT p.*, o.teamID, c.customerName
+                FROM product p 
+                JOIN  orders o ON p.orderID = o.orderID
+                JOIN customers c ON o.customerID = c.customerID
+                LIMIT ? OFFSET ?`,
+                [limit, offset]);
+            return res.status(200).json(orders);
+        }
+        else{
+            const orders = await db_query(
+                `SELECT p.*, o.teamID, c.customerName
+                FROM product p
+                JOIN  orders o ON p.orderID = o.orderID
+                JOIN customers c ON o.customerID = c.customerID
+                WHERE o.teamID = ? 
+                LIMIT ? OFFSET ?`, [teamID, limit, offset]);
+            return res.status(200).json(orders);
+        }
+    }catch(err){
+        console.error(err);
+        return res.status(500).json(messages.error.server);
     }
 });
 

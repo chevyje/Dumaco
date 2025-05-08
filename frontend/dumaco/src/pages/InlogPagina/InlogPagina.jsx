@@ -65,6 +65,7 @@ function InlogPagina() {
                 e.target.password.parentElement.style.borderColor = "red";
                 setText("Wachtwoord is onjuist");
             }
+
             // Invalid data response
             else if(status === 400 && data.message.includes("username")) {
                 e.target.username.parentElement.style.borderColor = "red";

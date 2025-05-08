@@ -16,7 +16,7 @@ function producten() {
     }
     const GetData = async (limit, offset, teamID) => {
         try {
-            const requestData = await fetch("http://145.89.192.195:8080/api/orders/Filtered", {
+            const requestData = await fetch("http://localhost:8080/api/product/Filtered", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -29,14 +29,14 @@ function producten() {
             })
             const data = await requestData.json();
             const formattedData = data.map(item => {
-                const {plannedStart, plannedDelivery, username, orderID, customerName, ...rest} = item;
+                const { productID, palletNumber, deliveryDate, quantity, customerName, ...rest} = item;
                 return {
+                    "Product id": productID,
+                    "Pallet nummer": palletNumber,
+                    "Leverdatum": changeTime(deliveryDate),
+                    "Klant": customerName,
+                    "Aantal": quantity,
                     ...rest,
-                    Startdatum: changeTime(plannedStart),
-                    Leverdatum: changeTime(plannedDelivery),
-                    "Gemaakt door": username,
-                    Klant: customerName,
-                    Ordernummer: orderID,
                 };
             })
             console.log(data);
@@ -87,7 +87,7 @@ function producten() {
             <div className={Style.table}>
                 <Table jsonData={tableData}
                        navigationData={rowsPageDestinations}
-                       hideColumns={["deliveryDate", "teamID", "createdBy", "customerID", "orderIDCustomer"]}/>
+                       hideColumns={["orderID", "productNumber", "materialID", "teamID", "createdBy"]}/>
             </div>
             {/* <Paginator /> */}
         </>
