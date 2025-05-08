@@ -9,7 +9,6 @@
 
 .tableContainer {
     justify-content: center;
-    display: center;
 }
 
 .collapseTable th{
@@ -23,25 +22,29 @@
 
 }
 
-.collapseTable table .collapseTable th:first-child,
-.collapseTable table .collapseTable td:first-child {
+.collapseTable td, .collapseTable th {
+    border-collapse: collapse;
+}
+
+.collapseTable th:first-child,
+.collapseTable td:first-child {
     border-left: none;
 }
-.collapseTable table .collapseTable th:last-child,
-.collapseTable table .collapseTable td:last-child {
+
+.collapseTable th:last-child,
+.collapseTable td:last-child {
     border-right: none;
 }
-.collapseTable table .collapseTable tr:first-child th,
-.collapseTable table .collapseTable tr:first-child td {
+
+.collapseTable tr:first-child th,
+.collapseTable tr:first-child td {
     border-top: none;
 }
-.collapseTable table .collapseTable tr:last-child td {
+
+.collapseTable tr:last-child td {
     border-bottom: none;
 }
 
-.collapseTable td, .collapseTable th {
-    border: 1px solid #ccc;
-}
 
 
 .captionContainer{
@@ -52,6 +55,8 @@
     font-size: 2rem;
     border-radius: 12px;
     cursor: pointer;
+    color: black;
+    user-select: none;
 }
 
 .captionContainer:hover{
