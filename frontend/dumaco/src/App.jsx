@@ -13,6 +13,7 @@ import OrderbonKantoor from "./pages/orderbonKantoor/orderbonKantoor.jsx";
 import InlogPagina from "./pages/InlogPagina/InlogPagina.jsx";
 import HomePagina from "./pages/HomePagina/HomePagina.jsx";
 import InkoopPaginaBewerken from "./pages/inkoopPaginaBewerken/inkoopPaginaBewerken.jsx";
+import Producten from "./pages/producten/producten.jsx"
 
 const App = () => {
     return (
@@ -30,6 +31,7 @@ const App = () => {
                 <Route path="/instellingen" element={<Instellingen />} />
                 <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
                 <Route path="/orderbonnenkantoor/order" element={<OrderbonKantoor />} />
+                <Route path="/producten" element={<Producten />} />
                 <Route path="/home" element={<HomePagina />} />
                 <Route path="/" element={<InlogPagina />} />
 
