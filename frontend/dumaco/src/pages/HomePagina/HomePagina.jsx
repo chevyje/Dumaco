@@ -29,7 +29,23 @@ function HomePagina() {
     ];
 
     const userName = {userName: "Hans"};
-    const tijdTotWeekend = {tijdTotWeekend: 3};
+
+    //Datums
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+    let tijdTotWeekend;
+
+    if (dayOfWeek < 5) {
+        const DaysTillEndOfWeek = 6 - dayOfWeek;
+        tijdTotWeekend = {tijdTotWeekend: "Nog "+ DaysTillEndOfWeek + " dagen tot het weekend."};
+    } else if (dayOfWeek === 5) {
+        const HoursTillEndOfWeek = 17 - today.getHours();
+        tijdTotWeekend = {tijdTotWeekend: "Nog " + HoursTillEndOfWeek + " uur tot het weekend."};
+    } else if (dayOfWeek > 5) {
+        tijdTotWeekend = {tijdTotWeekend: "Weekend! wat doe je hier nog?"};
+    } else {
+        tijdTotWeekend = {tijdTotWeekend: "Niemand weet wanneer het weekend is."};
+    }
 
     const redirectCreateOrder = () => {
         navigate('/orderbonaanmaken');
@@ -50,7 +66,7 @@ function HomePagina() {
 
                 <header className={Style.headerContainer}>
                     <h1>Goedendag, {userName.userName}</h1>
-                    <p className={Style.headerSubtitle}>Nog {tijdTotWeekend.tijdTotWeekend} dagen tot het weekend!</p>
+                    <p className={Style.headerSubtitle}>{tijdTotWeekend.tijdTotWeekend}</p>
                     <div className={Style.homeBtns}>
                         <Button className={Style.homeBtn} title={"Order"} icon={"plus"} triggerFunction={redirectCreateOrder} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
                         <Button className={Style.homeBtn} title={"Klant"} icon={"plus"} triggerFunction={redirectCreateCustomer} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
