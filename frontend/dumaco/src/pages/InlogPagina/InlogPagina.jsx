@@ -55,26 +55,26 @@ function InlogPagina() {
             }
 
             // Unauthorized Response
-            else if(status === 401 && data.message.includes("username")) {
+            else if(status === 401 && data.message.includes("user")) {
                 e.target.username.parentElement.style.borderColor = "red";
                 e.target.password.parentElement.style.borderColor = "red";
-                setText(data.message);
+                setText("Deze gebruiker bestaat niet");
             }
             else if(status === 401 && data.message.includes("password")) {
                 e.target.username.parentElement.style.borderColor = "#d9d9d9";
                 e.target.password.parentElement.style.borderColor = "red";
-                setText(data.message);
+                setText("Wachtwoord is onjuist");
             }
             // Invalid data response
             else if(status === 400 && data.message.includes("username")) {
                 e.target.username.parentElement.style.borderColor = "red";
                 e.target.password.parentElement.style.borderColor = "red";
-                setText(data.message);
+                setText("Deze gebruiker bestaat niet");
             }
             else if(status === 400 && data.message.includes("password")) {
                 e.target.username.parentElement.style.borderColor = "#d9d9d9";
                 e.target.password.parentElement.style.borderColor = "red";
-                setText(data.message);
+                setText("Wachtwoord is onjuist");
             }
 
         } catch (e) {
