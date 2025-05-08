@@ -2,8 +2,7 @@
     width: 90%;
     border-collapse: collapse;
     z-index: 1;
-    table-layout: fixed;
-    margin-bottom: 2.5%;
+    margin-bottom: 480px;
 }
 
 .colorTable th, td {
@@ -118,5 +117,5 @@
 .sortIcon {
     width: 0.9rem;
     height: 0.9rem;
-    color: #D9D9D9;
+    color: #A8C3FF;
 }
