@@ -12,10 +12,14 @@ function Navbar({ title, route }) {
         navigate('/instellingen');
     }
 
+    const handleLogoClick = () => {
+        navigate('/home');
+    }
+
     return (
         <>
             <div className={Style.navbar}>
-                <img className={Style.logo} src={Logo} alt="Bedrijfslogo" />
+                <img className={Style.logo} src={Logo} alt="Bedrijfslogo" onClick={handleLogoClick}/>
                 <div className={Style.team}>
                     <div className={Style.teamSymbol}>
                         <h2>B</h2>
