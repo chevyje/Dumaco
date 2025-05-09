@@ -50,28 +50,7 @@ function klantOverzicht() {
     }
 
     const rowsPageDestinations = [
-        {0: '/orderbonnenkantoor/order'},
-        {1: '/orderbonnenkantoor/order'},
-        {2: '/orderbonnenkantoor/order'},
-        {3: '/orderbonnenkantoor/order'},
-        {4: '/orderbonnenkantoor/order'},
-        {5: '/orderbonnenkantoor/order'},
-        {6: '/orderbonnenkantoor/order'},
-        {7: '/orderbonnenkantoor/order'},
-        {8: '/orderbonnenkantoor/order'},
-        {9: '/orderbonnenkantoor/order'},
-        {10: '/orderbonnenkantoor/order'},
-        {11: '/orderbonnenkantoor/order'},
-        {12: '/orderbonnenkantoor/order'},
-        {13: '/orderbonnenkantoor/order'},
-        {14: '/orderbonnenkantoor/order'},
-        {15: '/orderbonnenkantoor/order'},
-        {16: '/orderbonnenkantoor/order'},
-        {17: '/orderbonnenkantoor/order'},
-        {18: '/orderbonnenkantoor/order'},
-        {19: '/orderbonnenkantoor/order'},
-        {20: '/orderbonnenkantoor/order'},
-        {21: '/orderbonnenkantoor/order'},
+        {0: '/orderbonnenkantoor/order/product'}
     ]
 
     useEffect(() => {
@@ -122,14 +101,19 @@ function klantOverzicht() {
         <>
             <Navbar title={"Lely Industries #32500030"} route={route} />
 
+            <div className={Style.titleContainer}>
+                <h1 className={Style.title}>Order Inzicht</h1>
+            </div>
+
+
             <div className={Style.headerButtons}>
-                <CustomButton title={"Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
-                <CustomButton title={"Aanmaken"} triggerFunction={null} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
+                <CustomButton title={"Order Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
+                <CustomButton title={"Product Aanmaken"} triggerFunction={null} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
 
             </div>
 
             <div className={Style.infoContainer}>
-                <div className={Style.table}>
+                <div>
                     <ExcelTable jsonData={tableData}
                                 navigationData={rowsPageDestinations}
                                 hideColumns={["orderID", "productNumber", "materialID", "teamID", "createdBy"]}/>
