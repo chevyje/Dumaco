@@ -21,24 +21,24 @@ const CollapseTable2 = (props) => {
 
   return (
     <div className={Style.tableContainer}>
-      <table>
+      <table className={Style.collapseTable2}>
         <caption className={Style.captionContainer} onClick={toggle}>
           {title} {isCollapsed ? '+' : '-'}
         </caption>
 
         {!isCollapsed && (
           <>
-            <thead>
-              <tr>
-                <th>Omschrijving</th>
-                <th>Start Datum</th>
-                <th>Opmerking</th>
+            <thead className={Style.collapseTable2}>
+              <tr className={Style.collapseTable2}>
+                <th className={Style.collapseTable2}>Omschrijving</th>
+                <th className={Style.collapseTable2}>Start Datum</th>
+                <th className={Style.collapseTable2}>Opmerking</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className={Style.collapseTable2}>
               {data.map(({ id, label }) => (
-                <tr key={id}>
-                  <td>
+                <tr className={Style.collapseTable2} key={id}>
+                  <td className={Style.collapseTable2}>
                     <input
                       type='checkbox'
                       checked={!!checkedItems[id]}
@@ -49,17 +49,17 @@ const CollapseTable2 = (props) => {
                   </td>
                   {checkedItems[id] ? (
                     <>
-                      <td>
-                        <input type="date" id={`${label}Date`} />
+                      <td className={Style.collapseTable2}>
+                        <input type="date" className={Style.dateInput} id={`${label}Date`} />
                       </td>
-                      <td>
-                        <input type="text" id={`${label}Opmerking`} />
+                      <td className={Style.collapseTable2}>
+                        <input type="text" className={Style.opmerkingenInput} id={`${label}Opmerking`} />
                       </td>
                     </>
                   ) : (
                     <>
-                      <td></td>
-                      <td></td>
+                      <td className={Style.collapseTable2}></td>
+                      <td className={Style.collapseTable2}></td>
                     </>
                   )}
                 </tr>

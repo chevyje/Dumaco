@@ -1,5 +1,6 @@
-table {
-    width: 90%;
+.collapseTable2 table {
+    width: 90vw;
+    min-width: 90vw;
     border-collapse: collapse;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -8,44 +9,69 @@ table {
 
 .tableContainer {
     justify-content: center;
-    display: flex;
 }
 
-th, td {
-    padding: 5px;
+.collapseTable2 th{
+    font-size: 2em;
+}
+
+.collapseTable2 th, .collapseTable2 td {
+    padding-left: 5px;
     text-align: left;
+    font-size: 1em;
+
 }
 
-table th:first-child,
-table td:first-child {
+.collapseTable2 td, .collapseTable2 th {
+    border-collapse: collapse;
+    border: black 1px solid;
+}
+
+.collapseTable2 th:first-child,
+.collapseTable2 td:first-child {
     border-left: none;
 }
-table th:last-child,
-table td:last-child {
+
+.collapseTable2 th:last-child,
+.collapseTable2 td:last-child {
     border-right: none;
 }
-table tr:first-child th,
-table tr:first-child td {
+
+.collapseTable2 tr:first-child th,
+.collapseTable2 tr:first-child td {
     border-top: none;
 }
-table tr:last-child td {
+
+.collapseTable2 tr:last-child td {
     border-bottom: none;
 }
 
-td, th {
-    border: 1px solid #ccc;
-}
 
 
 .captionContainer{
-    width: 100%;
+    width: 90vw;
+    min-width: 90vw;
     background-color: hsl(218, 100%, 94%);
     padding: 10px;
     font-size: 2rem;
     border-radius: 12px;
     cursor: pointer;
+    color: black;
+    user-select: none;
 }
 
 .captionContainer:hover{
     background-color: hsl(218, 100%, 94%, 60%);
+}
+
+.dateInput{
+    height: 15px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 3px;
+}
+
+.opmerkingenInput{
+    height: 15px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 3px;
 }
