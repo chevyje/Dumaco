@@ -14,7 +14,7 @@ import InlogPagina from "./pages/InlogPagina/InlogPagina.jsx";
 import HomePagina from "./pages/HomePagina/HomePagina.jsx";
 import InkoopPaginaBewerken from "./pages/inkoopPaginaBewerken/inkoopPaginaBewerken.jsx";
 import Producten from "./pages/producten/producten.jsx"
-import ProductAanmaken from "./pages/ProductAanmaken/ProductAanmaken.jsx";
+import Productaanmaken from "./pages/ProductAanmaken/ProductAanmaken.jsx";
 
 const App = () => {
     return (
@@ -35,7 +35,9 @@ const App = () => {
                 <Route path="/producten" element={<Producten />} />
                 <Route path="/home" element={<HomePagina />} />
                 <Route path="/" element={<InlogPagina />} />
-                <Route path="/productaanmaken" element={<ProductAanmaken/>}/>
+                <Route path="/productaanmaken" element={<Productaanmaken/>}/>
+
+
             </Routes>
         </Router>
     );
