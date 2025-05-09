@@ -71,6 +71,7 @@
     height: 60px;
     float:right;
     cursor: pointer;
+    user-select: none;
 }
 
 .subnavbar h5{
