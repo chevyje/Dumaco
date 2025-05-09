@@ -1,6 +1,7 @@
 import Table from "../../components/collapse/collapseTable.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
 import Style from "./klantOverzicht.module.css";
+import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 
 function klantOverzicht() {
     const LopendeOrders = [
@@ -16,9 +17,15 @@ function klantOverzicht() {
         {"Ordernummer": 32500031, "Startdatum": "05-02-2025", "Startdatum (def.)": "05-02-2025", "Leverdatum": "07-03-2025", "Leverdatum (def.)": "07-03-2025", "Gemaakt door": "Jurre Blankers" },
     ];
 
+    const route = breadRouteGen({
+        "/home": "Home",
+        "/klanten": "Klanten",
+        "/klant": "Klant"
+    });
+
     return(
         <>
-            <Navbar title={"Lely Industries NV"} route={"Klanten / Lely Industries NV"} />
+            <Navbar title={"Lely Industries NV"} route={route} />
             <div className={Style.CollapsTable}>
                 <Table jsonData={LopendeOrders} title={"Lopende Orders"} openByDefault={true} />
                 <Table jsonData={ToekomstigeOrders} title={"Toekomstige Orders"} openByDefault={true} />

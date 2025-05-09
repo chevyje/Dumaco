@@ -30,28 +30,28 @@ function klantenOverzicht() {
     }
 
     const navigationData = [
-        { 0: '/klantoverzicht' },
-        { 1: '/klantoverzicht' },
-        { 2: '/klantoverzicht' },
-        { 3: '/klantoverzicht' },
-        { 4: '/klantoverzicht' },
-        { 5: '/klantoverzicht' },
-        { 6: '/klantoverzicht' },
-        { 7: '/klantoverzicht' },
-        { 8: '/klantoverzicht' },
-        { 9: '/klantoverzicht' },
-        { 10: '/klantoverzicht' },
-        { 11: '/klantoverzicht' },
-        { 12: '/klantoverzicht' },
-        { 13: '/klantoverzicht' },
-        { 14: '/klantoverzicht' },
-        { 15: '/klantoverzicht' },
-        { 16: '/klantoverzicht' },
-        { 17: '/klantoverzicht' },
-        { 18: '/klantoverzicht' },
-        { 19: '/klantoverzicht' },
-        { 20: '/klantoverzicht' },
-        { 21: '/klantoverzicht' }
+        { 0: '/klanten/klant' },
+        { 1: '/klanten/klant' },
+        { 2: '/klanten/klant' },
+        { 3: '/klanten/klant' },
+        { 4: '/klanten/klant' },
+        { 5: '/klanten/klant' },
+        { 6: '/klanten/klant' },
+        { 7: '/klanten/klant' },
+        { 8: '/klanten/klant' },
+        { 9: '/klanten/klant' },
+        { 10: '/klanten/klant' },
+        { 11: '/klanten/klant' },
+        { 12: '/klanten/klant' },
+        { 13: '/klanten/klant' },
+        { 14: '/klanten/klant' },
+        { 15: '/klanten/klant' },
+        { 16: '/klanten/klant' },
+        { 17: '/klanten/klant' },
+        { 18: '/klanten/klant' },
+        { 19: '/klanten/klant' },
+        { 20: '/klanten/klant' },
+        { 21: '/klanten/klant' }
 
     ]
 
@@ -61,7 +61,7 @@ function klantenOverzicht() {
 
     const route = breadRouteGen({
         "/home": "Home",
-        "/klantenoverzicht": "Klanten Overzicht"
+        "/klanten": "Klanten"
     });
 
     return(

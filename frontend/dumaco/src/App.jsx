@@ -15,13 +15,14 @@ import HomePagina from "./pages/HomePagina/HomePagina.jsx";
 import InkoopPaginaBewerken from "./pages/inkoopPaginaBewerken/inkoopPaginaBewerken.jsx";
 import Producten from "./pages/producten/producten.jsx"
 import Productaanmaken from "./pages/ProductAanmaken/ProductAanmaken.jsx";
+import TaakInzicht from "./pages/taakInzicht/TaakInzicht.jsx";
 
 const App = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/klantoverzicht" element={<KlantOverzicht />} />
-                <Route path="/klantenoverzicht" element={<KlantenOverzicht />} />
+                <Route path="/klanten/klant" element={<KlantOverzicht />} />
+                <Route path="/klanten" element={<KlantenOverzicht />} />
                 <Route path="/gebruikersbeheer" element={<GebruikersBeheer />} />
                 <Route path="/gebruikersbeheer/edit" element={<GebruikersBeheerEdit/>} />
                 <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
@@ -36,6 +37,7 @@ const App = () => {
                 <Route path="/home" element={<HomePagina />} />
                 <Route path="/" element={<InlogPagina />} />
                 <Route path="/productaanmaken" element={<Productaanmaken/>}/>
+                <Route path="/producten/taak" element={<TaakInzicht />}/>
 
 
             </Routes>

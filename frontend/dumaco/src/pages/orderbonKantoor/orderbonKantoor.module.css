@@ -4,10 +4,26 @@
 
 .customButton{
     color: black;
-    float: right;
 }
 
 .CollapseTable {
-    background-color: #007BFF;
     color: white;
+    margin-left: -10rem;
+}
+
+.infoContainer {
+    margin-left: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.headerButtons {
+    margin-top: -2.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    padding: 2rem;
+    gap: 1rem;
 }
