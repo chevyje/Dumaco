@@ -1,4 +1,4 @@
-.collapseTable table {
+.collapseTable2 table {
     width: 90vw;
     min-width: 90vw;
     border-collapse: collapse;
@@ -11,37 +11,38 @@
     justify-content: center;
 }
 
-.collapseTable th{
+.collapseTable2 th{
     font-size: 2em;
 }
 
-.collapseTable th, .collapseTable td {
+.collapseTable2 th, .collapseTable2 td {
     padding-left: 5px;
     text-align: left;
     font-size: 1em;
 
 }
 
-.collapseTable td, .collapseTable th {
+.collapseTable2 td, .collapseTable2 th {
     border-collapse: collapse;
+    border: black 1px solid;
 }
 
-.collapseTable th:first-child,
-.collapseTable td:first-child {
+.collapseTable2 th:first-child,
+.collapseTable2 td:first-child {
     border-left: none;
 }
 
-.collapseTable th:last-child,
-.collapseTable td:last-child {
+.collapseTable2 th:last-child,
+.collapseTable2 td:last-child {
     border-right: none;
 }
 
-.collapseTable tr:first-child th,
-.collapseTable tr:first-child td {
+.collapseTable2 tr:first-child th,
+.collapseTable2 tr:first-child td {
     border-top: none;
 }
 
-.collapseTable tr:last-child td {
+.collapseTable2 tr:last-child td {
     border-bottom: none;
 }
 

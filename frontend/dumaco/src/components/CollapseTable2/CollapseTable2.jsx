@@ -21,24 +21,24 @@ const CollapseTable2 = (props) => {
 
   return (
     <div className={Style.tableContainer}>
-      <table className={Style.collapseTable}>
+      <table className={Style.collapseTable2}>
         <caption className={Style.captionContainer} onClick={toggle}>
           {title} {isCollapsed ? '+' : '-'}
         </caption>
 
         {!isCollapsed && (
           <>
-            <thead className={Style.collapseTable}>
-              <tr className={Style.collapseTable}>
-                <th className={Style.collapseTable}>Omschrijving</th>
-                <th className={Style.collapseTable}>Start Datum</th>
-                <th className={Style.collapseTable}>Opmerking</th>
+            <thead className={Style.collapseTable2}>
+              <tr className={Style.collapseTable2}>
+                <th className={Style.collapseTable2}>Omschrijving</th>
+                <th className={Style.collapseTable2}>Start Datum</th>
+                <th className={Style.collapseTable2}>Opmerking</th>
               </tr>
             </thead>
-            <tbody className={Style.collapseTable}>
+            <tbody className={Style.collapseTable2}>
               {data.map(({ id, label }) => (
-                <tr className={Style.collapseTable} key={id}>
-                  <td className={Style.collapseTable}>
+                <tr className={Style.collapseTable2} key={id}>
+                  <td className={Style.collapseTable2}>
                     <input
                       type='checkbox'
                       checked={!!checkedItems[id]}
@@ -49,17 +49,17 @@ const CollapseTable2 = (props) => {
                   </td>
                   {checkedItems[id] ? (
                     <>
-                      <td className={Style.collapseTable}>
+                      <td className={Style.collapseTable2}>
                         <input type="date" className={Style.dateInput} id={`${label}Date`} />
                       </td>
-                      <td className={Style.collapseTable}>
+                      <td className={Style.collapseTable2}>
                         <input type="text" className={Style.opmerkingenInput} id={`${label}Opmerking`} />
                       </td>
                     </>
                   ) : (
                     <>
-                      <td className={Style.collapseTable}></td>
-                      <td className={Style.collapseTable}></td>
+                      <td className={Style.collapseTable2}></td>
+                      <td className={Style.collapseTable2}></td>
                     </>
                   )}
                 </tr>
