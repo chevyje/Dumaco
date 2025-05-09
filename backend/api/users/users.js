@@ -118,7 +118,7 @@ UsersRouter.post('/login', async (req, res) => {
     const isValid = await bcrypt.compare(password, users[0].password);
 
     if (isValid) {
-        res.status(200).json({ message: messages.success.login, userId: users[0].id });
+        res.status(200).json({...messages.success.login, userId: users[0].userID });
     } else {
         res.status(401).json(messages.error.incorrectPassword);
     }

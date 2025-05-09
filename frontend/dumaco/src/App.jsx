@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute/protectedRoute.jsx";
 import KlantOverzicht from "./pages/klantOverzicht/klantOverzicht.jsx";
 import KlantenOverzicht from "./pages/klantenOverzicht/klantenOverzicht.jsx";
 import GebruikersBeheer from "./pages/gebruikersBeheer/gebruikersBeheer.jsx";
@@ -20,24 +21,23 @@ const App = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/klantoverzicht" element={<KlantOverzicht />} />
-                <Route path="/klantenoverzicht" element={<KlantenOverzicht />} />
-                <Route path="/gebruikersbeheer" element={<GebruikersBeheer />} />
-                <Route path="/gebruikersbeheer/edit" element={<GebruikersBeheerEdit/>} />
-                <Route path="/TeamsBeheer" element={<TeamsBeheer/>} />
-                <Route path="/orderbonnenfabriek" element={<OrderbonnenFabriek />} />
-                <Route path="/TeamsBeheerEdit" element={<TeamsBeheerEdit/>} />
-                <Route path="/inkoop" element={<InkoopPagina/>}/>
-                <Route path="/inkoop/edit" element={<InkoopPaginaBewerken/>}/>
-                <Route path="/instellingen" element={<Instellingen />} />
-                <Route path="/orderbonnenkantoor" element={<OrderbonnenKantoor />} />
-                <Route path="/orderbonnenkantoor/order" element={<OrderbonKantoor />} />
-                <Route path="/producten" element={<Producten />} />
-                <Route path="/home" element={<HomePagina />} />
+                <Route path="/klantoverzicht" element={<ProtectedRoute> <KlantOverzicht /> </ProtectedRoute>} />
+                <Route path="/klantenoverzicht" element={<ProtectedRoute> <KlantenOverzicht /> </ProtectedRoute>} />
+                <Route path="/gebruikersbeheer" element={<ProtectedRoute> <GebruikersBeheer /> </ProtectedRoute>} />
+                <Route path="/gebruikersbeheer/edit" element={<ProtectedRoute> <GebruikersBeheerEdit /> </ProtectedRoute>} />
+                <Route path="/TeamsBeheer" element={<ProtectedRoute> <TeamsBeheer /> </ProtectedRoute>} />
+                <Route path="/orderbonnenfabriek" element={<ProtectedRoute> <OrderbonnenFabriek /> </ProtectedRoute>} />
+                <Route path="/TeamsBeheerEdit" element={<ProtectedRoute> <TeamsBeheerEdit /> </ProtectedRoute>} />
+                <Route path="/inkoop" element={<ProtectedRoute> <InkoopPagina /> </ProtectedRoute>} />
+                <Route path="/inkoop/edit" element={<ProtectedRoute> <InkoopPaginaBewerken /> </ProtectedRoute>} />
+                <Route path="/instellingen" element={<ProtectedRoute> <Instellingen /> </ProtectedRoute>} />
+                <Route path="/orderbonnenkantoor" element={<ProtectedRoute> <OrderbonnenKantoor /> </ProtectedRoute>} />
+                <Route path="/orderbonnenkantoor/order" element={<ProtectedRoute> <OrderbonKantoor /> </ProtectedRoute>} />
+                <Route path="/producten" element={<ProtectedRoute> <Producten /> </ProtectedRoute>} />
+                <Route path="/home" element={<ProtectedRoute> <HomePagina /> </ProtectedRoute>} />
+                <Route path="/productaanmaken" element={<ProtectedRoute> <Productaanmaken /> </ProtectedRoute>} />
+
                 <Route path="/" element={<InlogPagina />} />
-                <Route path="/productaanmaken" element={<Productaanmaken/>}/>
-
-
             </Routes>
         </Router>
     );
