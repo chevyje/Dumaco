@@ -2,7 +2,8 @@
     width: 90%;
     border-collapse: collapse;
     z-index: 1;
-    margin-bottom: 480px;
+    table-layout: fixed;
+    margin-bottom: 2.5%;
 }
 
 .colorTable th, td {
