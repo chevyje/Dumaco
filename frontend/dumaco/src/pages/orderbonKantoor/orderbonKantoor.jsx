@@ -1,10 +1,83 @@
 import Table from "../../components/collapse/collapseTable.jsx";
+import ExcelTable from "../../components/table/table.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
 import CustomButton from "../../components/button/button.jsx";
 import Style from "./orderbonKantoor.module.css";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
+import {useEffect, useState} from "react";
 
 function klantOverzicht() {
+    const [tableData, setTableData] = useState([]);
+    function changeTime(date) {
+        if (date) {
+            const ISOdate = new Date(date);
+            return `${ISOdate.getDate()}-${ISOdate.getMonth() + 1}-${ISOdate.getFullYear()}`;
+        } else{
+            return "-";
+        }
+    }
+    const GetData = async (limit, offset, teamID) => {
+        try {
+            const requestData = await fetch("http://localhost:8080/api/product/Filtered", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    limit: limit,
+                    offset: offset,
+                    teamID: teamID
+                })
+            })
+            const data = await requestData.json();
+            const formattedData = data.map(item => {
+                const { productID, palletNumber, deliveryDate, quantity, customerName, ...rest} = item;
+                return {
+                    "Product id": productID,
+                    "Pallet nummer": palletNumber,
+                    "Leverdatum": changeTime(deliveryDate),
+                    "Klant": customerName,
+                    "Aantal": quantity,
+                    ...rest,
+                };
+            })
+            console.log(data);
+            console.log(formattedData);
+            setTableData(formattedData);
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const rowsPageDestinations = [
+        {0: '/orderbonnenkantoor/order'},
+        {1: '/orderbonnenkantoor/order'},
+        {2: '/orderbonnenkantoor/order'},
+        {3: '/orderbonnenkantoor/order'},
+        {4: '/orderbonnenkantoor/order'},
+        {5: '/orderbonnenkantoor/order'},
+        {6: '/orderbonnenkantoor/order'},
+        {7: '/orderbonnenkantoor/order'},
+        {8: '/orderbonnenkantoor/order'},
+        {9: '/orderbonnenkantoor/order'},
+        {10: '/orderbonnenkantoor/order'},
+        {11: '/orderbonnenkantoor/order'},
+        {12: '/orderbonnenkantoor/order'},
+        {13: '/orderbonnenkantoor/order'},
+        {14: '/orderbonnenkantoor/order'},
+        {15: '/orderbonnenkantoor/order'},
+        {16: '/orderbonnenkantoor/order'},
+        {17: '/orderbonnenkantoor/order'},
+        {18: '/orderbonnenkantoor/order'},
+        {19: '/orderbonnenkantoor/order'},
+        {20: '/orderbonnenkantoor/order'},
+        {21: '/orderbonnenkantoor/order'},
+    ]
+
+    useEffect(() => {
+        GetData(10, 0, -1);
+    }, []);
+
     const Bewerking = [
         {"Startdatum": "27-01-2025", "Omschrijving": "Werkvoorbereiding", "Type": "", "Startdatum (def.)": "27-01-2025", "Werknemer": "H. Botterboy", "Tijd": "0:20"},
         {"Startdatum": "27-01-2025", "Omschrijving": "Lasersnijden Plaat 3000×1500", "Type": "parent", "Startdatum (def.)": "27-01-2025", "Werknemer": "J. Blankers", "Tijd": "0:50"},
@@ -48,13 +121,23 @@ function klantOverzicht() {
     return(
         <>
             <Navbar title={"Lely Industries #32500030"} route={route} />
-            <div className={Style.customButton}>
-                <CustomButton title={"Bewerken"} triggerFunction={null} icon={"white-pencil"} color={"#3d3d3d"} />
+
+            <div className={Style.headerButtons}>
+                <CustomButton title={"Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
+                <CustomButton title={"Aanmaken"} triggerFunction={null} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
+
             </div>
-            <div className={Style.CollapsTable}>
-                <Table jsonData={Bewerking} title={"Bewerking"} openByDefault={true} />
-                <Table jsonData={Inkoop} title={"Inkoop"} openByDefault={true} />
-                <Table jsonData={UitbesteedWerk} title={"Uitbesteed Werk"} openByDefault={true} />
+
+            <div className={Style.infoContainer}>
+                <div className={Style.table}>
+                    <ExcelTable jsonData={tableData}
+                                navigationData={rowsPageDestinations}
+                                hideColumns={["orderID", "productNumber", "materialID", "teamID", "createdBy"]}/>
+                </div>
+                <div className={Style.CollapseTable}>
+                    <Table jsonData={Inkoop} title={"Totaal Inkopen"} openByDefault={true} />
+                    <Table jsonData={UitbesteedWerk} title={"Totaal Uitbesteed Werk"} openByDefault={true} />
+                </div>
             </div>
 
         </>
