@@ -1,6 +1,5 @@
 import Navbar from "../../components/navbar/navbar.jsx";
 import Table from "../../components/table/table.jsx";
-import Paginator from "../../components/paginator/paginator.jsx";
 import Style from "../klantenOverzicht/klantenOverzicht.module.css";
 import {useEffect, useState} from "react";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";

@@ -5,8 +5,10 @@ function taakInzicht() {
 
     const route = breadRouteGen({
         "/home": "Home",
-        "/producten": "Producten",
-        "/taak": "Taak"
+        "/orderbonnenkantoor": "Orderbonnen",
+        "/orderbonnenkantoor/order": "Order",
+        "/orderbonnenkantoor/order/product": "Product",
+        "/orderbonnenkantoor/order/product/taak": "Taak",
     });
 
     return (
