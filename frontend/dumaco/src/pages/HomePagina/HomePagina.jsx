@@ -39,8 +39,9 @@ function HomePagina() {
         const DaysTillEndOfWeek = 6 - dayOfWeek;
         tijdTotWeekend = {tijdTotWeekend: "Nog "+ DaysTillEndOfWeek + " dagen tot het weekend."};
     } else if (dayOfWeek === 5) {
-        const HoursTillEndOfWeek = 17 - today.getHours();
-        tijdTotWeekend = {tijdTotWeekend: "Nog " + HoursTillEndOfWeek + " uur tot het weekend."};
+        const HoursTillEndOfWeek = 16 - today.getHours();
+        const MinutesTillEndOfWeek = 60 - today.getMinutes();
+        tijdTotWeekend = {tijdTotWeekend: "Nog " + HoursTillEndOfWeek + " uur en " + MinutesTillEndOfWeek + " minuten tot het weekend."};
     } else if (dayOfWeek > 5) {
         tijdTotWeekend = {tijdTotWeekend: "Weekend! wat doe je hier nog?"};
     } else {
