@@ -90,6 +90,7 @@
     font-weight: normal;
     transition: 100ms ease-in-out;
     text-decoration: none;
+    user-select: none;
 }
 
 .subnavbarButton:hover,
