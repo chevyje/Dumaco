@@ -3,7 +3,6 @@ export function dateToISO(date) {
     let isoDate;
     try{
         parsedDate = new Date(date)
-        parsedDate.setHours(parsedDate.getHours() + 2);
         if(isNaN(parsedDate)) return null;
         isoDate = parsedDate.toISOString();
         return isoDate;
