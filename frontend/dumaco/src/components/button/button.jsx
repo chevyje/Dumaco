@@ -1,26 +1,47 @@
 import Style from "./button.module.css";
 
-function Button({title, triggerFunction, color, icon, textColor, borderColor, className}) {
+function Button({
+                    title,
+                    triggerFunction,
+                    color,
+                    icon,
+                    textColor,
+                    borderColor,
+                    className,
+                    doHover,
+                    hoverColor,
+                    hoverTextColor,
+                    hoverChangeIcon,
+                }) {
 
-    const Icon = "../../../icons/" + icon + ".svg";
+    const style = {
+        '--btn-bg': color,
+        '--btn-text': textColor || '#FFFFFF',
+        '--btn-border': borderColor || '#FFFFFF',
+        '--btn-bg-hover': hoverColor || color,
+        '--btn-text-hover': hoverTextColor || textColor || '#FFFFFF',
+    };
 
     return (
         <div>
             <button
                 type="button"
-                className={`${Style.btn} ${className}`}
+                className={`${Style.btn} ${doHover ? Style.hoverable : ''} ${className}`}
                 onClick={triggerFunction}
-                style={{
-                    backgroundColor: color,
-                    color: textColor ? textColor : "#FFFFFF",
-                    border: `1px solid ${borderColor ? borderColor : "#FFFFFF"}`
-                }}
+                style={style}
             >
-                {icon && <img className={Style.btnIcon} src={Icon} alt={"button"}></img>}
+                {icon && (
+                    <span className={Style.iconWrapper}>
+                        <img className={`${Style.btnIcon} ${Style.defaultIcon}`} src={`../../../icons/${icon}.svg`} alt="button" />
+                        {hoverChangeIcon && (
+                            <img className={`${Style.btnIcon} ${Style.hoverIcon}`} src={`../../../icons/${hoverChangeIcon}.svg`} alt="hover" />
+                        )}
+                    </span>
+                )}
                 {title}
             </button>
         </div>
-        )
+    );
 }
 
 export default Button;

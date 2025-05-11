@@ -17,6 +17,7 @@ import Producten from "./pages/producten/producten.jsx"
 import Productaanmaken from "./pages/ProductAanmaken/ProductAanmaken.jsx";
 import TaakInzicht from "./pages/taakInzicht/TaakInzicht.jsx";
 import ProductBewerkingen from "./pages/productBewerkingen/productBewerkingen.jsx";
+import NoPageFound from "./pages/noPageFound/noPageFound.jsx";
 
 const App = () => {
     return (
@@ -40,8 +41,7 @@ const App = () => {
                 <Route path="/productaanmaken" element={<Productaanmaken/>}/>
                 <Route path="/orderbonnenkantoor/order/product" element={<ProductBewerkingen />}/>
                 <Route path="/orderbonnenkantoor/order/product/taak" element={<TaakInzicht />}/>
-
-
+                <Route path="*" element={<NoPageFound />}/>
             </Routes>
         </Router>
     );
