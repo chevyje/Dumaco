@@ -6,9 +6,21 @@ import Table from "../../components/table/table.jsx";
 import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
+import {useEffect} from "react";
 
 function HomePagina() {
     const navigate  = useNavigate();
+
+    // Zet scrollbaarheid uit voor de home pagina
+    useEffect(() => {
+        document.body.style.overflow = "hidden";
+        document.documentElement.style.overflow = "hidden";
+
+        return () => {
+            document.body.style.overflow = "auto";
+            document.documentElement.style.overflow = "auto";
+        };
+    }, []);
 
     const options = [
         { value: 'vandaag', label: 'Vandaag' },
@@ -67,7 +79,7 @@ function HomePagina() {
     });
 
     return(
-        <>
+        <div>
             <div className={Style.dashboard}>
                 <Navbar title={"Home"} route={route} />
 
@@ -108,7 +120,7 @@ function HomePagina() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

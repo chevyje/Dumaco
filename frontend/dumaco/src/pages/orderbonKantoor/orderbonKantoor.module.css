@@ -20,10 +20,28 @@
 }
 
 .headerButtons {
-    margin-top: -2.5rem;
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: center;
     padding: 2rem;
     gap: 1rem;
+    margin-top: -3rem;
+}
+
+.title {
+    color: black;
+}
+
+.titleContainer {
+    margin-top: -2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.klantenContainer {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    cursor: pointer;
 }

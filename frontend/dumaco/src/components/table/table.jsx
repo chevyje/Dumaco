@@ -7,11 +7,11 @@ function Table({ jsonData, navigationData, hideColumns, title, showUserEdit, sho
     const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
 
     if (!jsonData || jsonData.length === 0) {
-        return <p>No data available</p>;
+        return <p>Tabel is leeg.</p>;
     }
 
     if (!navigationData || navigationData.length === 0) {
-        return <p>Missing navigation data</p>;
+        return <p>Interne fout: Missing navigation data</p>;
     }
 
     const sortedJsonData = sortConfig.key

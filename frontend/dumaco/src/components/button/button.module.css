@@ -1,30 +1,50 @@
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    font-size: 1em;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: border-color 0.25s;
-}
-button:hover {
-    border-color: #646cff;
-}
-
 .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: auto;
-    width: auto;
-    text-align: center;
-    padding: 0.3rem 0.5rem;
     gap: 8px;
-    color: white;
+    padding: 0.3rem 0.5rem;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--btn-border);
     user-select: none;
+}
+
+/*De variablen hier kunnen mogelijk voor je editor een error geven, maar dit werkt dynamisch met button.jsx*/
+
+.hoverable:hover {
+    background-color: var(--btn-bg-hover);
+    color: var(--btn-text-hover);
 }
 
 .btnIcon {
     width: 20px;
     height: auto;
     user-select: none;
+    z-index: 0;
+}
+
+.iconWrapper {
+    position: relative;
+    display: flex;
+}
+
+.defaultIcon {
+    display: block;
+}
+
+.hoverIcon {
+    display: none;
+}
+
+.hoverable:hover .defaultIcon {
+    display: none;
+}
+
+.hoverable:hover .hoverIcon {
+    display: block;
 }

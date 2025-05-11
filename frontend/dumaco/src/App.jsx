@@ -16,6 +16,8 @@ import InkoopPaginaBewerken from "./pages/inkoopPaginaBewerken/inkoopPaginaBewer
 import Producten from "./pages/producten/producten.jsx"
 import Productaanmaken from "./pages/ProductAanmaken/ProductAanmaken.jsx";
 import TaakInzicht from "./pages/taakInzicht/TaakInzicht.jsx";
+import ProductBewerkingen from "./pages/productBewerkingen/productBewerkingen.jsx";
+import NoPageFound from "./pages/noPageFound/noPageFound.jsx";
 
 const App = () => {
     return (
@@ -37,9 +39,9 @@ const App = () => {
                 <Route path="/home" element={<HomePagina />} />
                 <Route path="/" element={<InlogPagina />} />
                 <Route path="/productaanmaken" element={<Productaanmaken/>}/>
-                <Route path="/producten/taak" element={<TaakInzicht />}/>
-
-
+                <Route path="/orderbonnenkantoor/order/product" element={<ProductBewerkingen />}/>
+                <Route path="/orderbonnenkantoor/order/product/taak" element={<TaakInzicht />}/>
+                <Route path="*" element={<NoPageFound />}/>
             </Routes>
         </Router>
     );

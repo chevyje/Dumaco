@@ -79,11 +79,7 @@ function saveUser(){
 }
 
 function cancelEdit(navigate){
-    if (window.history.length > 1 && window.location.pathname !== '/instellingen') {
-        navigate(-1);
-    } else {
-        navigate('/home');
-    }
+    navigate(-1);
 }
 
 export default Instellingen;

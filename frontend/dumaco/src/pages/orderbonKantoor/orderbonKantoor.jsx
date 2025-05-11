@@ -3,10 +3,13 @@ import ExcelTable from "../../components/table/table.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
 import CustomButton from "../../components/button/button.jsx";
 import Style from "./orderbonKantoor.module.css";
+import KlantenStyle from "../klantOverzicht/klantOverzicht.module.css";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 function klantOverzicht() {
+    const navigate = useNavigate();
     const [tableData, setTableData] = useState([]);
     function changeTime(date) {
         if (date) {
@@ -49,55 +52,18 @@ function klantOverzicht() {
         }
     }
 
+    const redirectKlant = () => {
+        navigate("/klanten/klant");
+    }
+
     const rowsPageDestinations = [
-        {0: '/orderbonnenkantoor/order'},
-        {1: '/orderbonnenkantoor/order'},
-        {2: '/orderbonnenkantoor/order'},
-        {3: '/orderbonnenkantoor/order'},
-        {4: '/orderbonnenkantoor/order'},
-        {5: '/orderbonnenkantoor/order'},
-        {6: '/orderbonnenkantoor/order'},
-        {7: '/orderbonnenkantoor/order'},
-        {8: '/orderbonnenkantoor/order'},
-        {9: '/orderbonnenkantoor/order'},
-        {10: '/orderbonnenkantoor/order'},
-        {11: '/orderbonnenkantoor/order'},
-        {12: '/orderbonnenkantoor/order'},
-        {13: '/orderbonnenkantoor/order'},
-        {14: '/orderbonnenkantoor/order'},
-        {15: '/orderbonnenkantoor/order'},
-        {16: '/orderbonnenkantoor/order'},
-        {17: '/orderbonnenkantoor/order'},
-        {18: '/orderbonnenkantoor/order'},
-        {19: '/orderbonnenkantoor/order'},
-        {20: '/orderbonnenkantoor/order'},
-        {21: '/orderbonnenkantoor/order'},
+        {0: '/orderbonnenkantoor/order/product'}
     ]
 
     useEffect(() => {
         GetData(10, 0, -1);
     }, []);
 
-    const Bewerking = [
-        {"Startdatum": "27-01-2025", "Omschrijving": "Werkvoorbereiding", "Type": "", "Startdatum (def.)": "27-01-2025", "Werknemer": "H. Botterboy", "Tijd": "0:20"},
-        {"Startdatum": "27-01-2025", "Omschrijving": "Lasersnijden Plaat 3000×1500", "Type": "parent", "Startdatum (def.)": "27-01-2025", "Werknemer": "J. Blankers", "Tijd": "0:50"},
-        {"Startdatum": "31-01-2025", "Omschrijving": "Lasersnijden Buis", "Type": "parent", "Startdatum (def.)": "31-01-2025", "Werknemer": "M. de Vrijer", "Tijd": "0:24"},
-        {"Startdatum": "31-01-2025", "Omschrijving": "Graveren", "Type": "buis", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "31-01-2025", "Omschrijving": "Lasnaaddetectie", "Type": "buis", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "31-01-2025", "Omschrijving": "Anti-spat spray", "Type": "buis", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "29-01-2025", "Omschrijving": "Afbramen / Orderpicken", "Type": "buis", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "29-01-2025", "Omschrijving": "Kanten breken machinaal dubbelZ", "Type": "buis", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "31-01-2025", "Omschrijving": "Trommelen", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "31-01-2025", "Omschrijving": "Tappen", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "31-01-2025", "Omschrijving": "CMA Boorstraat", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "30-01-2025", "Omschrijving": "Zetten 3M Toolcel", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "31-01-2025", "Omschrijving": "Zetten Dynacel", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "04-02-2025", "Omschrijving": "Lassen", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "04-02-2025", "Omschrijving": "RobotLassen", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "05-02-2025", "Omschrijving": "Kwaliteitscontrole", "Type": "", "Startdatum (def.)": "30-01-2025", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "06-02-2025", "Omschrijving": "Eindcontrole", "Type": "", "Startdatum (def.)": "12-02-2025", "Werknemer": "-", "Tijd": "--:--"},
-        {"Startdatum": "08-02-2025", "Omschrijving": "Logistiek", "Type": "", "Startdatum (def.)": "03-02-2025", "Werknemer": "-", "Tijd": "--:--"}
-    ]
     const Inkoop = [
         {"Code": "5-1004-1998-0-C", "Omschrijving": "Buis RVS-316 inw Ra=0,6µm", "Aantal": 60, "Ontvangen": false},
         {"Code": "5-1003-2916-0-J", "Omschrijving": "Lagerplaat", "Aantal": 15, "Ontvangen": false},
@@ -122,14 +88,19 @@ function klantOverzicht() {
         <>
             <Navbar title={"Lely Industries #32500030"} route={route} />
 
+            <div className={Style.titleContainer}>
+                <h1 className={Style.title}>Order Inzicht</h1>
+            </div>
+
+
             <div className={Style.headerButtons}>
-                <CustomButton title={"Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
-                <CustomButton title={"Aanmaken"} triggerFunction={null} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
+                <CustomButton title={"Order Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
+                <CustomButton title={"Product Aanmaken"} triggerFunction={null} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
 
             </div>
 
             <div className={Style.infoContainer}>
-                <div className={Style.table}>
+                <div>
                     <ExcelTable jsonData={tableData}
                                 navigationData={rowsPageDestinations}
                                 hideColumns={["orderID", "productNumber", "materialID", "teamID", "createdBy"]}/>
@@ -139,7 +110,30 @@ function klantOverzicht() {
                     <Table jsonData={UitbesteedWerk} title={"Totaal Uitbesteed Werk"} openByDefault={true} />
                 </div>
             </div>
-
+            <div className={Style.klantenContainer} onClick={redirectKlant}>
+                <div className={KlantenStyle.KlantInfo}>
+                    <div>
+                        <h3>Lely Industries NV</h3>
+                    </div>
+                    <div className={KlantenStyle.info}>
+                        <img src="../../../icons/location.svg" alt=""></img>
+                        <p>Cornelis van der Lelylaan 1 <br />
+                            3127PB Maassluis</p>
+                    </div>
+                    <div className={KlantenStyle.info}>
+                        <img src="../../../icons/user.svg" alt=""></img>
+                        <p>Jian Jiao</p>
+                    </div>
+                    <div className={KlantenStyle.info}>
+                        <img src="../../../icons/phone.svg" alt=""></img>
+                        <p>010-5996333</p>
+                    </div>
+                    <div className={KlantenStyle.info}>
+                        <img src="../../../icons/truck.svg" alt=""></img>
+                        <p>Door 4.22</p>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
