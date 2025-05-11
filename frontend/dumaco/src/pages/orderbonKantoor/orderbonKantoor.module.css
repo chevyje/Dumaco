@@ -38,3 +38,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.klantenContainer {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    cursor: pointer;
+}

@@ -3,10 +3,13 @@ import ExcelTable from "../../components/table/table.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
 import CustomButton from "../../components/button/button.jsx";
 import Style from "./orderbonKantoor.module.css";
+import KlantenStyle from "../klantOverzicht/klantOverzicht.module.css";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 function klantOverzicht() {
+    const navigate = useNavigate();
     const [tableData, setTableData] = useState([]);
     function changeTime(date) {
         if (date) {
@@ -47,6 +50,10 @@ function klantOverzicht() {
         } catch (e) {
             console.log(e)
         }
+    }
+
+    const redirectKlant = () => {
+        navigate("/klanten/klant");
     }
 
     const rowsPageDestinations = [
@@ -103,7 +110,30 @@ function klantOverzicht() {
                     <Table jsonData={UitbesteedWerk} title={"Totaal Uitbesteed Werk"} openByDefault={true} />
                 </div>
             </div>
-
+            <div className={Style.klantenContainer} onClick={redirectKlant}>
+                <div className={KlantenStyle.KlantInfo}>
+                    <div>
+                        <h3>Lely Industries NV</h3>
+                    </div>
+                    <div className={KlantenStyle.info}>
+                        <img src="../../../icons/location.svg" alt=""></img>
+                        <p>Cornelis van der Lelylaan 1 <br />
+                            3127PB Maassluis</p>
+                    </div>
+                    <div className={KlantenStyle.info}>
+                        <img src="../../../icons/user.svg" alt=""></img>
+                        <p>Jian Jiao</p>
+                    </div>
+                    <div className={KlantenStyle.info}>
+                        <img src="../../../icons/phone.svg" alt=""></img>
+                        <p>010-5996333</p>
+                    </div>
+                    <div className={KlantenStyle.info}>
+                        <img src="../../../icons/truck.svg" alt=""></img>
+                        <p>Door 4.22</p>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
