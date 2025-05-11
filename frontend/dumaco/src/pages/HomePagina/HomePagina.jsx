@@ -34,8 +34,10 @@ function HomePagina() {
     const today = new Date();
     const dayOfWeek = today.getDay();
     let tijdTotWeekend;
-
-    if (dayOfWeek < 5) {
+    if (dayOfWeek === 0){
+        tijdTotWeekend = {tijdTotWeekend: "Weekend! wat doe je hier nog?"};
+    }
+    else if (dayOfWeek < 5) {
         const DaysTillEndOfWeek = 6 - dayOfWeek;
         tijdTotWeekend = {tijdTotWeekend: `Nog ${DaysTillEndOfWeek} dagen tot het weekend.`};
     } else if (dayOfWeek === 5) {
