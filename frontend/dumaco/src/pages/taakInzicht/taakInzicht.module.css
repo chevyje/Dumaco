@@ -50,3 +50,28 @@
     font-size: 2rem;
     font-weight: bold;
 }
+
+.contentDescription {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.contentDescriptionTitle {
+    color: black;
+    margin: 0;
+    top: 0;
+}
+
+.contentLocation {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 1rem;
+}
+
+.locationDescription {
+    margin-top: -0.2rem;
+}
