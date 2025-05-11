@@ -1,5 +1,5 @@
 import Navbar from "../../components/navbar/navbar.jsx";
-import Table from "../../components/table/table.jsx";
+import CollapseTable from "../../components/collapse/collapseTable.jsx";
 import Style from "../orderbonkantoor/orderbonKantoor.module.css";
 import {useEffect, useState} from "react";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
@@ -79,6 +79,27 @@ function orderbonnenKantoor() {
         GetData(10, 0, -1);
     }, []);
 
+    const Bewerking = [
+        {"Startdatum": "27-01-2025", "Omschrijving": "Werkvoorbereiding", "Type": "", "Startdatum (def.)": "27-01-2025", "Werknemer": "H. Botterboy", "Tijd": "0:20"},
+        {"Startdatum": "27-01-2025", "Omschrijving": "Lasersnijden Plaat 3000×1500", "Type": "parent", "Startdatum (def.)": "27-01-2025", "Werknemer": "J. Blankers", "Tijd": "0:50"},
+        {"Startdatum": "31-01-2025", "Omschrijving": "Lasersnijden Buis", "Type": "parent", "Startdatum (def.)": "31-01-2025", "Werknemer": "M. de Vrijer", "Tijd": "0:24"},
+        {"Startdatum": "31-01-2025", "Omschrijving": "Graveren", "Type": "buis", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "31-01-2025", "Omschrijving": "Lasnaaddetectie", "Type": "buis", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "31-01-2025", "Omschrijving": "Anti-spat spray", "Type": "buis", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "29-01-2025", "Omschrijving": "Afbramen / Orderpicken", "Type": "buis", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "29-01-2025", "Omschrijving": "Kanten breken machinaal dubbelZ", "Type": "buis", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "31-01-2025", "Omschrijving": "Trommelen", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "31-01-2025", "Omschrijving": "Tappen", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "31-01-2025", "Omschrijving": "CMA Boorstraat", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "30-01-2025", "Omschrijving": "Zetten 3M Toolcel", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "31-01-2025", "Omschrijving": "Zetten Dynacel", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "04-02-2025", "Omschrijving": "Lassen", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "04-02-2025", "Omschrijving": "RobotLassen", "Type": "plaat", "Startdatum (def.)": "", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "05-02-2025", "Omschrijving": "Kwaliteitscontrole", "Type": "", "Startdatum (def.)": "30-01-2025", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "06-02-2025", "Omschrijving": "Eindcontrole", "Type": "", "Startdatum (def.)": "12-02-2025", "Werknemer": "-", "Tijd": "--:--"},
+        {"Startdatum": "08-02-2025", "Omschrijving": "Logistiek", "Type": "", "Startdatum (def.)": "03-02-2025", "Werknemer": "-", "Tijd": "--:--"}
+    ]
+
     const Inkoop = [
         {"Code": "5-1004-1998-0-C", "Omschrijving": "Buis RVS-316 inw Ra=0,6µm", "Aantal": 60, "Ontvangen": false},
         {"Code": "5-1003-2916-0-J", "Omschrijving": "Lagerplaat", "Aantal": 15, "Ontvangen": false},
@@ -111,20 +132,20 @@ function orderbonnenKantoor() {
 
 
             <div className={Style.headerButtons}>
-                <CustomButton title={"Order Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
+                <CustomButton title={"Product Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
                 <CustomButton title={"Bewerking Aanmaken"} triggerFunction={null} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
 
             </div>
 
             <div className={Style.infoContainer}>
                 <div>
-                    <ExcelTable jsonData={tableData}
+                    <ExcelTable jsonData={Bewerking}
                                 navigationData={rowsPageDestinations}
                                 hideColumns={["orderID", "productNumber", "materialID", "teamID", "createdBy"]}/>
                 </div>
                 <div className={Style.CollapseTable}>
-                    <Table jsonData={Inkoop} title={"Totaal Inkopen"} openByDefault={true} />
-                    <Table jsonData={UitbesteedWerk} title={"Totaal Uitbesteed Werk"} openByDefault={true} />
+                    <CollapseTable jsonData={Inkoop} title={"Product inkopen"} openByDefault={true} />
+                    <CollapseTable jsonData={UitbesteedWerk} title={"Product uitbesteed werk"} openByDefault={true} />
                 </div>
             </div>
         </>
