@@ -1,5 +1,5 @@
 .mainContainer {
-    width: 100vw;
+    width: 98vw;
     height: 80vh;
     padding: 1rem;
     display: flex;
@@ -133,4 +133,37 @@
 
 .clockOffBtn {
     width: 12vw;
+    height: 4vh;
+}
+
+.clockInInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.clockInCurrentTime {
+    background-color: #C7C7C7;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 2rem;
+    justify-content: center;
+}
+
+.clockInTimeIcon {
+    position: absolute;
+    left: 0.5rem;
+    height: 16px;
+    width: 16px;
+}
+
+.clockInTimeText {
+    text-align: center;
+    width: 100%;
+    margin: 0;
 }

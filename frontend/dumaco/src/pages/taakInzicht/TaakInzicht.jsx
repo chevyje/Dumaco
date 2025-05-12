@@ -36,7 +36,7 @@ function taakInzicht() {
                     </div>
                 </div>
                 <div className={Style.clockContainer}>
-                    <div className={`${Style.clockOff}`}>
+                    <div className={`${Style.clockOff} ${Style.hidden}`}>
                         <div className={Style.clockTimes}>
                             <Button title={"Uitklokken"} color={"#FF3434"} textColor={"#FFFFFF"} borderColor={"#FF3434"} icon={"clock-off"} className={Style.clockOffBtn}/>
                             <div className={Style.timesTextContainer}>
@@ -55,8 +55,15 @@ function taakInzicht() {
                             </div>
                         </div>
                     </div>
-                    <div className={`${Style.clockIn} ${Style.hidden}`}>
-
+                    <div className={`${Style.clockIn}`}>
+                        <div className={Style.clockInInfo}>
+                            <Button title={"Inklokken"} color={"#0EAA00"} textColor={"#FFFFFF"} borderColor={"#0EAA00"} icon={"alarm"} className={Style.clockOffBtn}/>
+                            <Button title={"Afronden"} color={"#0EAA00"} textColor={"#FFFFFF"} borderColor={"#0EAA00"} icon={"flag"} className={Style.clockOffBtn}/>
+                            <div className={Style.clockInCurrentTime}>
+                                <img src={"../../../icons/clock.svg"} alt={"clock"} className={Style.clockInTimeIcon}></img>
+                                <p className={Style.clockInTimeText}>0:45</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
