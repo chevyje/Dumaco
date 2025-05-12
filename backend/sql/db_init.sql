@@ -101,3 +101,27 @@ CREATE TABLE IF NOT EXISTS Edit (
     FOREIGN KEY (editTypeID) REFERENCES EditTypes(editID),
     FOREIGN KEY (userID) REFERENCES Users(userID)
 );
+
+CREATE TABLE IF NOT EXISTS Outsourced (
+    outsourcedID INTEGER NOT NULL AUTO_INCREMENT,
+    code VARCHAR(64),
+    outsourcedDesc VARCHAR(1024),
+    company VARCHAR(64),
+    startDate DATETIME,
+    quantity INTEGER,
+    received BOOLEAN,
+    productID VARCHAR(64),
+    PRIMARY KEY (outsourcedID),
+    FOREIGN KEY (productID) REFERENCES Product(productID)
+);
+
+CREATE TABLE IF NOT EXISTS Purchase (
+    purchaseID INTEGER NOT NULL AUTO_INCREMENT,
+    code VARCHAR(64),
+    purchaseDesc VARCHAR(1024),
+    quantity INTEGER,
+    received BOOLEAN,
+    productID VARCHAR(64),
+    PRIMARY KEY (purchaseID),
+    FOREIGN KEY (productID) REFERENCES Product(productID)
+);

@@ -18,7 +18,7 @@ CustomerRouter.get('/', async (req, res) => {
 // Get 1 Customer
 CustomerRouter.get('/:id', async (req, res) => {
     try{
-        const customer = await db_query("SELECT * FROM customers WHERE id = ?", [req.params.id]);
+        const customer = await db_query("SELECT * FROM customers WHERE customerID = ?", [req.params.id]);
         res.status(200).json(customer);
     }
     catch(err){
