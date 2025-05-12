@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS Edit (
     endDate DATETIME,
     plannedStart DATETIME,
     plannedEnd DATETIME,
-    editID VARCHAR(32) NOT NULL,
+    editID INTEGER NOT NULL AUTO_INCREMENT,
     userID INTEGER,
     PRIMARY KEY (editID),
     FOREIGN KEY (productID) REFERENCES Product(productID),

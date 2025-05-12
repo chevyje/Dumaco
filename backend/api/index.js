@@ -7,6 +7,7 @@ import OrderRouter from "./orders/orders.js";
 import MaterialTypesRouter from "./materialTypes/materialTypes.js";
 import EditTypesRouter from "./EditTypes/editTypes.js";
 import ProductRouter from "./product/product.js";
+import EditRouter from "./edit/edit.js";
 
 const APIRouter = express.Router();
 
@@ -18,5 +19,6 @@ APIRouter.use("/orders", OrderRouter);
 APIRouter.use("/materialTypes", MaterialTypesRouter);
 APIRouter.use("/editTypes", EditTypesRouter);
 APIRouter.use("/product", ProductRouter);
+APIRouter.use("/edit", EditRouter);
 
 export default APIRouter;
