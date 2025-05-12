@@ -1,6 +1,7 @@
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import Navbar from "../../components/navbar/navbar.jsx";
 import Style from "./TaakInzicht.module.css";
+import Button from "../../components/button/button.jsx";
 
 function taakInzicht() {
 
@@ -27,11 +28,35 @@ function taakInzicht() {
                     </div>
                     <div className={Style.viewDrawing}>
                         <div className={Style.viewDrawingIcon}>
-                            <img src={`../../../icons/image-upscale.svg`} alt={"imageUpscale"} className={Style.icon}></img>
+                            <img src={`../../../icons/image-upscale.svg`} alt={"imageUpscale"} className={Style.iconUpscale}></img>
                         </div>
                         <div className={Style.viewDrawingText}>
                             <p>Bekijk tekening</p>
                         </div>
+                    </div>
+                </div>
+                <div className={Style.clockContainer}>
+                    <div className={`${Style.clockOff}`}>
+                        <div className={Style.clockTimes}>
+                            <Button title={"Uitklokken"} color={"#FF3434"} textColor={"#FFFFFF"} borderColor={"#FF3434"} icon={"clock-off"} className={Style.clockOffBtn}/>
+                            <div className={Style.timesTextContainer}>
+                                <div className={Style.clockOffInfoContainer}>
+                                    <img src={"../../../icons/arrow-right.svg"} alt={"arrow to right"} className={Style.icon}></img>
+                                    <div className={Style.clockTimeText}>14:15</div>
+                                </div>
+                                <div className={Style.clockOffInfoContainer}>
+                                    <img src={"../../../icons/arrow-left.svg"} alt={"arrow to left"} className={Style.icon}></img>
+                                    <div className={Style.clockTimeText}>--:--</div>
+                                </div>
+                                <div className={Style.clockOffInfoContainer}>
+                                    <img src={"../../../icons/clock.svg"} alt={"clock"} className={Style.icon}></img>
+                                    <div className={Style.clockTimeText}>--:--</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={`${Style.clockIn} ${Style.hidden}`}>
+
                     </div>
                 </div>
             </div>
