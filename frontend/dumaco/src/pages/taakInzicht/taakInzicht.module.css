@@ -4,6 +4,7 @@
     padding: 1rem;
     display: flex;
     margin-top: -4rem;
+    overflow-x: hidden;
 }
 
 .contentContainer {
@@ -15,6 +16,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-x: hidden;
 }
 
 .viewDrawing {
