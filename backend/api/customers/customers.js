@@ -27,6 +27,22 @@ CustomerRouter.get('/:id', async (req, res) => {
     }
 });
 
+// Get customer id by name
+CustomerRouter.post('/name', async (req, res) => {
+    const name = req.body.name;
+
+    if (!name || name.length <= 3) return res.status(400).json(messages.invalid("name"));
+
+    try{
+        const customers = await db_query("SELECT customerID FROM customers WHERE customerName = ?", [name]);
+        if(customers.length > 0) return res.status(200).json({"customerId": customers[0].customerID});
+        else return res.status(400).json(messages.invalid("name"));
+    } catch(err){
+        console.error(err);
+        return res.status(500).json(messages.error.server);
+    }
+})
+
 // Create new customer
 CustomerRouter.post('/', async (req, res) => {
     let { name, address, dockerNumber, palletTracking, phoneNumber, mailAddress } = req.body;

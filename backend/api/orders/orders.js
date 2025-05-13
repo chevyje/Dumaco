@@ -3,6 +3,7 @@ import {db_execute, db_query} from "../../db.js";
 import messages from "../../message.js";
 import {dateToISO} from "../../functions.js";
 import teams from "../teams/teams.js";
+import customers from "../customers/customers.js";
 
 const OrderRouter = express.Router();
 
@@ -64,6 +65,7 @@ OrderRouter.post('/Filtered', async (req, res) => {
 OrderRouter.post('/', async (req, res) => {
     let { customerID, orderIDCustomer, teamID, createdBy, plannedStart, plannedDelivery, deliveryDate } = req.body;
     let ISOdeliveryDate = null;
+    console.log(req.body);
 
     if (!customerID || customerID.length <= 0) return res.status(400).json(messages.invalid("customer ID"))
     if (!orderIDCustomer || orderIDCustomer.length <= 0) { orderIDCustomer = null; }
@@ -73,9 +75,12 @@ OrderRouter.post('/', async (req, res) => {
     if (!plannedDelivery || plannedDelivery <= 0) return res.status(400).json(messages.invalid("planned delivery date"))
     if (!deliveryDate || deliveryDate.length <= 2) { deliveryDate = null; }
 
+
+    // Checking if customer, team & users exists
     try{
         const Customers = await db_query("SELECT * FROM customers WHERE customerID = ?",[customerID]);
-        if (Customers.length <= 0) return res.status(400).json(messages.invalid("customer ID"))
+        console.log(Customers);
+        if (Customers.length <= 0) return res.status(400).json(messages.invalid("customer ID 2"))
 
         const Teams = await db_query("SELECT * FROM teams WHERE teamID = ?",[teamID]);
         if (Teams.length <= 0) return res.status(400).json(messages.invalid("teamID"))
