@@ -4,7 +4,6 @@ import Style from "./TaakInzicht.module.css";
 import Button from "../../components/button/button.jsx";
 
 function taakInzicht() {
-
     const route = breadRouteGen({
         "/home": "Home",
         "/orderbonnenkantoor": "Orderbonnen",
@@ -16,8 +15,8 @@ function taakInzicht() {
     return (
         <>
             <Navbar title={"Taak"} route={route}/>
-            <div className={Style.mainContainer}>
-                <div className={Style.contentContainer}>
+            <div className={Style.container}>
+                <div className={Style.gridDescription}>
                     <div className={Style.contentDescription}>
                         <h3 className={Style.contentDescriptionTitle}>Opmerkingen</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac dictum nisl. Pellentesque eget porta ligula. Quisque id blandit nunc, non sagittis purus. Aliquam erat volutpat. Nunc sed magna et nunc accumsan malesuada sit amet vel leo.</p>
@@ -35,7 +34,8 @@ function taakInzicht() {
                         </div>
                     </div>
                 </div>
-                <div className={Style.rightSmallBox}>
+
+                <div className={Style.gridClock}>
                     <div className={Style.clockContainer}>
                         <div className={`${Style.clockOff} ${Style.hidden}`}>
                             <div className={Style.clockTimes}>
@@ -56,7 +56,7 @@ function taakInzicht() {
                                 </div>
                             </div>
                         </div>
-                        <div className={`${Style.clockIn}`}>
+                        <div className={Style.clockIn}>
                             <div className={Style.clockInInfo}>
                                 <Button title={"Inklokken"} color={"#0EAA00"} textColor={"#FFFFFF"} borderColor={"#0EAA00"} icon={"alarm"} className={Style.clockOffBtn}/>
                                 <Button title={"Afronden"} color={"#0EAA00"} textColor={"#FFFFFF"} borderColor={"#0EAA00"} icon={"flag"} className={Style.clockOffBtn}/>
@@ -67,6 +67,9 @@ function taakInzicht() {
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div className={Style.gridBewerker}>
                     <div className={Style.huidigeBewerkingContainer}>
                         <div className={Style.huidigeBewerkingTitle}>
                             <p>Huidige bewerking</p>
@@ -76,7 +79,9 @@ function taakInzicht() {
                             <p>J. Blankers</p>
                         </div>
                         <div className={Style.huidigeBewerkingTimestamp}>
-                            <p>05-03-2025 14:15</p>
+                            <div className={Style.huidigeBewerkingTimestampText}>
+                                <p>05-03-2025 14:15</p>
+                            </div>
                         </div>
                     </div>
                 </div>
