@@ -63,7 +63,6 @@
     align-items: center;
     cursor: pointer;
     user-select: none;
-    margin-top: 1rem;
 }
 
 .viewDrawingIcon {
@@ -97,7 +96,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
     height: 100%;
 }
 
