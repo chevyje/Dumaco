@@ -61,28 +61,28 @@ function orderbonnenKantoor() {
     }
 
     const rowsPageDestinations = [
-        {0: '/orderbonnenkantoor/order/product/taak'},
-        {1: '/orderbonnenkantoor/order/product/taak'},
-        {2: '/orderbonnenkantoor/order/product/taak'},
-        {3: '/orderbonnenkantoor/order/product/taak'},
-        {4: '/orderbonnenkantoor/order/product/taak'},
-        {5: '/orderbonnenkantoor/order/product/taak'},
-        {6: '/orderbonnenkantoor/order/product/taak'},
-        {7: '/orderbonnenkantoor/order/product/taak'},
-        {8: '/orderbonnenkantoor/order/product/taak'},
-        {9: '/orderbonnenkantoor/order/product/taak'},
-        {10: '/orderbonnenkantoor/order/product/taak'},
-        {11: '/orderbonnenkantoor/order/product/taak'},
-        {12: '/orderbonnenkantoor/order/product/taak'},
-        {13: '/orderbonnenkantoor/order/product/taak'},
-        {14: '/orderbonnenkantoor/order/product/taak'},
-        {15: '/orderbonnenkantoor/order/product/taak'},
-        {16: '/orderbonnenkantoor/order/product/taak'},
-        {17: '/orderbonnenkantoor/order/product/taak'},
-        {18: '/orderbonnenkantoor/order/product/taak'},
-        {19: '/orderbonnenkantoor/order/product/taak'},
-        {20: '/orderbonnenkantoor/order/product/taak'},
-        {21: '/orderbonnenkantoor/order/product/taak'},
+        {0: '/orders/order/product/taak'},
+        {1: '/orders/order/product/taak'},
+        {2: '/orders/order/product/taak'},
+        {3: '/orders/order/product/taak'},
+        {4: '/orders/order/product/taak'},
+        {5: '/orders/order/product/taak'},
+        {6: '/orders/order/product/taak'},
+        {7: '/orders/order/product/taak'},
+        {8: '/orders/order/product/taak'},
+        {9: '/orders/order/product/taak'},
+        {10: '/orders/order/product/taak'},
+        {11: '/orders/order/product/taak'},
+        {12: '/orders/order/product/taak'},
+        {13: '/orders/order/product/taak'},
+        {14: '/orders/order/product/taak'},
+        {15: '/orders/order/product/taak'},
+        {16: '/orders/order/product/taak'},
+        {17: '/orders/order/product/taak'},
+        {18: '/orders/order/product/taak'},
+        {19: '/orders/order/product/taak'},
+        {20: '/orders/order/product/taak'},
+        {21: '/orders/order/product/taak'},
     ]
 
     useEffect(() => {
@@ -126,9 +126,9 @@ function orderbonnenKantoor() {
 
     const route = breadRouteGen({
         "/home": "Home",
-        "/orderbonnenkantoor": "Orderbonnen",
-        "/orderbonnenkantoor/order": "Order",
-        "/orderbonnenkantoor/order/product": "Product",
+        "/orders": "Orders",
+        "/orders/order": "Order",
+        "/orders/order/product": "Product",
 
     });
 

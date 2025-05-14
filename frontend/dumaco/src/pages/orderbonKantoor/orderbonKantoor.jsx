@@ -76,7 +76,7 @@ function klantOverzicht() {
     }
 
     const rowsPageDestinations = [
-        {0: '/orderbonnenkantoor/order/product'}
+        {0: '/orders/order/product'}
     ]
 
     useEffect(() => {
@@ -104,8 +104,8 @@ function klantOverzicht() {
 
     const route = breadRouteGen({
         "/home": "Home",
-        "/orderbonnenkantoor": "Orderbonnen",
-        "orderbonnenkantoor/order": "Order",
+        "/orders": "Orders",
+        "/orders/order": "Order",
     });
 
     return(

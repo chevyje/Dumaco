@@ -8,8 +8,8 @@ function OrderAanmaken() {
     const navigate = useNavigate();
     const route = breadRouteGen({
         "/home": "Home",
-        "/orderbonnenkantoor": "Orderbonnen",
-        "orderbonnenkantoor/aanmaken": "Aanmaken",
+        "/orders": "Orders",
+        "/orders/aanmaken": "Aanmaken",
     });
 
     const Save = async (e)=> {

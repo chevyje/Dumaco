@@ -6,10 +6,10 @@ import Button from "../../components/button/button.jsx";
 function taakInzicht() {
     const route = breadRouteGen({
         "/home": "Home",
-        "/orderbonnenkantoor": "Orderbonnen",
-        "/orderbonnenkantoor/order": "Order",
-        "/orderbonnenkantoor/order/product": "Product",
-        "/orderbonnenkantoor/order/product/taak": "Taak",
+        "/orders": "Orders",
+        "/orders/order": "Order",
+        "/orders/order/product": "Product",
+        "/orders/order/product/taak": "Taak",
     });
 
     return (

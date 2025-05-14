@@ -35,9 +35,9 @@ function HomePagina() {
     ];
 
     const rowsPageDestinations = [
-        { 0: '/orderbonnenkantoor/order' },
-        { 1: '/orderbonnenkantoor/order' },
-        { 2: '/orderbonnenkantoor/order' },
+        { 0: '/orders/order' },
+        { 1: '/orders/order' },
+        { 2: '/orders/order' },
     ];
 
     const userName = {userName: "Hans"};

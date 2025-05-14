@@ -31,7 +31,7 @@ const App = () => {
 
                 {/*Private Routes*/}
                 <Route path="/klantoverzicht" element={<ProtectedRoute> <KlantOverzicht /> </ProtectedRoute>} />
-                <Route path="/klantenoverzicht" element={<ProtectedRoute> <KlantenOverzicht /> </ProtectedRoute>} />
+                <Route path="/klanten" element={<ProtectedRoute> <KlantenOverzicht /> </ProtectedRoute>} />
                 <Route path="/gebruikersbeheer" element={<ProtectedRoute> <GebruikersBeheer /> </ProtectedRoute>} />
                 <Route path="/gebruikersbeheer/edit" element={<ProtectedRoute> <GebruikersBeheerEdit /> </ProtectedRoute>} />
                 <Route path="/TeamsBeheer" element={<ProtectedRoute> <TeamsBeheer /> </ProtectedRoute>} />
@@ -40,14 +40,14 @@ const App = () => {
                 <Route path="/inkoop" element={<ProtectedRoute> <InkoopPagina /> </ProtectedRoute>} />
                 <Route path="/inkoop/edit" element={<ProtectedRoute> <InkoopPaginaBewerken /> </ProtectedRoute>} />
                 <Route path="/instellingen" element={<ProtectedRoute> <Instellingen /> </ProtectedRoute>} />
-                <Route path="/orderbonnenkantoor" element={<ProtectedRoute> <OrderbonnenKantoor /> </ProtectedRoute>} />
-                <Route path="/orderbonnenkantoor/order" element={<ProtectedRoute> <OrderbonKantoor /> </ProtectedRoute>} />
+                <Route path="/orders" element={<ProtectedRoute> <OrderbonnenKantoor /> </ProtectedRoute>} />
+                <Route path="/orders/order" element={<ProtectedRoute> <OrderbonKantoor /> </ProtectedRoute>} />
                 <Route path="/producten" element={<ProtectedRoute> <Producten /> </ProtectedRoute>} />
                 <Route path="/home" element={<ProtectedRoute> <HomePagina /> </ProtectedRoute>} />
                 <Route path="/productaanmaken" element={<ProtectedRoute> <Productaanmaken /> </ProtectedRoute>} />
-                <Route path="/orderbonnenkantoor/order/product" element={<ProductBewerkingen />}/>
-                <Route path="/orderbonnenkantoor/order/product/taak" element={<TaakInzicht />}/>
-                <Route path="/orderbonnenkantoor/aanmaken" element={<OrderAanmaken />}/>
+                <Route path="/orders/order/product" element={<ProductBewerkingen />}/>
+                <Route path="/orders/order/product/taak" element={<TaakInzicht />}/>
+                <Route path="/orders/aanmaken" element={<OrderAanmaken />}/>
                 <Route path="*" element={<ProtectedRoute> <NoPageFound /> </ProtectedRoute>}/>
             </Routes>
         </Router>

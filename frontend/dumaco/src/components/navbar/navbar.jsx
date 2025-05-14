@@ -46,8 +46,8 @@ function Navbar({ title, route }) {
                     <NavLink to="/klanten" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Klanten
                     </NavLink>
-                    <NavLink to="/orderbonnenkantoor" className={Style.subnavbarButton} activeClassName={Style.active}>
-                        Orderbonnen
+                    <NavLink to="/orders" className={Style.subnavbarButton} activeClassName={Style.active}>
+                        Orders
                     </NavLink>
                     <NavLink to="/producten" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Producten

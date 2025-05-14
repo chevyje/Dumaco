@@ -48,28 +48,28 @@ function orderbonnenKantoor() {
     }
 
     const rowsPageDestinations = [
-        {0: '/orderbonnenkantoor/order'},
-        {1: '/orderbonnenkantoor/order'},
-        {2: '/orderbonnenkantoor/order'},
-        {3: '/orderbonnenkantoor/order'},
-        {4: '/orderbonnenkantoor/order'},
-        {5: '/orderbonnenkantoor/order'},
-        {6: '/orderbonnenkantoor/order'},
-        {7: '/orderbonnenkantoor/order'},
-        {8: '/orderbonnenkantoor/order'},
-        {9: '/orderbonnenkantoor/order'},
-        {10: '/orderbonnenkantoor/order'},
-        {11: '/orderbonnenkantoor/order'},
-        {12: '/orderbonnenkantoor/order'},
-        {13: '/orderbonnenkantoor/order'},
-        {14: '/orderbonnenkantoor/order'},
-        {15: '/orderbonnenkantoor/order'},
-        {16: '/orderbonnenkantoor/order'},
-        {17: '/orderbonnenkantoor/order'},
-        {18: '/orderbonnenkantoor/order'},
-        {19: '/orderbonnenkantoor/order'},
-        {20: '/orderbonnenkantoor/order'},
-        {21: '/orderbonnenkantoor/order'},
+        {0: '/orders/order'},
+        {1: '/orders/order'},
+        {2: '/orders/order'},
+        {3: '/orders/order'},
+        {4: '/orders/order'},
+        {5: '/orders/order'},
+        {6: '/orders/order'},
+        {7: '/orders/order'},
+        {8: '/orders/order'},
+        {9: '/orders/order'},
+        {10: '/orders/order'},
+        {11: '/orders/order'},
+        {12: '/orders/order'},
+        {13: '/orders/order'},
+        {14: '/orders/order'},
+        {15: '/orders/order'},
+        {16: '/orders/order'},
+        {17: '/orders/order'},
+        {18: '/orders/order'},
+        {19: '/orders/order'},
+        {20: '/orders/order'},
+        {21: '/orders/order'},
     ]
 
     useEffect(() => {
@@ -78,7 +78,7 @@ function orderbonnenKantoor() {
 
     const route = breadRouteGen({
         "/home": "Home",
-        "/orderbonnenkantoor": "Orderbonnen"
+        "/orders": "Orders"
     });
 
     return (
