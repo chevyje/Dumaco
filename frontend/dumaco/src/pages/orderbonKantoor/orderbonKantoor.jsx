@@ -13,9 +13,12 @@ function klantOverzicht() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [productData, setProductData] = useState([]);
     const [customerData, setCustomerData] = useState([]);
+    const [rowsPageDestinations, setRowsPageDestinations] = useState([]);
+
 
     // values from link params
     const id = searchParams.get("o.id");
+    const product = "test";
 
     // if param values are empty go to 404 page
     if (!id) {
@@ -35,10 +38,6 @@ function klantOverzicht() {
     const redirectKlant = () => {
         navigate("/klanten/klant");
     }
-
-    const rowsPageDestinations = [
-        {0: `/orders/order?o.id=${id}/product`}
-    ]
 
     useEffect(() => {
         async function GetCustomer (customerID) {
@@ -82,6 +81,13 @@ function klantOverzicht() {
                     };
                 })
                 setProductData(formattedData);
+
+                const rows = data.map((item, index) => ({
+                    [index] : `/orders/order?o.id=${item.orderID}`,
+                }));
+
+                setRowsPageDestinations(rows);
+
             } catch (e) {
                 console.log(e)
             }
