@@ -4,29 +4,26 @@ import CollapseTable2 from "../../components/CollapseTable2/CollapseTable2.jsx";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import CollapseTableAdd from "../../components/CollapseTable2/CollapseTableAdd.jsx";
 import Button from "../../components/button/button.jsx";
+import {useEffect, useState} from "react";
 
 function Productaanmaken() {
+    const [editTypes, setEditTypes] = useState([]);
 
-    const BewerkingenContent = [
-        { id: 1, label: 'Werkvoorbereiding' },
-        { id: 2, label: 'Lasersnijden plaat' },
-        { id: 3, label: 'Lasersnijden Buis' },
-        { id: 4, label: 'Graveren' },
-        { id: 5, label: 'Lasnaaddetectie' },
-        { id: 6, label: 'Anti-spat spray' },
-        { id: 7, label: 'Afbramen / Orderpicken' },
-        { id: 8, label: 'Klanten breken machinaal dubbelz' },
-        { id: 9, label: 'Trommelen' },
-        { id: 10, label: 'Tappen' },
-        { id: 11, label: 'CMA Boorstraat' },
-        { id: 12, label: 'Zetten 3M Toolcel' },
-        { id: 13, label: 'Zetten Dynacel' },
-        { id: 14, label: 'Lassen' },
-        { id: 15, label: 'RobotLassen' },
-        { id: 16, label: 'Kwaliteitscontrole' },
-        { id: 17, label: 'Eindcontrole' },
-        { id: 18, label: 'Logistiek' },
-      ];                  
+    const EditTypesData = async () => {
+        const requestData = await fetch("http://localhost:8080/api/editTypes", {
+            method: "GET",
+            headers: {"Content-Type": "application/json"},
+        });
+        const rawData = await requestData.json();
+        const formattedData = rawData.map(item => {
+            const { editID, editName } = item;
+            return {
+                id: editID,
+                label: editName,
+            };
+        });
+        setEditTypes(formattedData);
+    }
 
       const route = breadRouteGen({
         "/home": "Home",
@@ -47,12 +44,30 @@ function Productaanmaken() {
         { item1: "CNC-frezen", item2: "Nauwkeurig metaal verwijderen met machine", item3: 200 }
     ]
 
+    useEffect(() => {
+        async function EditTypesData(){
+            const requestData = await fetch("http://localhost:8080/api/editTypes", {
+                method: "GET",
+                headers: {"Content-Type": "application/json"},
+            });
+            const rawData = await requestData.json();
+            const formattedData = rawData.map(item => {
+                const { editID, editName } = item;
+                return {
+                    id: editID,
+                    label: editName,
+                };
+            });
+            setEditTypes(formattedData);
+        }
 
+        EditTypesData();
+    }, []);
 
     return(
         <>
             <Navbar title={"Product aanmaken"} route={route}/>
-            <CollapseTable2 content ={BewerkingenContent} title="Bewerkingen"/>
+            <CollapseTable2 content ={editTypes} title="Bewerkingen"/>
             <CollapseTableAdd content ={InkoopData} title="Inkoop"/>
             <CollapseTableAdd content ={UitbesteedWerkData} title="Uitbesteed werk"/>
             <Button

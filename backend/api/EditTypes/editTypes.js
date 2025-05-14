@@ -7,7 +7,7 @@ const EditTypesRouter = express.Router();
 // Get all edit types
 EditTypesRouter.get('/', async (req, res) => {
     try {
-        const materials = await db_query("SELECT * FROM edittypes");
+        const materials = await db_query("SELECT * FROM edittypes ORDER BY position");
         res.status(200).json(materials);
     } catch (error) {
         console.error(error);

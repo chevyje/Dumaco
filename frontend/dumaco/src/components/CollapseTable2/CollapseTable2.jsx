@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 import Style from './CollapseTable2.module.css';
+import {getCookie} from "../Cookies.js";
+import {Navigate, useSearchParams} from "react-router-dom";
 
 const CollapseTable2 = (props) => {
   const [checkedItems, setCheckedItems] = useState({});
   const [itemDetails, setItemDetails] = useState({});
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [tableData, setTableData] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // values from link params
+  const id = searchParams.get("o.id");
+
+  // if param values are empty go to 404 page
+  if (!id) {
+    return <Navigate to="/404-not-found" />;
+  }
 
   const handleCheckboxChange = (id) => {
     setCheckedItems(prev => ({
@@ -23,15 +35,15 @@ const CollapseTable2 = (props) => {
     }));
   };
 
-const handleDateChange = (id, value) => {
-  setItemDetails(prev => {
-    const updated = {
-      ...prev,
-      [id]: {
-        ...prev[id],
-        date: value
-      }
-    };
+  const handleDateChange = (id, value) => {
+    setItemDetails(prev => {
+      const updated = {
+        ...prev,
+        [id]: {
+          ...prev[id],
+          date: value
+        }
+      };
 
     const checkedData = Object.entries(checkedItems)
       .filter(([_, checked]) => checked)
@@ -45,11 +57,53 @@ const handleDateChange = (id, value) => {
         };
       });
 
-    console.log('Bewerkingen:', checkedData);
+      console.log('Bewerkingen:', checkedData);
+      setTableData(checkedData);
 
-    return updated;
-  });
-};
+      return updated;
+    });
+  };
+
+  const Save = async () => {
+    // Create product with api
+    const productResponse = await fetch("http://localhost:8080/api/product/", {
+      method: "POST",
+      headers: {"Content-type": "application/json; charset=UTF-8"},
+      body: JSON.stringify({
+        "orderID": id,
+        "palletNumber": "",
+        "deliveryDate": "2025-04-03",
+        "materialID": "1",
+        "quantity": "1",
+        "createdBy": getCookie("userID") || "1",
+      }),
+    });
+
+    // Getting product ID
+    const data = await productResponse.json();
+    const productID = data.productID;
+
+    // Create for each edit an edit with api
+    for (const data1 of tableData) {
+      const editResponse = await fetch("http://localhost:8080/api/edit/", {
+        method: "POST",
+        headers: {"Content-type": "application/json; charset=UTF-8"},
+        body: JSON.stringify({
+          "productID": productID,
+          "editTypeID": data1.id,
+          "comment": data1.opmerking,
+          "drawing": "https://link.todrawing.com",
+          "startDate": "",
+          "endDate": "",
+          "plannedStart": data1.date,
+          "plannedEnd": data1.date,
+          "userID": getCookie("userID") || "1",
+        }),
+      });
+      const editData = await editResponse.json();
+      console.log(editData);
+    }
+  }
 
   const toggle = () => {
     setIsCollapsed(prev => !prev);
@@ -117,6 +171,7 @@ const handleDateChange = (id, value) => {
           </>
         )}
       </table>
+      <button onClick={Save}>Opslaan</button>
     </div>
   );
 };

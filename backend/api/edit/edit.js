@@ -53,7 +53,6 @@ EditRouter.post('/', async (req, res) => {
     // Check if data is valid
     if (!productID || productID.length <= 0) return res.status(400).json(messages.invalid("product id"));
     if (!editTypeID || editTypeID.length <= 0) return res.status(400).json(messages.invalid("edit type id"));
-    if (!comment || comment.length <= 0) return res.status(400).json(messages.invalid("comment"));
     if (!drawing || drawing.length <= 0) return res.status(400).json(messages.invalid("drawing"));
     if (!plannedStart || plannedStart.length <= 0) return res.status(400).json(messages.invalid("planned start"));
     if (!userID || userID.length <= 0) return res.status(400).json(messages.invalid("user id"));

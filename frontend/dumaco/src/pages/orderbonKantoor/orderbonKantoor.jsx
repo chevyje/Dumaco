@@ -36,6 +36,10 @@ function klantOverzicht() {
         navigate("/klanten/klant");
     }
 
+    const redirectProductAanmaken = () => {
+        navigate(`/product/aanmaken?o.id=${id}`);
+    }
+
     const rowsPageDestinations = [
         {0: `/orders/order?o.id=${id}/product`}
     ]
@@ -121,7 +125,7 @@ function klantOverzicht() {
             <Navbar title={`Order Inzicht #${id}`} route={route} />
             <div className={Style.headerButtons}>
                 <CustomButton title={"Order Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
-                <CustomButton title={"Product Aanmaken"} triggerFunction={null} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
+                <CustomButton title={"Product Aanmaken"} triggerFunction={redirectProductAanmaken} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
             </div>
 
             <div className={Style.infoContainer}>
