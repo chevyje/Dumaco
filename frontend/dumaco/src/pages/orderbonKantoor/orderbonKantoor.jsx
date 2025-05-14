@@ -118,7 +118,6 @@ function klantOverzicht() {
             <div className={Style.headerButtons}>
                 <CustomButton title={"Order Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
                 <CustomButton title={"Product Aanmaken"} triggerFunction={null} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
-
             </div>
 
             <div className={Style.infoContainer}>
