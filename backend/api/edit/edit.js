@@ -16,6 +16,36 @@ EditRouter.get('/', async (req, res) => {
     }
 });
 
+
+// Get all edits for product page
+EditRouter.post('/product', async (req, res) => {
+    let { productId } = req.body;
+
+    // Check if product exists
+    try{
+        let products = await db_query("SELECT productID FROM product WHERE productID = ?", [productId],);
+        if (products.length <= 0) return res.status(400).json(messages.invalid("product id"));
+    }catch(err){
+        console.error(err);
+        return res.status(500).json(messages.error.server);
+    }
+
+    // Get data
+    try{
+        let edits = await db_query(`
+        SELECT e.plannedStart, e.startDate, e.endDate, et.editDesc, u.username FROM edit e
+        JOIN edittypes et ON e.editTypeID = et.editID
+        JOIN users u ON e.userID = u.userID
+        WHERE productID = ?
+        `, [productId],);
+        return res.status(200).json(edits);
+    }catch(err){
+        console.error(err);
+        return res.status(500).json(messages.error.server);
+    }
+})
+
+
 // Create new edit type
 EditRouter.post('/', async (req, res) => {
     let { productID, editTypeID, comment, drawing, startDate, endDate, plannedStart, plannedEnd, userID } = req.body;
@@ -33,8 +63,8 @@ EditRouter.post('/', async (req, res) => {
         let products = await db_query("SELECT productID FROM product WHERE productID = ?", [productID],);
         if (products.length <= 0) return res.status(400).json(messages.invalid("product id"));
 
-        let editTypes = await db_query("SELECT EditID FROM edittypes WHERE editID = ?", [editTypeID]);
-        if (editTypes.length <= 0) return res.status(400).json(messages.invalid("editType"));
+        let editTypes = await db_query("SELECT editID FROM edittypes WHERE editID = ?", [editTypeID]);
+        if (editTypes.length <= 0) return res.status(400).json(messages.invalid("edit type id"));
 
         let users = await db_query("SELECT userID FROM users WHERE userID = ?", [userID]);
         if (users.length <= 0) return res.status(400).json(messages.invalid("user id"));

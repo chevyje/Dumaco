@@ -19,6 +19,8 @@ import Productaanmaken from "./pages/ProductAanmaken/ProductAanmaken.jsx";
 import TaakInzicht from "./pages/taakInzicht/TaakInzicht.jsx";
 import ProductBewerkingen from "./pages/productBewerkingen/productBewerkingen.jsx";
 import NoPageFound from "./pages/noPageFound/noPageFound.jsx";
+import orderAanmaken from "./pages/orderAanmaken/orderAanmaken.jsx";
+import OrderAanmaken from "./pages/orderAanmaken/orderAanmaken.jsx";
 
 const App = () => {
     return (
@@ -42,6 +44,7 @@ const App = () => {
                 <Route path="/productaanmaken" element={<ProtectedRoute> <Productaanmaken /> </ProtectedRoute>} />
                 <Route path="/orderbonnenkantoor/order/product" element={<ProductBewerkingen />}/>
                 <Route path="/orderbonnenkantoor/order/product/taak" element={<TaakInzicht />}/>
+                <Route path="/orderbonnenkantoor/aanmaken" element={<OrderAanmaken />}/>
                 <Route path="*" element={<NoPageFound />}/>
             </Routes>
         </Router>

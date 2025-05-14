@@ -10,7 +10,10 @@ import {useNavigate} from "react-router-dom";
 
 function klantOverzicht() {
     const navigate = useNavigate();
-    const [tableData, setTableData] = useState([]);
+    const [productData, setProductData] = useState([]);
+    const [customerData, setCustomerData] = useState([]);
+
+
     function changeTime(date) {
         if (date) {
             const ISOdate = new Date(date);
@@ -19,7 +22,8 @@ function klantOverzicht() {
             return "-";
         }
     }
-    const GetData = async (limit, offset, teamID) => {
+
+    const GetProduct = async (limit, offset, teamID) => {
         try {
             const requestData = await fetch("http://localhost:8080/api/product/Filtered", {
                 method: "POST",
@@ -44,9 +48,24 @@ function klantOverzicht() {
                     ...rest,
                 };
             })
-            console.log(data);
-            console.log(formattedData);
-            setTableData(formattedData);
+            setProductData(formattedData);
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const GetCustomer = async (customerID) => {
+        try {
+            const requestData = await fetch(`http://localhost:8080/api/customers/${customerID}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            })
+            const data = await requestData.json();
+            setCustomerData(data);
+            console.log(data[0]);
+            console.log(customerData[0])
         } catch (e) {
             console.log(e)
         }
@@ -61,8 +80,13 @@ function klantOverzicht() {
     ]
 
     useEffect(() => {
-        GetData(10, 0, -1);
+        GetProduct(10, 0, -1);
+        GetCustomer(1);
     }, []);
+
+    useEffect( () =>{
+        console.log(customerData);
+    })
 
     const Inkoop = [
         {"Code": "5-1004-1998-0-C", "Omschrijving": "Buis RVS-316 inw Ra=0,6µm", "Aantal": 60, "Ontvangen": false},
@@ -86,13 +110,7 @@ function klantOverzicht() {
 
     return(
         <>
-            <Navbar title={"Lely Industries #32500030"} route={route} />
-
-            <div className={Style.titleContainer}>
-                <h1 className={Style.title}>Order Inzicht</h1>
-            </div>
-
-
+            <Navbar title={"Order Inzicht #32500030"} route={route} />
             <div className={Style.headerButtons}>
                 <CustomButton title={"Order Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
                 <CustomButton title={"Product Aanmaken"} triggerFunction={null} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
@@ -101,7 +119,7 @@ function klantOverzicht() {
 
             <div className={Style.infoContainer}>
                 <div>
-                    <ExcelTable jsonData={tableData}
+                    <ExcelTable jsonData={productData}
                                 navigationData={rowsPageDestinations}
                                 hideColumns={["orderID", "productNumber", "materialID", "teamID", "createdBy"]}/>
                 </div>
@@ -113,24 +131,23 @@ function klantOverzicht() {
             <div className={Style.klantenContainer} onClick={redirectKlant}>
                 <div className={KlantenStyle.KlantInfo}>
                     <div>
-                        <h3>Lely Industries NV</h3>
+                        <h3>{customerData[0]?.customerName}</h3>
                     </div>
                     <div className={KlantenStyle.info}>
                         <img src="../../../icons/location.svg" alt=""></img>
-                        <p>Cornelis van der Lelylaan 1 <br />
-                            3127PB Maassluis</p>
+                        <p>{customerData[0]?.address}</p>
                     </div>
                     <div className={KlantenStyle.info}>
                         <img src="../../../icons/user.svg" alt=""></img>
-                        <p>Jian Jiao</p>
+                        <p>Jian Jiao {customerData[0]?.contact}</p>
                     </div>
                     <div className={KlantenStyle.info}>
                         <img src="../../../icons/phone.svg" alt=""></img>
-                        <p>010-5996333</p>
+                        <p>{customerData[0]?.phoneNumber}</p>
                     </div>
                     <div className={KlantenStyle.info}>
                         <img src="../../../icons/truck.svg" alt=""></img>
-                        <p>Door 4.22</p>
+                        <p>Deur {customerData[0]?.dockerNumber}</p>
                     </div>
                 </div>
             </div>

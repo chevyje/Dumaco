@@ -8,7 +8,7 @@ import ExcelTable from "../../components/table/table.jsx";
 
 
 function orderbonnenKantoor() {
-    const [tableData, setTableData] = useState([]);
+    const [bewerkingen, setTableData] = useState([]);
     function changeTime(date) {
         if (date) {
             const ISOdate = new Date(date);
@@ -17,36 +17,46 @@ function orderbonnenKantoor() {
             return "-";
         }
     }
-    const GetData = async (limit, offset, teamID) => {
+    const GetEdits = async (productID) => {
         try {
-            const requestData = await fetch("http://localhost:8080/api/orders/Filtered", {
+            const requestData = await fetch("http://localhost:8080/api/edit/product", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    limit: limit,
-                    offset: offset,
-                    teamID: teamID
+                    productId: productID,
                 })
             })
             const data = await requestData.json();
             const formattedData = data.map(item => {
-                const {plannedStart, plannedDelivery, username, orderID, customerName, ...rest} = item;
+                let {plannedStart, editDesc, startDate, username, endDate, time, ...rest} = item;
+                if (startDate == null && endDate == null) time = "--:--";
+                else {
+                    if (endDate == null) endDate = new Date();
+                    let timeDifference = startDate - endDate;
+                    if (timeDifference < 0) timeDifference = timeDifference * -1;
+                    const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+                    if (hours < 10 && minutes < 10) console.log(`0${hours}:0${minutes}`);
+                    else if (hours < 10) console.log(`0${hours}:${minutes}`);
+                    else if (minutes < 10) console.log(`${minutes}:0${minutes}`);
+                    else console.log(`${hours}:${minutes}`);
+                }
                 return {
-                    ...rest,
-                    Startdatum: changeTime(plannedStart),
-                    Leverdatum: changeTime(plannedDelivery),
-                    "Gemaakt door": username,
-                    Klant: customerName,
-                    Ordernummer: orderID,
+                    "Startdatum": changeTime(plannedStart),
+                    "Omschrijving": editDesc,
+                    "Type": null,
+                    "Startdatum (def.)": startDate,
+                    "Werknemer  ": username,
+                    "Tijd": time
                 };
             })
-            console.log(data);
-            console.log(formattedData);
             setTableData(formattedData);
         } catch (e) {
             console.log(e)
+            return null;
         }
     }
 
@@ -76,7 +86,7 @@ function orderbonnenKantoor() {
     ]
 
     useEffect(() => {
-        GetData(10, 0, -1);
+        GetEdits("1/1");
     }, []);
 
     const Bewerking = [
@@ -139,7 +149,7 @@ function orderbonnenKantoor() {
 
             <div className={Style.infoContainer}>
                 <div>
-                    <ExcelTable jsonData={Bewerking}
+                    <ExcelTable jsonData={bewerkingen}
                                 navigationData={rowsPageDestinations}
                                 hideColumns={["orderID", "productNumber", "materialID", "teamID", "createdBy"]}/>
                 </div>

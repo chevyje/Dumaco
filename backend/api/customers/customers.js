@@ -18,7 +18,7 @@ CustomerRouter.get('/', async (req, res) => {
 // Get 1 Customer
 CustomerRouter.get('/:id', async (req, res) => {
     try{
-        const customer = await db_query("SELECT * FROM customers WHERE id = ?", [req.params.id]);
+        const customer = await db_query("SELECT * FROM customers WHERE customerID = ?", [req.params.id]);
         res.status(200).json(customer);
     }
     catch(err){
@@ -26,6 +26,22 @@ CustomerRouter.get('/:id', async (req, res) => {
         res.status(500).json(messages.error.server);
     }
 });
+
+// Get customer id by name
+CustomerRouter.post('/name', async (req, res) => {
+    const name = req.body.name;
+
+    if (!name || name.length <= 3) return res.status(400).json(messages.invalid("name"));
+
+    try{
+        const customers = await db_query("SELECT customerID FROM customers WHERE customerName = ?", [name]);
+        if(customers.length > 0) return res.status(200).json({"customerId": customers[0].customerID});
+        else return res.status(400).json(messages.invalid("name"));
+    } catch(err){
+        console.error(err);
+        return res.status(500).json(messages.error.server);
+    }
+})
 
 // Create new customer
 CustomerRouter.post('/', async (req, res) => {
