@@ -8,9 +8,9 @@ function GebruikersBeheer() {
     const navigate = useNavigate();
 
         const rows = [
-            { Naam: "Tobias", 'Laatste Login': "18" },
-            { Naam: "Henk", 'Laatste Login': "38" },
-            { Naam: "Tasdasdasdasd", 'Laatste Login': "300" },
+            { Naam: "Tobias", 'Laatste Login': "09:01, 14-5-2025" },
+            { Naam: "Henk", 'Laatste Login': "25:61, 32-1-2030" },
+            { Naam: "Hans", 'Laatste Login': "08:30, 1-9-2024" },
         ];
 
         const rowsPageDestinations = [
