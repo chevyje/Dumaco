@@ -7,3 +7,34 @@ th {
     height: 45px;
     padding-left: -45px;
 }
+
+.input{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    height: 30px;
+    width: auto;
+    font-size: 15px;
+}
+
+.date{
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 15px;
+}
+
+.button{
+    background-color: limegreen;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    margin-left: 20px;
+}

@@ -101,7 +101,7 @@ function InlogPagina() {
                         <input type="password" className={style.input} name="password" placeholder="Wachtwoord"></input>
                     </div>
                     <div className={style.forgotPassword}>
-                        <NavLink to="/" className={style.link}>wachtwoord vergeten?</NavLink>
+                        <NavLink to="/" className={style.link}>Wachtwoord vergeten?</NavLink>
                     </div>
                     <div className={style.buttonContainer}>
                         <button className={style.confirmButton}>Inloggen</button>

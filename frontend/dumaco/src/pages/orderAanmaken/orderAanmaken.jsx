@@ -1,7 +1,7 @@
 import Navbar from "../../components/navbar/navbar.jsx";
 import {useNavigate} from "react-router-dom";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
-import style from "../InlogPagina/inlogPagina.module.css";
+import style from "../orderAanmaken/orderAanmaken.module.css";
 import {getCookie} from "../../components/Cookies.js";
 
 function OrderAanmaken() {
@@ -54,11 +54,12 @@ function OrderAanmaken() {
         <>
             <Navbar title={"Order Aanmaken"} route={route} />
             <form onSubmit={Save}>
-                <input name="customerName" placeholder="Klant naam"></input>
-                <input name="orderIdCustomer" placeholder="Order nummer klant"></input>
-                <input type="date" name="plannedStart"></input>
-                <input type="date" name="plannedDelivery"></input>
-                <button>Opslaan</button>
+                <input className={style.input} name="customerName" placeholder="Klantnaam" />
+                <input className={style.input} name="orderIdCustomer" placeholder="Ordernummer klant" />
+                <input className={style.date} type="date" name="plannedStart"></input>
+                <input className={style.date} type="date" name="plannedDelivery"></input>
+                <button className={style.button}>Opslaan</button>
+
             </form>
         </>
     );
