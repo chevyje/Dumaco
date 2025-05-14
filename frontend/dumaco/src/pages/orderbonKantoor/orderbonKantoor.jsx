@@ -13,6 +13,7 @@ function klantOverzicht() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [productData, setProductData] = useState([]);
     const [customerData, setCustomerData] = useState([]);
+    const [rowsPageDestinations, setRowsPageDestinations] = useState([]);
 
     // values from link params
     const id = searchParams.get("o.id");
@@ -39,10 +40,6 @@ function klantOverzicht() {
     const redirectProductAanmaken = () => {
         navigate(`/product/aanmaken?o.id=${id}`);
     }
-
-    const rowsPageDestinations = [
-        {0: `/orders/order?o.id=${id}/product`}
-    ]
 
     useEffect(() => {
         async function GetCustomer (customerID) {
@@ -73,8 +70,8 @@ function klantOverzicht() {
                         orderID: orderID
                     })
                 })
-                const data = await requestData.json();
-                const formattedData = data.map(item => {
+                const rawData = await requestData.json();
+                const formattedData = rawData.map(item => {
                     const { productID, palletNumber, deliveryDate, quantity, customerName, ...rest} = item;
                     return {
                         "Product id": productID,
@@ -86,6 +83,13 @@ function klantOverzicht() {
                     };
                 })
                 setProductData(formattedData);
+
+                const rows = rawData.map((item, index) => ({
+                    [index] : `/orders/order/product?o.id=${id}&p.id=${item.productID}`,
+                }));
+
+                setRowsPageDestinations(rows);
+
             } catch (e) {
                 console.log(e)
             }
