@@ -6,13 +6,14 @@ import Style from "./orderbonKantoor.module.css";
 import KlantenStyle from "../klantOverzicht/klantOverzicht.module.css";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import {useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 function klantOverzicht() {
     const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
     const [productData, setProductData] = useState([]);
     const [customerData, setCustomerData] = useState([]);
-    const { id} = useParams();
+    const id = searchParams.get("id");
 
     function changeTime(date) {
         if (date) {
@@ -78,9 +79,18 @@ function klantOverzicht() {
     ]
 
     useEffect(() => {
-        GetProduct(10, 0, id);
+        if (!id) {
+            navigate("/404");
+            return;
+        }
+
+        GetProduct(25, 0, id);
         GetCustomer(1);
-    }, []);
+    }, [id, navigate]);
+
+    if (!id) {
+        return null;
+    }
 
     const Inkoop = [
         {"Code": "5-1004-1998-0-C", "Omschrijving": "Buis RVS-316 inw Ra=0,6µm", "Aantal": 60, "Ontvangen": false},
