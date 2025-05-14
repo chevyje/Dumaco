@@ -67,7 +67,7 @@ function HomePagina() {
     }
 
     const redirectCreateOrder = () => {
-        navigate('/orderbonaanmaken');
+        navigate('/orders/aanmaken');
     }
 
     const redirectCreateCustomer = () => {
