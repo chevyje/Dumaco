@@ -51,6 +51,9 @@ function InlogPagina() {
 
             // Success Response
             if(status === 200) {
+                const expiryDate = new Date();
+                expiryDate.setHours(expiryDate.getHours() + 8);
+                document.cookie = "userID=" + data.userId + "; expires=" + expiryDate.toUTCString() + ";path=/";
                 navigate("/Home");
             }
 
