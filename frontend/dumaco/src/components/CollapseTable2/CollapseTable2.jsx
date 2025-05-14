@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Style from './CollapseTable2.module.css';
 
 const CollapseTable2 = (props) => {
   const [checkedItems, setCheckedItems] = useState({});
   const [itemDetails, setItemDetails] = useState({});
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const data = props.content;
+  const title = props.title;
 
   const handleCheckboxChange = (id) => {
     setCheckedItems(prev => ({
@@ -23,40 +26,55 @@ const CollapseTable2 = (props) => {
     }));
   };
 
-const handleDateChange = (id, value) => {
-  setItemDetails(prev => {
-    const updated = {
+  const handleDateChange = (id, value) => {
+    setItemDetails(prev => ({
       ...prev,
       [id]: {
         ...prev[id],
         date: value
       }
-    };
+    }));
+  };
+  
+        // const checkedData = Object.entries(checkedItems)
+      //   .filter(([_, checked]) => checked)
+      //   .map(([itemId]) => {
+      //     const item = data.find(d => d.id.toString() === itemId);
+      //     return {
+      //       id: itemId,
+      //       label: item?.label || itemId,
+      //       opmerking: updated[itemId]?.opmerking || '',
+      //       date: updated[itemId]?.date || ''
+      //     };
+      //   });
 
-    const checkedData = Object.entries(checkedItems)
-      .filter(([_, checked]) => checked)
-      .map(([itemId]) => {
-        const item = data.find(d => d.id.toString() === itemId);
-        return {
-          id: itemId,
-          label: item?.label || itemId,
-          opmerking: updated[itemId]?.opmerking || '',
-          date: updated[itemId]?.date || ''
-        };
-      });
+      // console.log('Bewerkingen:', checkedData);
 
-    console.log('Bewerkingen:', checkedData);
+      // return updated;
 
-    return updated;
-  });
-};
+  useEffect(() => {
+    const timeoutRef = setTimeout(() => {
+      const checkedData = Object.entries(checkedItems)
+        .filter(([_, checked]) => checked)
+        .map(([itemId]) => {
+          const item = data.find(d => d.id.toString() === itemId);
+          return {
+            id: itemId,
+            label: item?.label || itemId,
+            opmerking: itemDetails[itemId]?.opmerking || '',
+            date: itemDetails[itemId]?.date || ''
+          };
+        });
+
+      console.log('Bewerkingen:', checkedData);
+    }, 3000);
+
+    return () => clearTimeout(timeoutRef);
+  }, [checkedItems, itemDetails]);
 
   const toggle = () => {
     setIsCollapsed(prev => !prev);
   };
-
-  const data = props.content;
-  const title = props.title;
 
   return (
     <div className={Style.tableContainer}>
@@ -79,7 +97,7 @@ const handleDateChange = (id, value) => {
                 <tr className={Style.collapseTable2} key={id}>
                   <td className={Style.collapseTable2}>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       checked={!!checkedItems[id]}
                       onChange={() => handleCheckboxChange(id)}
                       id={`checkbox-${id}`}
