@@ -6,67 +6,29 @@ import Style from "./orderbonKantoor.module.css";
 import KlantenStyle from "../klantOverzicht/klantOverzicht.module.css";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import {useEffect, useState} from "react";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams, Navigate} from "react-router-dom";
 
 function klantOverzicht() {
     const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
     const [productData, setProductData] = useState([]);
     const [customerData, setCustomerData] = useState([]);
-    const id = searchParams.get("id");
 
+    // values from link params
+    const id = searchParams.get("o.id");
+
+    // if param values are empty go to 404 page
+    if (!id) {
+        return <Navigate to="/404-not-found" />;
+    }
+
+    // ISO date to normal date
     function changeTime(date) {
         if (date) {
             const ISOdate = new Date(date);
             return `${ISOdate.getDate()}-${ISOdate.getMonth() + 1}-${ISOdate.getFullYear()}`;
         } else{
             return "-";
-        }
-    }
-
-    const GetProduct = async (limit, offset, orderID) => {
-        try {
-            const requestData = await fetch("http://localhost:8080/api/product/Filtered", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    limit: limit,
-                    offset: offset,
-                    orderID: orderID
-                })
-            })
-            const data = await requestData.json();
-            const formattedData = data.map(item => {
-                const { productID, palletNumber, deliveryDate, quantity, customerName, ...rest} = item;
-                return {
-                    "Product id": productID,
-                    "Pallet nummer": palletNumber,
-                    "Leverdatum": changeTime(deliveryDate),
-                    "Klant": customerName,
-                    "Aantal": quantity,
-                    ...rest,
-                };
-            })
-            setProductData(formattedData);
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
-    const GetCustomer = async (customerID) => {
-        try {
-            const requestData = await fetch(`http://localhost:8080/api/customers/${customerID}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-            })
-            const data = await requestData.json();
-            setCustomerData(data);
-        } catch (e) {
-            console.log(e)
         }
     }
 
@@ -79,14 +41,55 @@ function klantOverzicht() {
     ]
 
     useEffect(() => {
-        if (!id) {
-            navigate("/404");
-            return;
+        async function GetCustomer (customerID) {
+            try {
+                const requestData = await fetch(`http://localhost:8080/api/customers/${customerID}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                })
+                const data = await requestData.json();
+                setCustomerData(data);
+            } catch (e) {
+                console.log(e)
+            }
         }
 
-        GetProduct(25, 0, id);
+        const GetProduct = async (limit, offset, orderID) => {
+            try {
+                const requestData = await fetch("http://localhost:8080/api/product/Filtered", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        limit: limit,
+                        offset: offset,
+                        orderID: orderID
+                    })
+                })
+                const data = await requestData.json();
+                const formattedData = data.map(item => {
+                    const { productID, palletNumber, deliveryDate, quantity, customerName, ...rest} = item;
+                    return {
+                        "Product id": productID,
+                        "Pallet nummer": palletNumber,
+                        "Leverdatum": changeTime(deliveryDate),
+                        "Klant": customerName,
+                        "Aantal": quantity,
+                        ...rest,
+                    };
+                })
+                setProductData(formattedData);
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
+        GetProduct(25, 0, id)
         GetCustomer(1);
-    }, [id, navigate]);
+    }, []);
 
     if (!id) {
         return null;
@@ -114,6 +117,7 @@ function klantOverzicht() {
 
     return(
         <>
+
             <Navbar title={`Order Inzicht #${id}`} route={route} />
             <div className={Style.headerButtons}>
                 <CustomButton title={"Order Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
