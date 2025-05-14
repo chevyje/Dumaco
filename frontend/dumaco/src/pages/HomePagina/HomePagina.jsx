@@ -51,15 +51,15 @@ function HomePagina() {
     }
     else if (dayOfWeek < 5) {
         const DaysTillEndOfWeek = 6 - dayOfWeek;
-        tijdTotWeekend = {tijdTotWeekend: `Nog ${DaysTillEndOfWeek} dagen tot het weekend.`};
+        tijdTotWeekend = {tijdTotWeekend: `Nog ${DaysTillEndOfWeek} dagen tot het weekend!`};
     } else if (dayOfWeek === 5) {
         const HoursTillEndOfWeek = 16 - today.getHours();
         const MinutesTillEndOfWeek = 60 - today.getMinutes();
-        if(HoursTillEndOfWeek === 0) tijdTotWeekend = {tijdTotWeekend: `Nog ${MinutesTillEndOfWeek} minuten tot het weekend.`};
+        if(HoursTillEndOfWeek === 0) tijdTotWeekend = {tijdTotWeekend: `Nog ${MinutesTillEndOfWeek} minuten tot het weekend!`};
         else if(HoursTillEndOfWeek < 0) tijdTotWeekend = {tijdTotWeekend: "Weekend! wat doe je hier nog?"};
-        else tijdTotWeekend = {tijdTotWeekend: `Nog ${HoursTillEndOfWeek} uur en ${MinutesTillEndOfWeek} minuten tot het weekend.`};
+        else tijdTotWeekend = {tijdTotWeekend: `Nog ${HoursTillEndOfWeek} uur en ${MinutesTillEndOfWeek} minuten tot het weekend!`};
 
-        if(MinutesTillEndOfWeek <= 0 || HoursTillEndOfWeek >=60) tijdTotWeekend = {tijdTotWeekend: `Nog ${HoursTillEndOfWeek} uur tot het weekend.`};
+        if(MinutesTillEndOfWeek <= 0 || HoursTillEndOfWeek >=60) tijdTotWeekend = {tijdTotWeekend: `Nog ${HoursTillEndOfWeek} uur tot het weekend!`};
     } else if (dayOfWeek > 5) {
         tijdTotWeekend = {tijdTotWeekend: "Weekend! wat doe je hier nog?"};
     } else {
@@ -67,7 +67,7 @@ function HomePagina() {
     }
 
     const redirectCreateOrder = () => {
-        navigate('/orderbonaanmaken');
+        navigate('/orders/aanmaken');
     }
 
     const redirectCreateCustomer = () => {
@@ -98,13 +98,13 @@ function HomePagina() {
                     <div className={Style.cardsContainer}>
                         <h1 className={Style.actueleHeader}>Actuele cijfers</h1>
                         <div className={Style.cardGrid}>
-                            <Card H1Stats={12} icon={"arrow-up"} pStats="7  t.o.v. week" PSoort="Openstaande orders">
+                            <Card H1Stats={12} icon={"arrow-up"} pStats="7  t.o.v. vorige week" PSoort="Openstaande orders">
                                 <Dropdown2 options={options}/>
                             </Card>
-                            <Card H1Stats={5} icon={"arrow-down"} pStats="1  t.o.v. week" PSoort="Afgewezen orders">
+                            <Card H1Stats={5} icon={"arrow-down"} pStats="1  t.o.v. vorige week" PSoort="Afgewezen orders">
                                 <Dropdown2 options={options}/>
                             </Card>
-                            <Card H1Stats={8} icon={"arrow-up"} pStats="5  t.o.v. week" PSoort="Afgeronde orders">
+                            <Card H1Stats={8} icon={"arrow-up"} pStats="5  t.o.v. vorige week" PSoort="Afgeronde orders">
                                 <Dropdown2 options={options}/>
                             </Card>
                             <Card H1Stats="27 dagen" PSoort="Gem. doorlooptijd">
