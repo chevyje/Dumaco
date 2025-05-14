@@ -41,7 +41,7 @@ const App = () => {
                 <Route path="/inkoop/edit" element={<ProtectedRoute> <InkoopPaginaBewerken /> </ProtectedRoute>} />
                 <Route path="/instellingen" element={<ProtectedRoute> <Instellingen /> </ProtectedRoute>} />
                 <Route path="/orders" element={<ProtectedRoute> <OrderbonnenKantoor /> </ProtectedRoute>} />
-                <Route path="/orders/order" element={<ProtectedRoute> <OrderbonKantoor /> </ProtectedRoute>} />
+                <Route path="/orders/order/:id" element={<ProtectedRoute> <OrderbonKantoor /> </ProtectedRoute>} />
                 <Route path="/producten" element={<ProtectedRoute> <Producten /> </ProtectedRoute>} />
                 <Route path="/home" element={<ProtectedRoute> <HomePagina /> </ProtectedRoute>} />
                 <Route path="/productaanmaken" element={<ProtectedRoute> <Productaanmaken /> </ProtectedRoute>} />

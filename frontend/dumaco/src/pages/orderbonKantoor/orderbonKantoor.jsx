@@ -6,13 +6,13 @@ import Style from "./orderbonKantoor.module.css";
 import KlantenStyle from "../klantOverzicht/klantOverzicht.module.css";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 function klantOverzicht() {
     const navigate = useNavigate();
     const [productData, setProductData] = useState([]);
     const [customerData, setCustomerData] = useState([]);
-
+    const { id} = useParams();
 
     function changeTime(date) {
         if (date) {
@@ -23,7 +23,7 @@ function klantOverzicht() {
         }
     }
 
-    const GetProduct = async (limit, offset, teamID) => {
+    const GetProduct = async (limit, offset, orderID) => {
         try {
             const requestData = await fetch("http://localhost:8080/api/product/Filtered", {
                 method: "POST",
@@ -33,7 +33,7 @@ function klantOverzicht() {
                 body: JSON.stringify({
                     limit: limit,
                     offset: offset,
-                    teamID: teamID
+                    orderID: orderID
                 })
             })
             const data = await requestData.json();
@@ -64,8 +64,6 @@ function klantOverzicht() {
             })
             const data = await requestData.json();
             setCustomerData(data);
-            console.log(data[0]);
-            console.log(customerData[0])
         } catch (e) {
             console.log(e)
         }
@@ -80,13 +78,9 @@ function klantOverzicht() {
     ]
 
     useEffect(() => {
-        GetProduct(10, 0, -1);
+        GetProduct(10, 0, id);
         GetCustomer(1);
     }, []);
-
-    useEffect( () =>{
-        console.log(customerData);
-    })
 
     const Inkoop = [
         {"Code": "5-1004-1998-0-C", "Omschrijving": "Buis RVS-316 inw Ra=0,6µm", "Aantal": 60, "Ontvangen": false},
@@ -110,7 +104,7 @@ function klantOverzicht() {
 
     return(
         <>
-            <Navbar title={"Order Inzicht #32500030"} route={route} />
+            <Navbar title={`Order Inzicht #${id}`} route={route} />
             <div className={Style.headerButtons}>
                 <CustomButton title={"Order Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
                 <CustomButton title={"Product Aanmaken"} triggerFunction={null} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>

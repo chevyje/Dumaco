@@ -19,41 +19,29 @@ ProductRouter.get('/', async (req, res) => {
 
 // Get all products with a filter
 ProductRouter.post('/Filtered', async (req, res) => {
-    let { limit, offset, teamID } = req.body;
+    let { limit, offset, orderID } = req.body;
     if (!limit || limit.length <= 0) return res.status(400).json(messages.invalid("limit"));
     if (!offset || offset.length <= 0) offset = 0;
-    if (!teamID || teamID.length <= 0) teamID = 0;
+    if (!orderID || orderID.length <= 0) return res.status(400).json(messages.invalid("order ID"));
 
-    // Get team to check if exists else set team to 0 to get all teams
+    // Get order to check if exists
     try{
-        const Teams = await db_query("SELECT * FROM teams WHERE teamID = ?", [teamID]);
-        if(Teams.length <= 0) teamID = 0;
+        const order = await db_query("SELECT orderID FROM orders WHERE orderID = ?", [orderID]);
+        if(order.length <= 0) return res.status(400).json(messages.invalid("order ID"));
     }catch(err){
         return res.status(500).json(messages.error.server);
     }
 
     // SQL query to database to get data with team filter or without team filter
     try{
-        if(teamID === 0) {
-            const orders = await db_query(
-                `SELECT p.*, o.teamID, c.customerName
-                FROM product p 
-                JOIN  orders o ON p.orderID = o.orderID
-                JOIN customers c ON o.customerID = c.customerID
-                LIMIT ? OFFSET ?`,
-                [limit, offset]);
-            return res.status(200).json(orders);
-        }
-        else{
-            const orders = await db_query(
-                `SELECT p.*, o.teamID, c.customerName
+        const orders = await db_query(
+            `SELECT p.*, o.teamID, c.customerName
                 FROM product p
                 JOIN  orders o ON p.orderID = o.orderID
                 JOIN customers c ON o.customerID = c.customerID
-                WHERE o.teamID = ? 
-                LIMIT ? OFFSET ?`, [teamID, limit, offset]);
-            return res.status(200).json(orders);
-        }
+                WHERE p.orderID = ? 
+                LIMIT ? OFFSET ?`, [orderID, limit, offset]);
+        return res.status(200).json(orders);
     }catch(err){
         console.error(err);
         return res.status(500).json(messages.error.server);
@@ -98,7 +86,7 @@ ProductRouter.post('/', async (req, res) => {
     }
 
     // Create Product ID
-    productID = `${productNumber}/${orderID}`;
+    productID = `${productNumber}-${orderID}`;
 
     // Set dates to right format
     if(dateToISO(deliveryDate) == null){
