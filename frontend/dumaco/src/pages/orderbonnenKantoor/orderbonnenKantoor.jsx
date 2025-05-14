@@ -48,7 +48,7 @@ function orderbonnenKantoor() {
                 setTableData(formattedData);
 
                 const rows = rawData.map((item, index) => ({
-                    [index] : `/orders/order/?id=${item.orderID}`,
+                    [index] : `/orders/order?id=${item.orderID}`,
                 }));
 
                 setRowsPageDestinations(rows);
