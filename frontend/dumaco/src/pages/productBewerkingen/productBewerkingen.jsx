@@ -5,10 +5,13 @@ import {useEffect, useState} from "react";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import CustomButton from "../../components/button/button.jsx";
 import ExcelTable from "../../components/table/table.jsx";
+import {useSearchParams} from "react-router-dom";
 
 
 function orderbonnenKantoor() {
     const [bewerkingen, setTableData] = useState([]);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const id = searchParams.get("id");
     function changeTime(date) {
         if (date) {
             const ISOdate = new Date(date);
@@ -124,10 +127,12 @@ function orderbonnenKantoor() {
         {"Stuklijst": "5-1105-3456-0-J", "Omschrijving": "Beitsen", "Startdatum": "05-02-2025", "Bedrijf": "", "Aantal": 15, "Ontvangen": false}
     ];
 
+    console.log("ORDER ID: " + id);
+
     const route = breadRouteGen({
         "/home": "Home",
         "/orders": "Orders",
-        "/orders/order": "Order",
+        [`/orders/order?o.id=${id}`]: "Order", //TODO fixen dat je de breadcrumb kunt gebruiken en dat je bij /order/product ook beide kan doorklikken
         "/orders/order/product": "Product",
 
     });
