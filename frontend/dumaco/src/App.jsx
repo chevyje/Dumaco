@@ -26,7 +26,10 @@ const App = () => {
     return (
         <Router>
             <Routes>
+                {/*Public routes*/}
+                <Route path="/login" element={<InlogPagina />} />
 
+                {/*Private Routes*/}
                 <Route path="/klantoverzicht" element={<ProtectedRoute> <KlantOverzicht /> </ProtectedRoute>} />
                 <Route path="/klantenoverzicht" element={<ProtectedRoute> <KlantenOverzicht /> </ProtectedRoute>} />
                 <Route path="/gebruikersbeheer" element={<ProtectedRoute> <GebruikersBeheer /> </ProtectedRoute>} />
@@ -45,7 +48,7 @@ const App = () => {
                 <Route path="/orderbonnenkantoor/order/product" element={<ProductBewerkingen />}/>
                 <Route path="/orderbonnenkantoor/order/product/taak" element={<TaakInzicht />}/>
                 <Route path="/orderbonnenkantoor/aanmaken" element={<OrderAanmaken />}/>
-                <Route path="*" element={<NoPageFound />}/>
+                <Route path="*" element={<ProtectedRoute> <NoPageFound /> </ProtectedRoute>}/>
             </Routes>
         </Router>
     );
