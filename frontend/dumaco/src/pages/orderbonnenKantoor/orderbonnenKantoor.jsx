@@ -26,7 +26,7 @@ function orderbonnenKantoor() {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        limit: 10,
+                        limit: 25,
                         offset: 0,
                         teamID: -1
                     })

@@ -37,7 +37,7 @@ function klantenOverzicht() {
     }
 
     useEffect(() => {
-        GetData(10, 0, -1);
+        GetData(25, 0, -1);
     }, []);
 
     const route = breadRouteGen({
