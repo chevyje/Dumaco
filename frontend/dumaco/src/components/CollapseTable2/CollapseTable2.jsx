@@ -1,13 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Style from './CollapseTable2.module.css';
+import {getCookie} from "../Cookies.js";
+import {Navigate, useSearchParams} from "react-router-dom";
 
 const CollapseTable2 = (props) => {
   const [checkedItems, setCheckedItems] = useState({});
   const [itemDetails, setItemDetails] = useState({});
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [tableData, setTableData] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const data = props.content;
-  const title = props.title;
+  // values from link params
+  const id = searchParams.get("o.id");
+
+  // if param values are empty go to 404 page
+  if (!id) {
+    return <Navigate to="/404-not-found" />;
+  }
 
   const handleCheckboxChange = (id) => {
     setCheckedItems(prev => ({
@@ -27,54 +36,81 @@ const CollapseTable2 = (props) => {
   };
 
   const handleDateChange = (id, value) => {
-    setItemDetails(prev => ({
-      ...prev,
-      [id]: {
-        ...prev[id],
-        date: value
-      }
-    }));
-  };
-  
-        // const checkedData = Object.entries(checkedItems)
-      //   .filter(([_, checked]) => checked)
-      //   .map(([itemId]) => {
-      //     const item = data.find(d => d.id.toString() === itemId);
-      //     return {
-      //       id: itemId,
-      //       label: item?.label || itemId,
-      //       opmerking: updated[itemId]?.opmerking || '',
-      //       date: updated[itemId]?.date || ''
-      //     };
-      //   });
+    setItemDetails(prev => {
+      const updated = {
+        ...prev,
+        [id]: {
+          ...prev[id],
+          date: value
+        }
+      };
 
-      // console.log('Bewerkingen:', checkedData);
-
-      // return updated;
-
-  useEffect(() => {
-    const timeoutRef = setTimeout(() => {
-      const checkedData = Object.entries(checkedItems)
-        .filter(([_, checked]) => checked)
-        .map(([itemId]) => {
-          const item = data.find(d => d.id.toString() === itemId);
-          return {
-            id: itemId,
-            label: item?.label || itemId,
-            opmerking: itemDetails[itemId]?.opmerking || '',
-            date: itemDetails[itemId]?.date || ''
-          };
-        });
+    const checkedData = Object.entries(checkedItems)
+      .filter(([_, checked]) => checked)
+      .map(([itemId]) => {
+        const item = data.find(d => d.id.toString() === itemId);
+        return {
+          id: itemId,
+          label: item?.label || itemId,
+          opmerking: updated[itemId]?.opmerking || '',
+          date: updated[itemId]?.date || ''
+        };
+      });
 
       console.log('Bewerkingen:', checkedData);
-    }, 3000);
+      setTableData(checkedData);
 
-    return () => clearTimeout(timeoutRef);
-  }, [checkedItems, itemDetails]);
+      return updated;
+    });
+  };
+
+  const Save = async () => {
+    // Create product with api
+    const productResponse = await fetch("http://localhost:8080/api/product/", {
+      method: "POST",
+      headers: {"Content-type": "application/json; charset=UTF-8"},
+      body: JSON.stringify({
+        "orderID": id,
+        "palletNumber": "",
+        "deliveryDate": "2025-04-03",
+        "materialID": "1",
+        "quantity": "1",
+        "createdBy": getCookie("userID") || "1",
+      }),
+    });
+
+    // Getting product ID
+    const data = await productResponse.json();
+    const productID = data.productID;
+
+    // Create for each edit an edit with api
+    for (const data1 of tableData) {
+      const editResponse = await fetch("http://localhost:8080/api/edit/", {
+        method: "POST",
+        headers: {"Content-type": "application/json; charset=UTF-8"},
+        body: JSON.stringify({
+          "productID": productID,
+          "editTypeID": data1.id,
+          "comment": data1.opmerking,
+          "drawing": "https://link.todrawing.com",
+          "startDate": "",
+          "endDate": "",
+          "plannedStart": data1.date,
+          "plannedEnd": data1.date,
+          "userID": getCookie("userID") || "1",
+        }),
+      });
+      const editData = await editResponse.json();
+      console.log(editData);
+    }
+  }
 
   const toggle = () => {
     setIsCollapsed(prev => !prev);
   };
+
+  const data = props.content;
+  const title = props.title;
 
   return (
     <div className={Style.tableContainer}>
@@ -97,7 +133,7 @@ const CollapseTable2 = (props) => {
                 <tr className={Style.collapseTable2} key={id}>
                   <td className={Style.collapseTable2}>
                     <input
-                      type="checkbox"
+                      type='checkbox'
                       checked={!!checkedItems[id]}
                       onChange={() => handleCheckboxChange(id)}
                       id={`checkbox-${id}`}
@@ -135,6 +171,7 @@ const CollapseTable2 = (props) => {
           </>
         )}
       </table>
+      <button onClick={Save}>Opslaan</button>
     </div>
   );
 };

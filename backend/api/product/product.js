@@ -97,7 +97,7 @@ ProductRouter.post('/', async (req, res) => {
     try{
         await db_execute("INSERT INTO product (orderID, productID, productNumber, palletNumber, deliveryDate, materialID, quantity, createdBy) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
             [orderID, productID, productNumber, palletNumber, dateToISO(deliveryDate), materialID, quantity, createdBy]);
-        return res.status(201).json(messages.success.addedRow);
+        return res.status(201).json({...messages.success.addedRow, "productID": productID});
     }catch(err){
         console.error(err);
         return res.status(500).json(messages.error.server);

@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use((req, res, next) => {
-    console.log("Request: " + req.url);
+    console.log(`Method: ${req.method}, Request: ${req.url}`);
     next();
 });
 

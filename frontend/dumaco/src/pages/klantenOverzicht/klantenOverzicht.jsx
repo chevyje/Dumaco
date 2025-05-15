@@ -6,6 +6,7 @@ import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 
 function klantenOverzicht() {
     const [tableData, setTableData] = useState([]);
+    const [rowsPageDestinations, setRowsPageDestinations] = useState([]);
     const GetData = async () => {
         try {
             const requestData = await fetch("http://localhost:8080/api/customers/", {
@@ -14,8 +15,8 @@ function klantenOverzicht() {
                     "Content-Type": "application/json"
                 },
             })
-            const data = await requestData.json();
-            const formattedData = data.map(item => {
+            const rawData = await requestData.json();
+            const formattedData = rawData.map(item => {
                 const {customerName, mailAddress, phoneNumber} = item;
                 return {
                     "Klant naam": customerName,
@@ -24,36 +25,16 @@ function klantenOverzicht() {
                 }
             });
             setTableData(formattedData);
+
+            const rows = rawData.map((item, index) => ({
+                [index] : `/klanten/klant?k.id=${item.customerID}`,
+            }));
+
+            setRowsPageDestinations(rows);
         } catch (e) {
             console.log(e)
         }
     }
-
-    const navigationData = [
-        { 0: '/klanten/klant' },
-        { 1: '/klanten/klant' },
-        { 2: '/klanten/klant' },
-        { 3: '/klanten/klant' },
-        { 4: '/klanten/klant' },
-        { 5: '/klanten/klant' },
-        { 6: '/klanten/klant' },
-        { 7: '/klanten/klant' },
-        { 8: '/klanten/klant' },
-        { 9: '/klanten/klant' },
-        { 10: '/klanten/klant' },
-        { 11: '/klanten/klant' },
-        { 12: '/klanten/klant' },
-        { 13: '/klanten/klant' },
-        { 14: '/klanten/klant' },
-        { 15: '/klanten/klant' },
-        { 16: '/klanten/klant' },
-        { 17: '/klanten/klant' },
-        { 18: '/klanten/klant' },
-        { 19: '/klanten/klant' },
-        { 20: '/klanten/klant' },
-        { 21: '/klanten/klant' }
-
-    ]
 
     useEffect(() => {
         GetData(10, 0, -1);
@@ -68,7 +49,7 @@ function klantenOverzicht() {
         <>
             <Navbar title={"Klanten"} route={route} />
             <div className={Style.table}>
-                <Table jsonData={tableData} navigationData={navigationData}
+                <Table jsonData={tableData} navigationData={rowsPageDestinations}
                        hideColumns={["customerID", "address", "palletTracking", "dockerNumber"]}
                 />
             </div>

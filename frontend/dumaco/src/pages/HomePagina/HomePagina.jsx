@@ -71,7 +71,7 @@ function HomePagina() {
     }
 
     const redirectCreateCustomer = () => {
-        navigate('/klantaanmaken');
+        navigate('/klanten/aanmaken');
     }
 
     const route = breadRouteGen({

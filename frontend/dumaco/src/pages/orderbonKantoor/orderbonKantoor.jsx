@@ -15,10 +15,8 @@ function klantOverzicht() {
     const [customerData, setCustomerData] = useState([]);
     const [rowsPageDestinations, setRowsPageDestinations] = useState([]);
 
-
     // values from link params
     const id = searchParams.get("o.id");
-    const product = "test";
 
     // if param values are empty go to 404 page
     if (!id) {
@@ -37,6 +35,10 @@ function klantOverzicht() {
 
     const redirectKlant = () => {
         navigate("/klanten/klant");
+    }
+
+    const redirectProductAanmaken = () => {
+        navigate(`/product/aanmaken?o.id=${id}`);
     }
 
     useEffect(() => {
@@ -68,8 +70,8 @@ function klantOverzicht() {
                         orderID: orderID
                     })
                 })
-                const data = await requestData.json();
-                const formattedData = data.map(item => {
+                const rawData = await requestData.json();
+                const formattedData = rawData.map(item => {
                     const { productID, palletNumber, deliveryDate, quantity, customerName, ...rest} = item;
                     return {
                         "Product id": productID,
@@ -82,8 +84,8 @@ function klantOverzicht() {
                 })
                 setProductData(formattedData);
 
-                const rows = data.map((item, index) => ({
-                    [index] : `/orders/order?o.id=${item.orderID}`,
+                const rows = rawData.map((item, index) => ({
+                    [index] : `/orders/order/product?o.id=${id}&p.id=${item.productID}`,
                 }));
 
                 setRowsPageDestinations(rows);
@@ -127,7 +129,7 @@ function klantOverzicht() {
             <Navbar title={`Order Inzicht #${id}`} route={route} />
             <div className={Style.headerButtons}>
                 <CustomButton title={"Order Bewerken"} triggerFunction={null} icon={"pencil"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} />
-                <CustomButton title={"Product Aanmaken"} triggerFunction={null} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
+                <CustomButton title={"Product Aanmaken"} triggerFunction={redirectProductAanmaken} icon={"plus"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>
             </div>
 
             <div className={Style.infoContainer}>
