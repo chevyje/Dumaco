@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS MaterialTypes (
 CREATE TABLE IF NOT EXISTS EditTypes (
     editID INTEGER NOT NULL AUTO_INCREMENT,
     editName VARCHAR(64),
-    editDesc VARCHAR(16),
+    editDesc VARCHAR(1024),
     position INTEGER,
     PRIMARY KEY (editID)
 );
