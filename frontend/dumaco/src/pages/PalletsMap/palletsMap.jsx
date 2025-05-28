@@ -25,7 +25,7 @@ function PalletsMap() {
         });
     };
 
-    // werkt nog niet lekker
+    // werkt nog niet lekker, mogelijk dat je de btn niet kan indrukken
     const addShape = (type) => {
         const newShape = {
             id: uuidv4(),
