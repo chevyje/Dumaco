@@ -1,0 +1,10 @@
+.test {
+    color: black;
+}
+
+.stage {
+    width: 100%;
+    height: 88vh;
+    margin-top: -7vh;
+    overflow-y: hidden;
+}
