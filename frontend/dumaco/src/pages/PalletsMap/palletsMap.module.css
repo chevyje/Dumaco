@@ -8,3 +8,8 @@
     margin-top: -7vh;
     overflow-y: hidden;
 }
+
+.btns {
+    position: absolute;
+    padding-top: 2vh;
+}
