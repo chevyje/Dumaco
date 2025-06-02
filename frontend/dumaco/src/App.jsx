@@ -19,6 +19,7 @@ import ProductBewerkingen from "./pages/productBewerkingen/productBewerkingen.js
 import NoPageFound from "./pages/noPageFound/noPageFound.jsx";
 import OrderAanmaken from "./pages/orderAanmaken/orderAanmaken.jsx";
 import KlantAanmaken from "./pages/klantAanmaken/klantAanmaken.jsx";
+import PalletAanmaken from "./pages/palletAanmaken/palletAanmaken.jsx";
 
 const App = () => {
     return (
@@ -46,11 +47,13 @@ const App = () => {
                 <Route path="/orders/order/product/taak" element={<TaakInzicht />}/>
                 <Route path="/orders/aanmaken" element={<OrderAanmaken />}/>
 
+                {/*Overige Routes*/}
                 <Route path="/inkoop" element={<ProtectedRoute> <InkoopPagina /> </ProtectedRoute>} />
                 <Route path="/inkoop/edit" element={<ProtectedRoute> <InkoopPaginaBewerken /> </ProtectedRoute>} />
                 <Route path="/instellingen" element={<ProtectedRoute> <Instellingen /> </ProtectedRoute>} />
                 <Route path="/home" element={<ProtectedRoute> <HomePagina /> </ProtectedRoute>} />
                 <Route path="/product/aanmaken" element={<ProtectedRoute> <ProductAanmaken /> </ProtectedRoute>} />
+                <Route path="pallet/aanmaken" element={<ProtectedRoute> <PalletAanmaken /> </ProtectedRoute>} />
 
                 {/*No Route Found*/}
                 <Route path="*" element={<ProtectedRoute> <NoPageFound /> </ProtectedRoute>}/>

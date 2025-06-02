@@ -8,6 +8,7 @@ import MaterialTypesRouter from "./materialTypes/materialTypes.js";
 import EditTypesRouter from "./EditTypes/editTypes.js";
 import ProductRouter from "./product/product.js";
 import EditRouter from "./edit/edit.js";
+import PalletRouter from "./pallet/pallet.js";
 
 const APIRouter = express.Router();
 
@@ -20,5 +21,6 @@ APIRouter.use("/materialTypes", MaterialTypesRouter);
 APIRouter.use("/editTypes", EditTypesRouter);
 APIRouter.use("/product", ProductRouter);
 APIRouter.use("/edit", EditRouter);
+APIRouter.use("/pallet", PalletRouter);
 
 export default APIRouter;

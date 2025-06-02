@@ -125,3 +125,11 @@ CREATE TABLE IF NOT EXISTS Purchase (
     PRIMARY KEY (purchaseID),
     FOREIGN KEY (productID) REFERENCES Product(productID)
 );
+
+CREATE TABLE IF NOT EXISTS Pallet (
+    palletID VARCHAR(64) NOT NULL,
+    productID VARCHAR(64) NULL,
+    zone VARCHAR(64) DEFAULT 'Default',
+    PRIMARY KEY (palletID),
+    FOREIGN KEY (productID) REFERENCES Product(productID)
+);

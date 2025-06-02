@@ -2,8 +2,10 @@ import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import Navbar from "../../components/navbar/navbar.jsx";
 import Style from "./TaakInzicht.module.css";
 import Button from "../../components/button/button.jsx";
+import {useState} from "react";
 
 function taakInzicht() {
+    const [palletID, setPalletID] = useState("");
     const route = breadRouteGen({
         "/home": "Home",
         "/orders": "Orders",
@@ -11,6 +13,14 @@ function taakInzicht() {
         "/orders/order/product": "Product",
         "/orders/order/product/taak": "Taak",
     });
+
+    const AddPallet = () => {
+        console.log(palletID);
+    }
+
+    const PalletID = (e) => {
+        setPalletID(e.currentTarget.value);
+    }
 
     return (
         <>
@@ -82,6 +92,19 @@ function taakInzicht() {
                             <div className={Style.huidigeBewerkingTimestampText}>
                                 <p>05-03-2025 14:15</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={Style.gridPallet}>
+                    <div className={Style.palletContainer}>
+                        <div className={Style.palletTitle}>
+                            <p>Pallet toevoegen</p>
+                        </div>
+                        <div className={Style.palletInput}>
+                            <input value={palletID} onChange={PalletID}></input>
+                        </div>
+                        <div className={Style.palletButton}>
+                            <Button title="Toevoegen" color={"#0068ff"} borderColor={"#0068ff"} textColor={"#000000"} triggerFunction={AddPallet} />
                         </div>
                     </div>
                 </div>

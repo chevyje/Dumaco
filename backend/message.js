@@ -10,9 +10,10 @@ messages.error.incorrectPassword = {message: "incorrect password"};
 
 // Success messages
 messages.success = {};
-messages.success.addedRow = {message: "Row was added succesfully"};
-messages.success.deletedRow = {message: "Row was deleted succesfully"};
+messages.success.addedRow = {message: "Row was added successfully"};
+messages.success.deletedRow = {message: "Row was deleted successfully"};
 messages.success.login = {messages: "login successful!"};
+messages.success.update = {messages: "Row was updated successfully!"};
 
 // Bad request messages
 messages.badreques = {};
