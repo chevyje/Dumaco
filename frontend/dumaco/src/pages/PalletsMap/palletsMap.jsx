@@ -17,25 +17,38 @@ function PalletsMap() {
     ]);
 
     const [coords, setCoords] = React.useState({ x: 0, y: 0 });
+    const containerRef = React.useRef(null);
+    const stageRef = React.useRef(null);
+
+
 
     const cursorMove = (event) => {
+        if (!containerRef.current) return;
+
+        const bounds = containerRef.current.getBoundingClientRect();
+
         setCoords({
-            x: event.clientX,
-            y: event.clientY,
+            x: event.clientX - bounds.left,
+            y: event.clientY - bounds.top,
         });
     };
 
-    // werkt nog niet lekker, mogelijk dat je de btn niet kan indrukken
+
     const addShape = (type) => {
+        const stage = stageRef.current;
+        const pointerPosition = stage.getPointerPosition();
+
         const newShape = {
             id: uuidv4(),
             type,
-            x: coords.x,
-            y: coords.y,
+            x: pointerPosition?.x || 50,
+            y: pointerPosition?.y || 50,
             fill: type === "rect" ? "red" : "green",
         };
+
         setShapes((prev) => [...prev, newShape]);
     };
+
 
     const updateShape = (id, changes) => {
         setShapes((prev) =>
@@ -48,12 +61,12 @@ function PalletsMap() {
     return (
         <>
             <Navbar title={"Pallets"} route={route} />
-            <div className={Style.stage} onMouseMove={cursorMove}>
+            <div className={Style.stage} onMouseMove={cursorMove} ref={containerRef}>
                 <div className={Style.btns}>
                     <button onClick={() => addShape("rect")}>vierkant</button>
                     <button onClick={() => addShape("circle")}>cirkel</button>
                 </div>
-                <Stage width={window.innerWidth} height={window.innerHeight}>
+                <Stage width={window.innerWidth} height={window.innerHeight} ref={stageRef}>
                     <Layer>
                         {shapes.map((shape) => {
                             const commonProps = {

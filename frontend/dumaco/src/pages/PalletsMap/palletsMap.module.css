@@ -10,6 +10,7 @@
 }
 
 .btns {
+    z-index: 3;
     position: absolute;
     padding-top: 2vh;
 }
