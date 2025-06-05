@@ -19,8 +19,7 @@ function PalletsMap() {
     const [coords, setCoords] = React.useState({ x: 0, y: 0 });
     const containerRef = React.useRef(null);
     const stageRef = React.useRef(null);
-
-
+    const [selectedShape, setSelectedShape] = React.useState(null);
 
     const cursorMove = (event) => {
         if (!containerRef.current) return;
@@ -32,7 +31,6 @@ function PalletsMap() {
             y: event.clientY - bounds.top,
         });
     };
-
 
     const addShape = (type) => {
         const stage = stageRef.current;
@@ -49,7 +47,6 @@ function PalletsMap() {
         setShapes((prev) => [...prev, newShape]);
     };
 
-
     const updateShape = (id, changes) => {
         setShapes((prev) =>
             prev.map((shape) =>
@@ -63,20 +60,38 @@ function PalletsMap() {
             <Navbar title={"Pallets"} route={route} />
             <div className={Style.stage} onMouseMove={cursorMove} ref={containerRef}>
                 <div className={Style.btns}>
-                    <button onClick={() => addShape("rect")}>vierkant</button>
-                    <button onClick={() => addShape("circle")}>cirkel</button>
+                    <button className={Style.btn} onClick={() => addShape("rect")}>vierkant</button>
+                    <button className={Style.btn} onClick={() => addShape("circle")}>
+                        <img src={`../../../icons/area-square-white.svg`} alt={"imageUpscale"} className={Style.iconUpscale} />
+                    </button>
                 </div>
                 <Stage width={window.innerWidth} height={window.innerHeight} ref={stageRef}>
-                    <Layer>
+                    <Layer
+                        onMouseDown={(e) => {
+                            const clickedOnEmpty = e.target === e.target.getStage() || e.target.getParent()?.className === "Layer";
+                            if (clickedOnEmpty) {
+                                console.log("clickedOnEmpty");
+                                setSelectedShape(null);
+                            }
+                        }}
+                    >
                         {shapes.map((shape) => {
+                            const isSelected = selectedShape?.id === shape.id;
+
                             const commonProps = {
                                 key: shape.id,
                                 x: shape.x,
                                 y: shape.y,
-                                fill: shape.fill,
+                                fill: isSelected ? "yellow" : shape.fill,
+                                stroke: isSelected ? "blue" : null,
+                                strokeWidth: isSelected ? 4 : 0,
                                 draggable: true,
-                                onDragStart: () =>
-                                    updateShape(shape.id, { fill: "orange" }),
+                                onClick: () => setSelectedShape(shape),
+                                onTap: () => setSelectedShape(shape),
+                                onDragStart: () => {
+                                    updateShape(shape.id, { fill: "orange" });
+                                    setSelectedShape(shape);
+                                },
                                 onDragEnd: (e) =>
                                     updateShape(shape.id, {
                                         x: e.target.x(),
