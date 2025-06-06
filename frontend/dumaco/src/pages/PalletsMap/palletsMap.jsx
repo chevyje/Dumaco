@@ -133,8 +133,8 @@ function PalletsMap() {
             <Navbar title={"Pallets"} route={route} />
             <div className={Style.stage}>
                 <div className={Style.btns}>
-                    <button className={Style.btn} onClick={addNode}>Voeg Node Toe</button>
-                    <button className={Style.btn} onClick={createZone}>Maak Zone</button>
+                    <button className={Style.btn} onClick={addNode}>Node</button>
+                    <button className={Style.btn} onClick={createZone}>Zone</button>
                     <button className={Style.btn} onClick={handleDeleteSelected}>Delete Selected</button>
                 </div>
                 <Stage
