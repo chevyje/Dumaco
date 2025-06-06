@@ -20,7 +20,12 @@ function PalletsMap() {
     const [selectedZoneId, setSelectedZoneId] = useState(null);
 
     const handleZoneSelect = (id) => {
-        setSelectedZoneId((prev) => (prev === id ? null : id));
+        setSelectedZoneId((prev) =>
+            (prev === id ? null : id)
+        );
+
+        // indien je een zone selecteert, moet de selectie van nodes weg
+        setSelectedNodeIds([]);
     };
 
     const addNode = () => {
@@ -49,6 +54,9 @@ function PalletsMap() {
                 ? prev.filter((nid) => nid !== id)
                 : [...prev, id]
         );
+
+        // zone weghalen als nodes geselecteerd zijn
+        setSelectedZoneId([]);
     };
 
     const createZone = () => {
