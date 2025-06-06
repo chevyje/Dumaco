@@ -56,7 +56,7 @@ function PalletsMap() {
         );
 
         // zone weghalen als nodes geselecteerd zijn
-        setSelectedZoneId([]);
+        setSelectedZoneId(null);
     };
 
     const createZone = () => {
@@ -75,12 +75,37 @@ function PalletsMap() {
         setSelectedNodeIds([]);
     };
 
-    const handleDeleteZone = () => {
-        if (!selectedZoneId) return;
-        setZones((prev) =>
-            prev.filter((z) => z.id !== selectedZoneId)
-        );
-        setSelectedZoneId(null);
+    const handleDeleteSelected = () => {
+        // Zone verwijderen
+        if (selectedZoneId) {
+            setZones((prev) => prev.filter((z) => z.id !== selectedZoneId));
+            setSelectedZoneId(null);
+        }
+
+        // node verwijderen
+        if (Array.isArray(selectedNodeIds) && selectedNodeIds.length > 0) {
+            const nodesToDelete = new Set(selectedNodeIds);
+
+            for (const zone of zones) {
+                const remaining = zone.nodeIds.filter(id => !nodesToDelete.has(id));
+                if (remaining.length < 3) {
+                    alert("Verwijder eerst de zone voordat je deze nodes kunt verwijderen.");
+                    return;
+                }
+            }
+
+            setNodes(prev => prev.filter(n => !nodesToDelete.has(n.id)));
+
+            // nodes eruithalen die weg mogen
+            setZones(prev =>
+                prev.map(zone => ({
+                    ...zone,
+                    nodeIds: zone.nodeIds.filter(id => !nodesToDelete.has(id))
+                }))
+            );
+
+            setSelectedNodeIds([]);
+        }
     };
 
     return (
@@ -90,7 +115,7 @@ function PalletsMap() {
                 <div className={Style.btns}>
                     <button className={Style.btn} onClick={addNode}>Voeg Node Toe</button>
                     <button className={Style.btn} onClick={createZone}>Maak Zone</button>
-                    <button className={Style.btn} onClick={handleDeleteZone}>Delete Zone</button>
+                    <button className={Style.btn} onClick={handleDeleteSelected}>Delete Selected</button>
                 </div>
                 <Stage
                     width={window.innerWidth}
@@ -100,7 +125,7 @@ function PalletsMap() {
                         if (e.target === e.target.getStage()) {
                             // Deselect alle objecten als je op niks klikt
                             setSelectedNodeIds([]);
-                            setSelectedZoneId([]);
+                            setSelectedZoneId(null);
                         }
                     }}
                 >
