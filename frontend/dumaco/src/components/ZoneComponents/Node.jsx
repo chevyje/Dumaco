@@ -7,9 +7,9 @@ const Node = ({ node, isSelected, onSelect, onDragEnd }) => {
             x={node.x}
             y={node.y}
             radius={10}
-            fill={isSelected ? "yellow" : "blue"}
+            fill={isSelected ? "yellow" : "black"}
             stroke={isSelected ? "black" : null}
-            strokeWidth={2}
+            strokeWidth={1}
             draggable
             onClick={() => onSelect(node.id)}
             onDragEnd={(e) =>

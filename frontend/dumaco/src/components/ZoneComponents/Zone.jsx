@@ -15,7 +15,7 @@ function Zone({ zone, nodes, isSelected, onSelect }) {
             closed
             fill={isSelected ? "rgba(0,0,255,0.1)" : "rgba(0,255,0,0.2)"}
             stroke={isSelected ? "blue" : "green"}
-            strokeWidth={isSelected ? 3 : 1}
+            strokeWidth={isSelected ? 2 : 1}
             onClick={(e) => {
                 e.cancelBubble = true;
                 onSelect(zone.id);

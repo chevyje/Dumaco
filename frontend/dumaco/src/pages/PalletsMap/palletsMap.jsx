@@ -61,13 +61,17 @@ function PalletsMap() {
             nodeIds: [...selectedNodeIds],
         };
 
-        setZones((prev) => [...prev, newZone]);
+        setZones((prev) =>
+            [...prev, newZone]
+        );
         setSelectedNodeIds([]);
     };
 
     const handleDeleteZone = () => {
         if (!selectedZoneId) return;
-        setZones((prev) => prev.filter((z) => z.id !== selectedZoneId));
+        setZones((prev) =>
+            prev.filter((z) => z.id !== selectedZoneId)
+        );
         setSelectedZoneId(null);
     };
 
@@ -86,7 +90,9 @@ function PalletsMap() {
                     ref={stageRef}
                     onMouseDown={(e) => {
                         if (e.target === e.target.getStage()) {
-                            setSelectedNodeIds([]); // deselect all
+                            // Deselect alle objecten als je op niks klikt
+                            setSelectedNodeIds([]);
+                            setSelectedZoneId([]);
                         }
                     }}
                 >
