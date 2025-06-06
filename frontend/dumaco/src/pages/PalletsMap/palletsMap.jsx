@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {useState, useRef, useEffect} from "react";
 import { Stage, Layer } from "react-konva";
 import Navbar from "../../components/navbar/navbar.jsx";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
@@ -107,6 +107,23 @@ function PalletsMap() {
             setSelectedNodeIds([]);
         }
     };
+
+    useEffect(() => {
+       const handleKeyDown = (event) => {
+           if(event.key === "Escape") {
+               setSelectedZoneId(null);
+               setSelectedNodeIds([]);
+           } else if (event.key === "Delete") {
+               handleDeleteSelected();
+           } else if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'a') {
+               event.preventDefault();
+               const allNodeIds = nodes.map(n => n.id);
+               setSelectedNodeIds(allNodeIds);
+           }
+       };
+
+       window.addEventListener("keydown", handleKeyDown);
+        }, [selectedZoneId, selectedNodeIds, nodes, zones]);
 
     return (
         <>
