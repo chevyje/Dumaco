@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
-import { Stage, Layer, Rect, Circle } from "react-konva";
+import React, { useState, useRef } from "react";
+import { Stage, Layer } from "react-konva";
 import Navbar from "../../components/navbar/navbar.jsx";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import Style from "./palletsMap.module.css";
 import { v4 as uuidv4 } from 'uuid';
+import Node from "../../components/ZoneComponents/Node.jsx";
+import Zone from "../../components/ZoneComponents/Zone.jsx";
 
 function PalletsMap() {
     const route = breadRouteGen({
@@ -11,101 +13,102 @@ function PalletsMap() {
         "/pallets": "Pallets",
     });
 
-    const [shapes, setShapes] = React.useState([
-        { id: uuidv4(), type: "rect", x: 20, y: 50, fill: "red" },
-        { id: uuidv4(), type: "circle", x: 200, y: 100, fill: "green" },
-    ]);
+    const [nodes, setNodes] = useState([]);
+    const [zones, setZones] = useState([]);
+    const [selectedNodeIds, setSelectedNodeIds] = useState([]);
+    const stageRef = useRef(null);
+    const [selectedZoneId, setSelectedZoneId] = useState(null);
 
-    const [coords, setCoords] = React.useState({ x: 0, y: 0 });
-    const containerRef = React.useRef(null);
-    const stageRef = React.useRef(null);
-    const [selectedShape, setSelectedShape] = React.useState(null);
-
-    const cursorMove = (event) => {
-        if (!containerRef.current) return;
-
-        const bounds = containerRef.current.getBoundingClientRect();
-
-        setCoords({
-            x: event.clientX - bounds.left,
-            y: event.clientY - bounds.top,
-        });
+    const handleZoneSelect = (id) => {
+        setSelectedZoneId((prev) => (prev === id ? null : id));
     };
 
-    const addShape = (type) => {
+    const addNode = () => {
         const stage = stageRef.current;
-        const pointerPosition = stage.getPointerPosition();
-
-        const newShape = {
+        const pos = stage.getPointerPosition();
+        console.log(pos);
+        const newNode = {
             id: uuidv4(),
-            type,
-            x: pointerPosition?.x || 50,
-            y: pointerPosition?.y || 50,
-            fill: type === "rect" ? "red" : "green",
+            x: pos.x + 250,
+            y: pos.y,
         };
-
-        setShapes((prev) => [...prev, newShape]);
+        setNodes((prev) => [...prev, newNode]);
     };
 
-    const updateShape = (id, changes) => {
-        setShapes((prev) =>
-            prev.map((shape) =>
-                shape.id === id ? { ...shape, ...changes } : shape
+    const updateNodePosition = (id, x, y) => {
+        setNodes((prev) =>
+            prev.map((node) =>
+                node.id === id ? { ...node, x, y } : node
             )
         );
+    };
+
+    const toggleNodeSelection = (id) => {
+        setSelectedNodeIds((prev) =>
+            prev.includes(id)
+                ? prev.filter((nid) => nid !== id)
+                : [...prev, id]
+        );
+    };
+
+    const createZone = () => {
+        if (selectedNodeIds.length < 3) {
+            return alert("Selecteer minstens 3 nodes");
+        }
+
+        const newZone = {
+            id: uuidv4(),
+            nodeIds: [...selectedNodeIds],
+        };
+
+        setZones((prev) => [...prev, newZone]);
+        setSelectedNodeIds([]);
+    };
+
+    const handleDeleteZone = () => {
+        if (!selectedZoneId) return;
+        setZones((prev) => prev.filter((z) => z.id !== selectedZoneId));
+        setSelectedZoneId(null);
     };
 
     return (
         <>
             <Navbar title={"Pallets"} route={route} />
-            <div className={Style.stage} onMouseMove={cursorMove} ref={containerRef}>
+            <div className={Style.stage}>
                 <div className={Style.btns}>
-                    <button className={Style.btn} onClick={() => addShape("rect")}>vierkant</button>
-                    <button className={Style.btn} onClick={() => addShape("circle")}>
-                        <img src={`../../../icons/area-square-white.svg`} alt={"imageUpscale"} className={Style.iconUpscale} />
-                    </button>
+                    <button className={Style.btn} onClick={addNode}>Voeg Node Toe</button>
+                    <button className={Style.btn} onClick={createZone}>Maak Zone</button>
+                    <button className={Style.btn} onClick={handleDeleteZone}>Delete Zone</button>
                 </div>
-                <Stage width={window.innerWidth} height={window.innerHeight} ref={stageRef}>
-                    <Layer
-                        onMouseDown={(e) => {
-                            const clickedOnEmpty = e.target === e.target.getStage() || e.target.getParent()?.className === "Layer";
-                            if (clickedOnEmpty) {
-                                console.log("clickedOnEmpty");
-                                setSelectedShape(null);
-                            }
-                        }}
-                    >
-                        {shapes.map((shape) => {
-                            const isSelected = selectedShape?.id === shape.id;
-
-                            const commonProps = {
-                                key: shape.id,
-                                x: shape.x,
-                                y: shape.y,
-                                fill: isSelected ? "yellow" : shape.fill,
-                                stroke: isSelected ? "blue" : null,
-                                strokeWidth: isSelected ? 4 : 0,
-                                draggable: true,
-                                onClick: () => setSelectedShape(shape),
-                                onTap: () => setSelectedShape(shape),
-                                onDragStart: () => {
-                                    updateShape(shape.id, { fill: "orange" });
-                                    setSelectedShape(shape);
-                                },
-                                onDragEnd: (e) =>
-                                    updateShape(shape.id, {
-                                        x: e.target.x(),
-                                        y: e.target.y(),
-                                        fill: shape.type === "rect" ? "red" : "green",
-                                    }),
-                            };
-
-                            return shape.type === "rect" ? (
-                                <Rect width={100} height={100} {...commonProps} />
-                            ) : (
-                                <Circle radius={50} {...commonProps} />
-                            );
-                        })}
+                <Stage
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                    ref={stageRef}
+                    onMouseDown={(e) => {
+                        if (e.target === e.target.getStage()) {
+                            setSelectedNodeIds([]); // deselect all
+                        }
+                    }}
+                >
+                    <Layer>
+                        {zones.map((zone) => (
+                            <Zone
+                                key={zone.id}
+                                zone={zone}
+                                nodes={nodes}
+                                isSelected={selectedZoneId === zone.id}
+                                onSelect={handleZoneSelect}
+                            />
+                        ))}
+                        {nodes.map((node) => (
+                            <Node
+                                key={node.id}
+                                node={node}
+                                isSelected={selectedNodeIds.includes(node.id)}
+                                onSelect={toggleNodeSelection}
+                                onDragEnd={updateNodePosition}
+                            />
+                        ))}
                     </Layer>
                 </Stage>
             </div>
