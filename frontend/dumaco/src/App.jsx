@@ -19,6 +19,7 @@ import ProductBewerkingen from "./pages/productBewerkingen/productBewerkingen.js
 import NoPageFound from "./pages/noPageFound/noPageFound.jsx";
 import OrderAanmaken from "./pages/orderAanmaken/orderAanmaken.jsx";
 import KlantAanmaken from "./pages/klantAanmaken/klantAanmaken.jsx";
+import PalletsMap from "./pages/PalletsMap/palletsMap.jsx";
 
 const App = () => {
     return (
@@ -54,6 +55,10 @@ const App = () => {
 
                 {/*No Route Found*/}
                 <Route path="*" element={<ProtectedRoute> <NoPageFound /> </ProtectedRoute>}/>
+
+                {/*Pallet Tracking Routes*/}
+                <Route path="/pallets" element={<ProtectedRoute> <PalletsMap /> </ProtectedRoute>}/>
+
             </Routes>
         </Router>
     );
