@@ -1,7 +1,7 @@
 import React from "react";
 import { Circle } from "react-konva";
 
-const Node = ({ node, isSelected, onSelect, onDragEnd }) => {
+const Node = ({ node, isSelected, onSelect, onDragEnd, onDragMove }) => {
     return (
         <Circle
             x={node.x}
@@ -12,11 +12,11 @@ const Node = ({ node, isSelected, onSelect, onDragEnd }) => {
             strokeWidth={1}
             draggable
             onClick={() => onSelect(node.id)}
-            onDragEnd={(e) =>
-                onDragEnd(node.id, e.target.x(), e.target.y())
-            }
+            onDragMove={(e) => onDragMove(node.id, e.target.x(), e.target.y())}
+            onDragEnd={(e) => onDragEnd(node.id, e.target.x(), e.target.y())}
         />
     );
 };
+
 
 export default Node;

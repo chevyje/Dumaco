@@ -76,27 +76,26 @@ function PalletsMap() {
     };
 
     const handleDeleteSelected = () => {
-        // Zone verwijderen
         if (selectedZoneId) {
             setZones((prev) => prev.filter((z) => z.id !== selectedZoneId));
             setSelectedZoneId(null);
         }
 
-        // node verwijderen
         if (Array.isArray(selectedNodeIds) && selectedNodeIds.length > 0) {
             const nodesToDelete = new Set(selectedNodeIds);
 
-            for (const zone of zones) {
+            const invalidZone = zones.find(zone => {
                 const remaining = zone.nodeIds.filter(id => !nodesToDelete.has(id));
-                if (remaining.length < 3) {
-                    alert("Verwijder eerst de zone voordat je deze nodes kunt verwijderen.");
-                    return;
-                }
+                return remaining.length < 3;
+            });
+
+            if (invalidZone) {
+                alert("Verwijder eerst de zone voordat je deze nodes kunt verwijderen.");
+                return;
             }
 
             setNodes(prev => prev.filter(n => !nodesToDelete.has(n.id)));
 
-            // nodes eruithalen die weg mogen
             setZones(prev =>
                 prev.map(zone => ({
                     ...zone,
@@ -108,22 +107,26 @@ function PalletsMap() {
         }
     };
 
-    useEffect(() => {
-       const handleKeyDown = (event) => {
-           if(event.key === "Escape") {
-               setSelectedZoneId(null);
-               setSelectedNodeIds([]);
-           } else if (event.key === "Delete") {
-               handleDeleteSelected();
-           } else if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'a') {
-               event.preventDefault();
-               const allNodeIds = nodes.map(n => n.id);
-               setSelectedNodeIds(allNodeIds);
-           }
-       };
 
-       window.addEventListener("keydown", handleKeyDown);
-        }, [selectedZoneId, selectedNodeIds, nodes, zones]);
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if(event.key === "Escape") {
+                setSelectedZoneId(null);
+                setSelectedNodeIds([]);
+            } else if (event.key === "Delete") {
+                handleDeleteSelected();
+            } else if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'a') {
+                event.preventDefault();
+                setSelectedNodeIds(nodes.map(n => n.id));
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [nodes, zones, selectedNodeIds, selectedZoneId]);
 
     return (
         <>
@@ -163,6 +166,7 @@ function PalletsMap() {
                                 isSelected={selectedNodeIds.includes(node.id)}
                                 onSelect={toggleNodeSelection}
                                 onDragEnd={updateNodePosition}
+                                onDragMove={updateNodePosition}
                             />
                         ))}
                     </Layer>

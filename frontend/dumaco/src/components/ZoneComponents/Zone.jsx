@@ -6,8 +6,7 @@ function Zone({ zone, nodes, isSelected, onSelect }) {
         .map((id) => {
             const node = nodes.find((n) => n.id === id);
             return node ? [node.x, node.y] : [];
-        })
-        .flat();
+        }).flat();
 
     return (
         <Line
