@@ -135,9 +135,9 @@ function PalletsMap() {
             <Navbar title={"Pallets"} route={route} />
             <div className={Style.stage}>
                 <div className={Style.btns}>
-                    <button className={Style.btn} onClick={addNode}>Node</button>
-                    <button className={Style.btn} onClick={createZone}>Zone</button>
-                    <button className={Style.btn} onClick={handleDeleteSelected}>Delete Selected</button>
+                    <button className={Style.btn} onClick={addNode}><img src="/icons/node-white.svg" alt="add-node" className={Style.iconUpscale} /></button>
+                    <button className={Style.btn} onClick={createZone}><img src="/icons/grid-plus-white.svg" alt="add-zone" className={Style.iconUpscale} /></button>
+                    <button className={Style.btn} onClick={handleDeleteSelected}><img src="/icons/trash.svg" alt="delete" className={Style.iconUpscale}/></button>
                 </div>
                 <Stage
                     width={window.innerWidth}
