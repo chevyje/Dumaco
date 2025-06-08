@@ -1,11 +1,12 @@
 import React, {useState, useRef, useEffect} from "react";
-import { Stage, Layer } from "react-konva";
+import { Stage, Layer, Label, Tag } from "react-konva";
 import Navbar from "../../components/navbar/navbar.jsx";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import Style from "./palletsMap.module.css";
 import { v4 as uuidv4 } from 'uuid';
 import Node from "../../components/ZoneComponents/Node.jsx";
 import Zone from "../../components/ZoneComponents/Zone.jsx";
+import Konva from "konva";
 
 function PalletsMap() {
     const route = breadRouteGen({
@@ -64,14 +65,15 @@ function PalletsMap() {
             return alert("Selecteer minstens 3 nodes");
         }
 
+        const name = "Zone"
+
         const newZone = {
             id: uuidv4(),
             nodeIds: [...selectedNodeIds],
+            name,
         };
 
-        setZones((prev) =>
-            [...prev, newZone]
-        );
+        setZones((prev) => [...prev, newZone]);
         setSelectedNodeIds([]);
     };
 
