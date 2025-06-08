@@ -135,9 +135,24 @@ function PalletsMap() {
             <Navbar title={"Pallets"} route={route} />
             <div className={Style.stage}>
                 <div className={Style.btns}>
-                    <button className={Style.btn} onClick={addNode}><img src="/icons/node-white.svg" alt="add-node" className={Style.iconUpscale} /></button>
-                    <button className={Style.btn} onClick={createZone}><img src="/icons/grid-plus-white.svg" alt="add-zone" className={Style.iconUpscale} /></button>
-                    <button className={Style.btn} onClick={handleDeleteSelected}><img src="/icons/trash.svg" alt="delete" className={Style.iconUpscale}/></button>
+                    <button className={Style.btn} onClick={addNode}>
+                        <div className={Style.tooltip}>
+                            <img src="/icons/node-white.svg" alt="add-node" className={Style.iconUpscale} />
+                            <span className={Style.tooltiptext}>Voeg een node toe</span>
+                        </div>
+                    </button>
+                    <button className={Style.btn} onClick={createZone}>
+                        <div className={Style.tooltip}>
+                            <img src="/icons/grid-plus-white.svg" alt="add-zone" className={Style.iconUpscale} />
+                            <span className={Style.tooltiptext}>Maak een zone van de geselecteerde nodes</span>
+                        </div>
+                    </button>
+                    <button className={Style.btn} onClick={handleDeleteSelected}>
+                        <div className={Style.tooltip}>
+                            <img src="/icons/trash.svg" alt="delete" className={Style.iconUpscale}/>
+                            <span className={Style.tooltiptext}>Verwijder geselecteerde items</span>
+                        </div>
+                    </button>
                 </div>
                 <Stage
                     width={window.innerWidth}
