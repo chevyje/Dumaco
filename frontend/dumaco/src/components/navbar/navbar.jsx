@@ -3,18 +3,24 @@ import Profile from '../../assets/profiel.png';
 import Style from  './navbar.module.css';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
 import {Breadcrumbs} from "@mui/material";
-import {getCookie} from "../Cookies.js";
+import {getCookie, deleteCookie} from "../Cookies.js";
+import {useState} from "react";
 
 function Navbar({ title, route }) {
     const navigate = useNavigate();
-
+    const [visible, setVisible] = useState(false);
 
     const handleProfileClick = () => {
-        navigate('/instellingen');
+        setVisible(!visible);
     }
 
     const handleLogoClick = () => {
         navigate('/home');
+    }
+
+    const Logout = () => {
+        deleteCookie("userID");
+        window.location.reload();
     }
 
     return (
@@ -33,6 +39,10 @@ function Navbar({ title, route }) {
                     <p>J</p>
                 </div>
             </div>
+            {visible && <div className={Style.profileOnClick}>
+                <NavLink to={"/instellingen"} className={Style.profileButton} activeClassName={Style.active}>Instellingen</NavLink>
+                <h1 className={Style.profileButton} onClick={Logout}>Afmelden</h1>
+            </div>}
             <div className={Style.subnavbar}>
                 <Breadcrumbs separator="›" aria-label="breadcrumb">
                     {route.map((crumb, index) =>

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import style from "./inlogPagina.module.css"
-import {SetCookies} from "../../components/Cookies.js";
+import {setCookies} from "../../components/Cookies.js";
 
 function InlogPagina() {
     const navigate = useNavigate();
@@ -52,8 +52,7 @@ function InlogPagina() {
 
             // Success Response
             if(status === 200) {
-                SetCookies("userID", data.userId, 8);
-                SetCookies("accessLevel", data.accessLevel, 8);
+                setCookies("userID", data.userId, 8);
                 navigate("/Home");
             }
 

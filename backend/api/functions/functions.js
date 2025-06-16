@@ -14,6 +14,17 @@ FunctionsRouter.get('/', async (req, res) => {
     }
 });
 
+FunctionsRouter.get('/accesslevel/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const accesslevel = await db_query("SELECT f.accessLevel FROM users JOIN functions f ON users.functionID = f.functionID WHERE userID = ?", [id]);
+        res.status(200).json(accesslevel);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json(messages.error.server);
+    }
+})
+
 FunctionsRouter.post('/', async (req, res) => {
     const { name, accessLevel } = req.body;
     if (!name || name.length <= 1) return res.status(400).json(messages.invalid("name"));

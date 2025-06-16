@@ -1,4 +1,4 @@
-export function SetCookies(cname, cvalue, expireHours) {
+export function setCookies(cname, cvalue, expireHours) {
     const d = new Date();
     d.setHours(d.getHours() + expireHours);
     let expiryDate = "expires=" + d.toUTCString();
@@ -15,4 +15,8 @@ export function getCookie(cname) {
         if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
     }
     return "";
+}
+
+export function deleteCookie(cname) {
+    document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
