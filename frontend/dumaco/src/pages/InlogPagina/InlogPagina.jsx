@@ -52,7 +52,8 @@ function InlogPagina() {
 
             // Success Response
             if(status === 200) {
-                SetCookies("userID", data.userId, 8)
+                SetCookies("userID", data.userId, 8);
+                SetCookies("accessLevel", data.accessLevel, 8);
                 navigate("/Home");
             }
 

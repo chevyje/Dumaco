@@ -20,6 +20,7 @@ import NoPageFound from "./pages/noPageFound/noPageFound.jsx";
 import OrderAanmaken from "./pages/orderAanmaken/orderAanmaken.jsx";
 import KlantAanmaken from "./pages/klantAanmaken/klantAanmaken.jsx";
 import PalletAanmaken from "./pages/palletAanmaken/palletAanmaken.jsx";
+import Unauthorized from "./pages/noAccess/noAccess.jsx";
 
 const App = () => {
     return (
@@ -35,7 +36,7 @@ const App = () => {
                 <Route path="/klanten/aanmaken" element={<ProtectedRoute> <KlantAanmaken /> </ProtectedRoute>} />
 
                 {/*Beheer Routes*/}
-                <Route path="/gebruikersbeheer" element={<ProtectedRoute> <GebruikersBeheer /> </ProtectedRoute>} />
+                <Route path="/gebruikersbeheer" element={<ProtectedRoute accessLevel={20}> <GebruikersBeheer /> </ProtectedRoute>} />
                 <Route path="/gebruikersbeheer/edit" element={<ProtectedRoute> <GebruikersBeheerEdit /> </ProtectedRoute>} />
                 <Route path="/TeamsBeheer" element={<ProtectedRoute> <TeamsBeheer /> </ProtectedRoute>} />
                 <Route path="/TeamsBeheerEdit" element={<ProtectedRoute> <TeamsBeheerEdit /> </ProtectedRoute>} />
@@ -57,6 +58,7 @@ const App = () => {
 
                 {/*No Route Found*/}
                 <Route path="*" element={<ProtectedRoute> <NoPageFound /> </ProtectedRoute>}/>
+                <Route path="/unauthorized" element={<ProtectedRoute> <Unauthorized /> </ProtectedRoute>} />
             </Routes>
         </Router>
     );

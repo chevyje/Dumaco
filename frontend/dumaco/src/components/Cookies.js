@@ -2,7 +2,7 @@ export function SetCookies(cname, cvalue, expireHours) {
     const d = new Date();
     d.setHours(d.getHours() + expireHours);
     let expiryDate = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + expiryDate + ";path=/";
+    document.cookie = cname + "=" + cvalue + ";" +  expiryDate + ";path=/";
 }
 
 export function getCookie(cname) {

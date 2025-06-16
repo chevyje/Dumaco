@@ -3,6 +3,7 @@ import Profile from '../../assets/profiel.png';
 import Style from  './navbar.module.css';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
 import {Breadcrumbs} from "@mui/material";
+import {getCookie} from "../Cookies.js";
 
 function Navbar({ title, route }) {
     const navigate = useNavigate();
@@ -28,7 +29,9 @@ function Navbar({ title, route }) {
                 </div>
 
                 <h1>{title}</h1>
-                <img className={Style.profile} src={Profile} alt="Profielafbeelding" onClick={handleProfileClick}/>
+                <div className={Style.profile} onClick={handleProfileClick}>
+                    <p>J</p>
+                </div>
             </div>
             <div className={Style.subnavbar}>
                 <Breadcrumbs separator="›" aria-label="breadcrumb">
@@ -49,9 +52,9 @@ function Navbar({ title, route }) {
                     <NavLink to="/orders" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Orders
                     </NavLink>
-                    <NavLink to="/gebruikersbeheer" className={Style.subnavbarButton} activeClassName={Style.active}>
+                    {getCookie("accessLevel") > 20 && <NavLink to="/gebruikersbeheer" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Gebruikers
-                    </NavLink>
+                    </NavLink>}
                 </div>
             </div>
         </>

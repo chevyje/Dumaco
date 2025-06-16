@@ -109,16 +109,27 @@ function PalletAanmaken() {
     return (
         <>
             <Navbar title={"Pallet aanmaken"} route={route}></Navbar>
-            <form onSubmit={LookForBarcode}>
-                <label>Pallet-</label>
-                <input name="id"/>
-                <button type="submit">Zoeken</button>
-            </form>
-            <Button className={Style.homeBtns} title={"Nieuwe Barcode"} icon={""} triggerFunction={NewBarcode} color={"#0068ff"} textColor={"#f8fbfe"} borderColor={"#000000"}/>
-            {visible && <div>
-                <canvas ref={canvasRef} />
-                <Button className={Style.homeBtns} title={"Downloaden"} icon={""} triggerFunction={Download} color={"#0068ff"} textColor={"#f8fbfe"} borderColor={"#000000"}/>
-            </div>}
+            <div className={Style.container}>
+                <form onSubmit={LookForBarcode} className={Style.search}>
+                    <div className={Style.input}>
+                        <label>Pallet-</label>
+                        <input name="id"/>
+                    </div>
+                    <button type="submit">Zoeken</button>
+                </form>
+                <div className={Style.barcode}>
+                    {visible && <div>
+                        <canvas ref={canvasRef} />
+                        <Button className={Style.download} title={"Downloaden"} icon={""} triggerFunction={Download} color={"#0068ff"} textColor={"#f8fbfe"} borderColor={"#000000"}/>
+                    </div>}
+                    {!visible && <div>
+                        <p className={Style.startingText}>Zoek of genereer een barcode</p>
+                    </div>}
+                </div>
+                <div className={Style.generate}>
+                    {!visible && <Button className={Style.homeBtns} title={"Nieuwe Barcode"} icon={""} triggerFunction={NewBarcode} color={"#0068ff"} textColor={"#f8fbfe"} borderColor={"#000000"}/>}
+                </div>
+            </div>
         </>
     );
 }

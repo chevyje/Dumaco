@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS Functions(
     functionID INTEGER NOT NULL AUTO_INCREMENT,
     functionName VARCHAR(32) NOT NULL,
+    accessLevel INTEGER NOT NULL DEFAULT 1,
     PRIMARY KEY (functionID)
 );
 

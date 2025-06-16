@@ -70,10 +70,18 @@
 .profile{
     margin-left: auto;
     margin-right: 2vw;
-    height: 60px;
-    float:right;
+    height: 3.5vw;
+    width: 3.5vw;
+    float: right;
     cursor: pointer;
     user-select: none;
+    border-radius: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+    font-weight: bold;
 }
 
 .subnavbar h5{

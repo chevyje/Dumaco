@@ -70,6 +70,7 @@ PalletRouter.post('/', async (req, res) => {
     }
 });
 
+// Update productID
 PalletRouter.put('/productID' , async (req, res) => {
     let { palletID, productID } = req.body;
     if (!palletID || palletID.length <= 0) return res.status(400).json(messages.invalid("pallet ID"));
@@ -78,6 +79,39 @@ PalletRouter.put('/productID' , async (req, res) => {
     try{
         await db_execute("UPDATE pallet SET productID = ? WHERE palletID = ? ", [productID, palletID]);
         return res.status(200).send(messages.success.update);
+    }catch (err){
+        console.error(err);
+        return res.status(500).send(messages.error.server);
+    }
+})
+
+//Update Zone
+PalletRouter.put('/zone', async (req, res) => {
+    let { palletID, zone } = req.body;
+    if (!palletID || palletID.length <= 0) return res.status(400).json(messages.invalid("pallet ID"));
+    if (!zone || zone.length <= 0) return res.status(400).json(messages.invalid("Zone"));
+
+    try{
+        let pallets = await db_query("SELECT * FROM pallet WHERE palletID = ?", [palletID]);
+        if(pallets.length <= 0) return res.status(404).send(messages.error.notFound("pallet id"));
+        await db_execute("UPDATE pallet SET zone = ? WHERE palletID = ? ", [zone, palletID]);
+        return res.status(200).send(messages.success.update);
+    }catch (err){
+        console.error(err);
+        return res.status(500).send(messages.error.server);
+    }
+})
+
+// Delete pallet
+PalletRouter.delete('/:id' , async (req, res) => {
+    let id = req.params.id;
+    try{
+        const pallet = await db_query("DELETE FROM pallet WHERE palletID = ?", [id]);
+        if(pallet.affectedRows < 1){
+            return res.status(404).send(messages.error.notFound);
+        }else{
+            return res.status(200).send(messages.success.deletedRow);
+        }
     }catch (err){
         console.error(err);
         return res.status(500).send(messages.error.server);
