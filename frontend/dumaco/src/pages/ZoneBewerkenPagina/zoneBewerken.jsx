@@ -15,7 +15,8 @@ const zoneBewerken = () => {
     const route = breadRouteGen({
         "/home": "Home",
         "/pallets": "Pallets",
-        "zone/bewerken": "Zone Bewerken",
+        "/zone": "Zone",
+        "/bewerken": "Informatie",
     });
 
 
@@ -40,7 +41,7 @@ const zoneBewerken = () => {
     return (
         <>
             <Main />
-            <Navbar title={"Zone bewerken"} route={route}/>
+            <Navbar title={"Zone pallets"} route={route}/>
             <div className={Style.headerContainer}>
                 <div className={Style.backBtn}>
                     <Button

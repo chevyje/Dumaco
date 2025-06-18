@@ -24,7 +24,7 @@ function pallet() {
             <div className={Style.contentContainer}>
                 <h1 className={Style.contentTitle}>Ehh ja komt nog.</h1>
                 <h2 className={Style.contentSubtitle}>dus je mag terug naar de pallets pagina.</h2>
-                <Button title={"Zone Bewerken"} triggerFunction={redirectHome} icon={"home"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} className={Style.homeBtn} doHover={true} hoverColor={"#000000"} hoverTextColor={"#FFFFFF"} hoverChangeIcon={"white-home"}/>
+                <Button title={"Zone pallets"} triggerFunction={redirectHome} icon={"home"} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"} className={Style.homeBtn} doHover={true} hoverColor={"#000000"} hoverTextColor={"#FFFFFF"} hoverChangeIcon={"white-home"}/>
             </div>
         </>
     );

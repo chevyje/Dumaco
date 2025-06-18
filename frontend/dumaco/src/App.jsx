@@ -62,6 +62,8 @@ const App = () => {
                 <Route path="/pallets" element={<ProtectedRoute> <PalletsMap /> </ProtectedRoute>}/>
                 <Route path="/pallets/zone/bewerken" element={<ProtectedRoute> <ZoneBewerken /> </ProtectedRoute>}/>
                 <Route path="/pallets/zone/pallet" element={<ProtectedRoute> <Pallet /> </ProtectedRoute>}></Route>
+                <Route path="/pallets/zone/editzone" element={<ProtectedRoute> <Pallet /> </ProtectedRoute>}></Route>
+
 
             </Routes>
         </Router>
