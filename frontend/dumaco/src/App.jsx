@@ -20,6 +20,8 @@ import NoPageFound from "./pages/noPageFound/noPageFound.jsx";
 import OrderAanmaken from "./pages/orderAanmaken/orderAanmaken.jsx";
 import KlantAanmaken from "./pages/klantAanmaken/klantAanmaken.jsx";
 import PalletsMap from "./pages/PalletsMap/palletsMap.jsx";
+import ZoneBewerken from "./pages/ZoneBewerkenPagina/zoneBewerken.jsx";
+import Pallet from "./pages/pallet/pallet.jsx";
 
 const App = () => {
     return (
@@ -58,6 +60,8 @@ const App = () => {
 
                 {/*Pallet Tracking Routes*/}
                 <Route path="/pallets" element={<ProtectedRoute> <PalletsMap /> </ProtectedRoute>}/>
+                <Route path="/pallets/zone/bewerken" element={<ProtectedRoute> <ZoneBewerken /> </ProtectedRoute>}/>
+                <Route path="/pallets/zone/pallet" element={<ProtectedRoute> <Pallet /> </ProtectedRoute>}></Route>
 
             </Routes>
         </Router>

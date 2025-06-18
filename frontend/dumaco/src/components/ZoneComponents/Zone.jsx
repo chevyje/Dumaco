@@ -86,6 +86,9 @@ function Zone({ zone, nodes, isSelected, onSelect }) {
                             onMouseEnter={(e) => {
                                 const container = e.target.getStage().container();
                                 container.style.cursor = "pointer";
+                                navigate('/pallets/zone/bewerken', {
+                                    state: {zone: zone.name}
+                                })
                             }}
                             onMouseLeave={(e) => {
                                 const container = e.target.getStage().container();

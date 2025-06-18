@@ -19,6 +19,7 @@ function PalletsMap() {
     const [selectedNodeIds, setSelectedNodeIds] = useState([]);
     const stageRef = useRef(null);
     const [selectedZoneId, setSelectedZoneId] = useState(null);
+    const [zoneIndex, setZoneIndex] = useState(1);
 
     const handleZoneSelect = (id) => {
         setSelectedZoneId((prev) =>
@@ -65,7 +66,11 @@ function PalletsMap() {
             return alert("Selecteer minstens 3 nodes");
         }
 
-        const name = "Zone"
+        const name = "Zone " + zoneIndex;
+
+        setZoneIndex(zoneIndex+1);
+
+        console.log(name);
 
         const newZone = {
             id: uuidv4(),
