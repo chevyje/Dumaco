@@ -1,4 +1,4 @@
-import Logo from '../../assets/logo.png';
+import Dumacologoo from '../../assets/Dumacologoo.png';
 import Profile from '../../assets/profiel.png';
 import Style from  './navbar.module.css';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
@@ -19,7 +19,7 @@ function Navbar({ title, route }) {
     return (
         <>
             <div className={Style.navbar}>
-                <img className={Style.logo} src={Logo} alt="Bedrijfslogo" onClick={handleLogoClick}/>
+                <img className={Style.logo} src={Dumacologoo} alt="Bedrijfslogo" onClick={handleLogoClick}/>
                 <div className={Style.team}>
                     <div className={Style.teamSymbol}>
                         <h2>B</h2>
