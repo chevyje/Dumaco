@@ -43,14 +43,45 @@ function KlantAanmaken() {
         <>
             <Navbar title={"Order Aanmaken"} route={route} />
             <form onSubmit={Save}>
-                <input className={style.input} name="name" placeholder="naam" />
-                <input className={style.input} name="address" placeholder="adres" />
-                <input className={style.input} name="dockerNumber" placeholder="deur nummer" />
-                <input className={style.input} type="checkbox" name="palletTracking"/>
-                <input className={style.input} name="phoneNumber" placeholder="telefoon" />
-                <input className={style.input} name="mailAddress" placeholder="email" />
-                <button className={style.button}>Opslaan</button>
-
+                <div className={style.container}>
+                    <div className={style.inputField}>
+                        <label>Naam</label>
+                        <div className={style.inputContainer}>
+                            <input className={style.input} name="name" />
+                        </div>
+                    </div>
+                    <div className={style.inputField}>
+                        <label>Adres</label>
+                        <div className={style.inputContainer}>
+                            <input className={style.input} name="address" />
+                        </div>
+                    </div>
+                    <div className={style.inputField}>
+                        <label>Deur nummer</label>
+                        <div className={style.inputContainer}>
+                            <input className={style.input} name="dockerNumber" />
+                        </div>
+                    </div>
+                    <div className={style.inputField}>
+                        <label>pallet tracking</label>
+                        <div className={style.inputContainer}>
+                            <input className={style.input} type="checkbox" name="palletTracking"/>
+                        </div>
+                    </div>
+                    <div className={style.inputField}>
+                        <label>Telefoon nummer</label>
+                        <div className={style.inputContainer}>
+                            <input className={style.input} name="phoneNumber" />
+                        </div>
+                    </div>
+                    <div className={style.inputField}>
+                        <label>Email adres</label>
+                        <div className={style.inputContainer}>
+                            <input className={style.input} name="mailAddress" />
+                        </div>
+                    </div>
+                    <button className={style.button}>Opslaan</button>
+                </div>
             </form>
         </>
     );

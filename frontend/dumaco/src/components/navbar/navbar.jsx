@@ -4,11 +4,26 @@ import Style from  './navbar.module.css';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
 import {Breadcrumbs} from "@mui/material";
 import {getCookie, deleteCookie} from "../Cookies.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {authLevel} from "../Requests.js";
 
 function Navbar({ title, route }) {
     const navigate = useNavigate();
     const [visible, setVisible] = useState(false);
+    const [level, setAuthLevel] = useState(0);
+
+    useEffect(() => {
+        const fetchAccessLevel = async () => {
+            try {
+                const level = await authLevel(getCookie("userID"));
+                setAuthLevel(level);
+            } catch (err) {
+                console.error("authLevel error:", err);
+                setAuthLevel(0);
+            }
+        };
+        fetchAccessLevel();
+    }, []);
 
     const handleProfileClick = () => {
         setVisible(!visible);
@@ -62,7 +77,7 @@ function Navbar({ title, route }) {
                     <NavLink to="/orders" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Orders
                     </NavLink>
-                    {getCookie("accessLevel") > 20 && <NavLink to="/gebruikersbeheer" className={Style.subnavbarButton} activeClassName={Style.active}>
+                    {level !== null && level > 20 && <NavLink to="/gebruikersbeheer" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Gebruikers
                     </NavLink>}
                 </div>
