@@ -20,7 +20,7 @@ UsersRouter.get('/', async (req, res) => {
 UsersRouter.get('/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const users = await db_query("SELECT * FROM Users WHERE id = ?", [id]);
+        const users = await db_query("SELECT * FROM Users WHERE userID = ?", [id]);
         if (users.length === 0) {
             return res.status(404).json(messages.error.notFound);
         }

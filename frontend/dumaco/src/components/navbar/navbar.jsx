@@ -5,12 +5,13 @@ import {Link, NavLink, useNavigate} from 'react-router-dom';
 import {Breadcrumbs} from "@mui/material";
 import {getCookie, deleteCookie} from "../Cookies.js";
 import {useEffect, useState} from "react";
-import {authLevel} from "../Requests.js";
+import {authLevel, userNameAPI} from "../Requests.js";
 
 function Navbar({ title, route }) {
     const navigate = useNavigate();
     const [visible, setVisible] = useState(false);
     const [level, setAuthLevel] = useState(0);
+    const [userName, setUserName] = useState("");
 
     useEffect(() => {
         const fetchAccessLevel = async () => {
@@ -22,7 +23,13 @@ function Navbar({ title, route }) {
                 setAuthLevel(0);
             }
         };
+
+        const getUsername = async () => {
+            const username = await userNameAPI(getCookie("userID"));
+            setUserName(username);
+        }
         fetchAccessLevel();
+        getUsername();
     }, []);
 
     const handleProfileClick = () => {
@@ -51,7 +58,7 @@ function Navbar({ title, route }) {
 
                 <h1>{title}</h1>
                 <div className={Style.profile} onClick={handleProfileClick}>
-                    <p>J</p>
+                    <p>{userName.substring(0, 1)}</p>
                 </div>
             </div>
             {visible && <div className={Style.profileOnClick}>
