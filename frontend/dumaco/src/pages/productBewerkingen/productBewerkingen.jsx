@@ -11,6 +11,7 @@ import {Navigate, useSearchParams} from "react-router-dom";
 function orderbonnenKantoor() {
     const [bewerkingen, setTableData] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
+    const [rowsPageDestinations, setRowsPageDestinations] = useState([]);
 
     // Values from link params
     const OrderId = searchParams.get("o.id");
@@ -31,30 +32,6 @@ function orderbonnenKantoor() {
         }
     }
 
-    const rowsPageDestinations = [
-        {0: '/orders/order/product/taak'},
-        {1: '/orders/order/product/taak'},
-        {2: '/orders/order/product/taak'},
-        {3: '/orders/order/product/taak'},
-        {4: '/orders/order/product/taak'},
-        {5: '/orders/order/product/taak'},
-        {6: '/orders/order/product/taak'},
-        {7: '/orders/order/product/taak'},
-        {8: '/orders/order/product/taak'},
-        {9: '/orders/order/product/taak'},
-        {10: '/orders/order/product/taak'},
-        {11: '/orders/order/product/taak'},
-        {12: '/orders/order/product/taak'},
-        {13: '/orders/order/product/taak'},
-        {14: '/orders/order/product/taak'},
-        {15: '/orders/order/product/taak'},
-        {16: '/orders/order/product/taak'},
-        {17: '/orders/order/product/taak'},
-        {18: '/orders/order/product/taak'},
-        {19: '/orders/order/product/taak'},
-        {20: '/orders/order/product/taak'},
-        {21: '/orders/order/product/taak'},
-    ]
 
     useEffect(() => {
         // Get all edits form database
@@ -95,6 +72,13 @@ function orderbonnenKantoor() {
                     };
                 })
                 setTableData(formattedData);
+                console.log(data);
+
+                const rows = data.map((item, index) => ({
+                    [index] : `/orders/order/product/taak?o.id=${OrderId}&p.id=${ProductId}&t.id=${item.editID}`,
+                }));
+
+                setRowsPageDestinations(rows);
             } catch (e) {
                 console.log(e)
                 return null;

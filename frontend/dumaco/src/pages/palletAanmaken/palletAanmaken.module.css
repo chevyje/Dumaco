@@ -1,0 +1,58 @@
+.homeBtns {
+    margin: auto;
+}
+
+.container{
+    width: 100vw;
+    height: 80vh;
+    display: grid;
+    grid-template-rows: 7% 30% 7%;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.search {
+    grid-area: 1 / 1 / 2 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search button {
+    margin-left: 0.75%;
+    background-color: #0068ff;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input input{
+    width: 5vw;
+    margin: auto 0;
+    border: 1px solid black;
+    border-radius: 5px
+}
+
+.barcode{
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.download{
+    margin: auto;
+}
+
+.startingText{
+    font-size: 1.5vw;
+}
+
+.generate{
+    grid-area: 3 / 2/ 3/ 3;
+}

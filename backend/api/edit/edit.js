@@ -16,6 +16,18 @@ EditRouter.get('/', async (req, res) => {
     }
 });
 
+// Get 1 edit
+EditRouter.get('/:id', async (req, res) => {
+   let id = req.params.id;
+    try {
+        const edit = await db_query("SELECT * FROM edit WHERE editID = ?", [id]);
+        res.status(200).json(edit);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json(messages.error.server);
+    }
+});
+
 
 // Get all edits for product page
 EditRouter.post('/product', async (req, res) => {
@@ -33,7 +45,7 @@ EditRouter.post('/product', async (req, res) => {
     // Get data
     try{
         let edits = await db_query(`
-        SELECT e.plannedStart, e.startDate, e.endDate, et.editDesc, u.username FROM edit e
+        SELECT e.plannedStart, e.startDate, e.endDate, et.editDesc, u.username, e.editID FROM edit e
         JOIN edittypes et ON e.editTypeID = et.editID
         JOIN users u ON e.userID = u.userID
         WHERE productID = ?

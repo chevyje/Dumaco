@@ -3,17 +3,46 @@ import Profile from '../../assets/profiel.png';
 import Style from  './navbar.module.css';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
 import {Breadcrumbs} from "@mui/material";
+import {getCookie, deleteCookie} from "../Cookies.js";
+import {useEffect, useState} from "react";
+import {authLevel, userNameAPI} from "../Requests.js";
 
 function Navbar({ title, route }) {
     const navigate = useNavigate();
+    const [visible, setVisible] = useState(false);
+    const [level, setAuthLevel] = useState(0);
+    const [userName, setUserName] = useState("");
 
+    useEffect(() => {
+        const fetchAccessLevel = async () => {
+            try {
+                const level = await authLevel(getCookie("userID"));
+                setAuthLevel(level);
+            } catch (err) {
+                console.error("authLevel error:", err);
+                setAuthLevel(0);
+            }
+        };
+
+        const getUsername = async () => {
+            const username = await userNameAPI(getCookie("userID"));
+            setUserName(username);
+        }
+        fetchAccessLevel();
+        getUsername();
+    }, []);
 
     const handleProfileClick = () => {
-        navigate('/instellingen');
+        setVisible(!visible);
     }
 
     const handleLogoClick = () => {
         navigate('/home');
+    }
+
+    const Logout = () => {
+        deleteCookie("userID");
+        window.location.reload();
     }
 
     return (
@@ -28,8 +57,14 @@ function Navbar({ title, route }) {
                 </div>
 
                 <h1>{title}</h1>
-                <img className={Style.profile} src={Profile} alt="Profielafbeelding" onClick={handleProfileClick}/>
+                <div className={Style.profile} onClick={handleProfileClick}>
+                    <p>{userName.substring(0, 1)}</p>
+                </div>
             </div>
+            {visible && <div className={Style.profileOnClick}>
+                <NavLink to={"/instellingen"} className={Style.profileButton} activeClassName={Style.active}>Instellingen</NavLink>
+                <h1 className={Style.profileButton} onClick={Logout}>Afmelden</h1>
+            </div>}
             <div className={Style.subnavbar}>
                 <Breadcrumbs separator="›" aria-label="breadcrumb">
                     {route.map((crumb, index) =>
@@ -49,9 +84,9 @@ function Navbar({ title, route }) {
                     <NavLink to="/orders" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Orders
                     </NavLink>
-                    <NavLink to="/gebruikersbeheer" className={Style.subnavbarButton} activeClassName={Style.active}>
+                    {level !== null && level > 20 && <NavLink to="/gebruikersbeheer" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Gebruikers
-                    </NavLink>
+                    </NavLink>}
                 </div>
             </div>
         </>

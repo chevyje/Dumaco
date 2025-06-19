@@ -20,7 +20,7 @@ UsersRouter.get('/', async (req, res) => {
 UsersRouter.get('/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const users = await db_query("SELECT * FROM Users WHERE id = ?", [id]);
+        const users = await db_query("SELECT * FROM Users WHERE userID = ?", [id]);
         if (users.length === 0) {
             return res.status(404).json(messages.error.notFound);
         }
@@ -109,7 +109,7 @@ UsersRouter.post('/login', async (req, res) => {
     if(!username) return res.status(400).json(messages.invalid("username"));
     if(password.length <= 3 || !password) return res.status(400).json(messages.invalid("password"));
 
-    const users = await db_query("SELECT userID, password FROM Users WHERE username = ?", [username]);
+    const users = await db_query("SELECT userID, password, f.accessLevel FROM Users JOIN dumaco.functions f on f.functionID = Users.functionID WHERE username = ?", [username]);
 
     if (users.length === 0) {
         return res.status(401).json(messages.error.noAccount);
@@ -118,7 +118,7 @@ UsersRouter.post('/login', async (req, res) => {
     const isValid = await bcrypt.compare(password, users[0].password);
 
     if (isValid) {
-        res.status(200).json({...messages.success.login, userId: users[0].userID });
+        res.status(200).json({...messages.success.login, userId: users[0].userID, accessLevel: users[0].accessLevel });
     } else {
         res.status(401).json(messages.error.incorrectPassword);
     }

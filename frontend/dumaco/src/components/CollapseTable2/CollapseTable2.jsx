@@ -65,45 +65,50 @@ const CollapseTable2 = (props) => {
   };
 
   const Save = async () => {
-    // Create product with api
-    const productResponse = await fetch("http://localhost:8080/api/product/", {
-      method: "POST",
-      headers: {"Content-type": "application/json; charset=UTF-8"},
-      body: JSON.stringify({
-        "orderID": id,
-        "palletNumber": "",
-        "deliveryDate": "2025-04-03",
-        "materialID": "1",
-        "quantity": "1",
-        "createdBy": getCookie("userID") || "1",
-      }),
-    });
-
-    // Getting product ID
-    const data = await productResponse.json();
-    const productID = data.productID;
-
-    // Create for each edit an edit with api
-    for (const data1 of tableData) {
-      const editResponse = await fetch("http://localhost:8080/api/edit/", {
+    try{
+      // Create a product
+      const productResponse = await fetch("http://localhost:8080/api/product/", {
         method: "POST",
         headers: {"Content-type": "application/json; charset=UTF-8"},
         body: JSON.stringify({
-          "productID": productID,
-          "editTypeID": data1.id,
-          "comment": data1.opmerking,
-          "drawing": "https://link.todrawing.com",
-          "startDate": "",
-          "endDate": "",
-          "plannedStart": data1.date,
-          "plannedEnd": data1.date,
-          "userID": getCookie("userID") || "1",
+          "orderID": id,
+          "palletNumber": "",
+          "deliveryDate": "2025-04-03",
+          "materialID": "1",
+          "quantity": "1",
+          "createdBy": getCookie("userID") || "1",
         }),
       });
-      const editData = await editResponse.json();
-      console.log(editData);
+
+      // Getting product ID
+      const data = await productResponse.json();
+      console.log(data);
+      const productID = data.productID;
+
+      // Create for each edit an edit with api
+      for (const data1 of tableData) {
+        const editResponse = await fetch("http://localhost:8080/api/edit/", {
+          method: "POST",
+          headers: {"Content-type": "application/json; charset=UTF-8"},
+          body: JSON.stringify({
+            "productID": productID,
+            "editTypeID": data1.id,
+            "comment": data1.opmerking,
+            "drawing": "https://www.metron-technics.be/wp-content/uploads/2021/08/technische-tekenen-CAD.jpg",
+            "startDate": "",
+            "endDate": "",
+            "plannedStart": data1.date,
+            "plannedEnd": data1.date,
+            "userID": getCookie("userID") || "1",
+          }),
+        });
+        const editData = await editResponse.json();
+        console.log(editData);
+    }} catch (e)
+      {
+        console.error(e);
+      }
     }
-  }
 
   const toggle = () => {
     setIsCollapsed(prev => !prev);

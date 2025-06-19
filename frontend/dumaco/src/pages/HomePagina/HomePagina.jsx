@@ -6,13 +6,22 @@ import Table from "../../components/table/table.jsx";
 import Button from "../../components/button/button.jsx";
 import {useNavigate} from "react-router-dom";
 import breadRouteGen from "../../components/navbar/breadRouteGen.js";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {getCookie} from "../../components/Cookies.js";
+import {userNameAPI} from "../../components/Requests.js";
 
 function HomePagina() {
     const navigate  = useNavigate();
+    const [userName, setUserName] = useState("");
 
     // Zet scrollbaarheid uit voor de home pagina
     useEffect(() => {
+        const getUserName = async () => {
+            const tempUserName = await userNameAPI(getCookie("userID"));
+            setUserName(tempUserName)
+        }
+        getUserName();
+
         document.body.style.overflow = "hidden";
         document.documentElement.style.overflow = "hidden";
 
@@ -39,8 +48,6 @@ function HomePagina() {
         { 1: '/orders/order' },
         { 2: '/orders/order' },
     ];
-
-    const userName = {userName: "Hans"};
 
     //Datums
     const today = new Date();
@@ -84,7 +91,7 @@ function HomePagina() {
                 <Navbar title={"Home"} route={route} />
 
                 <header className={Style.headerContainer}>
-                    <h1>Goedendag, {userName.userName}</h1>
+                    <h1>Goedendag, {userName}</h1>
                     <p className={Style.headerSubtitle}>{tijdTotWeekend.tijdTotWeekend}</p>
                     <div className={Style.homeBtns}>
                         <Button className={Style.homeBtn} title={"Order"} icon={"plus"} triggerFunction={redirectCreateOrder} color={"#FFFFFF"} textColor={"#000000"} borderColor={"#000000"}/>

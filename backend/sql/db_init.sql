@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS Functions(
     functionID INTEGER NOT NULL AUTO_INCREMENT,
     functionName VARCHAR(32) NOT NULL,
+    accessLevel INTEGER NOT NULL DEFAULT 1,
     PRIMARY KEY (functionID)
 );
 
@@ -123,5 +124,13 @@ CREATE TABLE IF NOT EXISTS Purchase (
     received BOOLEAN,
     productID VARCHAR(64),
     PRIMARY KEY (purchaseID),
+    FOREIGN KEY (productID) REFERENCES Product(productID)
+);
+
+CREATE TABLE IF NOT EXISTS Pallet (
+    palletID VARCHAR(64) NOT NULL,
+    productID VARCHAR(64) NULL,
+    zone VARCHAR(64) DEFAULT 'Default',
+    PRIMARY KEY (palletID),
     FOREIGN KEY (productID) REFERENCES Product(productID)
 );
