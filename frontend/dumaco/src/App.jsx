@@ -21,6 +21,9 @@ import OrderAanmaken from "./pages/orderAanmaken/orderAanmaken.jsx";
 import KlantAanmaken from "./pages/klantAanmaken/klantAanmaken.jsx";
 import PalletAanmaken from "./pages/palletAanmaken/palletAanmaken.jsx";
 import Unauthorized from "./pages/noAccess/noAccess.jsx";
+import PalletsMap from "./pages/PalletsMap/palletsMap.jsx";
+import ZoneBewerken from "./pages/ZoneBewerkenPagina/zoneBewerken.jsx";
+import Pallet from "./pages/pallet/pallet.jsx";
 
 const App = () => {
     return (
@@ -47,6 +50,11 @@ const App = () => {
                 <Route path="/orders/order/product" element={<ProductBewerkingen />}/>
                 <Route path="/orders/order/product/taak" element={<TaakInzicht />}/>
                 <Route path="/orders/aanmaken" element={<OrderAanmaken />}/>
+
+                <Route path="/pallets" element={<ProtectedRoute> <PalletsMap /> </ProtectedRoute>}/>
+                <Route path="/pallets/zone/bewerken" element={<ProtectedRoute> <ZoneBewerken /> </ProtectedRoute>}/>
+                <Route path="/pallets/zone/pallet" element={<ProtectedRoute> <Pallet /> </ProtectedRoute>}></Route>
+                <Route path="/pallets/zone/editzone" element={<ProtectedRoute> <Pallet /> </ProtectedRoute>}></Route>
 
                 {/*Overige Routes*/}
                 <Route path="/inkoop" element={<ProtectedRoute> <InkoopPagina /> </ProtectedRoute>} />
