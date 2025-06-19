@@ -94,7 +94,7 @@ const CollapseTable2 = (props) => {
             "productID": productID,
             "editTypeID": data1.id,
             "comment": data1.opmerking,
-            "drawing": "https://link.todrawing.com",
+            "drawing": "https://www.metron-technics.be/wp-content/uploads/2021/08/technische-tekenen-CAD.jpg",
             "startDate": "",
             "endDate": "",
             "plannedStart": data1.date,

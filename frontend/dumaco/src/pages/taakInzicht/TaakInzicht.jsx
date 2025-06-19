@@ -2,10 +2,21 @@ import breadRouteGen from "../../components/navbar/breadRouteGen.js";
 import Navbar from "../../components/navbar/navbar.jsx";
 import Style from "./TaakInzicht.module.css";
 import Button from "../../components/button/button.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {Navigate, useSearchParams} from "react-router-dom";
 
 function taakInzicht() {
     const [palletID, setPalletID] = useState("");
+    const [data, setData] = useState();
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const OrderId = searchParams.get("o.id");
+    const ProductId = searchParams.get("p.id");
+    const TaakId = searchParams.get("t.id");
+
+    if(!OrderId || !ProductId || !TaakId) {
+        return <Navigate to="/404-not-found" />;
+    }
     const route = breadRouteGen({
         "/home": "Home",
         "/orders": "Orders",
@@ -14,22 +25,59 @@ function taakInzicht() {
         "/orders/order/product/taak": "Taak",
     });
 
-    const AddPallet = () => {
-        console.log(palletID);
+    const AddPallet = async () => {
+        try{
+             await fetch("http://localhost:8080/api/pallet/productID", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    palletID: palletID,
+                    productID: ProductId
+                })
+            })
+        }catch(error){
+
+        }
     }
 
     const PalletID = (e) => {
         setPalletID(e.currentTarget.value);
     }
 
+    const OpenDrawing = () => {
+        window.open(data.drawing);
+    }
+
+    useEffect(() => {
+        // Get all edits form database
+        const getEdit = async (TaakId) => {
+            try {
+                const requestData = await fetch(`http://localhost:8080/api/edit/${TaakId}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                const rawData = await requestData.json();
+                setData(rawData[0]);
+            } catch (e) {
+                console.log(e)
+                return null;
+            }
+        }
+        getEdit(TaakId);
+    }, []);
+
     return (
         <>
-            <Navbar title={"Taak"} route={route}/>
+            <Navbar title={"Taak " + TaakId} route={route}/>
             <div className={Style.container}>
                 <div className={Style.gridDescription}>
                     <div className={Style.contentDescription}>
                         <h3 className={Style.contentDescriptionTitle}>Opmerkingen</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac dictum nisl. Pellentesque eget porta ligula. Quisque id blandit nunc, non sagittis purus. Aliquam erat volutpat. Nunc sed magna et nunc accumsan malesuada sit amet vel leo.</p>
+                        <p>{data ? data.comment : "Geen opmerking beschikbaar"}</p>
                     </div>
                     <div className={Style.contentLocation}>
                         <h3 className={Style.contentDescriptionTitle}>Locatie</h3>
@@ -39,7 +87,7 @@ function taakInzicht() {
                         <div className={Style.viewDrawingIcon}>
                             <img src={`../../../icons/image-upscale.svg`} alt={"imageUpscale"} className={Style.iconUpscale}></img>
                         </div>
-                        <div className={Style.viewDrawingText}>
+                        <div className={Style.viewDrawingText} onClick={OpenDrawing}>
                             <p>Bekijk tekening</p>
                         </div>
                     </div>
