@@ -21,7 +21,8 @@ import OrderAanmaken from "./pages/orderAanmaken/orderAanmaken.jsx";
 import KlantAanmaken from "./pages/klantAanmaken/klantAanmaken.jsx";
 import PalletsMap from "./pages/PalletsMap/palletsMap.jsx";
 import ZoneBewerken from "./pages/ZoneBewerkenPagina/zoneBewerken.jsx";
-import Pallet from "./pages/pallet/pallet.jsx";
+import Pallet from "./pages/pallet/pallet.jsx"
+import PalletAanmaken from "./pages/palletAanmaken/palletAanmaken.jsx";
 
 const App = () => {
     return (
@@ -48,7 +49,6 @@ const App = () => {
                 <Route path="/orders/order/product" element={<ProductBewerkingen />}/>
                 <Route path="/orders/order/product/taak" element={<TaakInzicht />}/>
                 <Route path="/orders/aanmaken" element={<OrderAanmaken />}/>
-
                 <Route path="/inkoop" element={<ProtectedRoute> <InkoopPagina /> </ProtectedRoute>} />
                 <Route path="/inkoop/edit" element={<ProtectedRoute> <InkoopPaginaBewerken /> </ProtectedRoute>} />
                 <Route path="/instellingen" element={<ProtectedRoute> <Instellingen /> </ProtectedRoute>} />
@@ -63,8 +63,7 @@ const App = () => {
                 <Route path="/pallets/zone/bewerken" element={<ProtectedRoute> <ZoneBewerken /> </ProtectedRoute>}/>
                 <Route path="/pallets/zone/pallet" element={<ProtectedRoute> <Pallet /> </ProtectedRoute>}></Route>
                 <Route path="/pallets/zone/editzone" element={<ProtectedRoute> <Pallet /> </ProtectedRoute>}></Route>
-
-
+                <Route path="/pallet/aanmaken" element={<ProtectedRoute> <PalletAanmaken /> </ProtectedRoute>}></Route>
             </Routes>
         </Router>
     );

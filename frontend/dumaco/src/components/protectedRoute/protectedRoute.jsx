@@ -12,6 +12,7 @@ const ProtectedRoute = ({children, accessLevel}) => {
 
     useEffect(() => {
         const checkAccessLevel = async () => {
+            if(!userID){ return <Navigate to={"/unauthorized"} />;}
             accessLevelUser = await authLevel(userID);
             if (accessLevel && accessLevelUser < accessLevel) {
                 return <Navigate to="/unauthorized"/>;

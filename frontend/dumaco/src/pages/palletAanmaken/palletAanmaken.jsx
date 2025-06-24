@@ -78,7 +78,7 @@ function PalletAanmaken() {
     const LookForBarcode = async(e) => {
         e.preventDefault();
         let data = null;
-        let num = `${e.target.id.value}`
+        let num = `${e.target.elements.id.value}`
         let pad = "000000"
         let value = pad + num.toString();
         let result = "pallet-" + value.substring(value.length - 6, value.length);
@@ -97,7 +97,7 @@ function PalletAanmaken() {
         if(data.message && data.message.includes("Found")){
             return;
         }
-        if (!data || !data[0].palletID) {
+        if (!data || !data[0]?.palletID) {
             console.error("Geen pallet gevonden");
             return;
         }
