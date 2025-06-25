@@ -7,8 +7,10 @@ import { v4 as uuidv4 } from 'uuid';
 import Node from "../../components/ZoneComponents/Node.jsx";
 import Zone from "../../components/ZoneComponents/Zone.jsx";
 import Konva from "konva";
+import {useNavigate} from "react-router-dom";
 
 function PalletsMap() {
+    const navigate  = useNavigate();
     const route = breadRouteGen({
         "/home": "Home",
         "/pallets": "Pallets",
@@ -114,6 +116,10 @@ function PalletsMap() {
         }
     };
 
+    const redirectBarcodeGen = () => {
+        navigate("/pallet/aanmaken")
+    }
+
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -156,6 +162,12 @@ function PalletsMap() {
                         <div className={Style.tooltip}>
                             <img src="/icons/trash.svg" alt="delete" className={Style.iconUpscale}/>
                             <span className={Style.tooltiptext}>Verwijder geselecteerde items</span>
+                        </div>
+                    </button>
+                    <button className={Style.btn} onClick={redirectBarcodeGen}>
+                        <div className={Style.tooltip}>
+                            <img src="/icons/barcode.svg" alt="delete" className={Style.iconUpscale}/>
+                            <span className={Style.tooltiptext}>Maak een nieuwe barcode aan of zoek een bestaande barcode</span>
                         </div>
                     </button>
                 </div>

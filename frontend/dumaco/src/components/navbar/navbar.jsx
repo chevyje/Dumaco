@@ -87,6 +87,9 @@ function Navbar({ title, route }) {
                     {level !== null && level > 20 && <NavLink to="/gebruikersbeheer" className={Style.subnavbarButton} activeClassName={Style.active}>
                         Gebruikers
                     </NavLink>}
+                    <NavLink to="/pallets" className={Style.subnavbarButton} activeClassName={Style.active}>
+                        Pallets
+                    </NavLink>
                 </div>
             </div>
         </>
