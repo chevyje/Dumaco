@@ -1,0 +1,22 @@
+1NF
+
+Each row is unique
+er moet een manier zijn om elke rij uit elkaar te halen (vaak wordt dit gedaan door een ID)
+
+No cell has more than one value
+Er mogen geen 2 waardes in 1 cell staan dit betekend dat er geen waarde kan zijn username-password met de waarde van de username en password gecombineerd
+
+There are no repeating groups
+Er mogen geen zelfde waardes zijn. dit betekend dat voor functie hier geen functie1 of functie2 mag staan.
+
+2NF
+
+Each column depends on the whole primary key
+De waardes moeten terug koppelen aan de primary key zo mogen er geen waardes zijn waarbij je een id specified en daarna zijn waarde zonder dat dit de primary key is.
+zo mag in de tabel TaskForm niet een editID1, startDate1 en vervolgens een editID2, startDate2 zijn. dit moet dan zijn eigen table zijn aangezien startDate anders afhankelijk is van editID wat niet de primary key is.
+3NF
+
+The primary key must define all non-key columns
+dit betekend dat de primary key all waardes moet kunnen bepalen
+zo moet in de tabel users de function een FOREIGNKEY zijn omdat de primary key niet bepaald wat de waarde is.
+dit omdat er een lijst met functies is waarvan gekozen moet worden.

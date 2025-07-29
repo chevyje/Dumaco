@@ -1,0 +1,43 @@
+Onderzoeksvraag: Wat voor soort type applicatie gaan we maken?
+We hebben de volgende keuzes overwogen: native, hybride, PWA en web-app. Hieronder staan een aantal selectiecriteria:
+
+De applicatie moet eenvoudig te onderhouden zijn
+De applicatie moet responsive gemaakt kunnen worden
+De applicatie moet op meerdere besturingssystemen kunnen runnen
+Ieder projectlid moet een basis hebben om ermee aan de slag te kunnen
+We hebben op basis van de bovenstaande selectiecriteria gekozen voor een web-app.
+
+Onderzoeksvraag: Welke programmeer talen/frameworks willen wij gaan gebruiken bij het maken van de web-app?
+Selectiecriteria (boven belangrijkst, onder minst-belangrijkst):
+
+Leerbaarheid
+Ontwikkeltijd
+Snelheid
+Error handling
+Overzichtelijkheid
+Huidige kennis
+Talen voor frontend (website):
+
+vanilla javascript
+Typescript
+Svelt
+JQuery
+React
+Talen voor backend:
+
+Javascript (node.js)
+Java
+Kotlin
+C#
+PHP
+Python
+Weegfactor	Frontend:	Vanilla Javascript	Typescript	Svelt	Jquery	React	Backend:	Javascript (node.js)	Java	C#	PHP	Python
+2.5	Leerbaarheid	3	2.5	3.5	4	3		3	2.5	3	3	4.5
+2.0	Compatible met MySQL	x	x	x	x	x		4	4	3	5	4
+2.0	Ontwikkeltijd	3.5	3	4	4	3.5		3.5	2.5	3	3.5	4
+2.0	Snelheid	3	3	3.5	2.5	2.5		2.5	4	3.5	3	3
+2.0	Error Handeling	2.5	4	3.5	2.5	3.5		3.5	4.5	4.5	3	4.5
+1.5	Overzichtelijkheid	2.5	4	4	2.5	3		3.5	4.5	4.5	3	0.5
+0.5	Huidige kennis	4	1.5	1	1	1		4	4	4	1.5	4
+Totaal	31.25	33	37.25	32.25	31.5		41.75	45	44.25	41.75	45
+Op basis van deze keuzematrix is de conclusie dat we voor de typescript omdat dit veel wordt gebruikt door grote bedrijven en het niet slecht is om hier al een basis van op te doen. Voor de backend hebben we gekozen voor Node.Js omdat deze goed samenwerkt met typescript.

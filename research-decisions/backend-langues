@@ -1,0 +1,45 @@
+Mogelijke soorten van database:
+SQL Databases:
+
+SQLite
+MySQL
+PostgreSQL
+SQL Server (Microsoft)
+Access Database
+
+NoSQL Databases:
+
+DynamoDB
+MongoDB
+Cassandra
+ArangoDB
+
+Wij kiezen voor een SQL Database omdat deze vaste waardes hebben en dit makkelijker te gebruiken is.
+Weging		SQLite	MySQL	PostgreSQL	SQL Server	Access
+1	Performance	3	4	5	5	2
+1	Schaalbaarheid	1	4	5	5	1
+1	Opzet tijd	5	4	3	2	5
+1	leerbaarheid	5	4	3	2	5
+Totaal	14	16	16	14	13
+
+Op basis van de bovenstaande tabel hebben wij gekozen om een MySQL server op te zetten.
+Omdat deze op performance en schaalbaarheid goed scoort en ook op de opzet tijd en leerbaarheid scoort hij goed.
+Wij kiezen dus voor een MySQL database omdat hij op alle vlakken goed scoort die voor ons belangrijk zijn.
+Mogelijk soorten talen voor de backend
+Python
+C#
+Java
+Javascript (Node.js)
+PHP
+Weegfactor		Javascript (node.js)	Java	C#	PHP	Python
+2.5	Leerbaarheid	3	2.5	3	3	4.5
+2.0	Compatible met MySQL	4	4	3	5	4
+2.0	Ontwikkeltijd	3.5	2.5	3	3.5	4
+2.0	Snelheid	2.5	4	3.5	3	3
+2.0	Error Handeling	3.5	4.5	4.5	3	4.5
+1.5	Overzichtelijkheid	3.5	4.5	4.5	3	0.5
+0.5	Huidige kennis	4	4	4	1.5	4
+Totaal	41.75	45	44.25	41.75	45
+
+Wij hebben gekozen voor Node.js omdat onze frontend in typescript is en door deze taal te kiezen kunnen wij makkelijker helpen met de frontend zodra dit nodig is. ook is de connectie tussen de front en backend word hierdoor makkelijker. dit advies hebben wij gekregen van Hans Bastiaan.
+
